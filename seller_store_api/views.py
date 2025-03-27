@@ -63,3 +63,13 @@ class StoresAllView(ListAPIView):
 
     def get_queryset(self):
         return Store.objects.all()
+
+
+class CategoriesView(ModelViewSet):
+
+    serializer_class = CategorySerializer
+    http_method_names = ['get', 'post']
+
+    def get_queryset(self):
+        return Category.objects.all()
+
