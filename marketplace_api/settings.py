@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     
     'usercontrol_api',
+    'seller_store_api',
 
 ]
 
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'marketplace_api.my_middleware.LoggerMiddleware',
 ]
 
 ROOT_URLCONF = 'marketplace_api.urls'
@@ -179,5 +181,30 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'info_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'logs/info.log',
+            'formatter': 'verbose'
+        },
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(asctime)s %(levelname)s %(message)s',
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['info_file'],
+            'level': 'INFO',
+            'propagate': False
+        }
+    },
 }
 

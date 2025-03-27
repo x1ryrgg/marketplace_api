@@ -1,0 +1,376 @@
+2025-03-27 13:44:50,468 INFO Watching for file changes with StatReloader
+2025-03-27 13:44:57,960 INFO Request: GET / | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:44:58,210 WARNING Not Found: /
+2025-03-27 13:45:00,384 INFO Request: GET /admin/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:45:03,362 INFO Request: GET /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:45:03,594 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:45:04,667 INFO Request: GET /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:45:04,947 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:45:08,803 INFO Request: POST /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:45:09,140 INFO Request: GET /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:45:09,347 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:45:13,819 INFO Request: GET /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:45:14,029 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:45:16,581 INFO Request: POST /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:45:16,755 INFO Request: GET /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:45:16,934 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:45:53,589 INFO D:\python\marketplace_api\usercontrol_api\models.py changed, reloading.
+2025-03-27 13:45:54,880 INFO Watching for file changes with StatReloader
+2025-03-27 13:48:48,667 INFO D:\python\marketplace_api\usercontrol_api\models.py changed, reloading.
+2025-03-27 13:48:49,983 INFO Watching for file changes with StatReloader
+2025-03-27 13:49:04,197 INFO Watching for file changes with StatReloader
+2025-03-27 13:49:06,550 INFO Request: GET / | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:49:06,711 WARNING Not Found: /
+2025-03-27 13:49:10,033 INFO Request: GET /admin/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:49:12,836 INFO Request: GET /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:49:13,142 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:49:20,183 INFO Request: GET /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:49:20,399 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:49:25,316 INFO Request: POST /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:49:25,631 INFO Request: GET /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:49:25,823 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:49:29,137 INFO Request: GET /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:49:29,351 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:49:31,582 INFO Request: POST /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:49:31,745 INFO Request: GET /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:49:31,886 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:50:44,015 INFO Watching for file changes with StatReloader
+2025-03-27 13:50:47,208 INFO Request: GET / | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:50:47,365 WARNING Not Found: /
+2025-03-27 13:50:49,183 INFO Request: GET /admin/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:50:51,927 INFO Request: GET /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:50:52,137 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:50:53,150 INFO Request: GET /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:50:53,420 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:50:57,559 INFO Request: POST /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:50:57,878 INFO Request: GET /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:50:58,064 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:51:04,701 INFO Request: GET /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:51:04,916 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:51:07,042 INFO Request: POST /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:51:07,195 INFO Request: GET /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:51:07,409 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:55:34,619 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-03-27 13:55:35,781 INFO Watching for file changes with StatReloader
+2025-03-27 13:55:43,181 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-03-27 13:55:44,369 INFO Watching for file changes with StatReloader
+2025-03-27 13:55:46,072 INFO Request: GET /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:55:46,286 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:55:50,343 INFO Request: POST /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:55:50,610 INFO Request: GET /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:55:50,770 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:55:54,361 INFO Request: GET /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:55:54,546 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:55:56,929 INFO Request: POST /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:55:57,059 INFO Request: GET /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:55:57,221 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:56:45,607 INFO Watching for file changes with StatReloader
+2025-03-27 13:56:46,709 INFO Request: GET /admin/usercontrol_api/profile/5/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:56:46,970 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:56:52,423 INFO Request: POST /admin/usercontrol_api/profile/5/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:56:52,844 INFO Request: GET /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:56:52,957 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:57:00,286 INFO Request: POST /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:57:01,910 INFO Request: POST /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:57:02,016 INFO Image /media/images/Chevrolet_Silverado.jpeg deleted
+2025-03-27 13:57:02,026 INFO Request: GET /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 13:57:02,201 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 15:23:03,411 INFO Watching for file changes with StatReloader
+2025-03-27 15:23:05,447 INFO Request: GET / | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 15:23:05,555 WARNING Not Found: /
+2025-03-27 15:23:08,861 INFO Request: GET /admin/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 15:23:11,565 INFO Request: GET /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 15:23:11,771 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 15:23:15,126 INFO Request: GET /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 15:23:15,326 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 15:23:32,658 INFO Request: POST /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 15:23:32,954 INFO Request: GET /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 15:23:33,105 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 15:23:37,046 INFO Request: GET /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 15:23:37,221 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 15:23:41,884 INFO Request: POST /admin/usercontrol_api/profile/2/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 15:23:41,974 INFO Old image /media/images/Hyundai_Tucson.jpeg deleted
+2025-03-27 15:23:41,998 INFO Request: GET /admin/usercontrol_api/profile/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 15:23:42,154 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 15:24:36,215 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-03-27 15:24:37,083 INFO Watching for file changes with StatReloader
+2025-03-27 18:11:35,673 INFO Watching for file changes with StatReloader
+2025-03-27 18:11:40,333 INFO Request: POST /api/token/ | AnonymousUser
+2025-03-27 18:12:00,133 INFO Request: GET /seller/register/ | AnonymousUser
+2025-03-27 18:12:41,025 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:12:41,520 INFO Watching for file changes with StatReloader
+2025-03-27 18:13:03,514 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:13:04,003 INFO Watching for file changes with StatReloader
+2025-03-27 18:13:13,733 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:13:14,362 INFO Watching for file changes with StatReloader
+2025-03-27 18:13:19,016 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:13:19,535 INFO Watching for file changes with StatReloader
+2025-03-27 18:13:25,212 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:13:25,723 INFO Watching for file changes with StatReloader
+2025-03-27 18:13:28,310 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:13:28,976 INFO Watching for file changes with StatReloader
+2025-03-27 18:13:34,646 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:13:35,114 INFO Watching for file changes with StatReloader
+2025-03-27 18:14:08,144 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:14:08,645 INFO Watching for file changes with StatReloader
+2025-03-27 18:14:38,791 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:14:39,287 INFO Watching for file changes with StatReloader
+2025-03-27 18:14:46,014 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:14:46,586 INFO Watching for file changes with StatReloader
+2025-03-27 18:14:49,177 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:14:49,765 INFO Watching for file changes with StatReloader
+2025-03-27 18:16:30,347 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:16:30,833 INFO Watching for file changes with StatReloader
+2025-03-27 18:21:14,883 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:21:15,377 INFO Watching for file changes with StatReloader
+2025-03-27 18:21:28,831 INFO Request: PUT /seller/register/ | AnonymousUser
+2025-03-27 18:21:29,036 ERROR Internal Server Error: /seller/register/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\seller_store_api\views.py", line 30, in update
+    user = self.get_object()
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\generics.py", line 92, in get_object
+    assert lookup_url_kwarg in self.kwargs, (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Expected view SellerRegisterView to be called with a URL keyword argument named "pk". Fix your URL conf, or set the `.lookup_field` attribute on the view correctly.
+2025-03-27 18:21:41,305 INFO Request: PUT /seller/register/ | AnonymousUser
+2025-03-27 18:21:41,368 ERROR Internal Server Error: /seller/register/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\seller_store_api\views.py", line 30, in update
+    user = self.get_object()
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\generics.py", line 92, in get_object
+    assert lookup_url_kwarg in self.kwargs, (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Expected view SellerRegisterView to be called with a URL keyword argument named "pk". Fix your URL conf, or set the `.lookup_field` attribute on the view correctly.
+2025-03-27 18:22:21,073 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:22:21,625 INFO Watching for file changes with StatReloader
+2025-03-27 18:22:22,217 INFO Request: PUT /seller/register/ | AnonymousUser
+2025-03-27 18:22:22,289 ERROR Internal Server Error: /seller/register/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\seller_store_api\views.py", line 33, in update
+    user = self.get_object()
+  File "D:\python\marketplace_api\seller_store_api\views.py", line 29, in get_object
+    return self.get_queryset().get()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'get'
+2025-03-27 18:22:33,457 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:22:33,985 INFO Watching for file changes with StatReloader
+2025-03-27 18:22:34,980 INFO Request: PUT /seller/register/ | AnonymousUser
+2025-03-27 18:22:47,152 INFO Request: PUT /seller/register/ | AnonymousUser
+2025-03-27 18:24:08,073 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:24:08,586 INFO Watching for file changes with StatReloader
+2025-03-27 18:24:11,314 INFO Request: PUT /seller/register/ | AnonymousUser
+2025-03-27 18:24:12,466 INFO Request: PUT /seller/register/ | AnonymousUser
+2025-03-27 18:24:27,002 INFO Request: GET / | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 18:24:27,206 WARNING Not Found: /
+2025-03-27 18:24:38,095 INFO Request: GET / | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 18:24:38,141 WARNING Not Found: /
+2025-03-27 18:24:39,717 INFO Request: GET /admin/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 18:24:42,109 INFO Request: GET /admin/usercontrol_api/user/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 18:24:42,268 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 18:24:46,457 INFO Request: GET /admin/usercontrol_api/user/1/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 18:24:46,643 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 18:24:49,762 INFO Request: POST /admin/usercontrol_api/user/1/change/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 18:24:49,937 INFO Request: GET /admin/usercontrol_api/user/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 18:24:49,994 INFO Request: GET /admin/jsi18n/ | username: root | email: zhdamarov-vladimir@mail.ru | pk 1
+2025-03-27 18:25:08,421 INFO Request: PUT /seller/register/ | AnonymousUser
+2025-03-27 18:25:53,142 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:25:53,767 INFO Watching for file changes with StatReloader
+2025-03-27 18:25:54,907 INFO Request: PUT /seller/register/ | AnonymousUser
+2025-03-27 18:26:02,856 INFO Request: PUT /seller/register/ | AnonymousUser
+2025-03-27 18:26:14,459 INFO Request: PUT /seller/register/ | AnonymousUser
+2025-03-27 18:26:54,693 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:26:55,185 INFO Watching for file changes with StatReloader
+2025-03-27 18:27:00,936 INFO Request: GET /seller/register/ | AnonymousUser
+2025-03-27 18:27:01,113 ERROR Internal Server Error: /seller/register/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\seller_store_api\views.py", line 24, in list
+    is_seller = queryset.is_seller
+                ^^^^^^^^^^^^^^^^^^
+AttributeError: 'QuerySet' object has no attribute 'is_seller'
+2025-03-27 18:27:37,439 INFO Request: GET /seller/register/ | AnonymousUser
+2025-03-27 18:27:37,497 ERROR Internal Server Error: /seller/register/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\seller_store_api\views.py", line 24, in list
+    is_seller = queryset.is_seller
+                ^^^^^^^^^^^^^^^^^^
+AttributeError: 'QuerySet' object has no attribute 'is_seller'
+2025-03-27 18:30:28,889 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:30:29,377 INFO Watching for file changes with StatReloader
+2025-03-27 18:30:30,727 INFO Request: GET /seller/register/ | AnonymousUser
+2025-03-27 18:30:30,796 ERROR Internal Server Error: /seller/register/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\seller_store_api\views.py", line 25, in list
+    if queryset.is_seller:
+       ^^^^^^^^^^^^^^^^^^
+AttributeError: 'QuerySet' object has no attribute 'is_seller'
+2025-03-27 18:30:31,782 INFO Request: GET /seller/register/ | AnonymousUser
+2025-03-27 18:30:31,946 ERROR Internal Server Error: /seller/register/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\seller_store_api\views.py", line 25, in list
+    if queryset.is_seller:
+       ^^^^^^^^^^^^^^^^^^
+AttributeError: 'QuerySet' object has no attribute 'is_seller'
+2025-03-27 18:30:58,850 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:30:59,372 INFO Watching for file changes with StatReloader
+2025-03-27 18:30:59,882 INFO Request: GET /seller/register/ | AnonymousUser
+2025-03-27 18:31:03,561 INFO Request: GET /seller/register/ | AnonymousUser
+2025-03-27 18:31:07,270 INFO Request: POST /api/token/ | AnonymousUser
+2025-03-27 18:31:24,433 INFO Request: GET /profile/ | AnonymousUser
+2025-03-27 18:31:34,396 INFO Request: GET /seller/register/ | AnonymousUser
+2025-03-27 18:35:43,048 INFO D:\python\marketplace_api\usercontrol_api\permissions.py changed, reloading.
+2025-03-27 18:35:43,599 INFO Watching for file changes with StatReloader
+2025-03-27 18:40:32,723 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 18:40:33,230 INFO Watching for file changes with StatReloader
+2025-03-27 18:43:05,771 INFO D:\python\marketplace_api\seller_store_api\models.py changed, reloading.
+2025-03-27 18:43:06,422 INFO Watching for file changes with StatReloader
+2025-03-27 18:44:02,043 INFO D:\python\marketplace_api\seller_store_api\models.py changed, reloading.
+2025-03-27 18:44:02,543 INFO Watching for file changes with StatReloader
+2025-03-27 18:44:18,849 INFO D:\python\marketplace_api\seller_store_api\models.py changed, reloading.
+2025-03-27 18:44:19,446 INFO Watching for file changes with StatReloader
+2025-03-27 19:13:05,062 INFO Watching for file changes with StatReloader
+2025-03-27 19:13:15,629 INFO Request: POST /api/token/ | AnonymousUser
+2025-03-27 19:15:02,157 INFO D:\python\marketplace_api\seller_store_api\urls.py changed, reloading.
+2025-03-27 19:15:02,674 INFO Watching for file changes with StatReloader
+2025-03-27 19:15:06,536 INFO Request: GET /store/ | AnonymousUser
+2025-03-27 19:16:52,378 INFO Request: POST /store/ | AnonymousUser
+2025-03-27 19:17:09,751 INFO Request: GET /store/ | AnonymousUser
+2025-03-27 19:17:13,764 INFO Request: POST /store/ | AnonymousUser
+2025-03-27 19:17:13,806 WARNING Bad Request: /store/
+2025-03-27 19:18:42,147 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-03-27 19:18:42,679 INFO Watching for file changes with StatReloader
+2025-03-27 19:18:46,392 INFO Request: GET /stores/ | AnonymousUser
+2025-03-27 19:18:49,176 INFO Request: GET /stores/ | AnonymousUser
+2025-03-27 19:18:55,208 INFO Request: POST /api/token/ | AnonymousUser
+2025-03-27 19:19:07,261 INFO Request: GET /seller/register/ | AnonymousUser
+2025-03-27 19:19:08,610 INFO Request: GET /seller/register/ | AnonymousUser
+2025-03-27 19:19:13,885 INFO Request: GET /store/ | AnonymousUser
+2025-03-27 19:19:13,927 WARNING Forbidden: /store/
+2025-03-27 19:19:19,858 INFO Request: POST /store/ | AnonymousUser
+2025-03-27 19:19:19,899 WARNING Forbidden: /store/
+2025-03-27 19:19:24,991 INFO Request: GET /stores/ | AnonymousUser

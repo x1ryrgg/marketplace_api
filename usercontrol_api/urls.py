@@ -4,8 +4,11 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from .views import *
 
 
-router = routers.DefaultRouter()
-router.register(r'', UserView, basename='user')
+user_router = routers.DefaultRouter()
+user_router.register(r'', UserView, basename='user')
+
+profile_router = routers.DefaultRouter()
+profile_router.register(r'', ProfileView, basename='profile')
 
 urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -13,6 +16,6 @@ urlpatterns = [
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('register/', RegisterView.as_view(), name='register'),
 
-    path('users/', include(router.urls)),
-    path('profile/', ProfileView.as_view({"get": "list"}), name='profile'),
+    path('users/', include(user_router.urls)),
+    path('profile/', ProfileView.as_view({"get": "list", "patch": "partial_update"}), name='profile')
 ]

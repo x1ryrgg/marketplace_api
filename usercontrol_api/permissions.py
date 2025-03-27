@@ -3,11 +3,11 @@ from rest_framework import permissions
 from rest_framework.exceptions import PermissionDenied
 from django.utils.translation import gettext_lazy as _
 
-from .models import *
+from .models import User
 
 class IsSuperUser(permissions.BasePermission):
     """
-    Резрешение, которое позволяет использовать ресурс только участникам чата.
+    Резрешение, которое позволяет использовать ресурс только пользователю с аттрибутом is_superuser.
     """
     message = "Вы не являетесь администратором приложения."
 

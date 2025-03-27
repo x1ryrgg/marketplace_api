@@ -30,3 +30,4 @@ class ProfileSerializer(serializers.ModelSerializer):
      class Meta:
          model = Profile
          fields = ('id', 'user_id', 'image', 'date_of_birth')
+         read_only_fields = ('user_id', )
