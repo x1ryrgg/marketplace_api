@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'django_extensions',
     'rest_framework',
+    'django_filters',
     
     'usercontrol_api',
     'seller_store_api',

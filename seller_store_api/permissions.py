@@ -1,12 +1,12 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import permissions
+from rest_framework.permissions import BasePermission, SAFE_METHODS
 from rest_framework.exceptions import PermissionDenied
 from django.utils.translation import gettext_lazy as _
 
 from usercontrol_api.models import User
 
 
-class IsSeller(permissions.BasePermission):
+class IsSeller(BasePermission):
     """
     Резрешение, которое позволяет использовать ресурс только пользователю с аттрибутом is_seller.
     """
@@ -21,3 +21,11 @@ class IsSeller(permissions.BasePermission):
         if request.user.is_seller:
             return True
         return False
+
+
+class IsAdminOrReadOnly(BasePermission):
+    def has_permission(self, request, view):
+        return bool(
+            request.method in SAFE_METHODS or
+            request.user and request.user.is_superuser
+        )

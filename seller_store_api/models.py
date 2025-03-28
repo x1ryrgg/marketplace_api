@@ -33,6 +33,12 @@ class Category(models.Model):
             raise ValueError("Категория не может иметь более одного уровня вложенности.")
         super().save(*args, **kwargs)
 
+    def get_all_subcategories(self):
+        subcategories = [self]  # Начинаем с текущей категории
+        for subcategory in self.subcategories.all():
+            subcategories += subcategory.get_all_subcategories()  # Рекурсивно добавляем дочерние категории
+        return subcategories
+
     @property
     def is_parent(self):
         """Проверяет, является ли категория родительской."""
