@@ -1,6 +1,7 @@
 from django.db.models import Count, Sum
 from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.exceptions import ValidationError
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
@@ -153,7 +154,7 @@ class ProductsView(ModelViewSet):
         return Product.objects.all().select_related('store', 'category')
 
 
-class BuyProductView(APIView):
+class PayProductView(APIView):
     permission_classes = [IsAuthenticated]
     serializer_class = PrivateUserSerializer
 
@@ -197,9 +198,10 @@ class WishListAddView(APIView):
                          })
 
 
-class WishListView(ListAPIView):
+class WishListView(ModelViewSet):
     permission_classes = [IsAuthenticated]
     serializer_class = ProductSerializer
+    http_method_names = ['get', 'post']
 
     def get_queryset(self):
         return self.request.user.wishlist.all()
@@ -215,6 +217,37 @@ class WishListView(ListAPIView):
         }
         return Response(data)
 
+    def retrieve(self, request, *args, **kwargs):
+        product = self.get_object()
+        serializer = self.get_serializer(product)
+        return Response(serializer.data)
+
+    def payment_products(self, request, *args, **kwargs):
+        user = request.user
+
+        products = request.data.get('products', [])
+        products_to_pay = []
+        products_to_pay_total_balance = 0
+        for product_id in products:
+            product = get_object_or_404(Product, id=product_id)
+            products_to_pay.append(product)
+            products_to_pay_total_balance += product.price
+
+        invalid_products = [product.id for product in products_to_pay if product not in user.wishlist.all()]
+        if invalid_products:
+            raise ValidationError(_(f'{invalid_products} - этого нет в вашей корзине'))
+
+        difference = user.balance - products_to_pay_total_balance
+        if user.balance < products_to_pay_total_balance:
+            raise ValidationError(_(f'Вам не хватает {difference}. '))
+
+        user.wishlist.remove(*products_to_pay)
+        user.balance -= products_to_pay_total_balance
+        for product in products_to_pay:
+            product.quantity -= 1
+            product.save()
+        user.save()
+        return Response(_("Все чики пуки."))
 # Надо сделать кароче корзину у пользователя чтобы он мог добавлять продукт в корзину,
 # а там в корзине он уже мог выбирать нужные товары и оплачивать их, также нужно сделать, чтобы
 # пользователь мог выбирать количество товаров.
