@@ -18,15 +18,21 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
 
-class UserSerializer(serializers.ModelSerializer):
+class OpenUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
         fields = ('id', 'username', 'email')
 
 
-class ProfileSerializer(serializers.ModelSerializer):
+class PrivateUserSerializer(serializers.ModelSerializer):
 
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'balance', 'email', 'password', 'first_name', 'last_name', 'is_seller')
+
+
+class ProfileSerializer(serializers.ModelSerializer):
      class Meta:
          model = Profile
          fields = ('id', 'user_id', 'image', 'date_of_birth')

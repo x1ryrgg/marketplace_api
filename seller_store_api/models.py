@@ -34,9 +34,10 @@ class Category(models.Model):
         super().save(*args, **kwargs)
 
     def get_all_subcategories(self):
-        subcategories = [self]  # Начинаем с текущей категории
+        """ Возвращает все дочерние категории """
+        subcategories = [self]
         for subcategory in self.subcategories.all():
-            subcategories += subcategory.get_all_subcategories()  # Рекурсивно добавляем дочерние категории
+            subcategories += subcategory.get_all_subcategories()
         return subcategories
 
     @property
@@ -52,7 +53,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=128, unique=True, null=False, blank=False)
-    price = models.DecimalField(max_digits=8, decimal_places=2, null=False, blank=False)
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
     quantity = models.PositiveIntegerField(null=False, blank=True, default=1)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=False, related_name="prdouct_categories")
     store = models.ForeignKey(Store, on_delete=models.SET_NULL, null=True, blank=False, related_name='product_store')

@@ -13,6 +13,7 @@ from rest_framework.response import Response
 
 
 class RegisterView(generics.CreateAPIView):
+    """ EndPoint для регистрации пользователей"""
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
 
@@ -30,8 +31,11 @@ class RegisterView(generics.CreateAPIView):
 
 
 class UserView(ModelViewSet):
+    """ Просмотр всех пользователей (доступно только админу)
+    url: /users/
+    """
     permission_classes = [IsAuthenticated, IsSuperUser]
-    serializer_class = UserSerializer
+    serializer_class = OpenUserSerializer
     queryset = User.objects.all()
     http_method_names = ['get']
 
@@ -50,19 +54,33 @@ class UserView(ModelViewSet):
 
 
 class ProfileView(ModelViewSet):
+    """ EndPoint для просмотра своего профиля и его изменения.
+    url: /profile/
+    """
     permission_classes = [IsAuthenticated]
     serializer_class = ProfileSerializer
     http_method_names = ['get', 'patch']
 
     def get_queryset(self):
-        queryset = Profile.objects.filter(user=self.request.user.id).select_related('user')
-        return queryset
+        return Profile.objects.filter(user=self.request.user.id)
 
     def get_object(self):
-        return self.get_queryset().get()
+        try:
+            return Profile.objects.get(user=self.request.user.id)
+        except Exception:
+            return None
+
+    def list(self, request, *args, **kwargs):
+        profile = self.get_object()
+        user = request.user
+        data = {
+            'profile': self.get_serializer(profile).data,
+            'user': PrivateUserSerializer(user, many=False).data
+        }
+        return Response(data)
 
     def partial_update(self, request, *args, **kwargs):
-        profile = self.get_object()
+        profile = self.get_queryset().get()
 
         serializer = self.get_serializer(profile, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)

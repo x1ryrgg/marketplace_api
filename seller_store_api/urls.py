@@ -25,4 +25,5 @@ urlpatterns = [
     path('categories/', include(category_router.urls)),
     path('seller-products/', include(product_of_seller_router.urls)),
     path('products/', include(products_router.urls)),
+    path('products/<int:id>/buy/', BuyProductView.as_view(), name='buy_product'),
 ]

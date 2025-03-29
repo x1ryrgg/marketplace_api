@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from django.utils.translation import gettext_lazy as _
@@ -10,6 +11,7 @@ from usercontrol_api.models import User
 from .serializers import *
 from .permissions import *
 from .filters import *
+from usercontrol_api.serializers import PrivateUserSerializer
 
 
 text = f"Должность продавца даёт вам возможность заниматься бизнесом на этой площадке. {"\n"} Вы сможете выставлять свои магазины, а от них товары. {"\n"} Подробную информацию вы сможете узнать позвонив по номеру телефона: +8 800 555 35 35. Дайте ответ \"1\" для того, чтобы стать продавцом. "
@@ -136,15 +138,40 @@ class ProductOfSellerView(ModelViewSet):
 
 
 class ProductsView(ModelViewSet):
-    """ EndPoint для просмотра всех продуктов и их покупка
-    url: /products/
+    """ EndPoint для просмотра всех продуктов.
+    url: /products/?category= (filter-icontains)
     """
     permission_classes = [IsAuthenticated]
     serializer_class = ProductSerializer
-    http_method_names = ['get', 'post']
+    http_method_names = ['get']
 
     filter_backends = [DjangoFilterBackend]
     filterset_class = ProductFilter
 
     def get_queryset(self):
         return Product.objects.all().select_related('store', 'category')
+
+
+class BuyProductView(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = PrivateUserSerializer
+
+    def post(self, request, *args, **kwargs):
+        id = self.kwargs.get('id')
+        product = get_object_or_404(Product, id=id)
+        user = request.user
+
+        if product.price > user.balance:
+            return Response(_("Недостаточно средств для произведения оплаты."))
+        elif product.quantity == 0:
+            return Response(_("Продутка нет на складе."))
+        else:
+            user.balance -= product.price
+            product.quantity -= 1
+
+            product.save()
+            user.save()
+            user_data = self.serializer_class(user).data
+            return Response({'message': _("Товар успешно оплачен. Проследить за его доставкой вы сможете у себя в профиле."),
+                             'balance': _(f"Ваш баланс {user_data.get("balance")}")
+                             })
