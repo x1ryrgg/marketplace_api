@@ -26,4 +26,6 @@ urlpatterns = [
     path('seller-products/', include(product_of_seller_router.urls)),
     path('products/', include(products_router.urls)),
     path('products/<int:id>/buy/', BuyProductView.as_view(), name='buy_product'),
+    path('products/<int:id>/add/', WishListAddView.as_view(), name='wishlist_add'),
+    path('wishlist/', WishListView.as_view(), name='wishlist'),
 ]

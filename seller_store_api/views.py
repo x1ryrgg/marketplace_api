@@ -1,3 +1,4 @@
+from django.db.models import Count, Sum
 from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.generics import ListAPIView
@@ -175,3 +176,45 @@ class BuyProductView(APIView):
             return Response({'message': _("Товар успешно оплачен. Проследить за его доставкой вы сможете у себя в профиле."),
                              'balance': _(f"Ваш баланс {user_data.get("balance")}")
                              })
+
+
+class WishListAddView(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = ProductSerializer
+
+    def post(self, request, *args, **kwargs):
+        id = self.kwargs.get('id')
+        product = get_object_or_404(Product, id=id)
+        user = request.user
+
+        user.wishlist.add(product)
+
+        user_count_wishlist = user.wishlist.count()
+
+        product_data = self.serializer_class(product).data
+        return Response({'message': _(f"Продукт {product_data.get('name')} добавлен в корзину. "),
+                         "quantity": _(f" Количество товаров в корзине: {user_count_wishlist}")
+                         })
+
+
+class WishListView(ListAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = ProductSerializer
+
+    def get_queryset(self):
+        return self.request.user.wishlist.all()
+
+    def list(self, request, *args, **kwargs):
+        products_count = self.get_queryset().count()
+        products_total_count = self.get_queryset().aggregate(total_price=Sum('price'))['total_price'] or 0
+        products = self.get_queryset()
+        data = {
+            "products_count": products_count,
+            "products_total_count": products_total_count,
+            "products": self.get_serializer(products, many=True).data
+        }
+        return Response(data)
+
+# Надо сделать кароче корзину у пользователя чтобы он мог добавлять продукт в корзину,
+# а там в корзине он уже мог выбирать нужные товары и оплачивать их, также нужно сделать, чтобы
+# пользователь мог выбирать количество товаров.

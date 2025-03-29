@@ -11,6 +11,7 @@ from django.dispatch import receiver
 class User(AbstractUser):
     is_seller = models.BooleanField(default=False)
     balance = models.DecimalField(max_digits=10, decimal_places=2, default=0, blank=True)
+    wishlist = models.ManyToManyField('seller_store_api.Product', blank=True)
 
     def __str__(self):
         return 'username: %s | email: %s | pk %s' % (self.username, self.email, self.pk)
