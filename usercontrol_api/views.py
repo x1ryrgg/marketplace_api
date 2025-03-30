@@ -13,7 +13,7 @@ from rest_framework.response import Response
 
 
 class RegisterView(generics.CreateAPIView):
-    """ EndPoint для регистрации пользователей"""
+    """ Endpoint для регистрации пользователей"""
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
 
@@ -31,7 +31,7 @@ class RegisterView(generics.CreateAPIView):
 
 
 class UserView(ModelViewSet):
-    """ Просмотр всех пользователей (доступно только админу)
+    """ Endpoint для просмотра всех пользователей (доступно только админу)
     url: /users/
     """
     permission_classes = [IsAuthenticated, IsSuperUser]
@@ -54,7 +54,7 @@ class UserView(ModelViewSet):
 
 
 class ProfileView(ModelViewSet):
-    """ EndPoint для просмотра своего профиля и его изменения.
+    """ Endpoint для просмотра своего профиля и его изменения.
     url: /profile/
     """
     permission_classes = [IsAuthenticated]

@@ -17,8 +17,6 @@ product_of_seller_router.register(r'', ProductOfSellerView, basename='products_o
 products_router = DefaultRouter()
 products_router.register(r'', ProductsView, basename='products')
 
-# wishlist_router = DefaultRouter()
-# wishlist_router.register(r'', WishListView, basename='wishlist')
 
 urlpatterns = [
     path('seller/register/', SellerRegisterView.as_view({"get": "list",
@@ -31,5 +29,6 @@ urlpatterns = [
     path('products/<int:id>/buy/', PayProductView.as_view(), name='buy_product'),
     path('products/<int:id>/add/', WishListAddView.as_view(), name='wishlist_add'),
     path('wishlist/', WishListView.as_view({"get": "list", "post": "payment_products"}), name='wishlist'),
+    path('history/', HistoryView.as_view(), name='history'),
 
 ]

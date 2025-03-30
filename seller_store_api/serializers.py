@@ -59,3 +59,8 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = ['id', 'name', 'price', 'category', 'store', 'quantity', 'description']
 
+
+class HistorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = History
+        fields = ['id', 'name', 'price', 'quantity']

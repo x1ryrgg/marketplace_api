@@ -20,7 +20,7 @@ text = f"Должность продавца даёт вам возможнос�
 
 
 class SellerRegisterView(ModelViewSet):
-    """ EndPoint для определения пользователя продавцом."""
+    """ Endpoint для определения пользователя продавцом."""
     permission_classes = [IsAuthenticated]
     serializer_class = UserSerializer
     http_method_names = ['get', 'put']
@@ -62,7 +62,7 @@ class SellerRegisterView(ModelViewSet):
 
 
 class StoreView(ModelViewSet):
-    """ EndPoint для регистрации магазина и проверки ваших магазинов """
+    """ Endpoint для регистрации магазина и проверки ваших магазинов """
     permission_classes = [IsAuthenticated, IsSeller]
     serializer_class = StoreSerializer
     http_method_names = ['get', 'post']
@@ -88,7 +88,7 @@ class StoreView(ModelViewSet):
 
 
 class StoresAllView(ListAPIView):
-    """ EndPoint показывающий все магазины, зарегестрированные на площадке.
+    """ Endpoint показывающий все магазины, зарегестрированные на площадке.
     url: /stores/ - get
     """
     permission_classes = [IsAuthenticated]
@@ -99,7 +99,7 @@ class StoresAllView(ListAPIView):
 
 
 class CategoriesView(ModelViewSet):
-    """ EndPoint для создания категорий продуктов, их просмотра, изменения и удаления
+    """ Endpoint для создания категорий продуктов, их просмотра, изменения и удаления
     (доступно только администраторам, кроме SAFE_METHODS)
     url: /categories/
     body if post: name (str), subcategory (str if need)
@@ -120,9 +120,9 @@ class CategoriesView(ModelViewSet):
 
 
 class ProductOfSellerView(ModelViewSet):
-    """ EndPoint для просмотра, добавления, изменения и удаления продуктов (для продавцов)
+    """ Endpoint для просмотра, добавления, изменения и удаления продуктов (для продавцов)
     url: /seller-products/
-    body if post: name (str), price (float), quantity (int), category (str(name)), store (str(name))
+    body if post: name (str), price (float), quantity (int), category (str(name)), store (str(name)), description (str if need)
     """
     permission_classes = [IsAuthenticated, IsSeller]
     serializer_class = ProductOfSellerSerializer
@@ -140,7 +140,7 @@ class ProductOfSellerView(ModelViewSet):
 
 
 class ProductsView(ModelViewSet):
-    """ EndPoint для просмотра всех продуктов.
+    """ Endpoint для просмотра всех продуктов.
     url: /products/?category= (filter-icontains)
     """
     permission_classes = [IsAuthenticated]
@@ -155,6 +155,9 @@ class ProductsView(ModelViewSet):
 
 
 class PayProductView(APIView):
+    """ Endpoint для покупик товара
+    url: /products/<int:id>/buy/
+    """
     permission_classes = [IsAuthenticated]
     serializer_class = PrivateUserSerializer
 
@@ -172,6 +175,8 @@ class PayProductView(APIView):
             product.quantity -= 1
 
             product.save()
+            history_of_product = History.objects.create(user=user, name=product.name, price=product.price, quantity=1)
+            history_of_product.save()
             user.save()
             user_data = self.serializer_class(user).data
             return Response({'message': _("Товар успешно оплачен. Проследить за его доставкой вы сможете у себя в профиле."),
@@ -180,6 +185,9 @@ class PayProductView(APIView):
 
 
 class WishListAddView(APIView):
+    """ Endpoint для добавления товаров с список желаемого
+    url: /products/<int:id>/add/
+    """
     permission_classes = [IsAuthenticated]
     serializer_class = ProductSerializer
 
@@ -199,6 +207,10 @@ class WishListAddView(APIView):
 
 
 class WishListView(ModelViewSet):
+    """ Endpoint для просмотра своего списка желаемого и покупки товаров из этого списка
+    url: /wishlist/
+    body if post: products (list[])
+    """
     permission_classes = [IsAuthenticated]
     serializer_class = ProductSerializer
     http_method_names = ['get', 'post']
@@ -238,16 +250,28 @@ class WishListView(ModelViewSet):
             raise ValidationError(_(f'{invalid_products} - этого нет в вашей корзине'))
 
         difference = user.balance - products_to_pay_total_balance
+
         if user.balance < products_to_pay_total_balance:
-            raise ValidationError(_(f'Вам не хватает {difference}. '))
+            raise ValidationError(_(f'Вам не хватает {difference} руб. '))
 
         user.wishlist.remove(*products_to_pay)
         user.balance -= products_to_pay_total_balance
         for product in products_to_pay:
             product.quantity -= 1
+            history_of_product = History.objects.create(user=user, name=product.name, price=product.price, quantity=1)
+            history_of_product.save()
             product.save()
+
         user.save()
-        return Response(_("Все чики пуки."))
-# Надо сделать кароче корзину у пользователя чтобы он мог добавлять продукт в корзину,
-# а там в корзине он уже мог выбирать нужные товары и оплачивать их, также нужно сделать, чтобы
-# пользователь мог выбирать количество товаров.
+        return Response(_("Товары успешно оплаченны, информацию о заказе вы сможете посмотреть в доставках. Историю покупок можете посмотреть в разделе 'Покупки'. "))
+
+
+class HistoryView(ListAPIView):
+    """ Endpoint для просмотра истории покупок
+    url: /history/
+    """
+    permission_classes = [IsAuthenticated]
+    serializer_class = HistorySerializer
+
+    def get_queryset(self):
+        return History.objects.filter(user=self.request.user)
