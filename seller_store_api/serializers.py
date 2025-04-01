@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from usercontrol_api.models import User
 from .models import *
-
+from usercontrol_api.models import WishlistItem
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -58,6 +58,19 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ['id', 'name', 'price', 'category', 'store', 'quantity', 'description']
+
+
+class WishListSerializer(serializers.ModelSerializer):
+    product = ProductSerializer(read_only=True)
+    price = serializers.SerializerMethodField()
+
+    class Meta:
+        model = WishlistItem
+        fields = ['id', 'quantity', 'price', 'product']
+
+    def get_price(self, obj):
+        # Получаем цену продукта из связанного объекта
+        return obj.product.price
 
 
 class HistorySerializer(serializers.ModelSerializer):

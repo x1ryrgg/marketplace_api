@@ -11,10 +11,19 @@ from django.dispatch import receiver
 class User(AbstractUser):
     is_seller = models.BooleanField(default=False)
     balance = models.DecimalField(max_digits=10, decimal_places=2, default=0, blank=True)
-    wishlist = models.ManyToManyField('seller_store_api.Product', blank=True)
+    wishlist = models.ManyToManyField('seller_store_api.Product', through='usercontrol_api.WishlistItem', blank=True)
 
     def __str__(self):
         return 'username: %s | email: %s | pk %s' % (self.username, self.email, self.pk)
+
+
+class WishlistItem(models.Model):
+    user = models.ForeignKey('usercontrol_api.User', on_delete=models.CASCADE)
+    product = models.ForeignKey('seller_store_api.Product', on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    class Meta:
+        unique_together = ('user', 'product')
 
 
 class Profile(models.Model):
