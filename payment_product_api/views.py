@@ -122,9 +122,11 @@ class WishListView(ModelViewSet):
                 if product.quantity < item.quantity:
                     raise ValidationError(_(f"Недостаточно товара {product.name} на складе."))
 
-                product.quantity -= item.quantity  # Вычитаем нужное количество
+                product.quantity -= item.quantity
                 product.save()
-                History.objects.create(user=user, name=product.name, price=product.price, quantity=item.quantity)
+                sum_price = product.price * item.quantity
+                History.objects.create(user=user, name=product.name, price=sum_price, quantity=item.quantity)
+                Delivery.objects.create(user=user, name=product.name, price=sum_price, quantity=item.quantity)
 
             wishlist_items.delete()
         return Response(_("Товары успешно оплачены. Информацию о заказе вы сможете посмотреть в доставках."))
@@ -139,3 +141,16 @@ class HistoryView(ListAPIView):
 
     def get_queryset(self):
         return History.objects.filter(user=self.request.user).order_by('-created_at')
+
+
+class DeliveryView(ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    serializer_class = DeliverySerializer
+    http_method_names = ['get', 'post']
+
+    def get_queryset(self):
+        return Delivery.objects.filter(user=self.request.user).order_by('-created_at').select_related('user')
+
+    def perform_create(self, serializer):
+        if serializer.is_valid():
+            serializer.save(user=self.request.user)

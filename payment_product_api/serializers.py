@@ -1,11 +1,22 @@
-from seller_store_api.serializers import ProductSerializer
 from rest_framework import serializers
 from usercontrol_api.models import WishlistItem
 from .models import *
+from seller_store_api.models import Product, Store
+
+
+class ProductForWishListSerializer(serializers.ModelSerializer):
+    store = serializers.SlugRelatedField(
+        slug_field='name',
+        queryset=Store.objects.all
+    )
+
+    class Meta:
+        model = Product
+        fields = ("id", "name", "price", "store")
 
 
 class WishListSerializer(serializers.ModelSerializer):
-    product = ProductSerializer(read_only=True)
+    product = ProductForWishListSerializer(read_only=True)
     price = serializers.SerializerMethodField()
 
     class Meta:
@@ -14,7 +25,7 @@ class WishListSerializer(serializers.ModelSerializer):
 
     def get_price(self, obj):
         if obj.product:
-            return obj.product.price
+            return obj.product.price * obj.quantity
         return None
 
     def to_representation(self, instance):
@@ -27,3 +38,10 @@ class HistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = History
         fields = ['id', 'name', 'price', 'quantity']
+
+
+class DeliverySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Delivery
+        fields = ("id", 'name', 'status', 'price', 'quantity')
+        read_only_fields = ('created_at', 'delivery_date')
