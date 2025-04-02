@@ -16,7 +16,7 @@ from .serializers import *
 from .permissions import *
 from .filters import *
 from usercontrol_api.models import *
-
+from payment_product_api.models import *
 from usercontrol_api.serializers import PrivateUserSerializer
 
 
@@ -91,7 +91,7 @@ class StoreView(ModelViewSet):
             serializer.save(author=self.request.user)
 
 
-class StoresAllView(ListAPIView):
+class StoresAllView(ModelViewSet):
     """ Endpoint показывающий все магазины, зарегестрированные на площадке.
     url: /stores/ - get
     """
@@ -100,6 +100,15 @@ class StoresAllView(ListAPIView):
 
     def get_queryset(self):
         return Store.objects.all()
+
+    def retrieve(self, request, *args, **kwargs):
+        store = self.get_object()
+        products = Product.objects.filter(store=store)
+        data = {
+            'store': self.get_serializer(store, many=False).data,
+            'products': ProductSerializer(products, many=True).data
+        }
+        return Response(data)
 
 
 class CategoriesView(ModelViewSet):
@@ -192,6 +201,7 @@ class PayProductView(APIView):
 class WishListAddView(APIView):
     """ Endpoint для добавления товаров с список желаемого
     url: /products/<int:id>/add/
+    body: quantity (int) or 1
     """
     permission_classes = [IsAuthenticated]
     serializer_class = ProductSerializer
@@ -210,104 +220,7 @@ class WishListAddView(APIView):
             wishlist_item.save()
 
         product_data = self.serializer_class(product).data
-        total_quantity = WishlistItem.objects.aggregate(Sum('quantity'))['quantity__sum']
+        total_quantity = WishlistItem.objects.filter(user=user).aggregate(Sum('quantity'))['quantity__sum']
         return Response({'message': _(f"Продукт {product_data.get('name')} добавлен в корзину. "),
                          "quantity": _(f" Количество товаров в корзине: {total_quantity}")
                          })
-
-
-class WishListView(ModelViewSet):
-    """ Endpoint для просмотра своего списка желаемого и покупки товаров из этого списка
-    url: /wishlist/
-    """
-    permission_classes = [IsAuthenticated]
-    serializer_class = WishListSerializer
-    http_method_names = ['get', 'post']
-
-    def get_queryset(self):
-        return WishlistItem.objects.filter(user=self.request.user)
-
-    def list(self, request, *args, **kwargs):
-        # products_count = self.get_queryset().count()
-        # products_total_count = self.get_queryset().aggregate(total_price=Sum('price'))['total_price'] or 0
-        # products = self.get_queryset()
-        # data = {
-        #     "products_count": products_count,
-        #     "products_total_count": products_total_count,
-        #     "products": self.get_serializer(products, many=True).data
-        # }
-        queryset = self.get_queryset()  # Получаем QuerySet
-        serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
-
-    @staticmethod
-    def calculate_total_price_and_validate(user, wishlist_items):
-        """ Подсчет полной стоимости выбранных товаров с учетом их колличества """
-        total_price = 0
-
-        # Перебираем только элементы списка желаний
-        for wishlist_item in wishlist_items:
-            product = wishlist_item.product  # Получаем связанный товар
-            quantity = wishlist_item.quantity  # Получаем количество
-            sum_cost_product = quantity * product.price  # Считаем стоимость
-            total_price += sum_cost_product  # Добавляем к общей сумме
-
-        # Проверяем баланс пользователя
-        if user.balance < total_price:
-            raise ValidationError(
-                _(f"Недостаточно средств. Вам не хватает {total_price - user.balance} руб.")
-            )
-
-        return total_price
-
-    @action(methods=['post'], detail=False, url_path='buy')
-    def payment_products(self, request, *args, **kwargs):
-        """ транзакция покупки товаров
-        url: /wishlist/buy/
-        body: products (list, [])
-        """
-        user = request.user
-        products_ids = request.data.get('products', [])
-
-        if not products_ids:
-            raise ValidationError(_("Список товаров не может быть пустым."))
-
-        products = Product.objects.filter(id__in=products_ids).select_related('store', 'category')
-        if len(products) != len(products_ids):
-            invalid_ids = set(products_ids) - {p.id for p in products}
-            raise ValidationError(_(f"Товары с ID {invalid_ids} не найдены."))
-
-        wishlist_items = WishlistItem.objects.filter(user=user, product__in=products)
-        wishlist_ids = set(item.product_id for item in wishlist_items)
-        invalid_products = set(p.id for p in products if p.id not in wishlist_ids)
-        if invalid_products:
-            raise ValidationError(_(f'{invalid_products} - этого нет в вашей корзине'))
-
-        total_price = self.calculate_total_price_and_validate(user, wishlist_items)
-
-        with transaction.atomic():
-            user.balance -= total_price
-            user.save()
-
-            for item in wishlist_items:
-                product = item.product
-                if product.quantity < item.quantity:
-                    raise ValidationError(_(f"Недостаточно товара {product.name} на складе."))
-
-                product.quantity -= item.quantity  # Вычитаем нужное количество
-                product.save()
-                History.objects.create(user=user, name=product.name, price=product.price, quantity=item.quantity)
-
-            wishlist_items.delete()
-        return Response(_("Товары успешно оплачены. Информацию о заказе вы сможете посмотреть в доставках."))
-
-
-class HistoryView(ListAPIView):
-    """ Endpoint для просмотра истории покупок
-    url: /history/
-    """
-    permission_classes = [IsAuthenticated]
-    serializer_class = HistorySerializer
-
-    def get_queryset(self):
-        return History.objects.filter(user=self.request.user).order_by('-created_at')

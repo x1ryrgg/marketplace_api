@@ -60,20 +60,3 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'price', 'category', 'store', 'quantity', 'description']
 
 
-class WishListSerializer(serializers.ModelSerializer):
-    product = ProductSerializer(read_only=True)
-    price = serializers.SerializerMethodField()
-
-    class Meta:
-        model = WishlistItem
-        fields = ['id', 'quantity', 'price', 'product']
-
-    def get_price(self, obj):
-        # Получаем цену продукта из связанного объекта
-        return obj.product.price
-
-
-class HistorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = History
-        fields = ['id', 'name', 'price', 'quantity']

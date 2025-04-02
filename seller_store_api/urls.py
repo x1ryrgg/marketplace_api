@@ -17,20 +17,19 @@ product_of_seller_router.register(r'', ProductOfSellerView, basename='products_o
 products_router = DefaultRouter()
 products_router.register(r'', ProductsView, basename='products')
 
-wishlist_router = DefaultRouter()
-wishlist_router.register(r'', WishListView, basename='wishlist')
+all_stores_router = DefaultRouter()
+all_stores_router.register(r'', StoresAllView, basename='stores'),
 
 urlpatterns = [
     path('seller/register/', SellerRegisterView.as_view({"get": "list",
                                                          "put": "update"}), name='seller-register'),
     path('store/', include(store_router.urls)),
-    path('stores/', StoresAllView.as_view(), name='stores'),
+    path('stores/', include(all_stores_router.urls)),
+
     path('categories/', include(category_router.urls)),
+
     path('seller-products/', include(product_of_seller_router.urls)),
     path('products/', include(products_router.urls)),
     path('products/<int:id>/buy/', PayProductView.as_view(), name='buy_product'),
     path('products/<int:id>/add/', WishListAddView.as_view(), name='wishlist_add'),
-    path('wishlist/', include(wishlist_router.urls)),
-    path('history/', HistoryView.as_view(), name='history'),
-
 ]

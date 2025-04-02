@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     
     'usercontrol_api',
     'seller_store_api',
+    'payment_product_api',
 
 ]
 
