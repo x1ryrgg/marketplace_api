@@ -37,7 +37,7 @@ class WishListSerializer(serializers.ModelSerializer):
 class HistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = History
-        fields = ['id', 'name', 'price', 'quantity']
+        fields = ['id', 'status', 'created_at', 'name', 'price', 'quantity']
 
 
 class DeliverySerializer(serializers.ModelSerializer):

@@ -15,7 +15,7 @@ class History(models.Model):
     name = models.CharField(max_length=128, null=False, blank=False)
     price = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
     quantity = models.PositiveIntegerField(null=False, blank=True, default=1)
-    status = models.CharField(choices=DeliveryType, default=DeliveryType.DELIVERED ,max_length=10)
+    status = models.CharField(choices=DeliveryType, default=DeliveryType.DELIVERED, max_length=10)
     created_at = models.DateField(auto_now_add=True)
 
     def __str__(self):

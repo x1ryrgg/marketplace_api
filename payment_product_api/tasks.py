@@ -8,10 +8,10 @@ from django.core.mail import send_mail
 
 
 @shared_task
-def send_email_task(username, email):
+def send_email_task(username, price):
     send_mail(
         subject='Сообщение с marketplace-а',
-        message=f'сообщение от {username}, почта: {email}',
+        message=f'Заказ от пользователя {username} на сумму {price} руб. | {date.today()}',
         from_email=settings.EMAIL_HOST_USER,
         recipient_list=[settings.EMAIL_HOST_USER],
         fail_silently=False
@@ -20,11 +20,8 @@ def send_email_task(username, email):
 @shared_task
 def beat_check_delivery():
     today = date.today()
-    deliveries_to_update = Delivery.objects.filter(
+    updated_count = Delivery.objects.filter(
         status='on the way',
         delivery_date=today
-    )
-    for delivery in deliveries_to_update:
-        delivery.status = 'delivered'
-        delivery.save(update_fields=['status'])
-    return f"Updated {deliveries_to_update.count()} deliveries to 'delivered'."
+    ).update(status='delivered')
+    return f"Updated {updated_count} deliveries to 'delivered'."

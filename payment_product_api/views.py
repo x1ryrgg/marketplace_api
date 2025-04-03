@@ -125,7 +125,7 @@ class WishListView(ModelViewSet):
                 product.quantity -= item.quantity
                 product.save()
                 sum_price = product.price * item.quantity
-                History.objects.create(user=user, name=product.name, price=sum_price, quantity=item.quantity)
+                send_email_task.delay(self.request.user.username, sum_price)
                 Delivery.objects.create(user=user, name=product.name, price=sum_price, quantity=item.quantity)
 
             wishlist_items.delete()
@@ -144,19 +144,57 @@ class HistoryView(ListAPIView):
 
 
 class DeliveryView(ModelViewSet):
+    """ Endpoint для проверки своих заказов, а так же выбор с обработкой товара
+    url: /delivery/
+    """
     permission_classes = [IsAuthenticated]
     serializer_class = DeliverySerializer
     http_method_names = ['get', 'post']
 
     def get_queryset(self):
+
         return Delivery.objects.filter(user=self.request.user).order_by('-created_at').select_related('user')
 
-    def perform_create(self, serializer):
-        if serializer.is_valid():
-            send_email_task.delay(self.request.user.username, self.request.user.email)
-            serializer.save(user=self.request.user)
+    @action(detail=True, methods=['post'], url_path="take")
+    def update_delivery(self, request, *args, **kwargs):
+        """ Функция, позволяющая выбирать, что делать с доставкой когда товар уже пришел, а так же когда он еще в пути
+        url post: /delivery/<int:id>/take/
+        body: option (1 or 2 int)
+        """
+        delivery = self.get_object()
+        user = request.user
+        option = int(request.data.get('option'))
+
+        if option not in (1, 2):
+            raise ValidationError(_("Недопустимая опция. '1' - принять товар; '2' - отменить."))
+
+        # обработка если товар еще не пришел
+        if delivery.delivery_date != date.today() and option == 2:
+            with transaction.atomic():
+                user.balance += delivery.price
+                user.save()
+                History.objects.create(user=user, name=delivery.name, price=delivery.price, quantity=delivery.quantity, status='denied')
+                delivery.delete()
+                return Response(_("Вы отменили заказ, сумма заказа перечисляется к вам обратно."))
+
+        if delivery.delivery_date != date.today():
+            raise ValidationError(_("Товар еще не доставлен."))
+
+        # Обработка принятия или отмены товара
+        status = 'delivered' if option == 1 else 'denied'
+        message = (
+            _(f"Товар {delivery.name} успешно принят! Заказывайте только у нас!") if option == 1
+            else _(f"Товар {delivery.name} отменен. Из-за политики нашего магазина вы не получите обратно сумму за товар, так как он уже доставлен.")
+        )
+
+        with transaction.atomic():
+            History.objects.create(user=user, name=delivery.name, price=delivery.price, quantity=delivery.quantity, status=status)
+            delivery.delete()
+        return Response(message)
 
 
-# через celery-beat или другим способом проверять сегодняшнюю дату с датой delivery_date товаров, если совпадают
-# , то статус у продукта меняется на 'delivered' а дальше еще не придумал
+
+
+
+
 

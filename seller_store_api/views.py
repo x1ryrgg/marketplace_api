@@ -52,12 +52,12 @@ class SellerRegisterView(ModelViewSet):
         url: /seller/register/ - put
         body: option (str(int))
         """
-        option = request.data.get("option")
+        option = int(request.data.get("option"))
         user = self.get_object()
         if not option:
             return Response(_("Нужно указать свой ответ. 1 - Стать продавцом."))
 
-        if option == '1':
+        if option == 1:
             user.is_seller = True
             user.save()
             return Response(_("Поздравляю, вам открыта возможноть выставлять свои магазины, а также товары на площадке."))
@@ -189,8 +189,7 @@ class PayProductView(APIView):
             product.quantity -= 1
             product.save()
 
-            history_of_product = History.objects.create(user=user, name=product.name, price=product.price, quantity=1)
-            history_of_product.save()
+            Delivery.objects.create(user=user, name=product.name, price=product.price, quantity=1)
             user.save()
             user_data = self.serializer_class(user).data
             return Response({'message': _("Товар успешно оплачен. Проследить за его доставкой вы сможете у себя в профиле."),
