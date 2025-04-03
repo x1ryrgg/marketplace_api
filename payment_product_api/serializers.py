@@ -7,7 +7,7 @@ from seller_store_api.models import Product, Store
 class ProductForWishListSerializer(serializers.ModelSerializer):
     store = serializers.SlugRelatedField(
         slug_field='name',
-        queryset=Store.objects.all
+        queryset=Store.objects.all()
     )
 
     class Meta:
@@ -43,5 +43,4 @@ class HistorySerializer(serializers.ModelSerializer):
 class DeliverySerializer(serializers.ModelSerializer):
     class Meta:
         model = Delivery
-        fields = ("id", 'name', 'status', 'price', 'quantity')
-        read_only_fields = ('created_at', 'delivery_date')
+        fields = ("id", 'name', 'status', 'created_at', 'delivery_date', 'price', 'quantity')

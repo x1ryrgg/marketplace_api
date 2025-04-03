@@ -32,4 +32,5 @@ urlpatterns = [
     path('products/', include(products_router.urls)),
     path('products/<int:id>/buy/', PayProductView.as_view(), name='buy_product'),
     path('products/<int:id>/add/', WishListAddView.as_view(), name='wishlist_add'),
+
 ]

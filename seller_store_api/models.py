@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models import Sum
+
 from usercontrol_api.models import User
 
 
@@ -64,6 +66,12 @@ class Product(models.Model):
 
     def __str__(self):
         return 'Name %s | Price %s | Quantity %s | Store %s' % (self.name, self.price, self.quantity, self.store)
+
+    @staticmethod
+    def get_total_quantity_by_store(store_id):
+        """ Возвращает общее количество товаров для указанного магазина """
+        total = Product.objects.filter(store_id=store_id).aggregate(total_quantity=Sum('quantity'))['total_quantity']
+        return total or 0
 
 
 

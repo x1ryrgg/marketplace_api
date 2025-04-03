@@ -16,7 +16,7 @@ from .serializers import *
 from .serializers import *
 from usercontrol_api.models import *
 from seller_store_api.models import Product
-
+from .tasks import *
 
 
 class WishListView(ModelViewSet):
@@ -153,4 +153,10 @@ class DeliveryView(ModelViewSet):
 
     def perform_create(self, serializer):
         if serializer.is_valid():
+            send_email_task.delay(self.request.user.username, self.request.user.email)
             serializer.save(user=self.request.user)
+
+
+# через celery-beat или другим способом проверять сегодняшнюю дату с датой delivery_date товаров, если совпадают
+# , то статус у продукта меняется на 'delivered' а дальше еще не придумал
+
