@@ -17,6 +17,7 @@ def send_email_task(username, price):
         fail_silently=False
     )
 
+
 @shared_task
 def beat_check_delivery():
     today = date.today()

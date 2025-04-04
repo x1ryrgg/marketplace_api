@@ -2,7 +2,7 @@ from django.db import models
 from usercontrol_api.models import User
 from datetime import timedelta
 import random
-
+from .managers import *
 
 class DeliveryType(models.TextChoices):
     ON_THE_WAY = ('on the way', 'в пути')
@@ -18,8 +18,14 @@ class History(models.Model):
     status = models.CharField(choices=DeliveryType, default=DeliveryType.DELIVERED, max_length=10)
     created_at = models.DateField(auto_now_add=True)
 
+    objects = HistoryManager()
+
     def __str__(self):
         return "Name %s | Price %s | Quantity %s" % (self.name, self.price, self.quantity)
+
+    @staticmethod
+    def get_status(queryset):
+        return [i.status for i in queryset]
 
 
 class Delivery(models.Model):

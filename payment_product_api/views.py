@@ -1,5 +1,6 @@
 from django.db import transaction
 from django.db.models import Count, Sum
+from decimal import Decimal
 from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
@@ -152,8 +153,8 @@ class DeliveryView(ModelViewSet):
     http_method_names = ['get', 'post']
 
     def get_queryset(self):
-
         return Delivery.objects.filter(user=self.request.user).order_by('-created_at').select_related('user')
+
 
     @action(detail=True, methods=['post'], url_path="take")
     def update_delivery(self, request, *args, **kwargs):
@@ -193,8 +194,8 @@ class DeliveryView(ModelViewSet):
         return Response(message)
 
 
-
-
-
-
-
+def _apply_discount_to_order(user, total_price):
+    """ Применяет скидку пользователя к общей стоимости заказа """
+    discount = History.objects.calculate_discount(user)
+    discounted_price = total_price * Decimal(1 - discount)
+    return discounted_price

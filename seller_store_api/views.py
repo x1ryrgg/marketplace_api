@@ -18,6 +18,7 @@ from .filters import *
 from usercontrol_api.models import *
 from payment_product_api.models import *
 from usercontrol_api.serializers import PrivateUserSerializer
+from payment_product_api.views import _apply_discount_to_order
 
 
 text = f"Должность продавца даёт вам возможность заниматься бизнесом на этой площадке. {"\n"} Вы сможете выставлять свои магазины, а от них товары. {"\n"} Подробную информацию вы сможете узнать позвонив по номеру телефона: +8 800 555 35 35. Дайте ответ \"1\" для того, чтобы стать продавцом. "
@@ -179,21 +180,29 @@ class PayProductView(APIView):
         product = get_object_or_404(Product, id=id)
         user = request.user
 
-        if product.price > user.balance:
-            return Response(_(f"Недостаточно средств для произведения оплаты. Вам не хватает {product.price - user.balance}"))
-        elif product.quantity == 0:
+        if product.quantity == 0:
             return Response(_("Продутка нет на складе."))
 
         with transaction.atomic():
-            user.balance -= product.price
+            price = product.price
+            final_price = _apply_discount_to_order(user, price)
+
+            if final_price > user.balance:
+                return Response(
+                    _(f"Недостаточно средств для произведения оплаты. Вам не хватает {product.price - user.balance}"))
+
+            user.balance -= final_price
             product.quantity -= 1
             product.save()
 
             Delivery.objects.create(user=user, name=product.name, price=product.price, quantity=1)
             user.save()
             user_data = self.serializer_class(user).data
-            return Response({'message': _("Товар успешно оплачен. Проследить за его доставкой вы сможете у себя в профиле."),
-                             'balance': _(f"Ваш баланс {user_data.get("balance")}")
+            return Response({'сообщение': _("Товар успешно оплачен. Проследить за его доставкой вы сможете у себя в профиле."),
+                             'цена товара': price,
+                             "скидка": _(f"Ваша скидка составляет {History.objects.calculate_discount(user) * 100} %"),
+                             "к оплате": final_price,
+                             'баланс': _(f"Ваш баланс {user_data.get("balance")}")
                              })
 
 
