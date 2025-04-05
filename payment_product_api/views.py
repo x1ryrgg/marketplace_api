@@ -18,6 +18,7 @@ from .serializers import *
 from usercontrol_api.models import *
 from seller_store_api.models import Product
 from .tasks import *
+from usercontrol_api.serializers import PrivateUserSerializer
 
 
 class WishListView(ModelViewSet):
@@ -112,10 +113,16 @@ class WishListView(ModelViewSet):
         if invalid_products:
             raise ValidationError(_(f'{invalid_products} - этого нет в вашей корзине'))
 
-        total_price = self.calculate_total_price_and_validate(user, wishlist_items)
+        full_price = self.calculate_total_price_and_validate(user, wishlist_items)
 
         with transaction.atomic():
-            user.balance -= total_price
+            discount_price = _apply_discount_to_order(user, full_price)
+
+            if discount_price > user.balance:
+                return Response(
+                    _(f"Недостаточно средств для произведения оплаты. Вам не хватает {discount_price - user.balance}"))
+
+            user.balance -= discount_price
             user.save()
 
             for item in wishlist_items:
@@ -130,7 +137,14 @@ class WishListView(ModelViewSet):
                 Delivery.objects.create(user=user, name=product.name, price=sum_price, quantity=item.quantity)
 
             wishlist_items.delete()
-        return Response(_("Товары успешно оплачены. Информацию о заказе вы сможете посмотреть в доставках."))
+
+            user_data = PrivateUserSerializer(user).data
+            return Response({'сообщение': _("Товар успешно оплачен. Проследить за ним вы сможете в доставках."),
+                             'цена товара': full_price,
+                             "скидка": _(f"Ваша скидка составляет {History.objects.calculate_discount(user) * 100} %"),
+                             "к оплате": discount_price,
+                             'баланс': _(f"Ваш баланс {user_data.get('balance')}")
+                             })
 
 
 class HistoryView(ListAPIView):
@@ -150,10 +164,10 @@ class DeliveryView(ModelViewSet):
     """
     permission_classes = [IsAuthenticated]
     serializer_class = DeliverySerializer
-    http_method_names = ['get', 'post']
+    http_method_names = ['get', 'post', 'options']
 
     def get_queryset(self):
-        return Delivery.objects.filter(user=self.request.user).order_by('-created_at').select_related('user')
+        return Delivery.objects.filter(user=self.request.user).order_by('delivery_date').select_related('user')
 
 
     @action(detail=True, methods=['post'], url_path="take")

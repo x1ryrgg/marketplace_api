@@ -159,7 +159,7 @@ class ProductsView(ModelViewSet):
     """
     permission_classes = [IsAuthenticated]
     serializer_class = ProductSerializer
-    http_method_names = ['get']
+    http_method_names = ['get', 'options']
 
     filter_backends = [DjangoFilterBackend]
     filterset_class = ProductFilter
@@ -185,23 +185,23 @@ class PayProductView(APIView):
 
         with transaction.atomic():
             price = product.price
-            final_price = _apply_discount_to_order(user, price)
+            discount_price = _apply_discount_to_order(user, price)
 
-            if final_price > user.balance:
+            if discount_price > user.balance:
                 return Response(
                     _(f"Недостаточно средств для произведения оплаты. Вам не хватает {product.price - user.balance}"))
 
-            user.balance -= final_price
+            user.balance -= discount_price
             product.quantity -= 1
             product.save()
 
             Delivery.objects.create(user=user, name=product.name, price=product.price, quantity=1)
             user.save()
             user_data = self.serializer_class(user).data
-            return Response({'сообщение': _("Товар успешно оплачен. Проследить за его доставкой вы сможете у себя в профиле."),
+            return Response({'сообщение': _("Товар успешно оплачен. Проследить за ним вы сможете в доставках."),
                              'цена товара': price,
                              "скидка": _(f"Ваша скидка составляет {History.objects.calculate_discount(user) * 100} %"),
-                             "к оплате": final_price,
+                             "к оплате": discount_price,
                              'баланс': _(f"Ваш баланс {user_data.get("balance")}")
                              })
 
@@ -232,3 +232,5 @@ class WishListAddView(APIView):
         return Response({'message': _(f"Продукт {product_data.get('name')} добавлен в корзину. "),
                          "quantity": _(f" Количество товаров в корзине: {total_quantity}")
                          })
+
+

@@ -4,6 +4,7 @@ from datetime import timedelta
 import random
 from .managers import *
 
+
 class DeliveryType(models.TextChoices):
     ON_THE_WAY = ('on the way', 'в пути')
     DELIVERED = ('delivered', 'доставлено')
