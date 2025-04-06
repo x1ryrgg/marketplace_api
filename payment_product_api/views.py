@@ -172,7 +172,7 @@ class DeliveryView(ModelViewSet):
 
     @action(detail=True, methods=['post'], url_path="take")
     def update_delivery(self, request, *args, **kwargs):
-        """ Функция, позволяющая выбирать, что делать с доставкой когда товар уже пришел, а так же когда он еще в пути
+        """ POST-запрос, позволяющий выбирать, что делать с доставкой когда товар уже пришел, а так же когда он еще в пути
         url post: /delivery/<int:id>/take/
         body: option (1 or 2 int)
         """

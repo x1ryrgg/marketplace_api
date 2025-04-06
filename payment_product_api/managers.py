@@ -3,8 +3,6 @@ from decimal import Decimal
 from django.db import models
 from django.db.models import Sum
 
-from .models import *
-
 
 class HistoryManager(models.Manager):
 

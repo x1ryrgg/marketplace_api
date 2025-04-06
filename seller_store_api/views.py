@@ -221,7 +221,7 @@ class WishListAddView(APIView):
         product = get_object_or_404(Product, id=id)
         user = request.user
 
-        wishlist_item, created = WishlistItem.objects.get_or_create(user=user,product=product,defaults={'quantity': quantity})
+        wishlist_item, created = WishlistItem.objects.get_or_create(user=user,product=product, defaults={'quantity': quantity})
 
         if not created:
             wishlist_item.quantity += quantity
@@ -232,5 +232,3 @@ class WishListAddView(APIView):
         return Response({'message': _(f"Продукт {product_data.get('name')} добавлен в корзину. "),
                          "quantity": _(f" Количество товаров в корзине: {total_quantity}")
                          })
-
-

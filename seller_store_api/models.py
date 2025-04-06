@@ -57,7 +57,7 @@ class Product(models.Model):
     name = models.CharField(max_length=128, null=False, blank=False)
     price = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
     quantity = models.PositiveIntegerField(null=False, blank=True, default=1)
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=False, related_name="product_categories")
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=False, db_index=True, related_name="product_categories")
     store = models.ForeignKey(Store, on_delete=models.SET_NULL, null=True, blank=False, related_name='product_store')
     description = models.CharField(max_length=1000, null=True, blank=True,
                                    default="Продавец не оставил описание об товаре.")

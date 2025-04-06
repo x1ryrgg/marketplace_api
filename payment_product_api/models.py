@@ -1,6 +1,6 @@
 from django.db import models
 from usercontrol_api.models import User
-from datetime import timedelta
+import datetime
 import random
 from .managers import *
 
@@ -42,7 +42,7 @@ class Delivery(models.Model):
         if not self.pk:
             super().save(*args, **kwargs)
         if not self.delivery_date:
-            self.delivery_date = self.created_at + timedelta(days=random.randint(0, 9))
+            self.delivery_date = self.created_at + datetime.timedelta(days=random.randint(0, 9))
         super().save(update_fields=['delivery_date'])
 
     def __str__(self):

@@ -1,11 +1,10 @@
 import datetime
 import os
 import logging
+import random
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.db.models.signals import pre_delete
-from django.dispatch import receiver
 
 
 class User(AbstractUser):
@@ -34,4 +33,25 @@ class Profile(models.Model):
     def __str__(self):
         return "profile of user %s" % self.user.username
 
+
+class Coupon(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    code = models.PositiveIntegerField(blank=True, null=True)
+    discount = models.PositiveIntegerField(blank=True, null=True)
+    created_at = models.DateField(auto_now_add=True)
+    end_date = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return "Coupon owner %s | code %s | end_date %s" % (self.user, self.code, self.end_date)
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            super().save(*args, **kwargs)
+        if not self.code:
+            self.code = random.randint(100000, 999999)
+        if not self.discount:
+            self.discount = random.randint(5, 40)
+        if not self.end_date:
+            self.end_date = self.created_at + datetime.timedelta(weeks=4)
+        super().save(update_fields=['code', 'discount', 'end_date'])
 

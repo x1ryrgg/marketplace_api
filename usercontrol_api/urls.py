@@ -10,6 +10,9 @@ user_router.register(r'', UserView, basename='user')
 profile_router = routers.DefaultRouter()
 profile_router.register(r'', ProfileView, basename='profile')
 
+coupon_router = routers.DefaultRouter()
+coupon_router.register(r'', CouponView, basename='coupons')
+
 urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
@@ -17,5 +20,6 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
 
     path('users/', include(user_router.urls)),
-    path('profile/', ProfileView.as_view({"get": "list", "patch": "partial_update"}), name='profile')
+    path('profile/', ProfileView.as_view({"get": "list", "patch": "partial_update"}), name='profile'),
+    path('coupons/', include(coupon_router.urls)),
 ]

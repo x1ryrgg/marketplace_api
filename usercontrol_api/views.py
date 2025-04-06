@@ -73,9 +73,11 @@ class ProfileView(ModelViewSet):
     def list(self, request, *args, **kwargs):
         profile = self.get_object()
         user = request.user
+        coupons = Coupon.objects.filter(user=user)
         data = {
             'profile': self.get_serializer(profile).data,
-            'user': PrivateUserSerializer(user, many=False).data
+            'user': PrivateUserSerializer(user, many=False).data,
+            'coupons': CouponSerializer(coupons, many=True).data
         }
         return Response(data)
 
@@ -86,4 +88,16 @@ class ProfileView(ModelViewSet):
         serializer.is_valid(raise_exception=True)
 
         self.perform_update(serializer)
+        return Response(serializer.data)
+
+
+class CouponView(ModelViewSet):
+    permission_classes = [IsAuthenticated, IsSuperUser]
+    serializer_class = CouponSerializer
+    queryset = Coupon.objects.all()
+    http_method_names = ['get', 'post']
+
+    def perform_create(self, serializer):
+        serializer.is_valid(raise_exception=True)
+        serializer.save(user=self.request.user)
         return Response(serializer.data)
