@@ -18,7 +18,7 @@ from .filters import *
 from usercontrol_api.models import *
 from payment_product_api.models import *
 from usercontrol_api.serializers import PrivateUserSerializer
-from payment_product_api.views import _apply_discount_to_order
+from payment_product_api.views import _apply_discount_to_order, _create_coupon_with_chance
 from payment_product_api.tasks import send_email_task
 
 
@@ -169,46 +169,6 @@ class ProductsView(ModelViewSet):
         return Product.objects.all().select_related('store', 'category')
 
 
-class PayProductView(APIView):
-    """ Endpoint для покупик товара
-    url: /products/<int:id>/buy/
-    """
-    permission_classes = [IsAuthenticated]
-    serializer_class = PrivateUserSerializer
-
-    def post(self, request, *args, **kwargs):
-        id = self.kwargs.get('id')
-        product = get_object_or_404(Product, id=id)
-        user = request.user
-
-        if product.quantity == 0:
-            return Response(_("Продутка нет на складе."))
-
-        with transaction.atomic():
-            price = product.price
-            discount_price = _apply_discount_to_order(user, price)
-
-            if discount_price > user.balance:
-                return Response(
-                    _(f"Недостаточно средств для произведения оплаты. Вам не хватает {product.price - user.balance}"))
-
-            user.balance -= discount_price
-            product.quantity -= 1
-            product.save()
-
-            Delivery.objects.create(user=user, name=product.name, price=product.price, quantity=1)
-            user.save()
-            send_email_task.delay(self.request.user.username, discount_price)
-
-            user_data = self.serializer_class(user).data
-            return Response({'сообщение': _("Товар успешно оплачен. Проследить за ним вы сможете в доставках."),
-                             'цена товара': price,
-                             "скидка": _(f"Ваша скидка составляет {History.objects.calculate_discount(user) * 100} %"),
-                             "к оплате": discount_price,
-                             'баланс': _(f"Ваш баланс {user_data.get("balance")}")
-                             })
-
-
 class WishListAddView(APIView):
     """ Endpoint для добавления товаров с список желаемого
     url: /products/<int:id>/add/
@@ -235,3 +195,64 @@ class WishListAddView(APIView):
         return Response({'message': _(f"Продукт {product_data.get('name')} добавлен в корзину. "),
                          "quantity": _(f" Количество товаров в корзине: {total_quantity}")
                          })
+
+
+class PayProductView(APIView):
+    """ Endpoint для покупик товара
+    url: /products/<int:id>/buy/
+    """
+    permission_classes = [IsAuthenticated]
+    serializer_class = PrivateUserSerializer
+
+    def post(self, request, *args, **kwargs):
+
+        id = self.kwargs.get('id')
+        product = get_object_or_404(Product, id=id)
+        user = request.user
+
+        coupon = None
+        coupon_code = request.data.get('coupon', None)
+        if coupon_code:
+            try:
+                coupon = Coupon.objects.get(user=user, code=coupon_code)
+            except Coupon.DoesNotExist:
+                raise ValidationError(_("Купон с таким кодом не существует или принадлежит другому пользователю."))
+
+        if product.quantity == 0:
+            return Response(_("Продутка нет на складе."))
+
+        with transaction.atomic():
+            price = product.price
+            discount_price = _apply_discount_to_order(user, price, coupon)
+
+            if discount_price > user.balance:
+                return Response(
+                    _(f"Недостаточно средств для произведения оплаты. Вам не хватает {product.price - user.balance}"))
+
+            user.balance -= discount_price
+            product.quantity -= 1
+
+            Delivery.objects.create(user=user, name=product.name, price=product.price, quantity=1)
+            new_coupon = _create_coupon_with_chance(user)
+
+            if coupon:
+                coupon.delete()
+
+            user.save()
+            product.save()
+            send_email_task.delay(self.request.user.username, discount_price.__round__(2))
+
+            coupon_discount = Decimal(coupon.discount) if coupon else Decimal('0')
+            base_discount = Decimal(History.objects.calculate_discount(user=user) * 100)
+            total_discount = coupon_discount + base_discount
+
+            user_data = self.serializer_class(user).data
+            return Response({'сообщение': _("Товар успешно оплачен. Проследить за ним вы сможете в доставках."),
+                             'цена товара': price,
+                             'скидка': _(f"Ваша персональная скидка составляет {History.objects.calculate_discount(user) * 100} %"),
+                             'скидка купона': _(f"{coupon.discount}%" if coupon else "Купон не применен."),
+                             'суммарная скидка': _(f"{total_discount}%"),
+                             'к оплате': discount_price,
+                             'баланс': _(f"Ваш баланс {user_data.get("balance")}"),
+                             'купон': _(f'Поздравляю, вы получилики купон на скидку в {new_coupon.discount}%' if new_coupon else '')
+                             })

@@ -208,8 +208,20 @@ class DeliveryView(ModelViewSet):
         return Response(message)
 
 
-def _apply_discount_to_order(user, total_price):
+def _apply_discount_to_order(user, total_price, coupon=None):
     """ Применяет скидку пользователя к общей стоимости заказа """
     discount = History.objects.calculate_discount(user)
+
+    if coupon:
+        discount += Decimal(coupon.discount / 100)
+
     discounted_price = total_price * Decimal(1 - discount)
     return discounted_price
+
+
+def _create_coupon_with_chance(user):
+    """ Создает купон с вероятностью 30% """
+    if random.random() < 0.3:  # 30% шанс
+        coupon = Coupon.objects.create(user=user)
+        return coupon
+    return None

@@ -15,12 +15,11 @@ app.conf.beat_schedule = {
         'task': 'payment_product_api.tasks.beat_check_delivery',
         'schedule': crontab(hour='*/12', minute=0)
     },
-}
-
-
-app.conf.beat_schedule = {
     'beat_check_coupon': {
-        'task': 'payment_product_api.tasks.beat_check_coupon',
-        'schedule': crontab(hour='*/12', minute=0)
-    },
+            'task': 'payment_product_api.tasks.beat_check_coupon',
+            'schedule': crontab(hour='*/12', minute=0)
+        },
 }
+
+# crontab(minute='*/1')  crontab(hour='*/12', minute=0)
+

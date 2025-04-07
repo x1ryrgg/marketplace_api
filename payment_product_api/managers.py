@@ -16,4 +16,4 @@ class HistoryManager(models.Manager):
         discount = 0
 
         discount += total_sum / 2000 * Decimal('0.01')
-        return min(discount.__round__(3), 0.35)
+        return min(discount.__round__(2), 0.35)
