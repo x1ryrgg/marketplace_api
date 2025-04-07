@@ -19,6 +19,7 @@ from usercontrol_api.models import *
 from payment_product_api.models import *
 from usercontrol_api.serializers import PrivateUserSerializer
 from payment_product_api.views import _apply_discount_to_order
+from payment_product_api.tasks import send_email_task
 
 
 text = f"Должность продавца даёт вам возможность заниматься бизнесом на этой площадке. {"\n"} Вы сможете выставлять свои магазины, а от них товары. {"\n"} Подробную информацию вы сможете узнать позвонив по номеру телефона: +8 800 555 35 35. Дайте ответ \"1\" для того, чтобы стать продавцом. "
@@ -197,6 +198,8 @@ class PayProductView(APIView):
 
             Delivery.objects.create(user=user, name=product.name, price=product.price, quantity=1)
             user.save()
+            send_email_task.delay(self.request.user.username, discount_price)
+
             user_data = self.serializer_class(user).data
             return Response({'сообщение': _("Товар успешно оплачен. Проследить за ним вы сможете в доставках."),
                              'цена товара': price,

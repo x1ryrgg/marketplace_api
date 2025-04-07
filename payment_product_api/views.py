@@ -133,7 +133,7 @@ class WishListView(ModelViewSet):
                 product.quantity -= item.quantity
                 product.save()
                 sum_price = product.price * item.quantity
-                send_email_task.delay(self.request.user.username, sum_price)
+                send_email_task.delay(self.request.user.username, discount_price)
                 Delivery.objects.create(user=user, name=product.name, price=sum_price, quantity=item.quantity)
 
             wishlist_items.delete()

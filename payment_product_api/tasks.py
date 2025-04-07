@@ -1,5 +1,6 @@
 from datetime import date
 from .models import Delivery
+from usercontrol_api.models import Coupon
 
 from celery import shared_task
 from marketplace_api import settings
@@ -26,3 +27,12 @@ def beat_check_delivery():
         delivery_date=today
     ).update(status='delivered')
     return f"Updated {updated_count} deliveries to 'delivered'."
+
+
+@shared_task
+def beat_check_coupon():
+    today = date.today()
+    expired_coupon = Coupon.objects.filter(
+        end_date=today
+    ).delete()
+    return f"{expired_coupon} expired coupons removed"
