@@ -241,7 +241,7 @@ class PayProductView(APIView):
 
             user.save()
             product.save()
-            send_email_task.delay(self.request.user.username, discount_price.__round__(2))
+            send_email_task.delay(self.request.user.username, discount_price.quantize(Decimal('0.01')))
 
             coupon_discount = Decimal(coupon.discount) if coupon else Decimal('0')
             base_discount = Decimal(History.objects.calculate_discount(user=user) * 100)

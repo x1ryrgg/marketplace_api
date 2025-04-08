@@ -53,24 +53,41 @@ class WishListView(ModelViewSet):
         return Response(data)
 
     def partial_update(self, request, *args, **kwargs):
-        """ изменение количества продукта в списке желаемого
-        url patch: /wishlist/<int:id>/
-        body: quantity (int) or 1
+        """
+        Изменение количества продукта в списке желаемого.
+        URL: PATCH /wishlist/<int:id>/
+        Body:
+            - quantity (int, optional): Количество для изменения. По умолчанию 1.
+            - symbol (str): '+' для увеличения; '-' для уменьшения.
         """
         wishlist_item = self.get_object()
 
-        quantity = int(request.data.get('quantity', 1))
+        try:
+            quantity = int(request.data.get('quantity', 1))  # По умолчанию 1
+            symbol = request.data.get('symbol')
+        except ValueError:
+            raise ValidationError(_("Количество должно быть целым числом."))
+
+        if symbol not in ['+', '-']:
+            raise ValidationError(_("Укажите знак: '+' для сложения; '-' для вычитания."))
 
         if quantity <= 0:
             raise ValidationError(_("Количество должно быть больше 0."))
 
-        if quantity >= wishlist_item.quantity:
-            wishlist_item.delete()
-            return Response(_("Товар удален из корзины."))
+        if symbol == '+':
+            wishlist_item.quantity += quantity
+        elif symbol == '-':
+            if wishlist_item.quantity <= quantity:
+                wishlist_item.delete()
+                return Response(_("Товар удален из корзины."))
+            wishlist_item.quantity -= quantity
 
-        wishlist_item.quantity -= quantity
         wishlist_item.save()
-        return Response(_(f"Количество {wishlist_item.product} в корзине изменилось на {quantity}."))
+
+        if symbol == '+':
+            return Response(_(f"Количество товара в корзине увеличилось на {quantity}."))
+        elif symbol == '-':
+            return Response(_(f"Количество товара в корзине уменьшилось на {quantity}."))
 
     @staticmethod
     def calculate_total_price_and_validate(user, wishlist_items):
@@ -134,7 +151,7 @@ class WishListView(ModelViewSet):
                 product.save()
                 sum_price = _apply_discount_to_order(user, product.price) * item.quantity
 
-                send_email_task.delay(self.request.user.username, discount_price)
+                send_email_task.delay(self.request.user.username, discount_price.quantize(Decimal('0.01')))
                 Delivery.objects.create(user=user, name=product.name, price=sum_price, quantity=item.quantity)
             wishlist_items.delete()
 
