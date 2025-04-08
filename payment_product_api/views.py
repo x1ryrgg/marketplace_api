@@ -115,13 +115,13 @@ class WishListView(ModelViewSet):
 
         full_price = self.calculate_total_price_and_validate(user, wishlist_items)
 
+        discount_price = _apply_discount_to_order(user, full_price)
+
+        if discount_price > user.balance:
+            return Response(
+                _(f"Недостаточно средств для произведения оплаты. Вам не хватает {discount_price - user.balance}"))
+
         with transaction.atomic():
-            discount_price = _apply_discount_to_order(user, full_price)
-
-            if discount_price > user.balance:
-                return Response(
-                    _(f"Недостаточно средств для произведения оплаты. Вам не хватает {discount_price - user.balance}"))
-
             user.balance -= discount_price
             user.save()
 
@@ -132,10 +132,10 @@ class WishListView(ModelViewSet):
 
                 product.quantity -= item.quantity
                 product.save()
-                sum_price = product.price * item.quantity
+                sum_price = _apply_discount_to_order(user, product.price) * item.quantity
+
                 send_email_task.delay(self.request.user.username, discount_price)
                 Delivery.objects.create(user=user, name=product.name, price=sum_price, quantity=item.quantity)
-
             wishlist_items.delete()
 
             user_data = PrivateUserSerializer(user).data

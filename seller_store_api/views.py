@@ -210,8 +210,8 @@ class PayProductView(APIView):
         product = get_object_or_404(Product, id=id)
         user = request.user
 
-        coupon = None
-        coupon_code = request.data.get('coupon', None)
+        coupon = 0
+        coupon_code = int(request.data.get('coupon', 0))
         if coupon_code:
             try:
                 coupon = Coupon.objects.get(user=user, code=coupon_code)
@@ -221,18 +221,18 @@ class PayProductView(APIView):
         if product.quantity == 0:
             return Response(_("Продутка нет на складе."))
 
+        price = product.price
+        discount_price = _apply_discount_to_order(user, price, coupon)
+
+        if discount_price > user.balance:
+            return Response(
+                _(f"Недостаточно средств для произведения оплаты. Вам не хватает {product.price - user.balance}"))
+
         with transaction.atomic():
-            price = product.price
-            discount_price = _apply_discount_to_order(user, price, coupon)
-
-            if discount_price > user.balance:
-                return Response(
-                    _(f"Недостаточно средств для произведения оплаты. Вам не хватает {product.price - user.balance}"))
-
             user.balance -= discount_price
             product.quantity -= 1
 
-            Delivery.objects.create(user=user, name=product.name, price=product.price, quantity=1)
+            Delivery.objects.create(user=user, name=product.name, price=discount_price, quantity=1)
             new_coupon = _create_coupon_with_chance(user)
 
             if coupon:
