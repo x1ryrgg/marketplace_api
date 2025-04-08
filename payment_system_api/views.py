@@ -169,7 +169,6 @@ class DeliveryView(ModelViewSet):
     def get_queryset(self):
         return Delivery.objects.filter(user=self.request.user).order_by('delivery_date').select_related('user')
 
-
     @action(detail=True, methods=['post'], url_path="take")
     def update_delivery(self, request, *args, **kwargs):
         """ POST-запрос, позволяющий выбирать, что делать с доставкой когда товар уже пришел, а так же когда он еще в пути
@@ -183,8 +182,8 @@ class DeliveryView(ModelViewSet):
         if option not in (1, 2):
             raise ValidationError(_("Недопустимая опция. '1' - принять товар; '2' - отменить."))
 
-        # обработка если товар еще не пришел
-        if delivery.delivery_date != date.today() and option == 2:
+        # обработка если товар если он еще не пришел
+        if delivery.status == 'on the way' and option == 2:
             with transaction.atomic():
                 user.balance += delivery.price
                 user.save()
@@ -192,7 +191,7 @@ class DeliveryView(ModelViewSet):
                 delivery.delete()
                 return Response(_("Вы отменили заказ, сумма заказа перечисляется к вам обратно."))
 
-        if delivery.delivery_date != date.today():
+        if delivery.status == 'on the way':
             raise ValidationError(_("Товар еще не доставлен."))
 
         # Обработка принятия или отмены товара
@@ -219,9 +218,3 @@ def _apply_discount_to_order(user, total_price, coupon=None):
     return discounted_price
 
 
-def _create_coupon_with_chance(user):
-    """ Создает купон с вероятностью 30% """
-    if random.random() < 0.3:  # 30% шанс
-        coupon = Coupon.objects.create(user=user)
-        return coupon
-    return None

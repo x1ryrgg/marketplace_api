@@ -101,3 +101,11 @@ class CouponView(ModelViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save(user=self.request.user)
         return Response(serializer.data)
+
+
+def _create_coupon_with_chance(user):
+    """ Создает купон с вероятностью 30% """
+    if random.random() < 0.3:  # 30% шанс
+        coupon = Coupon.objects.create(user=user)
+        return coupon
+    return None

@@ -24,7 +24,7 @@ def beat_check_delivery():
     today = date.today()
     updated_count = Delivery.objects.filter(
         status='on the way',
-        delivery_date=today
+        delivery_date__lte=today
     ).update(status='delivered')
     return f"Updated {updated_count} deliveries to 'delivered'."
 
@@ -33,6 +33,6 @@ def beat_check_delivery():
 def beat_check_coupon():
     today = date.today()
     expired_coupon = Coupon.objects.filter(
-        end_date=today
+        end_date__lte=today
     ).delete()
     return f"{expired_coupon} expired coupons removed"

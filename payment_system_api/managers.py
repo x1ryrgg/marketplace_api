@@ -13,7 +13,8 @@ class HistoryManager(models.Manager):
 
     def calculate_discount(self, user):
         total_sum = self.get_deliveries_total_sum(user)
-        discount = 0
+        discount = Decimal('0')
 
-        discount += total_sum / 2000 * Decimal('0.01')
-        return min(discount.__round__(2), 0.35)
+        # Преобразуем все значения в Decimal
+        discount += total_sum / Decimal('2000') * Decimal('0.01')
+        return min(discount.quantize(Decimal('0.01')), Decimal('0.35'))

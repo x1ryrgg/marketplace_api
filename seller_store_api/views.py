@@ -16,10 +16,11 @@ from .serializers import *
 from .permissions import *
 from .filters import *
 from usercontrol_api.models import *
-from payment_product_api.models import *
+from payment_system_api.models import *
 from usercontrol_api.serializers import PrivateUserSerializer
-from payment_product_api.views import _apply_discount_to_order, _create_coupon_with_chance
-from payment_product_api.tasks import send_email_task
+from payment_system_api.views import _apply_discount_to_order
+from usercontrol_api.views import _create_coupon_with_chance
+from payment_system_api.tasks import send_email_task
 
 
 text = f"Должность продавца даёт вам возможность заниматься бизнесом на этой площадке. {"\n"} Вы сможете выставлять свои магазины, а от них товары. {"\n"} Подробную информацию вы сможете узнать позвонив по номеру телефона: +8 800 555 35 35. Дайте ответ \"1\" для того, чтобы стать продавцом. "
@@ -88,7 +89,7 @@ class StoreView(ModelViewSet):
         """
         count_stores = Store.objects.filter(author=self.request.user).count()
         if count_stores >= 3:
-            raise Exception(_('Пользователь может регестировать до 3 магазинов.'))
+            raise Exception(_('Пользователь может регистировать до 3 магазинов.'))
         else:
             serializer.save(author=self.request.user)
 
