@@ -161,7 +161,7 @@ class ProductsView(ModelViewSet):
     """
     permission_classes = [IsAuthenticated]
     serializer_class = ProductSerializer
-    http_method_names = ['get', 'post', 'options']
+    http_method_names = ['get', 'post', 'put', 'delete', 'options']
 
     filter_backends = [DjangoFilterBackend]
     filterset_class = ProductFilter
@@ -183,7 +183,7 @@ class ProductsView(ModelViewSet):
         return Response(data)
 
     @action(methods=['post'], detail=True, url_path='write')
-    def write_comment(self, request, *args, **kwargs):
+    def write_review(self, request, *args, **kwargs):
         product_id = self.kwargs.get('pk')
         product = get_object_or_404(Product, id=product_id)
         user = request.user
@@ -201,6 +201,41 @@ class ProductsView(ModelViewSet):
                 return Response(_(f"Отзыв к {product.name} успешно оставлен."))
             return Response(_("В отзыве вы должны оставить коментарий или прикрепить фото. Также укажите количество звезд."))
         return Response(_("Вы не можете оставлять отзыв под продуктами, которые не заказывали."))
+
+    @action(methods=['put'], detail=True, url_path='edit/(?P<review_id>\d+)')
+    def edit_review(self, request, *args, **kwargs):
+        product_id = self.kwargs.get('pk')
+        review_id = self.kwargs.get('review_id')
+        product = get_object_or_404(Product, id=product_id)
+        review = get_object_or_404(Review, id=review_id, product=product)
+
+        body = request.data.get('body', review.body)
+        stars = request.data.get('stars', review.stars)
+        photo = request.data.get('photo', review.photo)
+
+        if review.user != request.user:
+            return Response(_("Вы не можете изменить чужой отзыв. "))
+
+        if stars is not None and (body or photo) is not None:
+            review.stars = stars
+            review.body = body
+            review.photo = photo
+            review.full_clean()
+            review.save()
+            return Response(_("Комментарий успешно обнавлен!"))
+        return Response(_("В отзыве вы должны оставить комментарий или прикрепить фото. Также укажите количество звезд."))
+
+    @action(methods=['delete'], detail=True, url_path='delete/(?P<review_id>\d+)')
+    def delete_review(self, request, *args, **kwargs):
+        product_id = self.kwargs.get('pk')
+        review_id = self.kwargs.get('review_id')
+        product = get_object_or_404(Product, id=product_id)
+        review = get_object_or_404(Review, id=review_id, product=product)
+
+        if review.user == request.user:
+            review.delete()
+            return Response(_(f"Отзыв с id {review_id} успешно удален."))
+        return Response(_("Вы не можете удалять чужие отзывы."))
 
 
 class WishListAddView(APIView):
