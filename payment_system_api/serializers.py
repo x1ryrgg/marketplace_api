@@ -2,6 +2,7 @@ from rest_framework import serializers
 from usercontrol_api.models import WishlistItem
 from .models import *
 from seller_store_api.models import Product, Store
+from seller_store_api.serializers import ProductSerializer
 
 
 class ProductForWishListSerializer(serializers.ModelSerializer):
@@ -35,12 +36,16 @@ class WishListSerializer(serializers.ModelSerializer):
 
 
 class HistorySerializer(serializers.ModelSerializer):
+    product = ProductSerializer(read_only=True)
+
     class Meta:
         model = History
-        fields = ['id', 'status', 'created_at', 'name', 'price', 'quantity']
+        fields = ['id', 'status', 'created_at', 'product', 'user_price', 'quantity']
 
 
 class DeliverySerializer(serializers.ModelSerializer):
+    product = ProductSerializer(read_only=True)
+
     class Meta:
         model = Delivery
-        fields = ("id", 'name', 'status', 'created_at', 'delivery_date', 'price', 'quantity')
+        fields = ("id", 'product', 'status', 'created_at', 'delivery_date', 'user_price', 'quantity')

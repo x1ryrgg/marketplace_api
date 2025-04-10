@@ -22,4 +22,5 @@ urlpatterns = [
     path('users/', include(user_router.urls)),
     path('profile/', ProfileView.as_view({"get": "list", "patch": "partial_update"}), name='profile'),
     path('coupons/', include(coupon_router.urls)),
+
 ]

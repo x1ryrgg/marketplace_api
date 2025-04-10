@@ -8,7 +8,7 @@ class HistoryManager(models.Manager):
 
     def get_deliveries_total_sum(self, user):
         """ Возвращает количество успешно доставленных товаров для пользователя """
-        result = self.filter(user=user, status='delivered').aggregate(total_sum=Sum('price'))
+        result = self.filter(user=user, status='delivered').aggregate(total_sum=Sum('user_price'))
         return result['total_sum'] or 0
 
     def calculate_discount(self, user):

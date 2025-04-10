@@ -193,67 +193,27 @@ class WishListAddView(APIView):
 
         product_data = self.serializer_class(product).data
         total_quantity = WishlistItem.objects.filter(user=user).aggregate(Sum('quantity'))['quantity__sum']
-        return Response({'message': _(f"Продукт {product_data.get('name')} добавлен в корзину. "),
-                         "quantity": _(f" Количество товаров в корзине: {total_quantity}")
+        return Response({'сообщение': _(f"Продукт {product_data.get('name')} добавлен в корзину. "),
+                         "добавлено": _(f"Было добавлено товаров: {quantity} "),
+                         "список желаемого": _(f" Количество товаров в списке желаемого: {total_quantity}")
                          })
 
 
-class PayProductView(APIView):
-    """ Endpoint для покупик товара
-    url: /products/<int:id>/buy/
-    """
-    permission_classes = [IsAuthenticated]
-    serializer_class = PrivateUserSerializer
-
-    def post(self, request, *args, **kwargs):
-
-        id = self.kwargs.get('id')
-        product = get_object_or_404(Product, id=id)
-        user = request.user
-
-        coupon = 0
-        coupon_code = int(request.data.get('coupon', 0))
-        if coupon_code:
-            try:
-                coupon = Coupon.objects.get(user=user, code=coupon_code)
-            except Coupon.DoesNotExist:
-                raise ValidationError(_("Купон с таким кодом не существует или принадлежит другому пользователю."))
-
-        if product.quantity == 0:
-            return Response(_("Продутка нет на складе."))
-
-        price = product.price
-        discount_price = _apply_discount_to_order(user, price, coupon)
-
-        if discount_price > user.balance:
-            return Response(
-                _(f"Недостаточно средств для произведения оплаты. Вам не хватает {product.price - user.balance}"))
-
-        with transaction.atomic():
-            user.balance -= discount_price
-            product.quantity -= 1
-
-            Delivery.objects.create(user=user, name=product.name, price=discount_price, quantity=1)
-            new_coupon = _create_coupon_with_chance(user)
-
-            if coupon:
-                coupon.delete()
-
-            user.save()
-            product.save()
-            send_email_task.delay(self.request.user.username, discount_price.quantize(Decimal('0.01')))
-
-            coupon_discount = Decimal(coupon.discount) if coupon else Decimal('0')
-            base_discount = Decimal(History.objects.calculate_discount(user=user) * 100)
-            total_discount = coupon_discount + base_discount
-
-            user_data = self.serializer_class(user).data
-            return Response({'сообщение': _("Товар успешно оплачен. Проследить за ним вы сможете в доставках."),
-                             'цена товара': price,
-                             'скидка': _(f"Ваша персональная скидка составляет {History.objects.calculate_discount(user) * 100} %"),
-                             'скидка купона': _(f"{coupon.discount}%" if coupon else "Купон не применен."),
-                             'суммарная скидка': _(f"{total_discount}%"),
-                             'к оплате': discount_price,
-                             'баланс': _(f"Ваш баланс {user_data.get("balance")}"),
-                             'купон': _(f'Поздравляю, вы получилики купон на скидку в {new_coupon.discount}%' if new_coupon else '')
-                             })
+# class SetCookie(APIView):
+#     def get(self, request):
+#         response = Response({"message": "Cookie complete!"})
+#         response.set_cookie('status', 'YeCookie', httponly=True, max_age=3600)
+#         return response
+#
+#
+# class GetCookie(APIView):
+#     def get(self, request):
+#         status = request.COOKIES.get('status', "NoCookie")
+#         return Response(f"Condition: {status}")
+#
+#
+# class DelCookie(APIView):
+#     def get(self, request):
+#         response = Response("Cookie deleted!")
+#         response.delete_cookie('status')
+#         return response

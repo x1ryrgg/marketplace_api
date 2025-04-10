@@ -1,7 +1,9 @@
 from django.db import transaction
 from django.db.models import Count, Sum
 from decimal import Decimal
-from django.shortcuts import render
+
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError
@@ -11,14 +13,16 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from django.utils.translation import gettext_lazy as _
-from .models import *
+from yookassa.domain.notification import WebhookNotification
+
+from usercontrol_api.views import _create_coupon_with_chance
+from .serializers import *
 from usercontrol_api.models import User
-from .serializers import *
-from .serializers import *
-from usercontrol_api.models import *
 from seller_store_api.models import Product
 from .tasks import *
 from usercontrol_api.serializers import PrivateUserSerializer
+from yookassa import Configuration, Payment
+from django.conf import settings
 
 
 class WishListView(ModelViewSet):
@@ -152,7 +156,7 @@ class WishListView(ModelViewSet):
                 sum_price = _apply_discount_to_order(user, product.price) * item.quantity
 
                 send_email_task.delay(self.request.user.username, discount_price.quantize(Decimal('0.01')))
-                Delivery.objects.create(user=user, name=product.name, price=sum_price, quantity=item.quantity)
+                Delivery.objects.create(user=user, product=product, user_price=sum_price, quantity=item.quantity)
             wishlist_items.delete()
 
             user_data = PrivateUserSerializer(user).data
@@ -161,6 +165,67 @@ class WishListView(ModelViewSet):
                              "скидка": _(f"Ваша скидка составляет {History.objects.calculate_discount(user) * 100} %"),
                              "к оплате": discount_price,
                              'баланс': _(f"Ваш баланс {user_data.get('balance')}")
+                             })
+
+
+class PayProductView(APIView):
+    """ Endpoint для покупик товара
+    url: /products/<int:id>/buy/
+    """
+    permission_classes = [IsAuthenticated]
+    serializer_class = PrivateUserSerializer
+
+    def post(self, request, *args, **kwargs):
+
+        id = self.kwargs.get('id')
+        product = get_object_or_404(Product, id=id)
+        user = request.user
+
+        coupon = 0
+        coupon_code = int(request.data.get('coupon', 0))
+        if coupon_code:
+            try:
+                coupon = Coupon.objects.get(user=user, code=coupon_code)
+            except Coupon.DoesNotExist:
+                raise ValidationError(_("Купон с таким кодом не существует или принадлежит другому пользователю."))
+
+        if product.quantity == 0:
+            return Response(_("Продутка нет на складе."))
+
+        price = product.price
+        discount_price = _apply_discount_to_order(user, price, coupon)
+
+        if discount_price > user.balance:
+            return Response(
+                _(f"Недостаточно средств для произведения оплаты. Вам не хватает {product.price - user.balance}"))
+
+        with transaction.atomic():
+            user.balance -= discount_price
+            product.quantity -= 1
+
+            Delivery.objects.create(user=user, product=product, user_price=discount_price, quantity=1)
+            new_coupon = _create_coupon_with_chance(user)
+
+            if coupon:
+                coupon.delete()
+
+            user.save()
+            product.save()
+            send_email_task.delay(self.request.user.username, discount_price.quantize(Decimal('0.01')))
+
+            coupon_discount = Decimal(coupon.discount) if coupon else Decimal('0')
+            base_discount = Decimal(History.objects.calculate_discount(user=user) * 100)
+            total_discount = coupon_discount + base_discount
+
+            user_data = self.serializer_class(user).data
+            return Response({'сообщение': _("Товар успешно оплачен. Проследить за ним вы сможете в доставках."),
+                             'цена товара': price,
+                             'скидка': _(f"Ваша персональная скидка составляет {History.objects.calculate_discount(user) * 100} %"),
+                             'скидка купона': _(f"{coupon.discount}%" if coupon else "Купон не применен."),
+                             'суммарная скидка': _(f"{total_discount}%"),
+                             'к оплате': discount_price,
+                             'баланс': _(f"Ваш баланс {user_data.get("balance")}"),
+                             'купон': _(f'Поздравляю, вы получилики купон на скидку в {new_coupon.discount}%' if new_coupon else '')
                              })
 
 
@@ -194,7 +259,7 @@ class DeliveryView(ModelViewSet):
         """
         delivery = self.get_object()
         user = request.user
-        option = int(request.data.get('option'))
+        option = request.data.get('option')
 
         if option not in (1, 2):
             raise ValidationError(_("Недопустимая опция. '1' - принять товар; '2' - отменить."))
@@ -202,9 +267,9 @@ class DeliveryView(ModelViewSet):
         # обработка если товар если он еще не пришел
         if delivery.status == 'on the way' and option == 2:
             with transaction.atomic():
-                user.balance += delivery.price
+                user.balance += delivery.user_price
                 user.save()
-                History.objects.create(user=user, name=delivery.name, price=delivery.price, quantity=delivery.quantity, status='denied')
+                History.objects.create(user=user, product=delivery.product, user_price=delivery.price, quantity=delivery.quantity, status='denied')
                 delivery.delete()
                 return Response(_("Вы отменили заказ, сумма заказа перечисляется к вам обратно."))
 
@@ -214,12 +279,12 @@ class DeliveryView(ModelViewSet):
         # Обработка принятия или отмены товара
         status = 'delivered' if option == 1 else 'denied'
         message = (
-            _(f"Товар {delivery.name} успешно принят! Заказывайте только у нас!") if option == 1
-            else _(f"Товар {delivery.name} отменен. Из-за политики нашего магазина вы не получите обратно сумму за товар, так как он уже доставлен.")
+            _(f"Товар {delivery.product.name} успешно принят! Заказывайте только у нас!") if option == 1
+            else _(f"Товар {delivery.product.name} отменен. Из-за политики нашего магазина вы не получите обратно сумму за товар, так как он уже доставлен.")
         )
 
         with transaction.atomic():
-            History.objects.create(user=user, name=delivery.name, price=delivery.price, quantity=delivery.quantity, status=status)
+            History.objects.create(user=user, product=delivery.product, user_price=delivery.user_price, quantity=delivery.quantity, status=status)
             delivery.delete()
         return Response(message)
 
@@ -235,3 +300,68 @@ def _apply_discount_to_order(user, total_price, coupon=None):
     return discounted_price
 
 
+""" TEST PAYMENT SYSTEM """
+
+class CreateTopUpPaymentView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, *args, **kwargs):
+        # Получаем сумму пополнения из запроса
+        amount = request.data.get('amount')
+        if not amount or float(amount) <= 0:
+            return Response({"error": "Укажите корректную сумму."}, status=400)
+
+        # Конфигурация YooKassa
+        Configuration.account_id = settings.YOOKASSA_SHOP_ID
+        Configuration.secret_key = settings.YOOKASSA_SECRET_KEY
+
+        # Создаем платеж
+        payment = Payment.create({
+            "amount": {
+                "value": f"{amount}",
+                "currency": "RUB"
+            },
+            "confirmation": {
+                "type": "redirect",
+                "return_url": "https://your-site.com/payment-success"  # Страница успешной оплаты
+            },
+            "description": f"Пополнение баланса пользователя {request.user.username}",
+            "metadata": {
+                "user_id": request.user.id  # Передаем ID пользователя для идентификации
+            }
+        })
+
+        # Возвращаем данные о платеже
+        return Response({
+            "payment_id": payment.id,
+            "confirmation_url": payment.confirmation.confirmation_url
+        })
+
+
+def yookassa_webhook(request):
+    try:
+        # Парсим уведомление от YooKassa
+        notification = WebhookNotification(request.body.decode('utf-8'))
+
+        # Проверяем статус платежа
+        if notification.event == 'payment.succeeded':
+            payment_id = notification.object.id
+            payment_status = notification.object.status
+
+            # Получаем метаданные платежа
+            user_id = notification.object.metadata.get('user_id')
+            amount = notification.object.amount.value
+
+            # Обновляем баланс пользователя
+            if user_id and amount > 0:
+                user = User.objects.get(id=user_id)
+                user.balance += amount
+                user.save()
+
+                print(f"Payment {payment_id} succeeded. Balance updated for user {user_id}.")
+
+        return Response(status=200)
+
+    except Exception as e:
+        print(f"Error processing webhook: {e}")
+        return Response(status=400)
