@@ -301,7 +301,6 @@ def _apply_discount_to_order(user, total_price, coupon=None):
 
 
 """ TEST PAYMENT SYSTEM """
-
 class CreateTopUpPaymentView(APIView):
     permission_classes = [IsAuthenticated]
 

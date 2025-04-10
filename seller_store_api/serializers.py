@@ -60,3 +60,13 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'price', 'category', 'store', 'quantity', 'description']
 
 
+class ReviewSerializer(serializers.ModelSerializer):
+    user = serializers.SlugRelatedField(
+        slug_field='username',
+        queryset=User.objects.all()
+    )
+
+    class Meta:
+        model = Review
+        fields = ("id", 'user', 'stars', 'body', 'photo', 'created_at')
+

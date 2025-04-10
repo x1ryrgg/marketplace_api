@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.db.models import Sum
 
@@ -72,6 +73,19 @@ class Product(models.Model):
         """ Возвращает общее количество товаров для указанного магазина """
         total = Product.objects.filter(store_id=store_id).aggregate(total_quantity=Sum('quantity'))['total_quantity']
         return total or 0
+
+
+class Review(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=1)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments')
+    photo = models.ImageField(upload_to='comments/', null=True, blank=True)
+    stars = models.PositiveIntegerField(default=1, validators=[MinValueValidator(0), MaxValueValidator(5)])
+    body = models.TextField(max_length=1000, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return 'User %s wrote a comment to product %s' % (self.user.username, self.product.name)
 
 
 

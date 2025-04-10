@@ -161,13 +161,46 @@ class ProductsView(ModelViewSet):
     """
     permission_classes = [IsAuthenticated]
     serializer_class = ProductSerializer
-    http_method_names = ['get', 'options']
+    http_method_names = ['get', 'post', 'options']
 
     filter_backends = [DjangoFilterBackend]
     filterset_class = ProductFilter
 
     def get_queryset(self):
         return Product.objects.all().select_related('store', 'category')
+
+    def retrieve(self, request, *args, **kwargs):
+        product = self.get_object()
+        serializer = self.get_serializer(product)
+
+        comments = Review.objects.filter(product=product)
+        comments_serializer = ReviewSerializer(comments, many=True)
+
+        data = {
+            'product': serializer.data,
+            'comments': comments_serializer.data
+        }
+        return Response(data)
+
+    @action(methods=['post'], detail=True, url_path='write')
+    def write_comment(self, request, *args, **kwargs):
+        product_id = self.kwargs.get('pk')
+        product = get_object_or_404(Product, id=product_id)
+        user = request.user
+        user_history = History.objects.filter(product=product, user=user)
+
+        body = request.data.get('body', None)
+        stars = request.data.get('stars', None)
+        photo = request.data.get('photo', None)
+
+        if user_history:
+            if stars is not None and (body or photo) is not None:
+                comment = Review.objects.create(user=user, product=product, body=body, photo=photo, stars=stars)
+                comment.full_clean()
+                comment.save()
+                return Response(_(f"Отзыв к {product.name} успешно оставлен."))
+            return Response(_("В отзыве вы должны оставить коментарий или прикрепить фото. Также укажите количество звезд."))
+        return Response(_("Вы не можете оставлять отзыв под продуктами, которые не заказывали."))
 
 
 class WishListAddView(APIView):
