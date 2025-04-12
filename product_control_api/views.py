@@ -132,7 +132,7 @@ class ProductsView(ModelViewSet):
     def edit_review(self, request, *args, **kwargs):
         product_id = self.kwargs.get('pk')
         review_id = self.kwargs.get('review_id')
-        product = get_object_or_404(Product, id=product_id)
+        product = get_object_or_404(ProductVariant, id=product_id)
         review = get_object_or_404(Review, id=review_id, product=product)
 
         body = request.data.get('body', review.body)
@@ -154,7 +154,7 @@ class ProductsView(ModelViewSet):
     def delete_review(self, request, *args, **kwargs):
         product_id = self.kwargs.get('pk')
         review_id = self.kwargs.get('review_id')
-        product = get_object_or_404(Product, id=product_id)
+        product = get_object_or_404(ProductVariant, id=product_id)
         review = get_object_or_404(Review, id=review_id, product=product)
 
         if review.user == request.user:

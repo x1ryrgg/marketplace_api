@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from usercontrol_api.models import User
 from .models import *
+from product_control_api.models import ProductVariant
 from usercontrol_api.models import WishlistItem
 
 
@@ -24,8 +25,8 @@ class ReviewSerializer(serializers.ModelSerializer):
     )
 
     product = serializers.SlugRelatedField(
-        slug_field='name',
-        queryset=Product.objects.all()
+        slug_field='product__name',
+        queryset=ProductVariant.objects.all()
     )
 
     class Meta:

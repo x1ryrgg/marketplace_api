@@ -31,7 +31,7 @@ class Review(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return 'User %s wrote a comment to product %s' % (self.user.username, self.product.product.name)
+        return 'User %s wrote a comment to product %s' % (self.user.username, self.product)
 
 
 

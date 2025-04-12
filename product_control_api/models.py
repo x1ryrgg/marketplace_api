@@ -64,7 +64,7 @@ class ProductVariant(models.Model):
     description = models.CharField(max_length=500, blank=True, default="Продавец не оставил описание о товаре.")
 
     def __str__(self):
-        str_options = ''.join(str(opt) for opt in self.options.all())
+        str_options = ' | '.join(str(opt) for opt in self.options.all())
         return "%s - %s (Quantity: %s)" % (self.product.name, str_options, self.quantity)
 
 

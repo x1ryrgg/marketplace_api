@@ -93,5 +93,21 @@ class ProductVariantSerializer(serializers.ModelSerializer):
         fields = ('id', 'product', 'price', 'quantity', 'options', 'image', 'description')
 
 
+class SmallProductVariantSerializer(serializers.ModelSerializer):
+    name = serializers.SerializerMethodField()
+
+    options = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=VariantOption.objects.all()
+    )
+
+    class Meta:
+        model = ProductVariant
+        fields = ('id', 'name', 'price', 'options', 'image')
+
+    def get_name(self, obj):
+        return obj.product.name if obj.product else None
+
+
 
 

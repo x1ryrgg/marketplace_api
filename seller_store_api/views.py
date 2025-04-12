@@ -12,7 +12,7 @@ from rest_framework.response import Response
 from django.utils.translation import gettext_lazy as _
 from .models import *
 from usercontrol_api.models import User
-from product_control_api.serializers import ProductSerializer
+from product_control_api.serializers import ProductSerializer, SmallProductVariantSerializer
 from .serializers import *
 from .permissions import *
 from usercontrol_api.models import *
@@ -103,10 +103,10 @@ class StoresAllView(ModelViewSet):
 
     def retrieve(self, request, *args, **kwargs):
         store = self.get_object()
-        products = Product.objects.filter(store=store)
+        products = ProductVariant.objects.filter(product__store=store)
         data = {
             'store': self.get_serializer(store, many=False).data,
-            'products': ProductSerializer(products, many=True).data
+            'products': SmallProductVariantSerializer(products, many=True).data
         }
         return Response(data)
 
@@ -117,13 +117,13 @@ class WishListAddView(APIView):
     body: quantity (int) or 1
     """
     permission_classes = [IsAuthenticated]
-    serializer_class = ProductSerializer
+    serializer_class = SmallProductVariantSerializer
 
     def post(self, request, *args, **kwargs):
         id = self.kwargs.get('id')
         quantity = request.data.get('quantity', 1)
 
-        product = get_object_or_404(Product, id=id)
+        product = get_object_or_404(ProductVariant, id=id)
         user = request.user
 
         wishlist_item, created = WishlistItem.objects.get_or_create(user=user,product=product, defaults={'quantity': quantity})
