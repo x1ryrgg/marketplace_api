@@ -353,8 +353,8 @@ def yookassa_webhook(request):
 
             # Обновляем баланс пользователя
             if user_id and amount > 0:
-                user = User.objects.get(id=user_id)
-                user.balance += amount
+                user = User.objects.get(id=int(user_id)) # int не точно
+                user.balance += Decimal('amount') # это не точно
                 user.save()
 
                 print(f"Payment {payment_id} succeeded. Balance updated for user {user_id}.")

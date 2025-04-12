@@ -2,7 +2,7 @@ from rest_framework import serializers
 from usercontrol_api.models import WishlistItem
 from .models import *
 from seller_store_api.models import Product, Store
-from seller_store_api.serializers import ProductSerializer
+from product_control_api.serializers import ProductSerializer
 
 
 class ProductForWishListSerializer(serializers.ModelSerializer):

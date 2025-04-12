@@ -21,11 +21,3 @@ class IsSeller(BasePermission):
         if request.user.is_seller:
             return True
         return False
-
-
-class IsAdminOrReadOnly(BasePermission):
-    def has_permission(self, request, view):
-        return bool(
-            request.method in SAFE_METHODS or
-            request.user and request.user.is_superuser
-        )

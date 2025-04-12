@@ -12,9 +12,9 @@ from rest_framework.response import Response
 from django.utils.translation import gettext_lazy as _
 from .models import *
 from usercontrol_api.models import User
+from product_control_api.serializers import ProductSerializer
 from .serializers import *
 from .permissions import *
-from .filters import *
 from usercontrol_api.models import *
 from payment_system_api.models import *
 from usercontrol_api.serializers import PrivateUserSerializer
@@ -69,23 +69,20 @@ class SellerRegisterView(ModelViewSet):
 
 
 class StoreView(ModelViewSet):
-    """ Endpoint для регистрации магазина и проверки ваших магазинов """
+    """ Endpoint для регистрации магазина и проверки ваших магазинов
+    url: /store/
+    """
     permission_classes = [IsAuthenticated, IsSeller]
     serializer_class = StoreSerializer
     http_method_names = ['get', 'post']
 
     def get_queryset(self):
-        """
-        Возвращает магазины, у которых пользователь является автором.
-        url: /store/ - get
-        """
         return Store.objects.filter(author=self.request.user)
 
     def perform_create(self, serializer):
         """
         Регистрация магазина
-        url: /store/ - post
-        body: name (str), description (str), city (str), email (str if need)
+        body: name (str), description (str - optional), city (str), email (str - options)
         """
         count_stores = Store.objects.filter(author=self.request.user).count()
         if count_stores >= 3:
@@ -112,130 +109,6 @@ class StoresAllView(ModelViewSet):
             'products': ProductSerializer(products, many=True).data
         }
         return Response(data)
-
-
-class CategoriesView(ModelViewSet):
-    """ Endpoint для создания категорий продуктов, их просмотра, изменения и удаления
-    (доступно только администраторам, кроме SAFE_METHODS)
-    url: /categories/
-    body if post: name (str), subcategory (str if need)
-    """
-    permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
-    serializer_class = CategorySerializer
-    http_method_names = ['get', 'post', 'patch', 'delete']
-    lookup_field = 'id'
-
-    def get_queryset(self):
-        return Category.objects.all()
-
-    def destroy(self, request, *args, **kwargs):
-        category_id = self.kwargs.get('id')
-        category = get_object_or_404(Category, id=category_id)
-        self.perform_destroy(category)
-        return Response(_(f"Категория с названием: {category.name} успешно удалена"))
-
-
-class ProductOfSellerView(ModelViewSet):
-    """ Endpoint для просмотра, добавления, изменения и удаления продуктов (для продавцов)
-    url: /seller-products/
-    body if post: name (str), price (float), quantity (int), category (str(name)), store (str(name)), description (str if need)
-    """
-    permission_classes = [IsAuthenticated, IsSeller]
-    serializer_class = ProductOfSellerSerializer
-    http_method_names = ['get', 'post', 'patch', 'delete']
-    lookup_field = 'id'
-
-    def get_queryset(self):
-        return Product.objects.filter(store__author=self.request.user).select_related('store', 'category')
-
-    def destroy(self, request, *args, **kwargs):
-        product_id = self.kwargs.get('id')
-        product = get_object_or_404(Product, id=product_id)
-        self.perform_destroy(product)
-        return Response(_(f"Продукт с названием: '{product.name}' из магазина {product.store.name} успешно удален."))
-
-
-class ProductsView(ModelViewSet):
-    """ Endpoint для просмотра всех продуктов.
-    url: /products/?category= (filter-icontains)
-    """
-    permission_classes = [IsAuthenticated]
-    serializer_class = ProductSerializer
-    http_method_names = ['get', 'post', 'put', 'delete', 'options']
-
-    filter_backends = [DjangoFilterBackend]
-    filterset_class = ProductFilter
-
-    def get_queryset(self):
-        return Product.objects.all().select_related('store', 'category')
-
-    def retrieve(self, request, *args, **kwargs):
-        product = self.get_object()
-        serializer = self.get_serializer(product)
-
-        comments = Review.objects.filter(product=product)
-        comments_serializer = ReviewSerializer(comments, many=True)
-
-        data = {
-            'product': serializer.data,
-            'comments': comments_serializer.data
-        }
-        return Response(data)
-
-    @action(methods=['post'], detail=True, url_path='write')
-    def write_review(self, request, *args, **kwargs):
-        product_id = self.kwargs.get('pk')
-        product = get_object_or_404(Product, id=product_id)
-        user = request.user
-        user_history = History.objects.filter(product=product, user=user)
-
-        body = request.data.get('body', None)
-        stars = request.data.get('stars', None)
-        photo = request.data.get('photo', None)
-
-        if user_history:
-            if stars is not None and (body or photo) is not None:
-                comment = Review.objects.create(user=user, product=product, body=body, photo=photo, stars=stars)
-                comment.full_clean()
-                comment.save()
-                return Response(_(f"Отзыв к {product.name} успешно оставлен."))
-            return Response(_("В отзыве вы должны оставить коментарий или прикрепить фото. Также укажите количество звезд."))
-        return Response(_("Вы не можете оставлять отзыв под продуктами, которые не заказывали."))
-
-    @action(methods=['put'], detail=True, url_path='edit/(?P<review_id>\d+)')
-    def edit_review(self, request, *args, **kwargs):
-        product_id = self.kwargs.get('pk')
-        review_id = self.kwargs.get('review_id')
-        product = get_object_or_404(Product, id=product_id)
-        review = get_object_or_404(Review, id=review_id, product=product)
-
-        body = request.data.get('body', review.body)
-        stars = request.data.get('stars', review.stars)
-        photo = request.data.get('photo', review.photo)
-
-        if review.user != request.user:
-            return Response(_("Вы не можете изменить чужой отзыв. "))
-
-        if stars is not None and (body or photo) is not None:
-            review.stars = stars
-            review.body = body
-            review.photo = photo
-            review.full_clean()
-            review.save()
-            return Response(_("Комментарий успешно обнавлен!"))
-        return Response(_("В отзыве вы должны оставить комментарий или прикрепить фото. Также укажите количество звезд."))
-
-    @action(methods=['delete'], detail=True, url_path='delete/(?P<review_id>\d+)')
-    def delete_review(self, request, *args, **kwargs):
-        product_id = self.kwargs.get('pk')
-        review_id = self.kwargs.get('review_id')
-        product = get_object_or_404(Product, id=product_id)
-        review = get_object_or_404(Review, id=review_id, product=product)
-
-        if review.user == request.user:
-            review.delete()
-            return Response(_(f"Отзыв с id {review_id} успешно удален."))
-        return Response(_("Вы не можете удалять чужие отзывы."))
 
 
 class WishListAddView(APIView):
