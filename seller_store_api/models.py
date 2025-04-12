@@ -23,7 +23,7 @@ class Store(models.Model):
 
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=1)
-    product = models.ForeignKey('product_control_api.Product', on_delete=models.CASCADE, related_name='comments')
+    product = models.ForeignKey('product_control_api.ProductVariant', on_delete=models.CASCADE, related_name='comments')
     photo = models.ImageField(upload_to='comments/', null=True, blank=True)
     stars = models.PositiveIntegerField(default=1, validators=[MinValueValidator(0), MaxValueValidator(5)])
     body = models.TextField(max_length=1000, null=True, blank=True)
@@ -31,7 +31,7 @@ class Review(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return 'User %s wrote a comment to product %s' % (self.user.username, self.product.name)
+        return 'User %s wrote a comment to product %s' % (self.user.username, self.product.product.name)
 
 
 

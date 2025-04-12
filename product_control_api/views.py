@@ -31,7 +31,6 @@ class CategoriesView(ModelViewSet):
     permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
     serializer_class = CategorySerializer
     http_method_names = ['get', 'post', 'patch', 'delete']
-    lookup_field = 'id'
 
     def get_queryset(self):
         return Category.objects.all()
@@ -43,18 +42,37 @@ class CategoriesView(ModelViewSet):
         return Response(_(f"Категория с названием: {category.name} успешно удалена"))
 
 
+class SubcategoriesView(ModelViewSet):
+    permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
+    serializer_class = SubCategorySerializer
+    http_method_names = ['get', 'post', 'patch', 'delete']
+
+    def get_queryset(self):
+        return SubCategory.objects.all()
+
+    def destroy(self, request, *args, **kwargs):
+        category_id = self.kwargs.get('id')
+        category = get_object_or_404(SubCategory, id=category_id)
+        self.perform_destroy(category)
+        return Response(_(f"Подкатегория с названием: {category.name} успешно удалена"))
+
+
 class ProductOfSellerView(ModelViewSet):
     """ Endpoint для просмотра, добавления, изменения и удаления продуктов (для продавцов)
     url: /seller-products/
     body if post: name (str), price (float), quantity (int), category (str(name)), store (str(name)), description (str if need)
     """
     permission_classes = [IsAuthenticated, IsSeller]
-    serializer_class = ProductOfSellerSerializer
+    serializer_class = ForPostProductVariantSerializer
     http_method_names = ['get', 'post', 'patch', 'delete']
-    lookup_field = 'id'
 
     def get_queryset(self):
-        return Product.objects.filter(store__author=self.request.user).select_related('store', 'category')
+        return ProductVariant.objects.filter(product__store__author=self.request.user).select_related('product').prefetch_related('options')
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = ProductVariantSerializer(queryset, many=True)
+        return Response(serializer.data)
 
     def destroy(self, request, *args, **kwargs):
         product_id = self.kwargs.get('id')
@@ -68,14 +86,14 @@ class ProductsView(ModelViewSet):
     url: /products/?category= (filter-icontains)
     """
     permission_classes = [IsAuthenticated]
-    serializer_class = ProductSerializer
+    serializer_class = ProductVariantSerializer
     http_method_names = ['get', 'post', 'put', 'delete', 'options']
 
     filter_backends = [DjangoFilterBackend]
-    filterset_class = ProductFilter
+    filterset_class = ProductVariantFilter
 
     def get_queryset(self):
-        return Product.objects.all().select_related('store', 'category')
+        return ProductVariant.objects.all().select_related('product').prefetch_related('options')
 
     def retrieve(self, request, *args, **kwargs):
         product = self.get_object()
@@ -93,7 +111,7 @@ class ProductsView(ModelViewSet):
     @action(methods=['post'], detail=True, url_path='post_review')
     def write_review(self, request, *args, **kwargs):
         product_id = self.kwargs.get('pk')
-        product = get_object_or_404(Product, id=product_id)
+        product = get_object_or_404(ProductVariant, id=product_id)
         user = request.user
         user_history = History.objects.filter(product=product, user=user)
 
