@@ -1,23 +1,24 @@
 from rest_framework import serializers
 from usercontrol_api.models import WishlistItem
 from .models import *
-from seller_store_api.models import Product, Store
+from seller_store_api.models import Store
+from product_control_api.models import ProductVariant
 from product_control_api.serializers import ProductSerializer
 
 
-class ProductForWishListSerializer(serializers.ModelSerializer):
-    store = serializers.SlugRelatedField(
-        slug_field='name',
-        queryset=Store.objects.all()
-    )
+class ProductVariantForWishListSerializer(serializers.ModelSerializer):
+    name = serializers.SerializerMethodField()
 
     class Meta:
-        model = Product
-        fields = ("id", "name", "price", "store")
+        model = ProductVariant
+        fields = ("id", "name", "price")
+
+    def get_name(self, obj):
+        return obj.product.name if obj.product else None
 
 
 class WishListSerializer(serializers.ModelSerializer):
-    product = ProductForWishListSerializer(read_only=True)
+    product = ProductVariantForWishListSerializer(read_only=True)
     price = serializers.SerializerMethodField()
 
     class Meta:
