@@ -93,7 +93,7 @@ class ProductsView(ModelViewSet):
     filterset_class = ProductVariantFilter
 
     def get_queryset(self):
-        return ProductVariant.objects.all().select_related('product').prefetch_related('options')
+        return ProductVariant.objects.all().select_related('product', 'product__category').prefetch_related('options')
 
     def retrieve(self, request, *args, **kwargs):
         product = self.get_object()

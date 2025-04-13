@@ -37,7 +37,7 @@ class WishListSerializer(serializers.ModelSerializer):
 
 
 class HistorySerializer(serializers.ModelSerializer):
-    product = ProductSerializer(read_only=True)
+    product = ProductVariantForWishListSerializer(read_only=True)
 
     class Meta:
         model = History
@@ -45,7 +45,7 @@ class HistorySerializer(serializers.ModelSerializer):
 
 
 class DeliverySerializer(serializers.ModelSerializer):
-    product = ProductSerializer(read_only=True)
+    product = ProductVariantForWishListSerializer(read_only=True)
 
     class Meta:
         model = Delivery

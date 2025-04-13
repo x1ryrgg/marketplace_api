@@ -50,7 +50,7 @@ class Coupon(models.Model):
         if not self.code:
             self.code = random.randint(100000, 999999)
         if not self.discount:
-            self.discount = random.randint(5, 40)
+            self.discount = random.randint(5, 20)
         if not self.end_date:
             self.end_date = self.created_at + datetime.timedelta(weeks=4)
         super().save(update_fields=['code', 'discount', 'end_date'])

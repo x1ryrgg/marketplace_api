@@ -90,7 +90,7 @@ class ProductVariantSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProductVariant
-        fields = ('id', 'product', 'price', 'quantity', 'options', 'image', 'description')
+        fields = ('id', 'product', 'price', 'quantity', 'options', 'image')
 
 
 class SmallProductVariantSerializer(serializers.ModelSerializer):

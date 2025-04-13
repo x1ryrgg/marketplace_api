@@ -34,7 +34,7 @@ class WishListView(ModelViewSet):
     http_method_names = ['get', 'post', 'patch', 'delete']
 
     def get_queryset(self):
-        return WishlistItem.objects.filter(user=self.request.user).select_related('product', 'user')
+        return WishlistItem.objects.filter(user=self.request.user).select_related('product__product', 'user').prefetch_related('product__options')
 
     def list(self, request, *args, **kwargs):
         """ Информация о списке желаемого пользователя"""
@@ -123,7 +123,7 @@ class WishListView(ModelViewSet):
         if not products_ids:
             raise ValidationError(_("Список товаров не может быть пустым."))
 
-        products = Product.objects.filter(id__in=products_ids).select_related('store', 'category')
+        products = ProductVariant.objects.filter(id__in=products_ids).select_related('product', 'product__category').prefetch_related('options')
         if len(products) != len(products_ids):
             invalid_ids = set(products_ids) - {p.id for p in products}
             raise ValidationError(_(f"Товары с ID {invalid_ids} не найдены."))
@@ -178,7 +178,7 @@ class PayProductView(APIView):
     def post(self, request, *args, **kwargs):
 
         id = self.kwargs.get('id')
-        product = get_object_or_404(Product, id=id)
+        product = get_object_or_404(ProductVariant, id=id)
         user = request.user
 
         coupon = 0
@@ -269,7 +269,7 @@ class DeliveryView(ModelViewSet):
             with transaction.atomic():
                 user.balance += delivery.user_price
                 user.save()
-                History.objects.create(user=user, product=delivery.product, user_price=delivery.price, quantity=delivery.quantity, status='denied')
+                History.objects.create(user=user, product=delivery.product, user_price=delivery.product.price, quantity=delivery.quantity, status='denied')
                 delivery.delete()
                 return Response(_("Вы отменили заказ, сумма заказа перечисляется к вам обратно."))
 

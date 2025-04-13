@@ -2,6 +2,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from product_control_api.models import Product
 from usercontrol_api.models import User
+from django.db.models import Q
 
 
 class Store(models.Model):
@@ -32,6 +33,15 @@ class Review(models.Model):
 
     def __str__(self):
         return 'User %s wrote a comment to product %s' % (self.user.username, self.product)
+
+    class Meta:
+        constraints = [
+            models.CheckConstraint(
+                name='star_raiting_valid',
+                check=Q(stars__gte=1,stars__lte=5),
+                violation_error_message='Можно ставить только от 1 до 5 звезд.'
+            )
+        ]
 
 
 
