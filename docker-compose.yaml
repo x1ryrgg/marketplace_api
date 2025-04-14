@@ -28,7 +28,7 @@ services:
 
   nginx:
     image: nginx:latest
-    container_name: nginx-container
+    container_name: marketplace-nginx-container
     ports:
       - "80:80"
     volumes:
