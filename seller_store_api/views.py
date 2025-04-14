@@ -44,7 +44,7 @@ class SellerRegisterView(ModelViewSet):
         user = queryset.first()
         if user.is_seller:
             return Response(_("Вы являетесь продавцом на этой площадке."))
-        return Response(_("Вы не являетесь продавцом."))
+        return Response(_("Вы не являетесь продавцом. Нужно оплатить доступ к привилегиям продавца, цена - 10000 руб. "))
 
     def get_object(self):
         return self.get_queryset().get()
@@ -55,15 +55,19 @@ class SellerRegisterView(ModelViewSet):
         url: /seller/register/ - put
         body: option (str(int))
         """
-        option = int(request.data.get("option"))
+        option = request.data.get("option")
         user = self.get_object()
         if not option:
             return Response(_("Нужно указать свой ответ. 1 - Стать продавцом."))
 
         if option == 1:
-            user.is_seller = True
-            user.save()
-            return Response(_("Поздравляю, вам открыта возможноть выставлять свои магазины, а также товары на площадке."))
+            cost = Decimal('10000')
+            if user.balance >= cost:
+                user.balance -= cost
+                user.is_seller = True
+                user.save()
+                return Response(_("Поздравляю, вам открыта возможноть выставлять свои магазины, а также товары на площадке."))
+            return Response(_(f"Вам не хватает {cost - user.balance}"))
         else:
             return Response(_(text))
 
