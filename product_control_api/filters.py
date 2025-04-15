@@ -22,6 +22,9 @@ from .models import *
 
 
 class ProductVariantFilter(django_filters.FilterSet):
+    price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt') # больше
+    price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt') # меньше
+
     product = django_filters.CharFilter(field_name='product__name', lookup_expr='icontains')
 
     options = django_filters.CharFilter(field_name='options__value', lookup_expr='icontains', label='Опции')
@@ -30,4 +33,4 @@ class ProductVariantFilter(django_filters.FilterSet):
 
     class Meta:
         model = ProductVariant
-        fields = ['product', 'options', 'category']
+        fields = ()

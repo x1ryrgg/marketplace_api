@@ -1,4 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models.sql import Query
 from django.shortcuts import render
 from rest_framework import generics, status, permissions
 from rest_framework.permissions import IsAuthenticated
@@ -13,16 +14,14 @@ from rest_framework.response import Response
 
 
 class RegisterView(generics.CreateAPIView):
-    """ Endpoint для регистрации пользователей"""
+    """ Endpoint для регистрации пользователей
+    url: /register/
+    body: username (str), password (str), email (str)
+    """
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
 
-    def post(self, request, *args, **kwargs):
-        """
-        Регистрация пользователя
-        url: /register/
-        body: username (str), password (str), email (str)
-        """
+    def post(self, request, *args, **kwargs) -> Response:
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -31,7 +30,7 @@ class RegisterView(generics.CreateAPIView):
 
 
 class UserView(ModelViewSet):
-    """ Endpoint для просмотра всех пользователей (доступно только админу)
+    """ Endpoint для просмотра всех пользователей (доступно только superuser-ам)
     url: /users/
     """
     permission_classes = [IsAuthenticated, IsSuperUser]
@@ -39,11 +38,11 @@ class UserView(ModelViewSet):
     queryset = User.objects.all()
     http_method_names = ['get']
 
-    def list(self, request, *args, **kwargs):
+    def list(self, request, *args, **kwargs) -> Response:
         serializer = self.get_serializer(self.get_queryset(), many=True)
         return Response(serializer.data)
 
-    def retrieve(self, request, *args, **kwargs):
+    def retrieve(self, request, *args, **kwargs) -> Response:
         user = self.get_object()
         profile = Profile.objects.get(user=user)
         data = {
@@ -54,7 +53,7 @@ class UserView(ModelViewSet):
 
 
 class ProfileView(ModelViewSet):
-    """ Endpoint для просмотра своего профиля и его изменения.
+    """ Endpoint для просмотра профиля, а также купонов.
     url: /profile/
     """
     permission_classes = [IsAuthenticated]
@@ -70,7 +69,7 @@ class ProfileView(ModelViewSet):
         except Exception:
             return None
 
-    def list(self, request, *args, **kwargs):
+    def list(self, request, *args, **kwargs) -> Response:
         profile = self.get_object()
         user = request.user
         coupons = Coupon.objects.filter(user=user)
@@ -82,6 +81,7 @@ class ProfileView(ModelViewSet):
         return Response(data)
 
     def partial_update(self, request, *args, **kwargs):
+        """ Изменение профиля """
         profile = self.get_queryset().get()
 
         serializer = self.get_serializer(profile, data=request.data, partial=True)
@@ -92,18 +92,21 @@ class ProfileView(ModelViewSet):
 
 
 class CouponView(ModelViewSet):
+    """ Endpoint для просмотра всех купонов, а также для тестового создания купонов (доступно superuser-ам)
+    url: /coupons/
+    """
     permission_classes = [IsAuthenticated, IsSuperUser]
     serializer_class = CouponSerializer
     queryset = Coupon.objects.all()
     http_method_names = ['get', 'post']
 
-    def perform_create(self, serializer):
+    def perform_create(self, serializer) -> Response:
         serializer.is_valid(raise_exception=True)
         serializer.save(user=self.request.user)
         return Response(serializer.data)
 
 
-def _create_coupon_with_chance(user):
+def _create_coupon_with_chance(user: User) -> Coupon:
     """ Создает купон с вероятностью 30% """
     if random.random() < 0.3:  # 30% шанс
         coupon = Coupon.objects.create(user=user)

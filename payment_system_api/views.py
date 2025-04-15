@@ -1,5 +1,7 @@
+from typing import Optional
+
 from django.db import transaction
-from django.db.models import Count, Sum
+from django.db.models import Count, Sum, QuerySet
 from decimal import Decimal
 
 from django.http import HttpResponse
@@ -36,7 +38,7 @@ class WishListView(ModelViewSet):
     def get_queryset(self):
         return WishlistItem.objects.filter(user=self.request.user).select_related('product__product', 'user').prefetch_related('product__options')
 
-    def list(self, request, *args, **kwargs):
+    def list(self, request, *args, **kwargs) -> Response:
         """ Информация о списке желаемого пользователя"""
         products_count = self.get_queryset().aggregate(Sum('quantity'))['quantity__sum'] or 0
         unique_products_count = self.get_queryset().count()
@@ -94,7 +96,7 @@ class WishListView(ModelViewSet):
             return Response(_(f"Количество товара в корзине уменьшилось на {quantity}."))
 
     @staticmethod
-    def calculate_total_price_and_validate(user, wishlist_items):
+    def calculate_total_price_and_validate(user: User, wishlist_items: QuerySet[WishlistItem]) -> Decimal:
         """ Подсчет полной стоимости выбранных товаров с учетом их колличества """
         total_price = 0
 
@@ -112,10 +114,10 @@ class WishListView(ModelViewSet):
         return total_price
 
     @action(methods=['post'], detail=False, url_path='buy')
-    def payment_products(self, request, *args, **kwargs):
+    def payment_products(self, request, *args, **kwargs) -> Response:
         """ транзакция покупки товаров
         url: /wishlist/buy/
-        body: products (list, [])
+        body: products (list, [] - по id товара, а не по id в списке желаемого)
         """
         user = request.user
         products_ids = request.data.get('products', [])
@@ -169,13 +171,14 @@ class WishListView(ModelViewSet):
 
 
 class PayProductView(APIView):
-    """ Endpoint для покупик товара
+    """ Endpoint быстрой покупки 1 товара
     url: /products/<int:id>/buy/
+    body: coupon (int, Optional)
     """
     permission_classes = [IsAuthenticated]
     serializer_class = PrivateUserSerializer
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs) -> Response:
 
         id = self.kwargs.get('id')
         product = get_object_or_404(ProductVariant, id=id)
@@ -252,10 +255,12 @@ class DeliveryView(ModelViewSet):
         return Delivery.objects.filter(user=self.request.user).order_by('delivery_date').select_related('user')
 
     @action(detail=True, methods=['post'], url_path="take")
-    def update_delivery(self, request, *args, **kwargs):
-        """ POST-запрос, позволяющий выбирать, что делать с доставкой когда товар уже пришел, а так же когда он еще в пути
-        url post: /delivery/<int:id>/take/
-        body: option (1 or 2 int)
+    def update_delivery(self, request, *args, **kwargs) -> Response:
+        """
+        POST-запрос, позволяющий выбирать, что делать с доставкой,
+        когда товар уже пришел или еще в пути.
+        url: /delivery/<int:id>/take/
+        body: option (int, 1 -> (Принятие заказа) or 2 -> (Отказ))
         """
         delivery = self.get_object()
         user = request.user
@@ -289,7 +294,7 @@ class DeliveryView(ModelViewSet):
         return Response(message)
 
 
-def _apply_discount_to_order(user, total_price, coupon=None):
+def _apply_discount_to_order(user: User, total_price: Decimal, coupon: Optional[Coupon]=None) -> Decimal:
     """ Применяет скидку пользователя к общей стоимости заказа """
     discount = History.objects.calculate_discount(user)
 
@@ -302,6 +307,10 @@ def _apply_discount_to_order(user, total_price, coupon=None):
 
 """ TEST PAYMENT SYSTEM """
 class CreateTopUpPaymentView(APIView):
+    """ Платеж
+    url: /top-up/
+    body: amount (float)
+    """
     permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
@@ -338,6 +347,9 @@ class CreateTopUpPaymentView(APIView):
 
 
 def yookassa_webhook(request):
+    """ Вебхук
+    url: /yookassa-webhook/
+    """
     try:
         # Парсим уведомление от YooKassa
         notification = WebhookNotification(request.body.decode('utf-8'))

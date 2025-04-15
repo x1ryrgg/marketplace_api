@@ -24,18 +24,18 @@ from payment_system_api.models import *
 
 class CategoriesView(ModelViewSet):
     """ Endpoint для создания категорий продуктов, их просмотра, изменения и удаления
-    (доступно только администраторам, кроме SAFE_METHODS)
+    (доступно только superuser-ам, кроме SAFE_METHODS (get, options))
     url: /categories/
-    body if post: name (str), subcategory (str if need)
+    body if post: name (str)
     """
     permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
     serializer_class = CategorySerializer
-    http_method_names = ['get', 'post', 'patch', 'delete']
+    http_method_names = ['get', 'post', 'patch', 'delete', 'options']
 
     def get_queryset(self):
         return Category.objects.all()
 
-    def destroy(self, request, *args, **kwargs):
+    def destroy(self, request, *args, **kwargs) -> Response:
         category_id = self.kwargs.get('id')
         category = get_object_or_404(Category, id=category_id)
         self.perform_destroy(category)
@@ -43,14 +43,19 @@ class CategoriesView(ModelViewSet):
 
 
 class SubcategoriesView(ModelViewSet):
+    """ Endpoint для создания подкатегорий продуктов, их просмотра, изменения и удаления
+    (доступно только superuser-ам, кроме SAFE_METHODS (get, options))
+    url: /subcategories/
+    body if post: name (str), category (Category id)
+    """
     permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
     serializer_class = SubCategorySerializer
-    http_method_names = ['get', 'post', 'patch', 'delete']
+    http_method_names = ['get', 'post', 'patch', 'delete', 'options']
 
     def get_queryset(self):
         return SubCategory.objects.all()
 
-    def destroy(self, request, *args, **kwargs):
+    def destroy(self, request, *args, **kwargs) -> Response:
         category_id = self.kwargs.get('id')
         category = get_object_or_404(SubCategory, id=category_id)
         self.perform_destroy(category)
@@ -60,7 +65,8 @@ class SubcategoriesView(ModelViewSet):
 class ProductOfSellerView(ModelViewSet):
     """ Endpoint для просмотра, добавления, изменения и удаления продуктов (для продавцов)
     url: /seller-products/
-    body if post: name (str), price (float), quantity (int), category (str(name)), store (str(name)), description (str if need)
+    body if post: name (str), category (Subcategory id),
+                  price (Decimal), quantity (int), store (Store id), description (str - Optional)
     """
     permission_classes = [IsAuthenticated, IsSeller]
     serializer_class = ForPostProductVariantSerializer
@@ -69,12 +75,12 @@ class ProductOfSellerView(ModelViewSet):
     def get_queryset(self):
         return ProductVariant.objects.filter(product__store__author=self.request.user).select_related('product').prefetch_related('options')
 
-    def list(self, request, *args, **kwargs):
+    def list(self, request, *args, **kwargs) -> Response:
         queryset = self.get_queryset()
         serializer = ProductVariantSerializer(queryset, many=True)
         return Response(serializer.data)
 
-    def destroy(self, request, *args, **kwargs):
+    def destroy(self, request, *args, **kwargs) -> Response:
         product_id = self.kwargs.get('id')
         product = get_object_or_404(Product, id=product_id)
         self.perform_destroy(product)
@@ -83,7 +89,8 @@ class ProductOfSellerView(ModelViewSet):
 
 class ProductsView(ModelViewSet):
     """ Endpoint для просмотра всех продуктов.
-    url: /products/?category= (filter-icontains)
+    url: /products/?filter - возможность фильтровать продукты по стоимости (price__gt (больше), price__lt (меньше),
+                             по названию (product), по опциям (options (Например цвет или размер) и по категориям (category)
     """
     permission_classes = [IsAuthenticated]
     serializer_class = ProductVariantSerializer
@@ -95,7 +102,7 @@ class ProductsView(ModelViewSet):
     def get_queryset(self):
         return ProductVariant.objects.all().select_related('product', 'product__category').prefetch_related('options')
 
-    def retrieve(self, request, *args, **kwargs):
+    def retrieve(self, request, *args, **kwargs) -> Response:
         product = self.get_object()
         serializer = self.get_serializer(product)
 
@@ -109,7 +116,14 @@ class ProductsView(ModelViewSet):
         return Response(data)
 
     @action(methods=['post'], detail=True, url_path='post_review')
-    def write_review(self, request, *args, **kwargs):
+    def write_review(self, request, *args, **kwargs) -> Response:
+        """ Возможность оставить отзыв к товару (только те, кто его заказывал)
+        url: /products/<int:product_id>/post_review/
+        body:
+            - body (str - Optional)
+            - photo (url_path - Optional)
+            - stars (int, range(1, 6)
+        """
         product_id = self.kwargs.get('pk')
         product = get_object_or_404(ProductVariant, id=product_id)
         user = request.user
@@ -129,11 +143,17 @@ class ProductsView(ModelViewSet):
         return Response(_("Вы не можете оставлять отзыв под продуктами, которые не заказывали."))
 
     @action(methods=['put'], detail=True, url_path=r'put_review/(?P<review_id>\d+)') # сырые строки r'' - чтобы \ воспринимался как символ
-    def edit_review(self, request, *args, **kwargs):
+    def edit_review(self, request, *args, **kwargs) -> Response:
+        """ Изменение своего отзыва
+        url: /products/<int: product_id>/put_review/<int: review_id>/
+        """
         product_id = self.kwargs.get('pk')
         review_id = self.kwargs.get('review_id')
         product = get_object_or_404(ProductVariant, id=product_id)
         review = get_object_or_404(Review, id=review_id, product=product)
+
+        if review.created_at >= review.created_at + datetime.timedelta(days=3):
+            return Response(_("Изменить коментарий можно только в первые 3 дня после его публикации "))
 
         body = request.data.get('body', review.body)
         stars = request.data.get('stars', review.stars)
@@ -151,7 +171,10 @@ class ProductsView(ModelViewSet):
         return Response(_("В отзыве вы должны оставить комментарий или прикрепить фото. Также укажите количество звезд."))
 
     @action(methods=['delete'], detail=True, url_path=r'del_review/(?P<review_id>\d+)')
-    def delete_review(self, request, *args, **kwargs):
+    def delete_review(self, request, *args, **kwargs) -> Response:
+        """ Удаление своего отзыва
+        url: /products/<int: product_id>/del_review/<int: review_id>/
+        """
         product_id = self.kwargs.get('pk')
         review_id = self.kwargs.get('review_id')
         product = get_object_or_404(ProductVariant, id=product_id)

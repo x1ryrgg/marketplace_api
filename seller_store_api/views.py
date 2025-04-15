@@ -27,7 +27,7 @@ text = f"Должность продавца даёт вам возможнос�
 
 
 class SellerRegisterView(ModelViewSet):
-    """ Endpoint для определения пользователя продавцом."""
+    """ Endpoint для определения пользователя продавцом """
     permission_classes = [IsAuthenticated]
     serializer_class = UserSerializer
     http_method_names = ['get', 'put']
@@ -35,10 +35,9 @@ class SellerRegisterView(ModelViewSet):
     def get_queryset(self):
         return User.objects.filter(id=self.request.user.id)
 
-    def list(self, request, *args, **kwargs):
-        """
-        Проверка пользователя на наличие опций продавца.
-        url: /seller/register/ - get
+    def list(self, request, *args, **kwargs) -> Response:
+        """ Проверка пользователя на наличие опций продавца
+        url: /seller/register/
         """
         queryset = self.get_queryset()
         user = queryset.first()
@@ -49,11 +48,10 @@ class SellerRegisterView(ModelViewSet):
     def get_object(self):
         return self.get_queryset().get()
 
-    def update(self, request, *args, **kwargs):
-        """
-        Возможность стать продавцом на площадке
+    def update(self, request, *args, **kwargs) -> Response:
+        """ Возможность стать продавцом на площадке
         url: /seller/register/ - put
-        body: option (str(int))
+        body: option (str (int))
         """
         option = request.data.get("option")
         user = self.get_object()
@@ -73,7 +71,7 @@ class SellerRegisterView(ModelViewSet):
 
 
 class StoreView(ModelViewSet):
-    """ Endpoint для регистрации магазина и проверки ваших магазинов
+    """ Endpoint для регистрации магазина и просмотра ваших магазинов
     url: /store/
     """
     permission_classes = [IsAuthenticated, IsSeller]
@@ -83,10 +81,9 @@ class StoreView(ModelViewSet):
     def get_queryset(self):
         return Store.objects.filter(author=self.request.user)
 
-    def perform_create(self, serializer):
-        """
-        Регистрация магазина
-        body: name (str), description (str - optional), city (str), email (str - options)
+    def perform_create(self, serializer) -> Response:
+        """ Регистрация магазина
+        body: name (str), description (str - Optional), city (str), email (str - Optional)
         """
         count_stores = Store.objects.filter(author=self.request.user).count()
         if count_stores >= 3:
@@ -97,7 +94,7 @@ class StoreView(ModelViewSet):
 
 class StoresAllView(ModelViewSet):
     """ Endpoint показывающий все магазины, зарегестрированные на площадке.
-    url: /stores/ - get
+    url: /stores/
     """
     permission_classes = [IsAuthenticated]
     serializer_class = StoreSerializer
@@ -105,7 +102,7 @@ class StoresAllView(ModelViewSet):
     def get_queryset(self):
         return Store.objects.all()
 
-    def retrieve(self, request, *args, **kwargs):
+    def retrieve(self, request, *args, **kwargs) -> Response:
         store = self.get_object()
         products = ProductVariant.objects.filter(product__store=store)
         data = {
@@ -116,14 +113,14 @@ class StoresAllView(ModelViewSet):
 
 
 class WishListAddView(APIView):
-    """ Endpoint для добавления товаров с список желаемого
-    url: /products/<int:id>/add/
-    body: quantity (int) or 1
+    """ Endpoint для добавления товаров в список желаемого
+    url: /products/<int: product_id>/add/
+    body: quantity (int - Optional) or 1
     """
     permission_classes = [IsAuthenticated]
     serializer_class = SmallProductVariantSerializer
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs) -> Response:
         id = self.kwargs.get('id')
         quantity = request.data.get('quantity', 1)
 
