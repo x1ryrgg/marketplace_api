@@ -90,10 +90,7 @@ class WishListView(ModelViewSet):
 
         wishlist_item.save()
 
-        if symbol == '+':
-            return Response(_(f"Количество товара в корзине увеличилось на {quantity}."))
-        elif symbol == '-':
-            return Response(_(f"Количество товара в корзине уменьшилось на {quantity}."))
+        return Response(self.get_serializer(wishlist_item, many=False).data)
 
     @staticmethod
     def calculate_total_price_and_validate(user: User, wishlist_items: QuerySet[WishlistItem]) -> Decimal:

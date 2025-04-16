@@ -6,6 +6,7 @@ from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
+from django.core.cache import cache
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
@@ -100,10 +101,19 @@ class ProductsView(ModelViewSet):
     filterset_class = ProductVariantFilter
 
     def get_queryset(self):
-        return ProductVariant.objects.all().select_related('product', 'product__category').prefetch_related('options')
+        # cache_key = f"filtered_data_{self.request.user.username}"
+        # queryset = cache.get(cache_key)
+        # if not queryset:
+        #     queryset = ProductVariant.objects.all().select_related('product', 'product__category').prefetch_related('options').order_by("-views")
+        #     queryset = self.filter_queryset(queryset)
+        #     cache.set(cache_key, queryset, timeout=60)  # 60 сек
+        # return queryset
+        return ProductVariant.objects.all().select_related('product', 'product__category').prefetch_related('options').order_by("-views")
 
     def retrieve(self, request, *args, **kwargs) -> Response:
         product = self.get_object()
+        product.views += 1
+        product.save()
         serializer = self.get_serializer(product)
 
         comments = Review.objects.filter(product=product)
@@ -152,7 +162,7 @@ class ProductsView(ModelViewSet):
         product = get_object_or_404(ProductVariant, id=product_id)
         review = get_object_or_404(Review, id=review_id, product=product)
 
-        if review.created_at >= review.created_at + datetime.timedelta(days=3):
+        if datetime.date.today() > review.created_at + datetime.timedelta(days=3):
             return Response(_("Изменить коментарий можно только в первые 3 дня после его публикации "))
 
         body = request.data.get('body', review.body)

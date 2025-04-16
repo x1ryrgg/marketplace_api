@@ -61,6 +61,7 @@ class ProductVariant(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=True)
     quantity = models.PositiveIntegerField(null=False, blank=True)
     image = models.ImageField(upload_to='variant_images/', null=True, blank=True)
+    views = models.PositiveIntegerField(default=0)
     description = models.CharField(max_length=500, blank=True, default="Продавец не оставил описание о товаре.")
 
     def __str__(self):

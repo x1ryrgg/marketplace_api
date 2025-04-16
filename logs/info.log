@@ -81,3 +81,590 @@
 2025-04-15 13:51:41,921 INFO Request: GET /admin/jsi18n/ | User: root
 2025-04-15 13:56:33,470 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
 2025-04-15 13:56:35,296 INFO Watching for file changes with StatReloader
+2025-04-15 19:32:47,178 INFO Watching for file changes with StatReloader
+2025-04-15 19:36:23,184 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:36:25,116 INFO Watching for file changes with StatReloader
+2025-04-15 19:36:32,138 INFO Request: POST /api/token/ | User: 
+2025-04-15 19:36:41,512 INFO Request: GET /products/ | User: root
+2025-04-15 19:37:02,739 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:37:04,149 INFO Watching for file changes with StatReloader
+2025-04-15 19:37:08,686 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:37:10,072 INFO Watching for file changes with StatReloader
+2025-04-15 19:37:12,221 INFO Request: GET /products/ | User: root
+2025-04-15 19:37:31,781 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:37:33,081 INFO Watching for file changes with StatReloader
+2025-04-15 19:37:43,427 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:37:45,308 INFO Watching for file changes with StatReloader
+2025-04-15 19:37:54,524 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:37:55,961 INFO Watching for file changes with StatReloader
+2025-04-15 19:37:58,616 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:38:00,269 INFO Watching for file changes with StatReloader
+2025-04-15 19:38:24,456 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:38:25,985 INFO Watching for file changes with StatReloader
+2025-04-15 19:38:30,006 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:38:31,579 INFO Watching for file changes with StatReloader
+2025-04-15 19:38:37,084 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:38:38,319 INFO Watching for file changes with StatReloader
+2025-04-15 19:38:50,667 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:38:52,375 INFO Watching for file changes with StatReloader
+2025-04-15 19:38:54,991 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:38:57,031 INFO Watching for file changes with StatReloader
+2025-04-15 19:38:59,389 ERROR Internal Server Error: /products/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\product_control_api\views.py", line 105, in get_queryset
+    return ProductVariant.objects.filter(product__category__in=History.objects.filter(user=self.request.user))[:10]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1528, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1337, in check_related_objects
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Cannot use QuerySet for "History": Use a QuerySet for "SubCategory".
+2025-04-15 19:38:59,394 INFO Request: GET /products/ | User: root
+2025-04-15 19:48:34,450 INFO Watching for file changes with StatReloader
+2025-04-15 19:48:37,203 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:48:38,732 INFO Watching for file changes with StatReloader
+2025-04-15 19:48:41,350 INFO Request: GET /products/ | User: root
+2025-04-15 19:48:45,267 INFO Request: GET /products/2/ | User: root
+2025-04-15 19:48:50,247 INFO Request: GET /products/2/ | User: root
+2025-04-15 19:48:55,037 INFO Request: GET /products/ | User: root
+2025-04-15 19:49:00,792 INFO Request: GET /products/3/ | User: root
+2025-04-15 19:49:06,964 INFO Request: GET /products/ | User: root
+2025-04-15 19:49:11,999 INFO Request: GET /products/ | User: root
+2025-04-15 19:49:28,291 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:49:29,485 INFO Watching for file changes with StatReloader
+2025-04-15 19:49:46,828 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:49:48,472 INFO Watching for file changes with StatReloader
+2025-04-15 19:50:02,033 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:50:03,613 INFO Watching for file changes with StatReloader
+2025-04-15 19:50:41,199 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:50:42,650 INFO Watching for file changes with StatReloader
+2025-04-15 19:50:51,484 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:50:52,673 INFO Watching for file changes with StatReloader
+2025-04-15 19:51:09,359 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:51:10,712 INFO Watching for file changes with StatReloader
+2025-04-15 19:51:15,998 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:51:17,226 INFO Watching for file changes with StatReloader
+2025-04-15 19:51:30,018 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:51:31,622 INFO Watching for file changes with StatReloader
+2025-04-15 19:52:02,757 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:52:04,484 INFO Watching for file changes with StatReloader
+2025-04-15 19:52:12,345 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:52:14,018 INFO Watching for file changes with StatReloader
+2025-04-15 19:52:16,799 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:52:18,341 INFO Watching for file changes with StatReloader
+2025-04-15 19:52:22,224 ERROR Internal Server Error: /products/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1886, in transform
+    return self.try_transform(wrapped, name)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1423, in try_transform
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Unsupported lookup 'category' for BigAutoField or join on the field not permitted.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\product_control_api\views.py", line 104, in get_queryset
+    ordered_categories = History.objects.filter(user=user).values_list('product__category', flat=True).distinct()
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1392, in values_list
+    clone = self._values(*_fields, **expressions)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1355, in _values
+    clone.query.set_values(fields)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 2500, in set_values
+    self.add_fields(field_names, True)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 2204, in add_fields
+    cols.append(join_info.transform_function(target, final_alias))
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1890, in transform
+    raise last_field_exception
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1863, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+                                       ~~~~~~~~~~~~~~~~~~^
+        names[:pivot],
+        ^^^^^^^^^^^^^^
+    ...<2 lines>...
+        fail_on_missing=True,
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1768, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'category' into field. Choices are: comments, delivery, description, history, id, image, options, price, product, product_id, quantity, user, views, wishlistitem
+2025-04-15 19:52:22,233 INFO Request: GET /products/ | User: root
+2025-04-15 19:55:51,485 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:55:53,259 INFO Watching for file changes with StatReloader
+2025-04-15 19:55:55,498 INFO Request: GET /products/ | User: root
+2025-04-15 19:56:30,212 INFO Request: GET /admin/ | User: root
+2025-04-15 19:56:42,662 INFO Request: GET /products/5/ | User: root
+2025-04-15 19:56:42,662 WARNING Not Found: /products/5/
+2025-04-15 19:56:45,215 INFO Request: GET /products/ | User: root
+2025-04-15 19:57:08,070 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:57:09,694 INFO Watching for file changes with StatReloader
+2025-04-15 19:57:12,472 INFO Request: GET /products/ | User: root
+2025-04-15 19:57:42,541 INFO Request: GET /products/ | User: root
+2025-04-15 19:58:32,472 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:58:34,305 INFO Watching for file changes with StatReloader
+2025-04-15 19:58:36,902 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:58:38,307 INFO Watching for file changes with StatReloader
+2025-04-15 19:58:40,965 INFO Request: GET /products/ | User: root
+2025-04-15 19:59:14,678 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:59:16,277 INFO Watching for file changes with StatReloader
+2025-04-15 19:59:18,360 INFO Request: GET /products/ | User: root
+2025-04-15 19:59:35,602 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 19:59:37,064 INFO Watching for file changes with StatReloader
+2025-04-15 19:59:39,500 INFO Request: GET /products/ | User: root
+2025-04-15 20:01:16,734 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:01:18,430 INFO Watching for file changes with StatReloader
+2025-04-15 20:01:20,456 INFO Request: GET /products/ | User: root
+2025-04-15 20:01:30,122 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:01:31,913 INFO Watching for file changes with StatReloader
+2025-04-15 20:01:34,057 INFO Request: GET /products/ | User: root
+2025-04-15 20:01:45,852 INFO Request: GET /admin/product_control_api/productvariant/add/ | User: root
+2025-04-15 20:01:46,046 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:01:49,029 INFO Request: GET /admin/product_control_api/product/add/ | User: root
+2025-04-15 20:01:49,155 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:02:13,068 INFO Request: POST /admin/product_control_api/product/add/ | User: root
+2025-04-15 20:02:13,404 INFO Request: GET /admin/product_control_api/product/ | User: root
+2025-04-15 20:02:13,557 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:02:18,380 INFO Request: GET /admin/product_control_api/productvariant/add/ | User: root
+2025-04-15 20:02:18,487 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:02:38,537 INFO Request: POST /admin/product_control_api/productvariant/add/ | User: root
+2025-04-15 20:02:38,804 INFO Request: GET /admin/product_control_api/productvariant/ | User: root
+2025-04-15 20:02:38,917 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:02:40,597 INFO Request: GET /admin/product_control_api/productvariant/add/ | User: root
+2025-04-15 20:02:40,708 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:02:52,612 INFO Request: POST /admin/product_control_api/productvariant/add/ | User: root
+2025-04-15 20:02:52,887 INFO Request: GET /admin/product_control_api/productvariant/ | User: root
+2025-04-15 20:02:53,057 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:03:00,076 INFO Request: GET /products/ | User: root
+2025-04-15 20:03:53,023 INFO Request: GET /products/7/ | User: root
+2025-04-15 20:03:53,951 INFO Request: GET /products/7/ | User: root
+2025-04-15 20:03:54,756 INFO Request: GET /products/7/ | User: root
+2025-04-15 20:03:55,555 INFO Request: GET /products/7/ | User: root
+2025-04-15 20:03:56,623 INFO Request: GET /products/7/ | User: root
+2025-04-15 20:04:09,956 INFO Request: GET /products/ | User: root
+2025-04-15 20:04:46,263 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:04:47,795 INFO Watching for file changes with StatReloader
+2025-04-15 20:04:49,504 INFO Request: GET /products/ | User: root
+2025-04-15 20:05:08,497 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:05:09,991 INFO Watching for file changes with StatReloader
+2025-04-15 20:05:15,983 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:05:17,194 INFO Watching for file changes with StatReloader
+2025-04-15 20:05:31,285 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:05:32,733 INFO Watching for file changes with StatReloader
+2025-04-15 20:05:38,811 INFO Request: GET /admin/product_control_api/subcategory/add/ | User: root
+2025-04-15 20:05:38,947 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:05:45,717 INFO Request: POST /admin/product_control_api/subcategory/add/ | User: root
+2025-04-15 20:05:45,908 INFO Request: GET /admin/product_control_api/subcategory/ | User: root
+2025-04-15 20:05:46,044 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:05:47,584 INFO Request: GET /admin/product_control_api/product/add/ | User: root
+2025-04-15 20:05:47,710 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:06:14,173 INFO Request: POST /admin/product_control_api/product/add/ | User: root
+2025-04-15 20:06:14,366 INFO Request: GET /admin/product_control_api/product/ | User: root
+2025-04-15 20:06:14,485 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:06:15,765 INFO Request: GET /admin/product_control_api/productvariant/add/ | User: root
+2025-04-15 20:06:15,870 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:06:19,119 INFO Request: GET /admin/product_control_api/varianttype/add/ | User: root
+2025-04-15 20:06:19,260 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:06:32,482 INFO Request: POST /admin/product_control_api/varianttype/add/ | User: root
+2025-04-15 20:06:32,676 INFO Request: GET /admin/product_control_api/varianttype/ | User: root
+2025-04-15 20:06:32,851 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:06:33,887 INFO Request: GET /admin/product_control_api/variantoption/add/ | User: root
+2025-04-15 20:06:34,016 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:06:45,465 INFO Request: POST /admin/product_control_api/variantoption/add/ | User: root
+2025-04-15 20:06:45,656 INFO Request: GET /admin/product_control_api/variantoption/ | User: root
+2025-04-15 20:06:45,767 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:06:47,390 INFO Request: GET /admin/product_control_api/variantoption/add/ | User: root
+2025-04-15 20:06:47,522 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:06:59,838 INFO Request: POST /admin/product_control_api/variantoption/add/ | User: root
+2025-04-15 20:07:00,038 INFO Request: GET /admin/product_control_api/variantoption/ | User: root
+2025-04-15 20:07:00,160 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:07:01,400 INFO Request: GET /admin/product_control_api/variantoption/add/ | User: root
+2025-04-15 20:07:01,506 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:07:11,232 INFO Request: POST /admin/product_control_api/variantoption/add/ | User: root
+2025-04-15 20:07:11,399 INFO Request: GET /admin/product_control_api/variantoption/ | User: root
+2025-04-15 20:07:11,582 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:07:12,290 INFO Request: GET /admin/product_control_api/productvariant/add/ | User: root
+2025-04-15 20:07:12,426 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:07:24,640 INFO Request: POST /admin/product_control_api/productvariant/add/ | User: root
+2025-04-15 20:07:24,877 INFO Request: GET /admin/product_control_api/productvariant/ | User: root
+2025-04-15 20:07:24,984 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:07:26,418 INFO Request: GET /admin/product_control_api/productvariant/add/ | User: root
+2025-04-15 20:07:26,597 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:07:37,953 INFO Request: POST /admin/product_control_api/productvariant/add/ | User: root
+2025-04-15 20:07:38,264 INFO Request: GET /admin/product_control_api/productvariant/ | User: root
+2025-04-15 20:07:38,439 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:08:14,120 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:08:16,317 INFO Watching for file changes with StatReloader
+2025-04-15 20:08:17,836 INFO Request: GET /products/ | User: root
+2025-04-15 20:08:33,865 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:08:35,697 INFO Watching for file changes with StatReloader
+2025-04-15 20:08:37,274 INFO Request: GET /products/ | User: root
+2025-04-15 20:08:50,337 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:08:52,132 INFO Watching for file changes with StatReloader
+2025-04-15 20:08:55,015 INFO Request: POST /api/token/ | User: 
+2025-04-15 20:09:03,340 INFO Request: GET /products/ | User: root
+2025-04-15 20:09:09,542 INFO Request: GET /products/ | User: root
+2025-04-15 20:09:41,088 INFO Request: GET /admin/payment_system_api/history/add/ | User: root
+2025-04-15 20:09:41,221 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-15 20:10:05,793 INFO Request: GET /products/7/ | User: root
+2025-04-15 20:10:05,793 WARNING Not Found: /products/7/
+2025-04-15 20:10:09,594 INFO Request: GET /products/ | User: root
+2025-04-15 20:10:12,338 INFO Request: GET /products/7/ | User: root
+2025-04-15 20:10:12,338 WARNING Not Found: /products/7/
+2025-04-15 20:10:15,873 INFO Request: GET /products/ | User: root
+2025-04-15 20:10:18,143 INFO Request: GET /products/1/ | User: root
+2025-04-15 20:10:18,144 WARNING Not Found: /products/1/
+2025-04-15 20:10:19,798 INFO Request: GET /products/ | User: root
+2025-04-15 20:10:24,170 INFO Request: GET /products/2/ | User: root
+2025-04-15 20:10:24,171 WARNING Not Found: /products/2/
+2025-04-15 20:10:36,598 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:10:37,828 INFO Watching for file changes with StatReloader
+2025-04-15 20:10:45,047 INFO Request: GET /products/2/ | User: root
+2025-04-15 20:10:45,047 WARNING Not Found: /products/2/
+2025-04-15 20:10:57,540 INFO Request: GET /products/2/ | User: root
+2025-04-15 20:10:57,541 WARNING Not Found: /products/2/
+2025-04-15 20:11:14,600 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:11:16,021 INFO Watching for file changes with StatReloader
+2025-04-15 20:11:58,271 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:11:59,888 INFO Watching for file changes with StatReloader
+2025-04-15 20:12:01,902 INFO Request: GET /products/2/ | User: root
+2025-04-15 20:12:06,513 INFO Request: GET /products/ | User: root
+2025-04-15 20:12:21,487 INFO Request: GET /products/2/ | User: root
+2025-04-15 20:12:41,111 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:12:42,841 INFO Watching for file changes with StatReloader
+2025-04-15 20:13:24,660 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:13:26,286 INFO Watching for file changes with StatReloader
+2025-04-15 20:13:28,605 INFO Request: GET /products/2/ | User: root
+2025-04-15 20:14:08,905 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:14:10,500 INFO Watching for file changes with StatReloader
+2025-04-15 20:14:28,040 INFO Request: GET /products/2/ | User: root
+2025-04-15 20:14:29,934 INFO Request: GET /products/ | User: root
+2025-04-15 20:14:47,497 INFO Request: GET /products/4/ | User: root
+2025-04-15 20:14:53,404 INFO Request: GET / | User: 
+2025-04-15 20:14:53,405 WARNING Not Found: /
+2025-04-15 20:14:57,272 INFO Request: GET /products/ | User: root
+2025-04-15 20:16:29,878 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:16:31,509 INFO Watching for file changes with StatReloader
+2025-04-15 20:16:52,668 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:16:54,218 INFO Watching for file changes with StatReloader
+2025-04-15 20:16:56,124 ERROR Internal Server Error: /products/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1886, in transform
+    return self.try_transform(wrapped, name)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1423, in try_transform
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Unsupported lookup 'subcategory' for BigAutoField or join on the field not permitted.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\product_control_api\views.py", line 105, in get_queryset
+    ordered_categories = History.objects.filter(user=user).values_list(
+        'product__subcategory__category', flat=True
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1392, in values_list
+    clone = self._values(*_fields, **expressions)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1355, in _values
+    clone.query.set_values(fields)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 2500, in set_values
+    self.add_fields(field_names, True)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 2204, in add_fields
+    cols.append(join_info.transform_function(target, final_alias))
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1890, in transform
+    raise last_field_exception
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1885, in transform
+    wrapped = previous(field, alias)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1890, in transform
+    raise last_field_exception
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1863, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+                                       ~~~~~~~~~~~~~~~~~~^
+        names[:pivot],
+        ^^^^^^^^^^^^^^
+    ...<2 lines>...
+        fail_on_missing=True,
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1768, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'subcategory' into field. Choices are: comments, delivery, description, history, id, image, options, price, product, product_id, quantity, user, views, wishlistitem
+2025-04-15 20:16:56,132 INFO Request: GET /products/ | User: root
+2025-04-15 20:17:11,427 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:17:12,920 INFO Watching for file changes with StatReloader
+2025-04-15 20:17:15,219 ERROR Internal Server Error: /products/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\product_control_api\views.py", line 113, in get_queryset
+    return ProductVariant.objects.filter(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        product__subcategory__category__in=ordered_categories
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).exclude(
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1555, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1372, in build_lookup
+    lhs = self.try_transform(lhs, name)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1423, in try_transform
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Unsupported lookup 'subcategory' for ForeignKey or join on the field not permitted.
+2025-04-15 20:17:15,233 INFO Request: GET /products/ | User: root
+2025-04-15 20:17:31,275 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:17:32,931 INFO Watching for file changes with StatReloader
+2025-04-15 20:17:35,043 INFO Request: GET /products/ | User: root
+2025-04-15 20:18:08,065 INFO Request: GET /products/8/ | User: root
+2025-04-15 20:18:08,065 WARNING Not Found: /products/8/
+2025-04-15 20:18:10,368 INFO Request: GET /products/ | User: root
+2025-04-15 20:19:02,829 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 20:19:04,491 INFO Watching for file changes with StatReloader
+2025-04-15 20:19:06,527 INFO Request: GET /products/ | User: root
+2025-04-15 23:16:42,767 INFO Watching for file changes with StatReloader
+2025-04-15 23:16:49,723 INFO Request: POST /api/token/ | User: 
+2025-04-15 23:17:03,552 INFO Request: GET /products/ | User: root
+2025-04-15 23:17:41,033 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 23:17:42,390 INFO Watching for file changes with StatReloader
+2025-04-15 23:17:50,572 INFO Request: GET /products/ | User: root
+2025-04-15 23:17:57,729 INFO Request: GET /products/ | User: root
+2025-04-15 23:17:59,274 INFO Request: GET /products/ | User: root
+2025-04-15 23:18:08,461 INFO Request: GET /products/ | User: root
+2025-04-15 23:18:21,141 INFO Request: GET /products/ | User: root
+2025-04-15 23:18:31,138 INFO Request: GET /products/ | User: root
+2025-04-15 23:18:51,812 INFO Request: GET /products/ | User: root
+2025-04-15 23:19:02,020 INFO Request: GET /products/ | User: root
+2025-04-15 23:19:04,458 INFO Request: GET /products/ | User: root
+2025-04-15 23:19:30,884 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 23:19:32,327 INFO Watching for file changes with StatReloader
+2025-04-15 23:20:04,589 INFO Request: GET /products/ | User: root
+2025-04-15 23:20:22,046 INFO Request: GET /products/ | User: root
+2025-04-15 23:20:24,497 INFO Request: GET /products/ | User: root
+2025-04-15 23:20:26,104 INFO Request: GET /products/ | User: root
+2025-04-15 23:20:29,226 INFO Request: GET /products/ | User: root
+2025-04-15 23:20:50,713 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-04-15 23:20:52,140 INFO Watching for file changes with StatReloader
+2025-04-15 23:20:56,517 INFO Request: GET /products/ | User: root
+2025-04-16 09:46:30,582 INFO Watching for file changes with StatReloader
+2025-04-16 09:46:36,249 INFO Request: POST /api/token/ | User: 
+2025-04-16 09:46:46,656 INFO Request: GET /products/ | User: root
+2025-04-16 09:47:27,463 INFO Request: GET /products/8/ | User: root
+2025-04-16 09:47:33,366 INFO Request: POST /products/8/add/ | User: root
+2025-04-16 09:47:52,648 INFO Request: POST /products/6/add/ | User: root
+2025-04-16 09:48:10,034 INFO Request: POST /products/5/add/ | User: root
+2025-04-16 09:48:19,950 INFO Request: POST /products/1/ | User: root
+2025-04-16 09:48:19,950 WARNING Method Not Allowed: /products/1/
+2025-04-16 09:48:22,168 INFO Request: POST /products/2/ | User: root
+2025-04-16 09:48:22,168 WARNING Method Not Allowed: /products/2/
+2025-04-16 09:48:26,306 INFO Request: POST /products/1/add/ | User: root
+2025-04-16 09:48:26,306 WARNING Not Found: /products/1/add/
+2025-04-16 09:48:30,804 INFO Request: POST /products/2/add/ | User: root
+2025-04-16 09:48:44,148 INFO Request: GET /wishlist/ | User: root
+2025-04-16 09:48:51,709 INFO Request: GET /wishlist/6/ | User: root
+2025-04-16 09:49:50,869 INFO Request: PATCH /wishlist/6/ | User: root
+2025-04-16 09:51:02,005 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-16 09:51:03,686 INFO Watching for file changes with StatReloader
+2025-04-16 09:51:08,065 INFO Request: PATCH /wishlist/6/ | User: root
+2025-04-16 09:51:12,208 INFO Request: PATCH /wishlist/6/ | User: root
+2025-04-16 09:51:21,536 INFO Request: PATCH /wishlist/6/ | User: root
+2025-04-16 09:51:32,413 INFO Request: PATCH /wishlist/6/ | User: root
+2025-04-16 09:51:41,012 INFO Request: PATCH /wishlist/6/ | User: root
+2025-04-16 09:51:47,188 INFO Request: PATCH /wishlist/6/ | User: root
+2025-04-16 09:51:50,954 INFO Request: GET /wishlist/ | User: root
+2025-04-16 09:54:07,143 INFO Request: GET /wishlist/ | User: root
+2025-04-16 11:10:58,582 INFO Watching for file changes with StatReloader
+2025-04-16 11:14:50,410 INFO Request: POST /products/1/add/ | User: testuser
+2025-04-16 11:16:06,931 INFO Request: POST /products/1/add/ | User: testuser
+2025-04-16 11:40:36,430 INFO Request: POST /products/1/add/ | User: testuser
+2025-04-16 11:46:01,941 INFO Request: POST /products/1/add/ | User: testuser
+2025-04-16 11:46:39,908 INFO Request: POST /products/1/add/ | User: testuser
+2025-04-16 11:48:48,308 INFO Request: POST /products/1/add/ | User: testuser
+2025-04-16 11:49:08,948 INFO Request: POST /products/1/add/ | User: testuser
+2025-04-16 11:49:24,699 INFO Request: POST /products/1/add/ | User: testuser
+2025-04-16 11:50:49,131 INFO Request: POST /products/1/add/ | User: testuser
+2025-04-16 11:51:08,653 INFO Request: POST /products/1/add/ | User: testuser
+2025-04-16 11:51:21,126 INFO Request: POST /products/1/add/ | User: testuser
+2025-04-16 11:51:37,635 INFO Request: POST /products/1/add/ | User: testuser
+2025-04-16 11:53:20,548 INFO Request: POST /products/1/add/ | User: testuser
+2025-04-16 13:18:35,331 INFO Request: POST /products/1/add/ | User: testuser
+2025-04-16 13:18:56,950 INFO Request: POST /products/1/add/ | User: testuser
+2025-04-16 13:30:18,685 INFO Request: POST /products/1/buy/ | User: testuser
+2025-04-16 13:30:40,186 INFO Request: POST /products/1/buy/ | User: testuser
+2025-04-16 13:31:47,673 INFO Request: POST /products/1/buy/ | User: testuser
+2025-04-16 13:32:36,642 INFO Request: POST /products/1/buy/ | User: testuser
+2025-04-16 13:34:21,503 INFO Request: POST /products/1/buy/ | User: testuser
+2025-04-16 13:35:11,071 INFO Request: POST /products/1/buy/ | User: testuser
+2025-04-16 13:35:32,379 INFO Request: POST /products/1/buy/ | User: testuser
+2025-04-16 13:35:46,910 INFO Request: POST /products/1/buy/ | User: testuser
+2025-04-16 13:36:09,564 INFO Request: POST /products/1/buy/ | User: testuser
+2025-04-16 13:39:08,942 INFO Request: POST /products/1/buy/ | User: testuser
+2025-04-16 13:39:16,979 INFO Request: POST /products/1/buy/ | User: testuser
+2025-04-16 13:39:33,270 INFO Request: POST /products/1/buy/ | User: testuser
+2025-04-16 17:49:27,054 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-04-16 17:49:27,055 WARNING Bad Request: /wishlist/buy/
+2025-04-16 17:49:52,790 INFO Watching for file changes with StatReloader
+2025-04-16 17:49:59,387 INFO Request: POST /api/token/ | User: 
+2025-04-16 17:50:13,507 INFO Request: POST /wishlist/buy/ | User: root
+2025-04-16 17:50:13,507 WARNING Bad Request: /wishlist/buy/
+2025-04-16 17:51:14,372 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-04-16 17:51:58,659 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-04-16 17:55:32,794 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-04-16 17:55:50,110 INFO Request: POST /products/1/buy/ | User: testuser
+2025-04-16 17:55:50,143 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-04-16 17:55:57,313 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-04-16 17:56:41,435 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-04-16 17:56:49,617 INFO Request: POST /products/1/buy/ | User: testuser
+2025-04-16 17:56:49,651 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-04-16 17:57:01,654 INFO Request: POST /wishlist/buy/ | User: testuser

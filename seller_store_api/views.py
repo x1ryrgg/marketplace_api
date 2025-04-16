@@ -135,9 +135,9 @@ class WishListAddView(APIView):
 
         product_data = self.serializer_class(product).data
         total_quantity = WishlistItem.objects.filter(user=user).aggregate(Sum('quantity'))['quantity__sum']
-        return Response({'сообщение': _(f"Продукт {product_data.get('name')} добавлен в корзину. "),
-                         "добавлено": _(f"Было добавлено товаров: {quantity} "),
-                         "список желаемого": _(f" Количество товаров в списке желаемого: {total_quantity}")
+        return Response({'сообщение': _(f"Продукт {product_data.get('name')} добавлен в корзину."),
+                         "добавлено": _(f"Было добавлено товаров: {quantity}"),
+                         "список желаемого": _(f"Количество товаров в списке желаемого: {total_quantity}")
                          })
 
 
