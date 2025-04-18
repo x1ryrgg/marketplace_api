@@ -49,3 +49,20 @@ class Delivery(models.Model):
 
     def __str__(self):
         return "User %s | Name %s | Delivery_date %s" % (self.user.username, self.product.product.name, self.delivery_date)
+
+
+class Payment(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('succeeded', 'Succeeded'),
+        ('canceled', 'Canceled'),
+    ]
+
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    currency = models.CharField(max_length=3, default='RUB')
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
+    payment_id = models.CharField(max_length=255, unique=True, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Payment {self.payment_id} - {self.status}"

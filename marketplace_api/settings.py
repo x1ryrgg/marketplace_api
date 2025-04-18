@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'b7gqlp-176-214-50-117.ru.tuna.am']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '5b7wc3-176-214-50-117.ru.tuna.am']
 INTERNAL_IPS = ['localhost', "127.0.0.1"]
 # Application definition
 
@@ -262,5 +262,8 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
 """ YOOKASSA """
-YOOKASSA_SHOP_ID = os.getenv('YOOKASSA_SHOP_ID')
-YOOKASSA_SECRET_KEY = os.getenv('YOOKASSA_SECRET_KEY')
+# YOOKASSA_SHOP_ID = os.getenv('YOOKASSA_SHOP_ID')
+# YOOKASSA_SECRET_KEY = os.getenv('YOOKASSA_SECRET_KEY')
+YOOKASSA_SHOP_ID='1073864'
+YOOKASSA_SECRET_KEY='test_3cl2rn0am67Xu8u_Q2oxwqily0tBfyrCH0CsLE6cR-o'
+YOOKASSA_API_URL = 'https://api.yookassa.ru/v3/payments'

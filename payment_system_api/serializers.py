@@ -50,3 +50,10 @@ class DeliverySerializer(serializers.ModelSerializer):
     class Meta:
         model = Delivery
         fields = ("id", 'product', 'status', 'created_at', 'delivery_date', 'user_price', 'quantity')
+
+
+class PaymentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Payment
+        fields = ['id', 'amount', 'currency', 'status', 'payment_id', 'created_at']
+        read_only_fields = ['status', 'payment_id', 'created_at']

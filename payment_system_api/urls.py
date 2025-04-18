@@ -17,6 +17,8 @@ urlpatterns = [
     path('delivery/', include(delivery_router.urls)),
     path('products/<int:id>/buy/', PayProductView.as_view(), name='buy_product'),
 
-    path('top-up/', CreateTopUpPaymentView.as_view(), name='create_top_up_payment'),
-    path('yookassa-webhook/', yookassa_webhook, name='yookassa_webhook'),
+    # path('top-up/', CreateTopUpPaymentView.as_view(), name='create_top_up_payment'),
+    # path('yookassa-webhook/', yookassa_webhook, name='yookassa_webhook'),
+    path('create-payment/', CreatePaymentView.as_view(), name='create_payment'),
+    path('check-payment/<str:payment_id>/', CheckPaymentStatusView.as_view(), name='check_payment_status'),
 ]

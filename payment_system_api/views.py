@@ -1,4 +1,7 @@
 import logging
+import uuid
+
+import requests
 from typing import Optional
 
 from django.db import transaction
@@ -8,6 +11,7 @@ from decimal import Decimal
 from django.http import HttpResponse, JsonResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError
 from rest_framework.generics import ListAPIView
@@ -24,7 +28,7 @@ from usercontrol_api.models import User
 from seller_store_api.models import Product
 from .tasks import *
 from usercontrol_api.serializers import PrivateUserSerializer
-from yookassa import Configuration, Payment
+
 from django.conf import settings
 
 
@@ -304,81 +308,72 @@ def _apply_discount_to_order(user: User, total_price: Decimal, coupon: Optional[
 
 
 """ TEST PAYMENT SYSTEM """
-class CreateTopUpPaymentView(APIView):
-    """ Платеж
-    url: /top-up/
-    body: amount (float)
-    """
-    permission_classes = [IsAuthenticated]
+class CreatePaymentView(APIView):
+    def post(self, request):
+        serializer = PaymentSerializer(data=request.data)
+        if serializer.is_valid():
+            amount = serializer.validated_data['amount']
+            currency = serializer.validated_data.get('currency', 'RUB')
 
-    def post(self, request, *args, **kwargs):
-        # Получаем сумму пополнения из запроса
-        try:
-            amount = Decimal(request.data.get('amount'))
-        except (TypeError, ValueError):
-            return Response({"error": "Укажите корректную сумму."}, status=400)
-
-        if amount <= 0:
-            return Response({"error": "Сумма должна быть больше нуля."}, status=400)
-
-        # Конфигурация YooKassa
-        Configuration.account_id = settings.YOOKASSA_SHOP_ID
-        Configuration.secret_key = settings.YOOKASSA_SECRET_KEY
-
-        # Создаем платеж
-        payment = Payment.create({
-            "amount": {
-                "value": f"{amount:.2f}",  # Округляем до 2 знаков после запятой
-                "currency": "RUB"
-            },
-            "confirmation": {
-                "type": "redirect",
-                "return_url": "https://your-site.com/payment-success"  # Страница успешной оплаты
-            },
-            "description": f"Пополнение баланса пользователя {request.user.username}",
-            "metadata": {
-                "user_id": request.user.id  # Передаем ID пользователя для идентификации
+            # Создаем запрос к API ЮKassa
+            headers = {
+                'Content-Type': 'application/json',
+                'Idempotence-Key': str(uuid.uuid4()),  # Уникальный ключ для идемпотентности
             }
-        })
+            auth = (settings.YOOKASSA_SHOP_ID, settings.YOOKASSA_SECRET_KEY)
+            payload = {
+                "amount": {
+                    "value": f"{amount:.2f}",
+                    "currency": currency,
+                },
+                "confirmation": {
+                    "type": "redirect",
+                    "return_url": "http://your-site.com/payment-success/",  # URL для редиректа после оплаты
+                },
+                "capture": True,
+                "description": "Оплата заказа",
+            }
 
-        # Возвращаем данные о платеже
-        return Response({
-            "payment_id": payment.id,
-            "confirmation_url": payment.confirmation.confirmation_url
-        })
+            response = requests.post(settings.YOOKASSA_API_URL, json=payload, headers=headers, auth=auth)
+
+            if response.status_code == 200:
+                payment_data = response.json()
+                payment = Payment.objects.create(
+                    amount=amount,
+                    currency=currency,
+                    status=payment_data['status'],
+                    payment_id=payment_data['id'],
+                )
+                user = self.request.user
+                user.balance += amount
+                user.save()
+                return Response({
+                    'confirmation_url': payment_data['confirmation']['confirmation_url'],
+                    'payment_id': payment.id,
+                }, status=status.HTTP_201_CREATED)
+            else:
+                return Response({'error': 'Ошибка при создании платежа'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-logger = logging.getLogger(__name__)
+class CheckPaymentStatusView(APIView):
+    def get(self, request, payment_id):
+        try:
+            payment = Payment.objects.get(payment_id=payment_id)
+        except Payment.DoesNotExist:
+            return Response({'error': 'Платеж не найден'}, status=status.HTTP_404_NOT_FOUND)
 
-def yookassa_webhook(request): #
-    if request.method != 'POST':
-        return HttpResponseNotAllowed(['POST'])
+        # Запрос к API ЮKassa для получения статуса
+        headers = {
+            'Content-Type': 'application/json',
+        }
+        auth = (settings.YOOKASSA_SHOP_ID, settings.YOOKASSA_SECRET_KEY)
+        response = requests.get(f"{settings.YOOKASSA_API_URL}/{payment_id}", headers=headers, auth=auth)
 
-    try:
-        logger.info(f"Received webhook request: {request.body.decode('utf-8')}")
-
-        notification = WebhookNotification(request.body.decode('utf-8'))
-
-        if notification.event == 'payment.succeeded':
-            payment_id = notification.object.id
-            payment_status = notification.object.status
-
-            user_id = notification.object.metadata.get('user_id')
-            amount = Decimal(notification.object.amount.value).quantize(Decimal('0.01'))  # Преобразуем в Decimal
-
-            if user_id and amount > 0:
-                try:
-                    user = User.objects.get(id=user_id)
-                    user.balance += amount
-                    user.save()
-
-                    logger.info(f"Payment {payment_id} succeeded. Balance updated for user {user_id}.")
-                except User.DoesNotExist:
-                    logger.error(f"User with ID {user_id} not found.")
-                    return JsonResponse(status=200)  # Всегда возвращаем 200
-
-        return Response(status=200)  # Всегда возвращаем 200
-
-    except Exception as e:
-        logger.error(f"Error processing webhook: {e}")
-        return Response(status=200)
+        if response.status_code == 200:
+            payment_data = response.json()
+            payment.status = payment_data['status']
+            payment.save()
+            return Response({'status': payment.status}, status=status.HTTP_200_OK)
+        else:
+            return Response({'error': 'Ошибка при проверке статуса платежа'}, status=status.HTTP_400_BAD_REQUEST)
