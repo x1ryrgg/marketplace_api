@@ -1,3 +1,4 @@
+from datetime import date, timedelta
 from django.db import transaction
 from django.db.models import Count, Sum
 from django.shortcuts import get_object_or_404
@@ -95,7 +96,7 @@ class ProductsView(ModelViewSet):
     """
     permission_classes = [IsAuthenticated]
     serializer_class = ProductVariantSerializer
-    http_method_names = ['get', 'post', 'put', 'delete', 'options']
+    http_method_names = ['get', 'post', 'patch', 'delete', 'options']
 
     filter_backends = [DjangoFilterBackend]
     filterset_class = ProductVariantFilter
@@ -152,7 +153,7 @@ class ProductsView(ModelViewSet):
             return Response(_("В отзыве вы должны оставить коментарий или прикрепить фото. Также укажите количество звезд."))
         return Response(_("Вы не можете оставлять отзыв под продуктами, которые не заказывали."))
 
-    @action(methods=['put'], detail=True, url_path=r'put_review/(?P<review_id>\d+)') # сырые строки r'' - чтобы \ воспринимался как символ
+    @action(methods=['patch'], detail=True, url_path=r'patch_review/(?P<review_id>\d+)') # сырые строки r'' - чтобы \ воспринимался как символ
     def edit_review(self, request, *args, **kwargs) -> Response:
         """ Изменение своего отзыва
         url: /products/<int: product_id>/put_review/<int: review_id>/
@@ -162,7 +163,7 @@ class ProductsView(ModelViewSet):
         product = get_object_or_404(ProductVariant, id=product_id)
         review = get_object_or_404(Review, id=review_id, product=product)
 
-        if datetime.date.today() > review.created_at + datetime.timedelta(days=3):
+        if date.today() > review.created_at.date() + timedelta(days=3):
             return Response(_("Изменить коментарий можно только в первые 3 дня после его публикации "))
 
         body = request.data.get('body', review.body)
@@ -176,7 +177,7 @@ class ProductsView(ModelViewSet):
             review.stars = stars
             review.body = body
             review.photo = photo
-            review.save()
+            review.save(update_fields=['stars', 'body', 'photo'])
             return Response(ReviewSerializer(review).data)
         return Response(_("В отзыве вы должны оставить комментарий или прикрепить фото. Также укажите количество звезд."))
 
@@ -194,3 +195,5 @@ class ProductsView(ModelViewSet):
             review.delete()
             return Response(_(f"Отзыв с id: {review_id} успешно удален."))
         return Response(_("Вы не можете удалять чужие отзывы."))
+
+

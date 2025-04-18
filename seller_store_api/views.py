@@ -63,7 +63,7 @@ class SellerRegisterView(ModelViewSet):
             if user.balance >= cost:
                 user.balance -= cost
                 user.is_seller = True
-                user.save()
+                user.save(update_fields=['is_seller', 'balance'])
                 return Response(_("Поздравляю, вам открыта возможноть выставлять свои магазины, а также товары на площадке."))
             return Response(_(f"Вам не хватает {cost - user.balance}"))
         else:

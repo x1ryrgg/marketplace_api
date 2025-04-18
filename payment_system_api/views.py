@@ -1,10 +1,11 @@
+import logging
 from typing import Optional
 
 from django.db import transaction
 from django.db.models import Count, Sum, QuerySet
 from decimal import Decimal
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
@@ -88,7 +89,7 @@ class WishListView(ModelViewSet):
                 return Response(_("Товар удален из корзины."))
             wishlist_item.quantity -= quantity
 
-        wishlist_item.save()
+        wishlist_item.save(update_fields=['quantity'])
 
         return Response(self.get_serializer(wishlist_item, many=False).data)
 
@@ -312,9 +313,13 @@ class CreateTopUpPaymentView(APIView):
 
     def post(self, request, *args, **kwargs):
         # Получаем сумму пополнения из запроса
-        amount = request.data.get('amount')
-        if not amount or float(amount) <= 0:
+        try:
+            amount = Decimal(request.data.get('amount'))
+        except (TypeError, ValueError):
             return Response({"error": "Укажите корректную сумму."}, status=400)
+
+        if amount <= 0:
+            return Response({"error": "Сумма должна быть больше нуля."}, status=400)
 
         # Конфигурация YooKassa
         Configuration.account_id = settings.YOOKASSA_SHOP_ID
@@ -323,7 +328,7 @@ class CreateTopUpPaymentView(APIView):
         # Создаем платеж
         payment = Payment.create({
             "amount": {
-                "value": f"{amount}",
+                "value": f"{amount:.2f}",  # Округляем до 2 знаков после запятой
                 "currency": "RUB"
             },
             "confirmation": {
@@ -343,33 +348,37 @@ class CreateTopUpPaymentView(APIView):
         })
 
 
-def yookassa_webhook(request):
-    """ Вебхук
-    url: /yookassa-webhook/
-    """
+logger = logging.getLogger(__name__)
+
+def yookassa_webhook(request): #
+    if request.method != 'POST':
+        return HttpResponseNotAllowed(['POST'])
+
     try:
-        # Парсим уведомление от YooKassa
+        logger.info(f"Received webhook request: {request.body.decode('utf-8')}")
+
         notification = WebhookNotification(request.body.decode('utf-8'))
 
-        # Проверяем статус платежа
         if notification.event == 'payment.succeeded':
             payment_id = notification.object.id
             payment_status = notification.object.status
 
-            # Получаем метаданные платежа
             user_id = notification.object.metadata.get('user_id')
-            amount = notification.object.amount.value
+            amount = Decimal(notification.object.amount.value).quantize(Decimal('0.01'))  # Преобразуем в Decimal
 
-            # Обновляем баланс пользователя
             if user_id and amount > 0:
-                user = User.objects.get(id=int(user_id)) # int не точно
-                user.balance += Decimal('amount') # это не точно
-                user.save()
+                try:
+                    user = User.objects.get(id=user_id)
+                    user.balance += amount
+                    user.save()
 
-                print(f"Payment {payment_id} succeeded. Balance updated for user {user_id}.")
+                    logger.info(f"Payment {payment_id} succeeded. Balance updated for user {user_id}.")
+                except User.DoesNotExist:
+                    logger.error(f"User with ID {user_id} not found.")
+                    return JsonResponse(status=200)  # Всегда возвращаем 200
 
-        return Response(status=200)
+        return Response(status=200)  # Всегда возвращаем 200
 
     except Exception as e:
-        print(f"Error processing webhook: {e}")
-        return Response(status=400)
+        logger.error(f"Error processing webhook: {e}")
+        return Response(status=200)
