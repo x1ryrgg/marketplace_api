@@ -195,5 +195,3 @@ class ProductsView(ModelViewSet):
             review.delete()
             return Response(_(f"Отзыв с id: {review_id} успешно удален."))
         return Response(_("Вы не можете удалять чужие отзывы."))
-
-
