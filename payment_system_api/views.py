@@ -261,12 +261,13 @@ class DeliveryView(ModelViewSet):
         """
         POST-запрос, позволяющий выбирать, что делать с доставкой,
         когда товар уже пришел или еще в пути.
-        url: /delivery/<int:id>/take/
+        url: /delivery/<int:delivery_id>/take/
         body: option (int, 1 -> (Принятие заказа) or 2 -> (Отказ))
         """
         delivery = self.get_object()
         user = request.user
         option = request.data.get('option')
+        product = get_object_or_404(ProductVariant, id=delivery.product.id)
 
         if option not in (1, 2):
             raise ValidationError(_("Недопустимая опция. '1' - принять товар; '2' - отменить."))
@@ -276,6 +277,8 @@ class DeliveryView(ModelViewSet):
             with transaction.atomic():
                 user.balance += delivery.user_price
                 user.save()
+                product.quantity += delivery.quantity
+                product.save(update_fields=['quantity'])
                 History.objects.create(user=user, product=delivery.product, user_price=delivery.product.price, quantity=delivery.quantity, status='denied')
                 delivery.delete()
                 return Response(_("Вы отменили заказ, сумма заказа перечисляется к вам обратно."))
@@ -286,11 +289,14 @@ class DeliveryView(ModelViewSet):
         # Обработка принятия или отмены товара
         status = 'delivered' if option == 1 else 'denied'
         message = (
-            _(f"Товар {delivery.product.name} успешно принят! Заказывайте только у нас!") if option == 1
-            else _(f"Товар {delivery.product.name} отменен. Из-за политики нашего магазина вы не получите обратно сумму за товар, так как он уже доставлен.")
+            _(f"Товар {delivery.product.product.name} успешно принят! Заказывайте только у нас!") if option == 1
+            else _(f"Товар {delivery.product.product.name} отменен. Из-за политики нашего магазина вы не получите обратно сумму за товар, так как он уже доставлен.")
         )
 
         with transaction.atomic():
+            if status == 'denied':
+                product.quantity += delivery.quantity
+                product.save(update_fields=['quantity'])
             History.objects.create(user=user, product=delivery.product, user_price=delivery.user_price, quantity=delivery.quantity, status=status)
             delivery.delete()
         return Response(message)
@@ -309,6 +315,10 @@ def _apply_discount_to_order(user: User, total_price: Decimal, coupon: Optional[
 
 """ TEST PAYMENT SYSTEM """
 class CreatePaymentView(APIView):
+    """ Endpoint для пополнения баланса на аккаунт
+    url: /create-payment/
+    body: amount (float), currency (str)
+    """
     def post(self, request):
         serializer = PaymentSerializer(data=request.data)
         if serializer.is_valid():
@@ -346,10 +356,11 @@ class CreatePaymentView(APIView):
                 )
                 user = self.request.user
                 user.balance += amount
-                user.save()
+                user.save(update_fields=['balance'])
                 return Response({
                     'confirmation_url': payment_data['confirmation']['confirmation_url'],
                     'payment_id': payment.id,
+                    'balance': _(f"На счет {user.username} было перечислено {amount} {currency}. ")
                 }, status=status.HTTP_201_CREATED)
             else:
                 return Response({'error': 'Ошибка при создании платежа'}, status=status.HTTP_400_BAD_REQUEST)
@@ -357,6 +368,9 @@ class CreatePaymentView(APIView):
 
 
 class CheckPaymentStatusView(APIView):
+    """ Endpoint для проверки статуса платежа
+    url: /check-payment/<str:payment_id>/
+    """
     def get(self, request, payment_id):
         try:
             payment = Payment.objects.get(payment_id=payment_id)

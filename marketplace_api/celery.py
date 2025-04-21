@@ -13,7 +13,7 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'beat_check_delivery': {
         'task': 'payment_system_api.tasks.beat_check_delivery',
-        'schedule': crontab(minute='*/1')
+        'schedule': crontab(hour='*/12', minute=0)
     },
     'beat_check_coupon': {
             'task': 'payment_system_api.tasks.beat_check_coupon',

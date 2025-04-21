@@ -35,6 +35,7 @@ class Profile(models.Model):
 
 
 class Coupon(models.Model):
+    objects = None
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     code = models.PositiveIntegerField(blank=True, null=True)
     discount = models.PositiveIntegerField(blank=True, null=True)

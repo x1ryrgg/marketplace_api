@@ -25,7 +25,7 @@ class Store(models.Model):
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=1)
     product = models.ForeignKey('product_control_api.ProductVariant', on_delete=models.CASCADE, related_name='comments')
-    photo = models.ImageField(upload_to='comments/', null=True, blank=True)
+    image = models.ImageField(upload_to='comments/', null=True, blank=True)
     stars = models.PositiveIntegerField(default=1, validators=[MinValueValidator(0), MaxValueValidator(5)])
     body = models.TextField(max_length=1000, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
