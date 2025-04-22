@@ -39,7 +39,6 @@ limits_config:
 
 compactor:
   working_directory: /tmp/loki/compactor
-  shared_store: filesystem
 
 table_manager:
   retention_deletes_enabled: false
