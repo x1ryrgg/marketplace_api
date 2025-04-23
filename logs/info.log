@@ -1,1 +1,158 @@
 2025-04-21 21:03:08,957 INFO Watching for file changes with StatReloader
+2025-04-23 10:21:11,757 INFO Watching for file changes with StatReloader
+2025-04-23 10:21:21,770 INFO Request: POST /api/token/ | User: 
+2025-04-23 10:21:35,890 INFO Request: GET /profile/ | User: root
+2025-04-23 10:22:44,405 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-23 10:22:46,151 INFO Watching for file changes with StatReloader
+2025-04-23 10:23:39,079 INFO D:\python\marketplace_api\usercontrol_api\serializers.py changed, reloading.
+2025-04-23 10:23:40,695 INFO Watching for file changes with StatReloader
+2025-04-23 10:23:46,501 INFO Request: GET /profile/ | User: root
+2025-04-23 10:47:13,569 INFO Watching for file changes with StatReloader
+2025-04-23 10:47:22,701 INFO D:\python\marketplace_api\marketplace_api\urls.py changed, reloading.
+2025-04-23 10:47:24,847 INFO Watching for file changes with StatReloader
+2025-04-23 10:47:28,462 INFO Request: POST /api/token/ | User: 
+2025-04-23 10:47:42,069 ERROR Internal Server Error: /metrics/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\marketplace_api\urls.py", line 57, in <lambda>
+    path('metrics/', lambda request: HttpResponse(
+                                     ^^^^^^^^^^^^
+NameError: name 'HttpResponse' is not defined
+2025-04-23 10:47:42,089 INFO Request: GET /metrics/ | User: 
+2025-04-23 10:47:51,680 INFO D:\python\marketplace_api\marketplace_api\urls.py changed, reloading.
+2025-04-23 10:47:53,889 INFO Watching for file changes with StatReloader
+2025-04-23 10:47:56,834 ERROR Internal Server Error: /metrics
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\marketplace_api\urls.py", line 57, in <lambda>
+    path('metrics', lambda request: HttpResponse(
+                                    ^^^^^^^^^^^^
+NameError: name 'HttpResponse' is not defined
+2025-04-23 10:47:56,838 INFO Request: GET /metrics | User: 
+2025-04-23 10:48:24,505 INFO Watching for file changes with StatReloader
+2025-04-23 10:48:27,820 INFO Request: GET / | User: root
+2025-04-23 10:48:27,820 WARNING Not Found: /
+2025-04-23 10:48:28,183 INFO Request: GET /favicon.ico | User: root
+2025-04-23 10:48:28,183 WARNING Not Found: /favicon.ico
+2025-04-23 10:48:37,082 INFO Request: GET /metrics/ | User: root
+2025-04-23 10:48:37,082 WARNING Not Found: /metrics/
+2025-04-23 10:48:39,880 ERROR Internal Server Error: /metrics
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\marketplace_api\urls.py", line 57, in <lambda>
+    path('metrics', lambda request: HttpResponse(
+                                    ^^^^^^^^^^^^
+NameError: name 'HttpResponse' is not defined
+2025-04-23 10:48:39,892 INFO Request: GET /metrics | User: root
+2025-04-23 10:48:59,710 INFO D:\python\marketplace_api\marketplace_api\urls.py changed, reloading.
+2025-04-23 10:49:01,667 INFO Watching for file changes with StatReloader
+2025-04-23 10:49:04,948 ERROR Internal Server Error: /metrics/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\marketplace_api\urls.py", line 57, in <lambda>
+    path('metrics/', lambda request: HttpResponse(
+                                     ^^^^^^^^^^^^
+NameError: name 'HttpResponse' is not defined
+2025-04-23 10:49:04,954 INFO Request: GET /metrics/ | User: root
+2025-04-23 10:49:21,311 INFO D:\python\marketplace_api\marketplace_api\urls.py changed, reloading.
+2025-04-23 10:49:22,698 INFO Watching for file changes with StatReloader
+2025-04-23 10:50:22,151 INFO D:\python\marketplace_api\marketplace_api\urls.py changed, reloading.
+2025-04-23 10:50:24,012 INFO Watching for file changes with StatReloader
+2025-04-23 10:50:29,328 INFO D:\python\marketplace_api\marketplace_api\urls.py changed, reloading.
+2025-04-23 10:50:30,818 INFO Watching for file changes with StatReloader
+2025-04-23 10:50:32,158 ERROR Internal Server Error: /metrics/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\marketplace_api\urls.py", line 60, in <lambda>
+    path('metrics/', lambda request: HttpResponse(
+                                     ^^^^^^^^^^^^
+NameError: name 'HttpResponse' is not defined
+2025-04-23 10:50:32,163 INFO Request: GET /metrics/ | User: root
+2025-04-23 10:50:34,210 ERROR Internal Server Error: /metrics/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\marketplace_api\urls.py", line 60, in <lambda>
+    path('metrics/', lambda request: HttpResponse(
+                                     ^^^^^^^^^^^^
+NameError: name 'HttpResponse' is not defined
+2025-04-23 10:50:34,215 INFO Request: GET /metrics/ | User: root
+2025-04-23 10:51:58,120 INFO Watching for file changes with StatReloader
+2025-04-23 10:52:07,471 INFO Request: GET / | User: root
+2025-04-23 10:52:07,472 WARNING Not Found: /
+2025-04-23 10:52:13,452 ERROR Internal Server Error: /metrics/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\marketplace_api\urls.py", line 30, in metrics_view
+    return HttpResponse(metrics, content_type=CONTENT_TYPE_LATEST)
+           ^^^^^^^^^^^^
+NameError: name 'HttpResponse' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\marketplace_api\urls.py", line 32, in metrics_view
+    return HttpResponse(str(e), status=500)
+           ^^^^^^^^^^^^
+NameError: name 'HttpResponse' is not defined
+2025-04-23 10:52:13,472 INFO Request: GET /metrics/ | User: root
+2025-04-23 10:52:52,107 INFO D:\python\marketplace_api\marketplace_api\urls.py changed, reloading.
+2025-04-23 10:52:53,772 INFO Watching for file changes with StatReloader
+2025-04-23 10:52:58,040 INFO Request: GET /metrics/ | User: root
+2025-04-23 10:53:42,569 INFO D:\python\marketplace_api\marketplace_api\urls.py changed, reloading.
+2025-04-23 10:53:44,702 INFO Watching for file changes with StatReloader
+2025-04-23 10:53:46,933 ERROR Internal Server Error: /metrics/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\marketplace_api\urls.py", line 59, in <lambda>
+    prometheus_client.generate_latest(),
+    ^^^^^^^^^^^^^^^^^
+NameError: name 'prometheus_client' is not defined
+2025-04-23 10:53:46,943 INFO Request: GET /metrics/ | User: root
+2025-04-23 10:54:10,908 INFO D:\python\marketplace_api\marketplace_api\urls.py changed, reloading.
+2025-04-23 10:54:12,638 INFO Watching for file changes with StatReloader
+2025-04-23 10:54:13,898 ERROR Internal Server Error: /metrics/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\marketplace_api\urls.py", line 61, in <lambda>
+    content_type=CONTENT_TYPE_LATEST
+                 ^^^^^^^^^^^^^^^^^^^
+NameError: name 'CONTENT_TYPE_LATEST' is not defined
+2025-04-23 10:54:13,907 INFO Request: GET /metrics/ | User: root
+2025-04-23 10:54:36,802 INFO D:\python\marketplace_api\marketplace_api\urls.py changed, reloading.
+2025-04-23 10:54:38,564 INFO Watching for file changes with StatReloader
+2025-04-23 10:54:39,877 INFO Request: GET /metrics/ | User: root
+2025-04-23 10:54:51,574 INFO Request: GET /metrics | User: 
+2025-04-23 10:54:51,589 INFO Request: GET /metrics/ | User: 
+2025-04-23 10:54:58,331 INFO Request: GET /profile/ | User: root
+2025-04-23 10:55:04,422 INFO Request: GET /metrics/ | User: root
+2025-04-23 15:20:51,065 INFO Watching for file changes with StatReloader
+2025-04-23 15:20:58,314 INFO Request: GET / | User: root
+2025-04-23 15:20:58,314 WARNING Not Found: /
+2025-04-23 15:21:04,805 INFO Request: GET /metrics/ | User: root

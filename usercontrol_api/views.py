@@ -74,9 +74,9 @@ class ProfileView(ModelViewSet):
         user = request.user
         coupons = Coupon.objects.filter(user=user)
         data = {
-            'profile': self.get_serializer(profile).data,
-            'user': PrivateUserSerializer(user, many=False).data,
-            'coupons': CouponSerializer(coupons, many=True).data
+            'профиль': self.get_serializer(profile).data,
+            'ваш аккаунт': PrivateUserSerializer(user, many=False).data,
+            'ваши купоны': CouponSerializer(coupons, many=True).data
         }
         return Response(data)
 

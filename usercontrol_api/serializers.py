@@ -44,5 +44,4 @@ class CouponSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Coupon
-        fields = ("id", 'user', 'code', 'discount', 'created_at', 'end_date')
-        read_only_fields = ('user', )
+        fields = ("id", 'code', 'discount', 'end_date')
