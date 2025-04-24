@@ -1,35 +1,29 @@
 server:
   http_listen_port: 9080
-  grpc_listen_port: 0
 
 positions:
   filename: /tmp/positions.yaml
 
 clients:
-  - url: http://loki:3100/loki/api/v1/push
+  - url: http://localhost:3100/loki/api/v1/push
 
 scrape_configs:
-- job_name: docker-logs
+- job_name: docker-wsl-logs
   static_configs:
-  - targets:
-      - localhost
+  - targets: [localhost]
     labels:
       job: docker-logs
-      __path__: /var/lib/docker/containers/*/*log
-
+      __path__: /mnt/wsl/docker-desktop-bind-mounts/Ubuntu/**/logs/*.log
   pipeline_stages:
-
   - json:
       expressions:
+        log: log
         stream: stream
-        attrs: attrs
-        tag: attrs.tag
-
-  - regex:
-      expression: (?P<image_name>(?:[^|]*[^|])).(?P<container_name>(?:[^|]*[^|])).(?P<image_id>(?:[^|]*[^|])).(?P<container_id>(?:[^|]*[^|]))
-      source: "tag"
-
+        time: time
+  - timestamp:
+      source: time
+      format: RFC3339Nano
   - labels:
-      tag:
-      image_name:
-      container_name:
+      stream:
+  - output:
+      source: log

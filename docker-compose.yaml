@@ -15,6 +15,7 @@ services:
       - db
       - redis
 
+
   db:
     image: postgres:14
     volumes:
