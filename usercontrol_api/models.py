@@ -56,3 +56,20 @@ class Coupon(models.Model):
             self.end_date = self.created_at + datetime.timedelta(weeks=4)
         super().save(update_fields=['code', 'discount', 'end_date'])
 
+
+class Notification(models.Model):
+    class TitleChoice(models.TextChoices):
+        PURCHASE = ("purchase", "покупка")
+        DELIVERY = ('delivery', 'доставка')
+        COUPON = ("coupon", 'купон')
+        OTHER = ('other', 'другое')
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(choices=TitleChoice, default=TitleChoice.DELIVERY, max_length=8)
+    message = models.TextField(blank=True, default='Empty notification')
+    is_read = models.BooleanField(default=False)
+    created_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return "Notification %s -> %s" % (self.title, self.user.username)
+

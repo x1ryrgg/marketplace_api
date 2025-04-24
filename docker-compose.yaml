@@ -65,6 +65,7 @@ services:
       - db
       - celery_worker
 
+
   loki:
     image: grafana/loki:latest
     container_name: loki
@@ -97,3 +98,4 @@ services:
 volumes:
   postgres_data:
   grafanadata:
+  prometheusdata:

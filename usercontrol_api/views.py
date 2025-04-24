@@ -1,3 +1,5 @@
+from typing import Any
+
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models.sql import Query
 from django.shortcuts import render
@@ -91,6 +93,26 @@ class ProfileView(ModelViewSet):
         return Response(serializer.data)
 
 
+class NotificationView(ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    serializer_class = NotificationSerializer
+    http_method_names = ['get', 'delete']
+
+    def get_queryset(self):
+        return Notification.objects.filter(user=self.request.user).order_by('-created_at')
+
+    def retrieve(self, request, *args, **kwargs) -> Response:
+        notification = self.get_object()
+        notification.is_read = True
+        notification.save(update_fields=['is_read'])
+        serializer = RetrieveNotificationSerializer(notification)
+        return Response(serializer.data)
+
+    def destroy(self, request, *args, **kwargs):
+        notification = self.get_object()
+        self.perform_destroy(notification)
+        return Response(_(f"{notification.id} уведомление удалено."))
+
 class CouponView(ModelViewSet):
     """ Endpoint для просмотра всех купонов, а также для тестового создания купонов (доступно superuser-ам)
     url: /coupons/
@@ -106,9 +128,18 @@ class CouponView(ModelViewSet):
         return Response(serializer.data)
 
 
-def _create_coupon_with_chance(user: User) -> Coupon:
+def _create_coupon_with_chance(user: User) -> Coupon | None:
     """ Создает купон с вероятностью 30% """
     if random.random() < 0.3:  # 30% шанс
         coupon = Coupon.objects.create(user=user)
         return coupon
     return None
+
+
+def _create_notification(user, title, **kwargs):
+    Notification.objects.create(
+        user=user,
+        title=title,
+        message=kwargs.get('message'),
+        is_read=False
+    )

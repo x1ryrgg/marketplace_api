@@ -166,3 +166,642 @@ NameError: name 'CONTENT_TYPE_LATEST' is not defined
 2025-04-24 12:03:53,035 INFO Request: GET /metrics/ | User: root
 2025-04-24 12:04:02,144 INFO Request: GET /admin/ | User: root
 2025-04-24 12:04:06,056 INFO Request: GET /metrics/ | User: root
+2025-04-24 12:28:33,832 INFO Watching for file changes with StatReloader
+2025-04-24 12:28:35,285 INFO Request: GET /profile/ | User: root
+2025-04-24 16:14:21,694 INFO Watching for file changes with StatReloader
+2025-04-24 16:14:26,118 INFO Request: POST /api/token/ | User: 
+2025-04-24 16:14:42,497 INFO Request: GET /notifications/ | User: root
+2025-04-24 16:14:44,787 INFO Request: GET /notifications// | User: 
+2025-04-24 16:14:44,787 WARNING Not Found: /notifications//
+2025-04-24 16:14:46,298 INFO Request: GET /notifications/1/ | User: root
+2025-04-24 16:14:46,299 WARNING Not Found: /notifications/1/
+2025-04-24 16:14:47,788 INFO Request: GET /notifications/ | User: root
+2025-04-24 16:18:39,125 INFO D:\python\marketplace_api\usercontrol_api\admin.py changed, reloading.
+2025-04-24 16:18:40,233 INFO Watching for file changes with StatReloader
+2025-04-24 16:20:09,588 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-04-24 16:20:10,529 INFO Watching for file changes with StatReloader
+2025-04-24 16:21:30,349 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:21:31,273 INFO Watching for file changes with StatReloader
+2025-04-24 16:24:24,613 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:24:25,978 INFO Watching for file changes with StatReloader
+2025-04-24 16:26:50,439 INFO Watching for file changes with StatReloader
+2025-04-24 16:26:54,281 INFO Request: POST /notifications/ | User: root
+2025-04-24 16:27:11,206 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:27:12,073 INFO Watching for file changes with StatReloader
+2025-04-24 16:27:15,365 INFO Request: POST /notifications/ | User: root
+2025-04-24 16:27:53,814 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:27:54,611 INFO Watching for file changes with StatReloader
+2025-04-24 16:28:11,107 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:28:12,079 INFO Watching for file changes with StatReloader
+2025-04-24 16:28:16,101 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:28:16,958 INFO Watching for file changes with StatReloader
+2025-04-24 16:28:18,395 INFO Request: POST /notifications/ | User: root
+2025-04-24 16:28:33,455 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:28:34,330 INFO Watching for file changes with StatReloader
+2025-04-24 16:28:36,005 INFO Request: POST /notifications/ | User: root
+2025-04-24 16:29:56,561 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:29:57,523 INFO Watching for file changes with StatReloader
+2025-04-24 16:29:58,826 INFO Request: POST /notifications/ | User: root
+2025-04-24 16:30:00,146 INFO Request: POST /notifications/ | User: root
+2025-04-24 16:30:01,078 INFO Request: POST /notifications/ | User: root
+2025-04-24 16:30:24,514 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:30:25,444 INFO Watching for file changes with StatReloader
+2025-04-24 16:30:27,105 INFO Request: POST /notifications/ | User: root
+2025-04-24 16:30:41,928 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:30:42,796 INFO Watching for file changes with StatReloader
+2025-04-24 16:30:44,544 ERROR Internal Server Error: /notifications/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 113, in perform_create
+    notification = _create_notification( title='purchase', message='Ура ура')
+                   ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: _create_notification() missing 1 required positional argument: 'user'
+2025-04-24 16:30:44,547 INFO Request: POST /notifications/ | User: root
+2025-04-24 16:30:53,394 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:30:54,330 INFO Watching for file changes with StatReloader
+2025-04-24 16:34:48,831 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:34:49,702 INFO Watching for file changes with StatReloader
+2025-04-24 16:35:13,978 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:35:15,029 INFO Watching for file changes with StatReloader
+2025-04-24 16:36:12,564 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:36:13,453 INFO Watching for file changes with StatReloader
+2025-04-24 16:36:14,408 INFO Request: POST /notifications/ | User: root
+2025-04-24 16:36:37,225 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:36:38,136 INFO Watching for file changes with StatReloader
+2025-04-24 16:36:39,725 INFO Request: POST /notifications/ | User: root
+2025-04-24 16:36:49,503 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:36:50,294 INFO Watching for file changes with StatReloader
+2025-04-24 16:36:52,093 INFO Request: POST /notifications/ | User: root
+2025-04-24 16:36:56,497 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:36:57,361 INFO Watching for file changes with StatReloader
+2025-04-24 16:36:58,898 ERROR Internal Server Error: /notifications/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.StringDataRightTruncation: ОШИБКА:  значение не умещается в тип character varying(8)
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 114, in perform_create
+    serializer.save(user=user, title='purchaekjh')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\serializers.py", line 51, in create
+    return Notification.objects.create(**validated_data)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.DataError: ОШИБКА:  значение не умещается в тип character varying(8)
+
+2025-04-24 16:36:58,906 INFO Request: POST /notifications/ | User: root
+2025-04-24 16:37:21,180 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:37:22,156 INFO Watching for file changes with StatReloader
+2025-04-24 16:37:23,872 INFO Request: GET /notifications/ | User: root
+2025-04-24 16:37:31,078 INFO Request: GET /notifications/8/ | User: root
+2025-04-24 16:37:36,413 INFO Request: GET /notifications/ | User: root
+2025-04-24 16:37:54,527 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:37:55,530 INFO Watching for file changes with StatReloader
+2025-04-24 16:37:57,000 INFO Request: GET /notifications/ | User: root
+2025-04-24 16:37:58,487 INFO Request: GET /notifications/ | User: root
+2025-04-24 16:38:02,707 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:38:03,535 INFO Watching for file changes with StatReloader
+2025-04-24 16:38:04,960 INFO Request: GET /notifications/ | User: root
+2025-04-24 16:38:06,263 INFO Request: GET /notifications/ | User: root
+2025-04-24 16:38:13,724 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:38:14,648 INFO Watching for file changes with StatReloader
+2025-04-24 16:38:15,419 INFO Request: GET /notifications/ | User: root
+2025-04-24 16:38:16,535 INFO Request: GET /notifications/ | User: root
+2025-04-24 16:42:53,591 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:42:54,574 INFO Watching for file changes with StatReloader
+2025-04-24 16:42:56,754 INFO Request: POST /notifications/ | User: root
+2025-04-24 16:43:26,951 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:43:27,948 INFO Watching for file changes with StatReloader
+2025-04-24 16:45:49,408 INFO D:\python\marketplace_api\usercontrol_api\serializers.py changed, reloading.
+2025-04-24 16:45:50,429 INFO Watching for file changes with StatReloader
+2025-04-24 16:50:54,350 INFO Watching for file changes with StatReloader
+2025-04-24 16:50:56,908 INFO Request: GET /admin/ | User: root
+2025-04-24 16:51:02,851 INFO Request: GET /admin/usercontrol_api/user/add/ | User: root
+2025-04-24 16:51:02,974 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-24 16:51:46,456 INFO Request: GET /admin/usercontrol_api/user/ | User: root
+2025-04-24 16:51:46,639 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-24 16:51:49,575 INFO Request: POST /admin/usercontrol_api/user/ | User: root
+2025-04-24 16:51:52,297 INFO Request: POST /admin/usercontrol_api/user/ | User: root
+2025-04-24 16:51:52,353 INFO Request: GET /admin/usercontrol_api/user/ | User: root
+2025-04-24 16:51:52,511 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-24 16:51:59,971 INFO Request: POST /register/ | User: 
+2025-04-24 16:52:13,538 INFO Request: POST /api/token/ | User: 
+2025-04-24 16:52:37,289 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:52:38,295 INFO Watching for file changes with StatReloader
+2025-04-24 16:52:39,706 INFO Request: GET /notifications/ | User: testseller
+2025-04-24 16:52:46,323 INFO Request: GET /profile/ | User: testseller
+2025-04-24 16:53:30,583 INFO Request: PUT /seller/register/ | User: testseller
+2025-04-24 16:54:07,268 INFO Request: POST /create-payment/ | User: testseller
+2025-04-24 16:54:11,463 INFO Request: PUT /seller/register/ | User: testseller
+2025-04-24 16:54:41,701 INFO Request: GET /notifications/ | User: testseller
+2025-04-24 16:55:33,832 INFO D:\python\marketplace_api\usercontrol_api\serializers.py changed, reloading.
+2025-04-24 16:55:35,038 INFO Watching for file changes with StatReloader
+2025-04-24 16:55:37,472 INFO Request: GET /notifications/ | User: testseller
+2025-04-24 16:55:39,776 INFO Request: GET /notifications/13/ | User: testseller
+2025-04-24 16:56:00,173 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:56:01,051 INFO Watching for file changes with StatReloader
+2025-04-24 16:56:02,287 INFO Request: GET /notifications/13/ | User: testseller
+2025-04-24 16:57:19,149 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:57:20,190 INFO Watching for file changes with StatReloader
+2025-04-24 16:58:02,068 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 16:58:02,894 INFO Watching for file changes with StatReloader
+2025-04-24 16:58:04,810 INFO Request: DELETE /notifications/13/ | User: testseller
+2025-04-24 16:58:34,630 INFO Request: GET /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 16:58:34,805 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-24 16:58:39,873 INFO Request: POST /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 16:58:39,931 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-24 16:58:42,462 ERROR Internal Server Error: /admin/usercontrol_api/notification/add/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1959, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1818, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1875, in _changeform_view
+    self.log_addition(request, new_object, change_message)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 952, in log_addition
+    return LogEntry.objects.log_actions(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user_id=request.user.pk,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        change_message=message,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\models.py", line 87, in log_actions
+    object_repr=str(obj)[:200],
+                ~~~^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\models.py", line 74, in __str__
+    return self.title | self.user.username
+           ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for |: 'str' and 'str'
+2025-04-24 16:58:42,466 INFO Request: POST /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 16:58:50,794 INFO Request: GET /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 16:58:55,915 ERROR Internal Server Error: /admin/usercontrol_api/notification/add/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1959, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1818, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1875, in _changeform_view
+    self.log_addition(request, new_object, change_message)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 952, in log_addition
+    return LogEntry.objects.log_actions(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user_id=request.user.pk,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        change_message=message,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\models.py", line 87, in log_actions
+    object_repr=str(obj)[:200],
+                ~~~^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\models.py", line 74, in __str__
+    return self.title | self.user.username
+           ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for |: 'str' and 'str'
+2025-04-24 16:58:55,921 INFO Request: POST /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 16:59:16,090 INFO D:\python\marketplace_api\usercontrol_api\models.py changed, reloading.
+2025-04-24 16:59:16,957 INFO Watching for file changes with StatReloader
+2025-04-24 17:00:10,680 INFO Watching for file changes with StatReloader
+2025-04-24 17:00:12,791 INFO Request: GET /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 17:00:14,519 ERROR Internal Server Error: /admin/usercontrol_api/notification/add/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1959, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1818, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1875, in _changeform_view
+    self.log_addition(request, new_object, change_message)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 952, in log_addition
+    return LogEntry.objects.log_actions(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user_id=request.user.pk,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        change_message=message,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\models.py", line 87, in log_actions
+    object_repr=str(obj)[:200],
+                ~~~^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\models.py", line 74, in __str__
+    return self.title | self.user.username
+           ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for |: 'str' and 'str'
+2025-04-24 17:00:14,522 INFO Request: POST /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 17:01:18,159 INFO Request: GET /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 17:01:19,888 ERROR Internal Server Error: /admin/usercontrol_api/notification/add/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1959, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1818, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1875, in _changeform_view
+    self.log_addition(request, new_object, change_message)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 952, in log_addition
+    return LogEntry.objects.log_actions(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user_id=request.user.pk,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        change_message=message,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\models.py", line 87, in log_actions
+    object_repr=str(obj)[:200],
+                ~~~^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\models.py", line 74, in __str__
+    return self.title | self.user.username
+           ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for |: 'str' and 'str'
+2025-04-24 17:01:19,892 INFO Request: POST /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 17:01:21,001 INFO Request: GET /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 17:01:52,912 INFO D:\python\marketplace_api\usercontrol_api\models.py changed, reloading.
+2025-04-24 17:01:53,863 INFO Watching for file changes with StatReloader
+2025-04-24 17:03:41,736 INFO Watching for file changes with StatReloader
+2025-04-24 17:03:45,071 INFO Request: GET /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 17:03:45,236 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-24 17:03:48,061 ERROR Internal Server Error: /admin/usercontrol_api/notification/add/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1959, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1818, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1875, in _changeform_view
+    self.log_addition(request, new_object, change_message)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 952, in log_addition
+    return LogEntry.objects.log_actions(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user_id=request.user.pk,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        change_message=message,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\models.py", line 87, in log_actions
+    object_repr=str(obj)[:200],
+                ~~~^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\models.py", line 74, in __str__
+    return self.title | self.user.username
+           ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for |: 'str' and 'str'
+2025-04-24 17:03:48,066 INFO Request: POST /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 17:03:50,065 INFO Request: GET /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 17:03:52,365 ERROR Internal Server Error: /admin/usercontrol_api/notification/add/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1959, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1818, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1875, in _changeform_view
+    self.log_addition(request, new_object, change_message)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 952, in log_addition
+    return LogEntry.objects.log_actions(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user_id=request.user.pk,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        change_message=message,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\models.py", line 87, in log_actions
+    object_repr=str(obj)[:200],
+                ~~~^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\models.py", line 74, in __str__
+    return self.title | self.user.username
+           ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for |: 'str' and 'str'
+2025-04-24 17:03:52,369 INFO Request: POST /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 17:03:53,140 INFO Request: GET /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 17:03:56,129 ERROR Internal Server Error: /admin/usercontrol_api/notification/add/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1959, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1818, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1875, in _changeform_view
+    self.log_addition(request, new_object, change_message)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 952, in log_addition
+    return LogEntry.objects.log_actions(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user_id=request.user.pk,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        change_message=message,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\models.py", line 87, in log_actions
+    object_repr=str(obj)[:200],
+                ~~~^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\models.py", line 74, in __str__
+    return self.title | self.user.username
+           ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for |: 'str' and 'str'
+2025-04-24 17:03:56,131 INFO Request: POST /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 17:03:59,034 INFO Request: GET /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 17:05:41,813 INFO D:\python\marketplace_api\usercontrol_api\models.py changed, reloading.
+2025-04-24 17:05:42,818 INFO Watching for file changes with StatReloader
+2025-04-24 17:05:49,428 INFO Watching for file changes with StatReloader
+2025-04-24 17:05:53,747 INFO Request: GET /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 17:05:55,396 INFO Request: POST /admin/usercontrol_api/notification/add/ | User: root
+2025-04-24 17:05:55,573 INFO Request: GET /admin/usercontrol_api/notification/ | User: root
+2025-04-24 17:05:55,637 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-24 17:06:08,128 INFO Request: GET /notifications/21/ | User: testseller
+2025-04-24 17:06:08,128 WARNING Not Found: /notifications/21/
+2025-04-24 17:06:16,038 INFO Request: GET /notifications/21/ | User: testseller
+2025-04-24 17:06:16,038 WARNING Not Found: /notifications/21/
+2025-04-24 17:06:20,891 INFO Request: POST /api/token/ | User: 
+2025-04-24 17:06:26,446 INFO Request: GET /notifications/21/ | User: root
+2025-04-24 17:06:33,316 INFO Request: DELETE /notifications/21/ | User: root
+2025-04-24 17:06:35,286 INFO Request: GET /notifications/21/ | User: root
+2025-04-24 17:06:35,286 WARNING Not Found: /notifications/21/
+2025-04-24 17:06:37,107 INFO Request: GET /notifications/ | User: root

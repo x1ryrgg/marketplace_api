@@ -7,8 +7,8 @@ from .views import *
 user_router = routers.DefaultRouter()
 user_router.register(r'', UserView, basename='user')
 
-profile_router = routers.DefaultRouter()
-profile_router.register(r'', ProfileView, basename='profile')
+notification_router = routers.DefaultRouter()
+notification_router.register(r'', NotificationView, basename='notification')
 
 coupon_router = routers.DefaultRouter()
 coupon_router.register(r'', CouponView, basename='coupons')
@@ -21,6 +21,8 @@ urlpatterns = [
 
     path('users/', include(user_router.urls)),
     path('profile/', ProfileView.as_view({"get": "list", "patch": "partial_update"}), name='profile'),
+
+    path('notifications/', include(notification_router.urls)),
     path('coupons/', include(coupon_router.urls)),
 
 ]

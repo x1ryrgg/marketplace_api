@@ -40,6 +40,20 @@ class ProfileSerializer(serializers.ModelSerializer):
         read_only_fields = ('user_id', )
 
 
+class NotificationSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Notification
+        fields = ('id', 'title', 'created_at')
+
+
+class RetrieveNotificationSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Notification
+        fields = ('id', 'title', 'message', 'created_at')
+
+
 class CouponSerializer(serializers.ModelSerializer):
 
     class Meta:

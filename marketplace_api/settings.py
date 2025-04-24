@@ -98,7 +98,7 @@ DATABASES = {
            'NAME': os.getenv('DB_NAME', 'market_db'),
            'USER': os.getenv('DB_USER', 'postgres'),
            'PASSWORD': os.getenv('DB_PASSWORD', '1234'),
-           'HOST': os.getenv('DB_HOST', 'db'), # db for docker
+           'HOST': os.getenv('DB_HOST', 'localhost'), # db for docker
            'PORT': os.getenv('DB_PORT', '5432'),
        }
     }
@@ -192,48 +192,48 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     'handlers': {
-#         'info_file': {
-#             'level': 'INFO',
-#             'class': 'logging.FileHandler',
-#             'filename': 'logs/info.log',
-#             'formatter': 'verbose'
-#         },
-#     },
-#     'formatters': {
-#         'verbose': {
-#             'format': '%(asctime)s %(levelname)s %(message)s',
-#         },
-#     },
-#     'loggers': {
-#         '': {
-#             'handlers': ['info_file'],
-#             'level': 'INFO',
-#             'propagate': False
-#         }
-#     },
-# }
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
-        'loki': {
-            'class': 'logging_loki.LokiHandler',
-            'url': 'http://loki:3100/loki/api/v1/push',  # Используйте внутреннее DNS-имя
-            'tags': {'application': 'django-api'},       # Метки для фильтрации
+        'info_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'logs/info.log',
+            'formatter': 'verbose'
+        },
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(asctime)s %(levelname)s %(message)s',
         },
     },
     'loggers': {
-        'django': {
-            'handlers': ['loki'],
-            'level': 'DEBUG',  # Уровень логирования
-        },
+        '': {
+            'handlers': ['info_file'],
+            'level': 'INFO',
+            'propagate': False
+        }
     },
 }
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'loki': {
+#             'class': 'logging_loki.LokiHandler',
+#             'url': 'http://loki:3100/loki/api/v1/push',  # Используйте внутреннее DNS-имя
+#             'tags': {'application': 'django-api'},       # Метки для фильтрации
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['loki'],
+#             'level': 'DEBUG',  # Уровень логирования
+#         },
+#     },
+# }
 
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
@@ -246,8 +246,8 @@ SWAGGER_SETTINGS = {
 }
 
 
-CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://redis:6379/1') # для docker меняем на redis
-CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND', 'redis://redis:6379/1') # too
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://localhost:6379/1') # для docker меняем на redis
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND', 'redis://localhost:6379/1') # too
 CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'

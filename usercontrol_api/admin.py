@@ -8,4 +8,6 @@ admin.site.register(Profile)
 
 admin.site.register(WishlistItem)
 
+admin.site.register(Notification)
+
 admin.site.register(Coupon)
