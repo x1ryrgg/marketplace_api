@@ -62,10 +62,11 @@ class Notification(models.Model):
         PURCHASE = ("purchase", "покупка")
         DELIVERY = ('delivery', 'доставка')
         COUPON = ("coupon", 'купон')
+        CELLER = ('celler', 'продавец')
         OTHER = ('other', 'другое')
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(choices=TitleChoice, default=TitleChoice.DELIVERY, max_length=8)
+    title = models.CharField(choices=TitleChoice, default=TitleChoice.OTHER, max_length=8, blank=True)
     message = models.TextField(blank=True, default='Empty notification')
     is_read = models.BooleanField(default=False)
     created_at = models.DateField(auto_now_add=True)

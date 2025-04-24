@@ -65,7 +65,7 @@ class SellerRegisterView(ModelViewSet):
                     user.balance -= cost
                     user.is_seller = True
                     user.save(update_fields=['is_seller', 'balance'])
-                    _create_notification(user=user, title='other', message='Поздравляю, вам открыта возможноть выставлять свои магазины, а также товары на площадке.')
+                    _create_notification(user=user, title='seller', message='Поздравляю, вам открыта возможноть выставлять свои магазины, а также товары на площадке.')
                     return Response(_("Успешно."))
             return Response(_(f"Вам не хватает {cost - user.balance}"))
         else:
@@ -83,15 +83,17 @@ class StoreView(ModelViewSet):
     def get_queryset(self):
         return Store.objects.filter(author=self.request.user)
 
-    def perform_create(self, serializer) -> Response:
+    def perform_create(self, serializer):
         """ Регистрация магазина
         body: name (str), description (str - Optional), city (str), email (str - Optional)
         """
-        count_stores = Store.objects.filter(author=self.request.user).count()
+        user = self.request.user
+        count_stores = Store.objects.filter(author=user).count()
         if count_stores >= 3:
             raise Exception(_('Пользователь может регистировать до 3 магазинов.'))
         else:
-            serializer.save(author=self.request.user)
+            serializer.save(author=user)
+            _create_notification(user=user, title='seller', message=f'успешная регистрация магазина ')
 
 
 class StoresAllView(ModelViewSet):

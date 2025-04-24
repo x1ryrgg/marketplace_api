@@ -1,6 +1,6 @@
-from datetime import date
+from datetime import date, timedelta
 from .models import Delivery
-from usercontrol_api.models import Coupon
+from usercontrol_api.models import Coupon, Notification
 
 from celery import shared_task
 from marketplace_api import settings
@@ -36,3 +36,14 @@ def beat_check_coupon():
         end_date__lte=today
     ).delete()
     return f"{expired_coupon} expired coupons removed"
+
+
+@shared_task
+def beat_check_notification():
+    data = date.today() + timedelta(days=30)
+
+    expired_notifications = Notification.objects.filter(
+        created_at__gte=data
+    ).delete()
+
+    return f"notifications deleted: {expired_notifications[0]}"

@@ -805,3 +805,808 @@ TypeError: unsupported operand type(s) for |: 'str' and 'str'
 2025-04-24 17:06:35,286 INFO Request: GET /notifications/21/ | User: root
 2025-04-24 17:06:35,286 WARNING Not Found: /notifications/21/
 2025-04-24 17:06:37,107 INFO Request: GET /notifications/ | User: root
+2025-04-24 21:07:26,813 INFO Watching for file changes with StatReloader
+2025-04-24 21:07:34,770 INFO Request: POST /api/token/ | User: 
+2025-04-24 21:07:43,327 INFO Request: GET /notifications/ | User: root
+2025-04-24 21:07:45,012 INFO Request: GET /notifications/ | User: root
+2025-04-24 21:08:01,228 ERROR Internal Server Error: /admin_notification/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: The view usercontrol_api.views.admin_notification didn't return an HttpResponse object. It returned None instead.
+2025-04-24 21:08:01,232 INFO Request: GET /admin_notification/ | User: 
+2025-04-24 21:08:11,116 WARNING Forbidden (CSRF token missing.): /admin_notification/
+2025-04-24 21:08:11,117 INFO Request: POST /admin_notification/ | User: 
+2025-04-24 21:08:32,605 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:08:34,299 INFO Watching for file changes with StatReloader
+2025-04-24 21:08:35,728 WARNING Forbidden (CSRF token missing.): /admin_notification/
+2025-04-24 21:08:35,728 INFO Request: POST /admin_notification/ | User: 
+2025-04-24 21:10:20,930 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:10:22,704 INFO Watching for file changes with StatReloader
+2025-04-24 21:10:33,994 INFO D:\python\marketplace_api\usercontrol_api\urls.py changed, reloading.
+2025-04-24 21:10:35,349 INFO Watching for file changes with StatReloader
+2025-04-24 21:11:13,592 INFO Watching for file changes with StatReloader
+2025-04-24 21:11:16,585 ERROR Internal Server Error: /admin_notification/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 65, in update
+    instance = self.get_object()
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\generics.py", line 87, in get_object
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\generics.py", line 67, in get_queryset
+    assert self.queryset is not None, (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'AdminNotificationView' should either include a `queryset` attribute, or override the `get_queryset()` method.
+2025-04-24 21:11:16,588 INFO Request: POST /admin_notification/ | User: root
+2025-04-24 21:11:30,171 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:11:31,651 INFO Watching for file changes with StatReloader
+2025-04-24 21:11:33,520 ERROR Internal Server Error: /admin_notification/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 65, in update
+    instance = self.get_object()
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\generics.py", line 87, in get_object
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\generics.py", line 67, in get_queryset
+    assert self.queryset is not None, (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'AdminNotificationView' should either include a `queryset` attribute, or override the `get_queryset()` method.
+2025-04-24 21:11:33,524 INFO Request: POST /admin_notification/ | User: root
+2025-04-24 21:12:15,212 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:12:16,844 INFO Watching for file changes with StatReloader
+2025-04-24 21:12:25,080 INFO Request: POST /api/token/ | User: 
+2025-04-24 21:12:37,027 INFO Request: POST /coupons/ | User: root
+2025-04-24 21:13:03,081 ERROR Internal Server Error: /admin_notification/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 65, in update
+    instance = self.get_object()
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\generics.py", line 87, in get_object
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\generics.py", line 67, in get_queryset
+    assert self.queryset is not None, (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'AdminNotificationView' should either include a `queryset` attribute, or override the `get_queryset()` method.
+2025-04-24 21:13:03,084 INFO Request: POST /admin_notification/ | User: root
+2025-04-24 21:13:05,352 ERROR Internal Server Error: /admin_notification/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 65, in update
+    instance = self.get_object()
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\generics.py", line 87, in get_object
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\generics.py", line 67, in get_queryset
+    assert self.queryset is not None, (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'AdminNotificationView' should either include a `queryset` attribute, or override the `get_queryset()` method.
+2025-04-24 21:13:05,359 INFO Request: POST /admin_notification/ | User: root
+2025-04-24 21:14:51,219 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:14:52,843 INFO Watching for file changes with StatReloader
+2025-04-24 21:15:05,832 ERROR Internal Server Error: /admin_notification/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 65, in update
+    instance = self.get_object()
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\generics.py", line 87, in get_object
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\generics.py", line 67, in get_queryset
+    assert self.queryset is not None, (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'AdminNotificationView' should either include a `queryset` attribute, or override the `get_queryset()` method.
+2025-04-24 21:15:05,844 INFO Request: POST /admin_notification/ | User: root
+2025-04-24 21:15:22,122 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:15:23,512 INFO Watching for file changes with StatReloader
+2025-04-24 21:15:36,236 INFO D:\python\marketplace_api\usercontrol_api\urls.py changed, reloading.
+2025-04-24 21:15:37,774 INFO Watching for file changes with StatReloader
+2025-04-24 21:15:40,263 ERROR Internal Server Error: /admin_notification/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 127, in post
+    notification = Notification.objects.create(user__id__in=users_ids, title=title, message=message)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 677, in create
+    obj = self.model(**kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: Notification() got unexpected keyword arguments: 'user__id__in'
+2025-04-24 21:15:40,276 INFO Request: POST /admin_notification/ | User: root
+2025-04-24 21:16:39,605 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:16:41,393 INFO Watching for file changes with StatReloader
+2025-04-24 21:17:08,089 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:17:10,057 INFO Watching for file changes with StatReloader
+2025-04-24 21:17:16,185 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:17:17,713 INFO Watching for file changes with StatReloader
+2025-04-24 21:17:30,514 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:17:32,404 INFO Watching for file changes with StatReloader
+2025-04-24 21:17:51,504 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:17:53,090 INFO Watching for file changes with StatReloader
+2025-04-24 21:17:59,844 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:18:01,386 INFO Watching for file changes with StatReloader
+2025-04-24 21:18:03,788 ERROR Internal Server Error: /admin_notification/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: ОШИБКА:  значение NULL в столбце "title" отношения "usercontrol_api_notification" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (22, null, Привет, f, 2025-04-24, 4).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 129, in post
+    notification = Notification.objects.create(
+        user_id=user_id,
+        title=title,
+        message=message
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: ОШИБКА:  значение NULL в столбце "title" отношения "usercontrol_api_notification" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (22, null, Привет, f, 2025-04-24, 4).
+
+2025-04-24 21:18:03,799 INFO Request: POST /admin_notification/ | User: root
+2025-04-24 21:18:45,022 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:18:46,738 INFO Watching for file changes with StatReloader
+2025-04-24 21:18:48,502 ERROR Internal Server Error: /admin_notification/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 128, in post
+    for user in users_ids:
+                ^^^^^^^^^
+NameError: name 'users_ids' is not defined
+2025-04-24 21:18:48,508 INFO Request: POST /admin_notification/ | User: root
+2025-04-24 21:19:15,745 ERROR Internal Server Error: /admin_notification/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 128, in post
+    for user in users_ids:
+                ^^^^^^^^^
+NameError: name 'users_ids' is not defined
+2025-04-24 21:19:15,751 INFO Request: POST /admin_notification/ | User: root
+2025-04-24 21:19:24,732 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:19:26,648 INFO Watching for file changes with StatReloader
+2025-04-24 21:19:29,697 ERROR Internal Server Error: /admin_notification/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2123, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'User'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 129, in post
+    notification = Notification.objects.create(
+        user_id=user,
+        title=title,
+        message=message
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1835, in execute_sql
+    for sql, params in self.as_sql():
+                       ~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1760, in as_sql
+    self.prepare_value(field, self.pre_save_val(field, obj))
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1699, in prepare_value
+    return field.get_db_prep_save(value, connection=self.connection)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\fields\related.py", line 1142, in get_db_prep_save
+    return self.target_field.get_db_prep_save(value, connection=connection)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 1008, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2815, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2125, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+TypeError: Field 'id' expected a number but got <User: username: testseller | pk 4>.
+2025-04-24 21:19:29,720 INFO Request: POST /admin_notification/ | User: root
+2025-04-24 21:19:55,170 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:19:56,786 INFO Watching for file changes with StatReloader
+2025-04-24 21:19:59,520 INFO Request: POST /admin_notification/ | User: root
+2025-04-24 21:20:53,552 INFO D:\python\marketplace_api\usercontrol_api\models.py changed, reloading.
+2025-04-24 21:21:16,796 INFO Watching for file changes with StatReloader
+2025-04-24 21:21:22,979 ERROR Internal Server Error: /admin_notification/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: ОШИБКА:  значение NULL в столбце "title" отношения "usercontrol_api_notification" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (25, null, Привет, f, 2025-04-24, 4).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 129, in post
+    notification = Notification.objects.create(
+        user=user,
+        title=title,
+        message=message
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: ОШИБКА:  значение NULL в столбце "title" отношения "usercontrol_api_notification" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (25, null, Привет, f, 2025-04-24, 4).
+
+2025-04-24 21:21:22,987 INFO Request: POST /admin_notification/ | User: root
+2025-04-24 21:21:52,589 INFO Watching for file changes with StatReloader
+2025-04-24 21:21:56,765 INFO Request: POST /admin_notification/ | User: root
+2025-04-24 21:22:22,494 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:22:24,491 INFO Watching for file changes with StatReloader
+2025-04-24 21:22:26,024 INFO Request: POST /admin_notification/ | User: root
+2025-04-24 21:22:42,584 INFO D:\python\marketplace_api\usercontrol_api\models.py changed, reloading.
+2025-04-24 21:22:55,333 INFO Watching for file changes with StatReloader
+2025-04-24 21:22:58,272 ERROR Internal Server Error: /admin_notification/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: ОШИБКА:  значение NULL в столбце "title" отношения "usercontrol_api_notification" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (30, null, Привет, f, 2025-04-24, 4).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 129, in post
+    notification = Notification.objects.create(
+        user=user,
+        title=title,
+        message=message
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: ОШИБКА:  значение NULL в столбце "title" отношения "usercontrol_api_notification" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (30, null, Привет, f, 2025-04-24, 4).
+
+2025-04-24 21:22:58,285 INFO Request: POST /admin_notification/ | User: root
+2025-04-24 21:24:25,011 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:24:27,196 INFO Watching for file changes with StatReloader
+2025-04-24 21:24:29,440 INFO Request: POST /admin_notification/ | User: root
+2025-04-24 21:27:01,809 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-24 21:27:03,793 INFO Watching for file changes with StatReloader
+2025-04-24 21:28:37,255 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-04-24 21:28:39,476 INFO Watching for file changes with StatReloader
+2025-04-24 21:29:21,410 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-04-24 21:29:23,176 INFO Watching for file changes with StatReloader
+2025-04-24 21:30:38,619 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-04-24 21:30:40,264 INFO Watching for file changes with StatReloader
+2025-04-24 21:33:53,497 INFO Watching for file changes with StatReloader
+2025-04-24 21:34:00,329 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-04-24 21:34:01,894 INFO Watching for file changes with StatReloader
+2025-04-24 21:35:05,042 INFO D:\python\marketplace_api\marketplace_api\celery.py changed, reloading.
+2025-04-24 21:35:06,599 INFO Watching for file changes with StatReloader
+2025-04-24 21:36:02,766 INFO D:\python\marketplace_api\marketplace_api\celery.py changed, reloading.
+2025-04-24 21:36:04,375 INFO Watching for file changes with StatReloader
+2025-04-24 21:36:26,706 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-04-24 21:36:28,461 INFO Watching for file changes with StatReloader
+2025-04-24 21:37:20,363 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-04-24 21:37:21,876 INFO Watching for file changes with StatReloader
+2025-04-24 21:41:28,883 INFO Watching for file changes with StatReloader
+2025-04-24 21:42:46,650 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-04-24 21:42:47,883 INFO Watching for file changes with StatReloader
+2025-04-24 21:46:14,587 INFO Watching for file changes with StatReloader
+2025-04-24 21:47:02,990 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-04-24 21:47:04,551 INFO Watching for file changes with StatReloader
+2025-04-24 21:48:39,451 INFO D:\python\marketplace_api\marketplace_api\celery.py changed, reloading.
+2025-04-24 21:48:40,379 INFO Watching for file changes with StatReloader
+2025-04-24 21:55:35,879 INFO Watching for file changes with StatReloader
+2025-04-24 21:57:24,682 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-04-24 21:57:25,663 INFO Watching for file changes with StatReloader
+2025-04-24 21:57:34,630 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-04-24 21:57:35,478 INFO Watching for file changes with StatReloader
+2025-04-24 21:57:54,161 INFO Request: POST /api/toke/ | User: 
+2025-04-24 21:57:54,161 WARNING Not Found: /api/toke/
+2025-04-24 21:57:59,538 INFO Request: POST /api/token/ | User: 
+2025-04-24 21:58:11,800 INFO Request: GET /seller/ | User: 
+2025-04-24 21:58:11,800 WARNING Not Found: /seller/
+2025-04-24 21:58:17,941 INFO Request: GET /store/ | User: root
+2025-04-24 21:58:22,510 INFO Request: GET /store/1/ | User: root
+2025-04-24 21:58:23,588 INFO Request: GET /store/ | User: root
+2025-04-24 21:59:03,142 ERROR Internal Server Error: /store/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\python\marketplace_api\seller_store_api\views.py", line 96, in perform_create
+    _create_notification(user=user, title='seller', message=f'Регистрация магазина {serializer.name}')
+                                                                                    ^^^^^^^^^^^^^^^
+AttributeError: 'StoreSerializer' object has no attribute 'name'
+2025-04-24 21:59:03,145 INFO Request: POST /store/ | User: root
+2025-04-24 21:59:19,908 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-04-24 21:59:20,890 INFO Watching for file changes with StatReloader
+2025-04-24 21:59:22,909 INFO Request: POST /store/ | User: root
+2025-04-24 21:59:22,909 WARNING Bad Request: /store/
+2025-04-24 21:59:40,487 INFO Request: POST /store/ | User: root

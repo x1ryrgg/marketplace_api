@@ -5,6 +5,7 @@ from django.db.models.sql import Query
 from django.shortcuts import render
 from rest_framework import generics, status, permissions
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 
 from rest_framework.exceptions import ValidationError, PermissionDenied
@@ -96,7 +97,7 @@ class ProfileView(ModelViewSet):
 class NotificationView(ModelViewSet):
     permission_classes = [IsAuthenticated]
     serializer_class = NotificationSerializer
-    http_method_names = ['get', 'delete']
+    http_method_names = ['get', 'delete', 'post']
 
     def get_queryset(self):
         return Notification.objects.filter(user=self.request.user).order_by('-created_at')
@@ -112,6 +113,32 @@ class NotificationView(ModelViewSet):
         notification = self.get_object()
         self.perform_destroy(notification)
         return Response(_(f"{notification.id} уведомление удалено."))
+
+
+class AdminNotificationView(APIView):
+    """ Endpoint для создания уведомления-рассылок (только superuser-ам)
+    url: /admin_notification/
+    body: title (str, Optional), message (str, Optional)
+    """
+    permission_classes = [IsAuthenticated, IsSuperUser]
+    serializer_class = NotificationSerializer
+
+    def post(self, request, *args, **kwargs) -> Response:
+        users = [user for user in User.objects.filter(is_superuser=False)]
+        title = request.data.get('title', Notification.TitleChoice.OTHER)
+        message = request.data.get('message', None)
+
+        notifications = []
+        for user in users:
+            notification = Notification.objects.create(
+                user=user,
+                title=title,
+                message=message
+            )
+            notifications.append(notification)
+
+        serializer = self.serializer_class(notifications[-1])
+        return Response(serializer.data)
 
 class CouponView(ModelViewSet):
     """ Endpoint для просмотра всех купонов, а также для тестового создания купонов (доступно superuser-ам)

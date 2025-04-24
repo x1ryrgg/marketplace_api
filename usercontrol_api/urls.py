@@ -23,6 +23,8 @@ urlpatterns = [
     path('profile/', ProfileView.as_view({"get": "list", "patch": "partial_update"}), name='profile'),
 
     path('notifications/', include(notification_router.urls)),
+
+    path('admin_notification/', AdminNotificationView.as_view(), name='admin_notification'),
     path('coupons/', include(coupon_router.urls)),
 
 ]
