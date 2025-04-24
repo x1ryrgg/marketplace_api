@@ -20,10 +20,10 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django.http import HttpResponse
 from rest_framework import permissions
-import prometheus_client
+from django_prometheus import exports
 
 
-CONTENT_TYPE_LATEST = str('text/plain; version=0.0.4; charset=utf-8')
+
 
 
 schema_view = get_schema_view(
@@ -59,8 +59,5 @@ urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     # ReDoc UI
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-    path('metrics/', lambda request: HttpResponse(
-            prometheus_client.generate_latest(),
-            content_type=CONTENT_TYPE_LATEST
-        )),
+    path('metrics/', exports.ExportToDjangoView),
 ]

@@ -156,3 +156,13 @@ NameError: name 'CONTENT_TYPE_LATEST' is not defined
 2025-04-23 15:20:58,314 INFO Request: GET / | User: root
 2025-04-23 15:20:58,314 WARNING Not Found: /
 2025-04-23 15:21:04,805 INFO Request: GET /metrics/ | User: root
+2025-04-24 12:03:21,814 INFO Watching for file changes with StatReloader
+2025-04-24 12:03:37,837 INFO D:\python\marketplace_api\marketplace_api\urls.py changed, reloading.
+2025-04-24 12:03:39,210 INFO Watching for file changes with StatReloader
+2025-04-24 12:03:45,375 INFO D:\python\marketplace_api\marketplace_api\urls.py changed, reloading.
+2025-04-24 12:03:47,162 INFO Watching for file changes with StatReloader
+2025-04-24 12:03:49,062 INFO Request: GET / | User: root
+2025-04-24 12:03:49,062 WARNING Not Found: /
+2025-04-24 12:03:53,035 INFO Request: GET /metrics/ | User: root
+2025-04-24 12:04:02,144 INFO Request: GET /admin/ | User: root
+2025-04-24 12:04:06,056 INFO Request: GET /metrics/ | User: root

@@ -192,28 +192,46 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'info_file': {
+#             'level': 'INFO',
+#             'class': 'logging.FileHandler',
+#             'filename': 'logs/info.log',
+#             'formatter': 'verbose'
+#         },
+#     },
+#     'formatters': {
+#         'verbose': {
+#             'format': '%(asctime)s %(levelname)s %(message)s',
+#         },
+#     },
+#     'loggers': {
+#         '': {
+#             'handlers': ['info_file'],
+#             'level': 'INFO',
+#             'propagate': False
+#         }
+#     },
+# }
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
-        'info_file': {
-            'level': 'INFO',
-            'class': 'logging.FileHandler',
-            'filename': 'logs/info.log',
-            'formatter': 'verbose'
-        },
-    },
-    'formatters': {
-        'verbose': {
-            'format': '%(asctime)s %(levelname)s %(message)s',
+        'loki': {
+            'class': 'logging_loki.LokiHandler',
+            'url': 'http://loki:3100/loki/api/v1/push',  # Используйте внутреннее DNS-имя
+            'tags': {'application': 'django-api'},       # Метки для фильтрации
         },
     },
     'loggers': {
-        '': {
-            'handlers': ['info_file'],
-            'level': 'INFO',
-            'propagate': False
-        }
+        'django': {
+            'handlers': ['loki'],
+            'level': 'DEBUG',  # Уровень логирования
+        },
     },
 }
 
@@ -247,7 +265,7 @@ CELERY_RESULT_SERIALIZER = 'json'
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://redis:6379/1", # для docker меняю на redis
+        "LOCATION": "redis://localhost:6379/1", # для docker меняю на redis
         "KEY_PREFIX": "imdb",
         "TIMEOUT": 60 * 15,  # in seconds: 60 * 15 (15 minutes)
     }
