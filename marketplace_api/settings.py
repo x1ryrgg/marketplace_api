@@ -31,6 +31,14 @@ DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', ]
 INTERNAL_IPS = ['localhost', "127.0.0.1"]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # React/Vue по умолчанию
+    "http://127.0.0.1:3000",  # Альтернативный адрес
+    "http://localhost:8080",  # Vue по умолчанию
+    "http://127.0.0.1:8080",   # Альтернативный адрес
+]
+
+CORS_ALLOW_CREDENTIALS = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'corsheaders', # Cors
     'django_extensions',
     'rest_framework',
     'django_filters',
@@ -56,6 +65,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django_prometheus.middleware.PrometheusBeforeMiddleware', # prometheus
+    'corsheaders.middleware.CorsMiddleware', # Cors
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

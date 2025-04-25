@@ -116,7 +116,7 @@ class NotificationView(ModelViewSet):
 
 
 class AdminNotificationView(APIView):
-    """ Endpoint для создания уведомления-рассылок (только superuser-ам)
+    """ Endpoint для создания уведомлений-рассылок (только superuser-ам)
     url: /admin_notification/
     body: title (str, Optional), message (str, Optional)
     """

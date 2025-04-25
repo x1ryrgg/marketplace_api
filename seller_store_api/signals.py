@@ -1,9 +1,11 @@
 import os
 import logging
 
-from django.db.models.signals import pre_delete, pre_save
+from django.db.models.signals import pre_delete, pre_save, post_save
 from django.dispatch import receiver
-from .models import Review
+
+from usercontrol_api.models import Notification
+from .models import Review, Store
 
 
 logger = logging.getLogger(__name__)
@@ -31,3 +33,13 @@ def delete_review_image(sender, instance, **kwargs):
             logger.info(f"Image {instance.image.url} deleted")
         else:
             logger.warning(f"Image file does not exist: {instance.image.url}")
+
+
+@receiver(post_save, sender=Store)
+def store_create_notification(sender, instance, created, **kwargs):
+    if created:
+        Notification.objects.create(
+            user=instance.author,
+            title=Notification.TitleChoice.CELLER,
+            message=f"{instance.name} зарегестирован на вас ({instance.author.username})"
+        )

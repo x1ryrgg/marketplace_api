@@ -57,6 +57,8 @@ class SellerRegisterView(ModelViewSet):
         user = self.get_object()
         if not option:
             return Response(_("Нужно указать свой ответ. 1 - Стать продавцом."))
+        if user.is_seller:
+            return Response(_("Вы уже являетесь продавцом."))
 
         if option == 1:
             cost = Decimal('10000')
@@ -78,7 +80,7 @@ class StoreView(ModelViewSet):
     """
     permission_classes = [IsAuthenticated, IsSeller]
     serializer_class = StoreSerializer
-    http_method_names = ['get', 'post']
+    http_method_names = ['get', 'post', ]
 
     def get_queryset(self):
         return Store.objects.filter(author=self.request.user)
@@ -93,7 +95,7 @@ class StoreView(ModelViewSet):
             raise Exception(_('Пользователь может регистировать до 3 магазинов.'))
         else:
             serializer.save(author=user)
-            _create_notification(user=user, title='seller', message=f'успешная регистрация магазина ')
+
 
 
 class StoresAllView(ModelViewSet):
@@ -132,10 +134,11 @@ class WishListAddView(APIView):
         user = request.user
 
         wishlist_item, created = WishlistItem.objects.get_or_create(user=user,product=product, defaults={'quantity': quantity})
+        wishlist_item.added_quantity = quantity
 
         if not created:
             wishlist_item.quantity += quantity
-            wishlist_item.save()
+            wishlist_item.save(update_fields=['quantity'])
 
         product_data = self.serializer_class(product).data
         total_quantity = WishlistItem.objects.filter(user=user).aggregate(Sum('quantity'))['quantity__sum']

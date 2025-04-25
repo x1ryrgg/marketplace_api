@@ -1610,3 +1610,279 @@ AttributeError: 'StoreSerializer' object has no attribute 'name'
 2025-04-24 21:59:22,909 INFO Request: POST /store/ | User: root
 2025-04-24 21:59:22,909 WARNING Bad Request: /store/
 2025-04-24 21:59:40,487 INFO Request: POST /store/ | User: root
+2025-04-25 18:06:31,693 INFO Watching for file changes with StatReloader
+2025-04-25 18:06:35,702 INFO Request: GET / | User: 
+2025-04-25 18:06:35,704 WARNING Not Found: /
+2025-04-25 18:06:42,363 INFO Request: GET /admin/ | User: 
+2025-04-25 18:06:42,648 INFO Request: GET /admin/login/ | User: 
+2025-04-25 18:06:49,088 INFO D:\python\marketplace_api\marketplace_api\settings.py changed, reloading.
+2025-04-25 18:06:51,209 INFO Watching for file changes with StatReloader
+2025-04-25 18:07:06,200 INFO D:\python\marketplace_api\marketplace_api\settings.py changed, reloading.
+2025-04-25 18:07:08,287 INFO Watching for file changes with StatReloader
+2025-04-25 19:15:22,599 INFO Watching for file changes with StatReloader
+2025-04-25 19:17:00,861 INFO Watching for file changes with StatReloader
+2025-04-25 19:22:33,129 INFO Watching for file changes with StatReloader
+2025-04-25 19:54:45,514 INFO Watching for file changes with StatReloader
+2025-04-25 20:02:45,862 INFO Watching for file changes with StatReloader
+2025-04-25 20:02:55,650 INFO Watching for file changes with StatReloader
+2025-04-25 20:03:02,237 INFO Request: GET / | User: 
+2025-04-25 20:03:02,238 WARNING Not Found: /
+2025-04-25 20:03:06,449 INFO Request: POST /api/token/ | User: 
+2025-04-25 20:03:20,313 INFO Request: GET /products/ | User: root
+2025-04-25 20:03:28,352 INFO Request: GET /products/5/ | User: root
+2025-04-25 20:03:36,700 INFO Request: POST /products/5/add/ | User: root
+2025-04-25 20:04:49,417 INFO Watching for file changes with StatReloader
+2025-04-25 20:05:14,535 ERROR Internal Server Error: /products/6/add/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\seller_store_api\views.py", line 138, in post
+    wishlist_item.save()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 978, in save_base
+    pre_save.send(
+    ~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+TypeError: wishlist_notification() missing 1 required positional argument: 'created'
+2025-04-25 20:05:14,539 INFO Request: POST /products/6/add/ | User: root
+2025-04-25 20:05:26,193 INFO Request: GET /products/6/ | User: root
+2025-04-25 20:05:30,993 INFO Request: GET /products/6/add/ | User: root
+2025-04-25 20:05:30,994 WARNING Method Not Allowed: /products/6/add/
+2025-04-25 20:05:34,438 ERROR Internal Server Error: /products/6/add/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\seller_store_api\views.py", line 138, in post
+    wishlist_item.save()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 978, in save_base
+    pre_save.send(
+    ~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+TypeError: wishlist_notification() missing 1 required positional argument: 'created'
+2025-04-25 20:05:34,440 INFO Request: POST /products/6/add/ | User: root
+2025-04-25 20:05:44,238 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-25 20:05:45,116 INFO Watching for file changes with StatReloader
+2025-04-25 20:05:46,211 INFO Request: POST /products/6/add/ | User: root
+2025-04-25 20:12:24,995 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-25 20:12:25,966 INFO Watching for file changes with StatReloader
+2025-04-25 20:12:34,369 INFO Request: POST /products/5/ | User: root
+2025-04-25 20:12:34,369 WARNING Method Not Allowed: /products/5/
+2025-04-25 20:12:38,122 INFO Request: POST /products/5/add/ | User: root
+2025-04-25 20:13:01,462 INFO Request: POST /api/token/ | User: 
+2025-04-25 20:13:18,549 INFO Request: GET /wishlist/ | User: root
+2025-04-25 20:14:20,057 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-25 20:14:21,048 INFO Watching for file changes with StatReloader
+2025-04-25 20:15:07,041 INFO Request: POST /products/5/add/ | User: root
+2025-04-25 20:15:27,679 INFO Request: GET /wishlist/ | User: root
+2025-04-25 20:21:03,656 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-04-25 20:21:04,841 INFO Watching for file changes with StatReloader
+2025-04-25 20:21:12,319 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-04-25 20:21:13,091 INFO Watching for file changes with StatReloader
+2025-04-25 20:21:26,713 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-25 20:21:27,596 INFO Watching for file changes with StatReloader
+2025-04-25 20:21:32,704 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-25 20:21:33,679 INFO Watching for file changes with StatReloader
+2025-04-25 20:21:39,674 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-25 20:21:40,596 INFO Watching for file changes with StatReloader
+2025-04-25 20:22:00,607 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-25 20:22:01,441 INFO Watching for file changes with StatReloader
+2025-04-25 20:22:02,777 INFO Request: POST /products/5/add/ | User: root
+2025-04-25 20:22:13,037 INFO Request: POST /products/5/add/ | User: root
+2025-04-25 20:22:40,163 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-25 20:22:41,142 INFO Watching for file changes with StatReloader
+2025-04-25 20:22:44,848 ERROR Internal Server Error: /products/5/add/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\seller_store_api\views.py", line 138, in post
+    wishlist_item.save(update_fields=['quantity'])
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1013, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\python\marketplace_api\usercontrol_api\signals.py", line 38, in wishlist_notification
+NameError: name 'quantity' is not defined
+2025-04-25 20:22:44,852 INFO Request: POST /products/5/add/ | User: root
+2025-04-25 20:22:52,259 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-25 20:22:53,117 INFO Watching for file changes with StatReloader
+2025-04-25 20:22:55,187 ERROR Internal Server Error: /products/5/add/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\seller_store_api\views.py", line 138, in post
+    wishlist_item.save(update_fields=['quantity'])
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1013, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\python\marketplace_api\usercontrol_api\signals.py", line 38, in wishlist_notification
+    quantity = getattr(quantity, 'quantity', 1)
+                       ^^^^^^^^
+NameError: name 'quantity' is not defined
+2025-04-25 20:22:55,192 INFO Request: POST /products/5/add/ | User: root
+2025-04-25 20:23:04,787 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-25 20:23:05,616 INFO Watching for file changes with StatReloader
+2025-04-25 20:23:57,013 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-04-25 20:23:57,977 INFO Watching for file changes with StatReloader
+2025-04-25 20:24:01,834 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-25 20:24:02,608 INFO Watching for file changes with StatReloader
+2025-04-25 20:24:08,481 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-25 20:24:09,514 INFO Watching for file changes with StatReloader
+2025-04-25 20:24:14,693 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-25 20:24:15,576 INFO Watching for file changes with StatReloader
+2025-04-25 20:24:19,835 INFO Request: POST /products/5/add/ | User: root
+2025-04-25 20:24:37,552 INFO Request: POST /products/5/add/ | User: root
+2025-04-25 21:34:08,214 INFO Watching for file changes with StatReloader
+2025-04-25 21:34:12,974 INFO Request: POST /api/token/ | User: 
+2025-04-25 21:34:26,283 INFO Request: GET /seller/ | User: 
+2025-04-25 21:34:26,284 WARNING Not Found: /seller/
+2025-04-25 21:34:34,572 INFO Request: GET /store/ | User: root
+2025-04-25 21:34:52,207 INFO Request: GET /seller/register/ | User: root
+2025-04-25 21:35:57,136 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-04-25 21:35:58,091 INFO Watching for file changes with StatReloader
+2025-04-25 21:36:06,984 INFO Request: GET /store/ | User: root
+2025-04-25 21:36:37,944 INFO Request: POST /store/ | User: root
+2025-04-25 21:37:16,903 INFO Request: POST /store/ | User: root
+2025-04-25 21:38:08,241 INFO Watching for file changes with StatReloader
+2025-04-25 21:38:11,153 INFO D:\python\marketplace_api\seller_store_api\signals.py changed, reloading.
+2025-04-25 21:38:11,961 INFO Watching for file changes with StatReloader
+2025-04-25 21:38:17,292 INFO Request: POST /store/ | User: root
