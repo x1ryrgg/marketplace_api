@@ -23,6 +23,10 @@ app.conf.beat_schedule = {
         'task': 'payment_system_api.tasks.beat_check_notification',
         'schedule': crontab(hour=12, minute=0)
     },
+    'beat_check_is_read_notification': {
+        'task': 'payment_system_api.tasks.beat_check_is_read_notification',
+        'schedule': crontab(hour=12, minute=0)
+    },
 }
 
 # crontab(minute='*/1')  crontab(hour='*/12', minute=0)

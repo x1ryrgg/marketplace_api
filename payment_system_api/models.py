@@ -44,7 +44,7 @@ class Delivery(models.Model):
         if not self.pk:
             super().save(*args, **kwargs)
         if not self.delivery_date:
-            self.delivery_date = self.created_at + datetime.timedelta(days=random.randint(0, 9))
+            self.delivery_date = self.created_at + datetime.timedelta(days=random.randint(1, 7))
         super().save(update_fields=['delivery_date'])
 
     def __str__(self):

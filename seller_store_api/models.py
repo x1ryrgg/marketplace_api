@@ -32,12 +32,12 @@ class Review(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return 'User %s wrote a comment to product %s' % (self.user.username, self.product)
+        return '%s review -> product %s' % (self.user.username, self.product)
 
     class Meta:
         constraints = [
             models.CheckConstraint(
-                name='star_raiting_valid',
+                name='star_rating_valid',
                 check=Q(stars__gte=1,stars__lte=5),
                 violation_error_message='Можно ставить только от 1 до 5 звезд.'
             )

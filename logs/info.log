@@ -1886,3 +1886,1694 @@ NameError: name 'quantity' is not defined
 2025-04-25 21:38:11,153 INFO D:\python\marketplace_api\seller_store_api\signals.py changed, reloading.
 2025-04-25 21:38:11,961 INFO Watching for file changes with StatReloader
 2025-04-25 21:38:17,292 INFO Request: POST /store/ | User: root
+2025-04-26 09:51:30,784 INFO Watching for file changes with StatReloader
+2025-04-26 09:51:48,621 INFO Watching for file changes with StatReloader
+2025-04-26 09:52:35,333 INFO Watching for file changes with StatReloader
+2025-04-26 09:52:42,609 INFO Request: POST /api/token/ | User: 
+2025-04-26 09:53:12,801 INFO Request: POST /products/5/add/ | User: root
+2025-04-26 09:53:31,655 INFO Request: GET /wishlist/ | User: root
+2025-04-26 09:54:24,138 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 09:54:26,019 INFO Watching for file changes with StatReloader
+2025-04-26 09:54:29,912 INFO Request: GET /wishlist/ | User: root
+2025-04-26 09:54:56,035 INFO Request: POST /wishlist/buy/ | User: root
+2025-04-26 09:56:57,630 INFO D:\python\marketplace_api\payment_system_api\models.py changed, reloading.
+2025-04-26 09:56:59,167 INFO Watching for file changes with StatReloader
+2025-04-26 09:57:00,831 INFO Request: POST /wishlist/buy/ | User: root
+2025-04-26 09:57:00,831 WARNING Bad Request: /wishlist/buy/
+2025-04-26 09:57:11,443 INFO Request: GET /admin/ | User: 
+2025-04-26 09:57:11,689 INFO Request: GET /admin/login/ | User: 
+2025-04-26 09:57:13,535 INFO Request: POST /admin/login/ | User: root
+2025-04-26 09:57:13,743 INFO Request: GET /admin/ | User: root
+2025-04-26 09:57:19,669 INFO Request: GET /admin/usercontrol_api/user/ | User: root
+2025-04-26 09:57:19,830 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-26 09:57:21,558 INFO Request: GET /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 09:57:21,693 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-26 09:57:27,188 INFO Request: POST /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 09:57:27,306 INFO Request: GET /admin/usercontrol_api/user/ | User: root
+2025-04-26 09:57:27,476 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-26 09:57:30,075 ERROR Internal Server Error: /wishlist/buy/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\payment_system_api\views.py", line 156, in payment_products
+    raise ValidationError(_(f"Недостаточно товара {product.name} на складе."))
+                                                   ^^^^^^^^^^^^
+AttributeError: 'ProductVariant' object has no attribute 'name'
+2025-04-26 09:57:30,082 INFO Request: POST /wishlist/buy/ | User: root
+2025-04-26 09:58:29,463 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 09:58:31,347 INFO Watching for file changes with StatReloader
+2025-04-26 09:58:35,086 INFO Request: POST /wishlist/buy/ | User: root
+2025-04-26 09:58:35,086 WARNING Bad Request: /wishlist/buy/
+2025-04-26 10:05:33,126 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:05:35,243 INFO Watching for file changes with StatReloader
+2025-04-26 10:05:53,923 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:05:56,553 INFO Watching for file changes with StatReloader
+2025-04-26 10:06:01,115 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:06:03,633 INFO Watching for file changes with StatReloader
+2025-04-26 10:12:46,740 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:12:47,909 INFO Watching for file changes with StatReloader
+2025-04-26 10:17:10,785 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:17:12,029 INFO Watching for file changes with StatReloader
+2025-04-26 10:17:15,665 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:17:16,605 INFO Watching for file changes with StatReloader
+2025-04-26 10:17:34,779 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:17:35,701 INFO Watching for file changes with StatReloader
+2025-04-26 10:17:48,016 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:17:49,472 INFO Watching for file changes with StatReloader
+2025-04-26 10:18:12,239 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:18:13,233 INFO Watching for file changes with StatReloader
+2025-04-26 10:18:23,895 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:18:25,020 INFO Watching for file changes with StatReloader
+2025-04-26 10:18:32,441 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:18:33,304 INFO Watching for file changes with StatReloader
+2025-04-26 10:18:41,691 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:18:42,537 INFO Watching for file changes with StatReloader
+2025-04-26 10:19:09,814 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:19:10,643 INFO Watching for file changes with StatReloader
+2025-04-26 10:19:33,850 INFO Request: POST /wishlist/buy/ | User: root
+2025-04-26 10:27:36,011 INFO Request: POST /api/token/ | User: 
+2025-04-26 10:27:58,708 INFO Request: POST /products/5/add/ | User: root
+2025-04-26 10:28:04,932 INFO Request: POST /wishlist/buy/ | User: root
+2025-04-26 10:28:04,933 WARNING Bad Request: /wishlist/buy/
+2025-04-26 10:28:13,373 INFO Request: GET /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 10:28:13,572 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-26 10:28:16,724 INFO Request: POST /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 10:28:16,894 INFO Request: GET /admin/usercontrol_api/user/ | User: root
+2025-04-26 10:28:16,957 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-26 10:28:23,800 INFO Request: POST /wishlist/buy/ | User: root
+2025-04-26 10:29:05,915 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:29:07,807 INFO Watching for file changes with StatReloader
+2025-04-26 10:29:38,151 INFO Request: GET /admin/product_control_api/productvariant/ | User: root
+2025-04-26 10:29:38,328 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-26 10:29:47,043 INFO Request: GET /admin/product_control_api/productvariant/5/change/ | User: root
+2025-04-26 10:29:47,210 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-26 10:29:51,431 INFO Request: POST /admin/product_control_api/productvariant/5/change/ | User: root
+2025-04-26 10:29:51,520 INFO Request: GET /admin/product_control_api/productvariant/ | User: root
+2025-04-26 10:29:51,682 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-26 10:30:00,994 INFO Request: POST /products/5/add/ | User: root
+2025-04-26 10:30:08,320 INFO Request: GET /products/5/ | User: root
+2025-04-26 10:30:17,862 INFO Request: GET /products/ | User: root
+2025-04-26 10:30:36,740 INFO Request: GET /wishlist/ | User: root
+2025-04-26 10:31:36,640 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:31:37,616 INFO Watching for file changes with StatReloader
+2025-04-26 10:31:40,226 INFO Request: POST /wishlist/buy/ | User: root
+2025-04-26 10:34:19,686 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:34:21,516 INFO Watching for file changes with StatReloader
+2025-04-26 10:34:47,526 INFO Request: POST /products/5/add/ | User: root
+2025-04-26 10:34:50,543 INFO Request: POST /wishlist/buy/ | User: root
+2025-04-26 10:34:50,543 WARNING Bad Request: /wishlist/buy/
+2025-04-26 10:36:54,372 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:36:55,647 INFO Watching for file changes with StatReloader
+2025-04-26 10:36:57,123 INFO Request: POST /wishlist/buy/ | User: root
+2025-04-26 10:36:57,123 WARNING Bad Request: /wishlist/buy/
+2025-04-26 10:37:07,164 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-04-26 10:37:08,097 INFO Watching for file changes with StatReloader
+2025-04-26 10:37:09,850 INFO Request: POST /wishlist/buy/ | User: root
+2025-04-26 10:37:09,850 WARNING Bad Request: /wishlist/buy/
+2025-04-26 10:37:26,173 INFO Request: GET /wishlist/ | User: root
+2025-04-26 10:37:29,589 INFO Request: GET /wishlist/10/ | User: root
+2025-04-26 10:37:50,044 INFO Request: PATCH /wishlist/10/ | User: root
+2025-04-26 10:37:50,044 WARNING Bad Request: /wishlist/10/
+2025-04-26 10:37:54,049 INFO Request: PATCH /wishlist/10/ | User: root
+2025-04-26 10:38:04,159 INFO Request: PATCH /wishlist/10/ | User: root
+2025-04-26 10:38:15,796 INFO Request: POST /wishlist/buy/ | User: root
+2025-04-26 10:39:47,447 INFO Request: GET /notifications/ | User: root
+2025-04-26 10:39:51,328 INFO Request: GET /notifications/41/ | User: root
+2025-04-26 10:39:57,405 INFO Request: DELETE /notifications/41/ | User: root
+2025-04-26 10:40:24,311 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-26 10:40:25,408 INFO Watching for file changes with StatReloader
+2025-04-26 10:42:52,646 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-04-26 10:42:53,721 INFO Watching for file changes with StatReloader
+2025-04-26 10:43:20,203 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-04-26 10:43:21,143 INFO Watching for file changes with StatReloader
+2025-04-26 10:43:46,526 INFO D:\python\marketplace_api\seller_store_api\signals.py changed, reloading.
+2025-04-26 10:43:47,735 INFO Watching for file changes with StatReloader
+2025-04-26 10:45:31,147 INFO D:\python\marketplace_api\seller_store_api\signals.py changed, reloading.
+2025-04-26 10:45:32,220 INFO Watching for file changes with StatReloader
+2025-04-26 10:46:58,561 INFO D:\python\marketplace_api\seller_store_api\signals.py changed, reloading.
+2025-04-26 10:46:59,550 INFO Watching for file changes with StatReloader
+2025-04-26 10:47:42,245 INFO D:\python\marketplace_api\seller_store_api\signals.py changed, reloading.
+2025-04-26 10:47:43,199 INFO Watching for file changes with StatReloader
+2025-04-26 10:47:55,676 INFO D:\python\marketplace_api\seller_store_api\signals.py changed, reloading.
+2025-04-26 10:47:56,563 INFO Watching for file changes with StatReloader
+2025-04-26 10:48:17,916 INFO D:\python\marketplace_api\seller_store_api\signals.py changed, reloading.
+2025-04-26 10:48:18,990 INFO Watching for file changes with StatReloader
+2025-04-26 10:48:22,165 INFO D:\python\marketplace_api\seller_store_api\signals.py changed, reloading.
+2025-04-26 10:48:23,152 INFO Watching for file changes with StatReloader
+2025-04-26 10:48:41,005 INFO D:\python\marketplace_api\seller_store_api\signals.py changed, reloading.
+2025-04-26 10:48:42,152 INFO Watching for file changes with StatReloader
+2025-04-26 10:48:52,715 INFO D:\python\marketplace_api\seller_store_api\signals.py changed, reloading.
+2025-04-26 10:48:53,708 INFO Watching for file changes with StatReloader
+2025-04-26 10:49:05,846 INFO Request: GET /admin/usercontrol_api/user/ | User: root
+2025-04-26 10:49:05,911 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-26 10:49:11,271 INFO Request: GET /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 10:49:11,436 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-26 10:49:14,693 ERROR Internal Server Error: /admin/usercontrol_api/user/1/change/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1962, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1818, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1869, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1292, in save_model
+    obj.save()
+    ~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\auth\base_user.py", line 62, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1013, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\python\marketplace_api\seller_store_api\signals.py", line 64, in seller_activate_notification
+    user=instance.user,
+         ^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'user'
+2025-04-26 10:49:14,703 INFO Request: POST /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 10:52:53,227 INFO D:\python\marketplace_api\seller_store_api\signals.py changed, reloading.
+2025-04-26 10:52:54,338 INFO Watching for file changes with StatReloader
+2025-04-26 10:52:55,477 INFO Request: GET /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 10:52:56,822 ERROR Internal Server Error: /admin/usercontrol_api/user/1/change/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: ОШИБКА:  значение NULL в столбце "user_id" отношения "usercontrol_api_notification" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (47, celler, Вы стали продавцом, вам доступны но..., f, 2025-04-26, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1962, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1818, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1869, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1292, in save_model
+    obj.save()
+    ~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\auth\base_user.py", line 62, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1013, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\python\marketplace_api\seller_store_api\signals.py", line 65, in seller_activate_notification
+    Notification.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user=user,
+        ^^^^^^^^^^
+        title=Notification.TitleChoice.CELLER,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        message=f"Вы стали продавцом, вам доступны новые привилегии."
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: ОШИБКА:  значение NULL в столбце "user_id" отношения "usercontrol_api_notification" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (47, celler, Вы стали продавцом, вам доступны но..., f, 2025-04-26, null).
+
+2025-04-26 10:52:56,829 INFO Request: POST /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 10:54:14,633 INFO Request: POST /products/5/add/ | User: root
+2025-04-26 10:55:27,344 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-04-26 10:55:28,405 INFO Watching for file changes with StatReloader
+2025-04-26 10:55:29,861 INFO Request: GET /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 10:55:30,972 ERROR Internal Server Error: /admin/usercontrol_api/user/1/change/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: ОШИБКА:  значение NULL в столбце "user_id" отношения "usercontrol_api_notification" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (49, celler, Вы стали продавцом, вам доступны но..., f, 2025-04-26, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1962, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1818, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1869, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1292, in save_model
+    obj.save()
+    ~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\auth\base_user.py", line 62, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1013, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\python\marketplace_api\seller_store_api\signals.py", line 65, in seller_activate_notification
+    Notification.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user=user,
+        ^^^^^^^^^^
+        title=Notification.TitleChoice.CELLER,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        message=f"Вы стали продавцом, вам доступны новые привилегии."
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: ОШИБКА:  значение NULL в столбце "user_id" отношения "usercontrol_api_notification" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (49, celler, Вы стали продавцом, вам доступны но..., f, 2025-04-26, null).
+
+2025-04-26 10:55:30,980 INFO Request: POST /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 10:55:33,199 INFO Request: GET /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 10:55:56,749 INFO D:\python\marketplace_api\seller_store_api\views.py changed, reloading.
+2025-04-26 10:55:57,617 INFO Watching for file changes with StatReloader
+2025-04-26 10:56:09,429 ERROR Internal Server Error: /admin/usercontrol_api/user/1/change/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: ОШИБКА:  значение NULL в столбце "user_id" отношения "usercontrol_api_notification" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (50, celler, Вы стали продавцом, вам доступны но..., f, 2025-04-26, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1962, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1818, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1869, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1292, in save_model
+    obj.save()
+    ~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\auth\base_user.py", line 62, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1013, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\python\marketplace_api\seller_store_api\signals.py", line 65, in seller_activate_notification
+    Notification.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user=user,
+        ^^^^^^^^^^
+        title=Notification.TitleChoice.CELLER,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        message=f"Вы стали продавцом, вам доступны новые привилегии."
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: ОШИБКА:  значение NULL в столбце "user_id" отношения "usercontrol_api_notification" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (50, celler, Вы стали продавцом, вам доступны но..., f, 2025-04-26, null).
+
+2025-04-26 10:56:09,447 INFO Request: POST /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 10:56:31,748 INFO D:\python\marketplace_api\seller_store_api\signals.py changed, reloading.
+2025-04-26 10:56:32,601 INFO Watching for file changes with StatReloader
+2025-04-26 10:56:33,760 INFO Request: GET /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 10:56:34,770 ERROR Internal Server Error: /admin/usercontrol_api/user/1/change/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1962, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1818, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1869, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1292, in save_model
+    obj.save()
+    ~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\auth\base_user.py", line 62, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 978, in save_base
+    pre_save.send(
+    ~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+TypeError: seller_activate_notification() missing 1 required positional argument: 'created'
+2025-04-26 10:56:34,774 INFO Request: POST /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 10:56:43,272 INFO D:\python\marketplace_api\seller_store_api\signals.py changed, reloading.
+2025-04-26 10:56:44,202 INFO Watching for file changes with StatReloader
+2025-04-26 10:56:45,058 INFO Request: GET /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 10:56:45,971 ERROR Internal Server Error: /admin/usercontrol_api/user/1/change/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1962, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1818, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1869, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1292, in save_model
+    obj.save()
+    ~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\auth\base_user.py", line 62, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 978, in save_base
+    pre_save.send(
+    ~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\python\marketplace_api\seller_store_api\signals.py", line 64, in seller_activate_notification
+    user=instance.user,
+         ^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'user'
+2025-04-26 10:56:45,976 INFO Request: POST /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 10:57:38,651 INFO D:\python\marketplace_api\seller_store_api\signals.py changed, reloading.
+2025-04-26 10:57:39,606 INFO Watching for file changes with StatReloader
+2025-04-26 10:57:40,659 INFO Request: POST /products/5/add/ | User: root
+2025-04-26 10:57:55,314 INFO Request: POST /products/5/add/ | User: root
+2025-04-26 10:58:05,774 INFO Request: POST /products/5/add/ | User: root
+2025-04-26 10:58:57,336 INFO D:\python\marketplace_api\seller_store_api\signals.py changed, reloading.
+2025-04-26 10:58:58,313 INFO Watching for file changes with StatReloader
+2025-04-26 10:59:04,243 INFO Request: GET /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 10:59:05,407 INFO Request: POST /admin/usercontrol_api/user/1/change/ | User: root
+2025-04-26 10:59:05,474 INFO Request: GET /admin/usercontrol_api/user/ | User: root
+2025-04-26 10:59:05,549 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-26 11:02:06,045 INFO D:\python\marketplace_api\payment_system_api\apps.py changed, reloading.
+2025-04-26 11:02:06,987 INFO Watching for file changes with StatReloader
+2025-04-26 11:10:29,000 INFO D:\python\marketplace_api\seller_store_api\signals.py changed, reloading.
+2025-04-26 11:10:30,175 INFO Watching for file changes with StatReloader
+2025-04-26 11:10:40,325 INFO Request: POST /products/5/buy/ | User: root
+2025-04-26 11:10:49,311 INFO D:\python\marketplace_api\payment_system_api\signals.py changed, reloading.
+2025-04-26 11:10:50,496 INFO Watching for file changes with StatReloader
+2025-04-26 11:12:00,364 INFO D:\python\marketplace_api\payment_system_api\signals.py changed, reloading.
+2025-04-26 11:12:01,355 INFO Watching for file changes with StatReloader
+2025-04-26 11:12:03,065 INFO Request: POST /products/5/buy/ | User: root
+2025-04-26 11:12:30,741 INFO D:\python\marketplace_api\payment_system_api\signals.py changed, reloading.
+2025-04-26 11:12:31,622 INFO Watching for file changes with StatReloader
+2025-04-26 11:13:16,595 INFO Request: GET /wishlist/ | User: root
+2025-04-26 11:13:40,955 INFO Request: POST /wishlist/buy/ | User: root
+2025-04-26 11:38:16,372 INFO Watching for file changes with StatReloader
+2025-04-26 11:38:20,717 INFO Request: POST /api/token/ | User: 
+2025-04-26 11:38:32,490 ERROR Internal Server Error: /notifications/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 105, in get_queryset
+    return Respoonse({
+           ^^^^^^^^^
+NameError: name 'Respoonse' is not defined. Did you mean: 'Response'?
+2025-04-26 11:38:32,493 INFO Request: GET /notifications/ | User: root
+2025-04-26 11:38:38,972 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-26 11:38:39,859 INFO Watching for file changes with StatReloader
+2025-04-26 11:38:41,728 ERROR Internal Server Error: /notifications/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+                                                   ^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\template\response.py", line 127, in __iter__
+    raise ContentNotRenderedError(
+        "The response content must be rendered before it can be iterated over."
+    )
+django.template.response.ContentNotRenderedError: The response content must be rendered before it can be iterated over.
+2025-04-26 11:38:41,731 INFO Request: GET /notifications/ | User: root
+2025-04-26 11:38:48,201 ERROR Internal Server Error: /notifications/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+                                                   ^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\template\response.py", line 127, in __iter__
+    raise ContentNotRenderedError(
+        "The response content must be rendered before it can be iterated over."
+    )
+django.template.response.ContentNotRenderedError: The response content must be rendered before it can be iterated over.
+2025-04-26 11:38:48,202 INFO Request: GET /notifications/ | User: root
+2025-04-26 11:39:09,210 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-26 11:39:10,094 INFO Watching for file changes with StatReloader
+2025-04-26 11:39:11,740 ERROR Internal Server Error: /notifications/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+                                                   ^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\template\response.py", line 127, in __iter__
+    raise ContentNotRenderedError(
+        "The response content must be rendered before it can be iterated over."
+    )
+django.template.response.ContentNotRenderedError: The response content must be rendered before it can be iterated over.
+2025-04-26 11:39:11,743 INFO Request: GET /notifications/ | User: root
+2025-04-26 11:39:42,859 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-26 11:39:43,798 INFO Watching for file changes with StatReloader
+2025-04-26 11:39:46,126 ERROR Internal Server Error: /notifications/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+                                                   ^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\template\response.py", line 127, in __iter__
+    raise ContentNotRenderedError(
+        "The response content must be rendered before it can be iterated over."
+    )
+django.template.response.ContentNotRenderedError: The response content must be rendered before it can be iterated over.
+2025-04-26 11:39:46,129 INFO Request: GET /notifications/ | User: root
+2025-04-26 11:39:53,254 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-26 11:39:54,214 INFO Watching for file changes with StatReloader
+2025-04-26 11:40:44,639 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-26 11:40:45,808 INFO Watching for file changes with StatReloader
+2025-04-26 11:41:21,391 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-26 11:41:22,203 INFO Watching for file changes with StatReloader
+2025-04-26 11:41:49,094 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-26 11:41:49,944 INFO Watching for file changes with StatReloader
+2025-04-26 11:41:50,884 INFO Request: GET /notifications/ | User: root
+2025-04-26 11:41:56,720 INFO Request: GET /notifications/54/ | User: root
+2025-04-26 11:41:58,741 INFO Request: GET /notifications/ | User: root
+2025-04-26 11:42:16,065 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-26 11:42:17,108 INFO Watching for file changes with StatReloader
+2025-04-26 11:42:18,383 INFO Request: GET /notifications/ | User: root
+2025-04-26 11:42:37,929 INFO D:\python\marketplace_api\usercontrol_api\serializers.py changed, reloading.
+2025-04-26 11:42:38,877 INFO Watching for file changes with StatReloader
+2025-04-26 11:42:41,189 INFO Request: GET /notifications/ | User: root
+2025-04-26 11:43:04,016 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-26 11:43:04,964 INFO Watching for file changes with StatReloader
+2025-04-26 11:43:06,124 INFO Request: GET /notifications/ | User: root
+2025-04-26 11:43:13,012 INFO Request: GET /notifications/58/ | User: root
+2025-04-26 11:43:18,676 INFO Request: GET /notifications/ | User: root
+2025-04-26 11:43:28,070 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-26 11:43:29,088 INFO Watching for file changes with StatReloader
+2025-04-26 11:43:30,900 INFO Request: GET /notifications/ | User: root
+2025-04-26 11:43:37,420 INFO Request: GET /notifications/52/ | User: root
+2025-04-26 11:43:38,830 INFO Request: GET /notifications/ | User: root
+2025-04-26 11:44:17,377 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-26 11:44:18,531 INFO Watching for file changes with StatReloader
+2025-04-26 11:44:22,024 INFO Request: GET /profile | User: 
+2025-04-26 11:44:22,085 INFO Request: GET /profile/ | User: root
+2025-04-26 11:44:23,216 INFO Request: GET /profile/ | User: root
+2025-04-26 11:44:33,160 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-26 11:44:34,346 INFO Watching for file changes with StatReloader
+2025-04-26 11:44:35,503 INFO Request: GET /profile/ | User: root
+2025-04-26 20:26:42,407 INFO Watching for file changes with StatReloader
+2025-04-27 12:06:58,182 INFO Watching for file changes with StatReloader
+2025-04-27 12:07:56,907 INFO Watching for file changes with StatReloader
+2025-04-27 12:08:33,028 INFO Request: POST /api/token/ | User: 
+2025-04-27 12:08:45,528 INFO Request: GET /coupons/ | User: root
+2025-04-27 12:08:53,710 ERROR Internal Server Error: /coupons/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 167, in perform_create
+    serializer.save(user=self.request.user)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1013, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\python\marketplace_api\usercontrol_api\signals.py", line 39, in set_coupon
+    self.code = random.randint(100000, 999999)
+                ^^^^^^
+NameError: name 'random' is not defined. Did you forget to import 'random'?
+2025-04-27 12:08:53,717 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:09:15,114 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-27 12:09:15,977 INFO Watching for file changes with StatReloader
+2025-04-27 12:09:20,941 ERROR Internal Server Error: /coupons/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 167, in perform_create
+    serializer.save(user=self.request.user)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 1013, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\python\marketplace_api\usercontrol_api\signals.py", line 40, in set_coupon
+    self.code = random.randint(100000, 999999)
+    ^^^^
+NameError: name 'self' is not defined
+2025-04-27 12:09:20,946 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:09:43,129 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-27 12:09:44,035 INFO Watching for file changes with StatReloader
+2025-04-27 12:09:45,555 ERROR Internal Server Error: /coupons/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 167, in perform_create
+    serializer.save(user=self.request.user)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 978, in save_base
+    pre_save.send(
+    ~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\python\marketplace_api\usercontrol_api\signals.py", line 40, in set_coupon
+    self.code = random.randint(100000, 999999)
+    ^^^^
+NameError: name 'self' is not defined
+2025-04-27 12:09:45,562 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:10:25,616 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-27 12:10:26,607 INFO Watching for file changes with StatReloader
+2025-04-27 12:10:29,958 ERROR Internal Server Error: /coupons/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 167, in perform_create
+    serializer.save(user=self.request.user)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 978, in save_base
+    pre_save.send(
+    ~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\python\marketplace_api\usercontrol_api\signals.py", line 44, in set_coupon
+    instance.end_date = self.created_at + datetime.timedelta(weeks=4)
+                        ^^^^
+NameError: name 'self' is not defined
+2025-04-27 12:10:29,962 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:10:43,478 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-27 12:10:44,340 INFO Watching for file changes with StatReloader
+2025-04-27 12:10:46,308 ERROR Internal Server Error: /coupons/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 167, in perform_create
+    serializer.save(user=self.request.user)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 978, in save_base
+    pre_save.send(
+    ~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\python\marketplace_api\usercontrol_api\signals.py", line 44, in set_coupon
+    instance.end_date = instance.created_at + datetime.timedelta(weeks=4)
+                                              ^^^^^^^^
+NameError: name 'datetime' is not defined. Did you forget to import 'datetime'?
+2025-04-27 12:10:46,315 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:11:05,475 INFO Watching for file changes with StatReloader
+2025-04-27 12:11:08,316 ERROR Internal Server Error: /coupons/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 978, in save_base
+    pre_save.send(
+    ~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\python\marketplace_api\usercontrol_api\signals.py", line 45, in set_coupon
+    instance.end_date = instance.created_at + datetime.timedelta(weeks=4)
+                        ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'datetime.timedelta'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 167, in perform_create
+    serializer.save(user=self.request.user)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 1008, in create
+    raise TypeError(msg)
+TypeError: Got a `TypeError` when calling `Coupon.objects.create()`. This may be because you have a writable field on the serializer class that is not a valid argument to `Coupon.objects.create()`. You may need to make the field read-only, or override the CouponSerializer.create() method to handle this correctly.
+Original exception was:
+ Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 978, in save_base
+    pre_save.send(
+    ~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\python\marketplace_api\usercontrol_api\signals.py", line 45, in set_coupon
+    instance.end_date = instance.created_at + datetime.timedelta(weeks=4)
+                        ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'datetime.timedelta'
+
+2025-04-27 12:11:08,322 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:11:41,991 INFO Request: GET /admin/ | User: 
+2025-04-27 12:11:42,171 INFO Request: GET /admin/login/ | User: 
+2025-04-27 12:11:45,004 INFO Request: POST /admin/login/ | User: root
+2025-04-27 12:11:45,114 INFO Request: GET /admin/ | User: root
+2025-04-27 12:11:49,014 INFO Request: GET /admin/usercontrol_api/coupon/add/ | User: root
+2025-04-27 12:11:49,147 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-27 12:11:52,622 ERROR Internal Server Error: /admin/usercontrol_api/coupon/add/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1959, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1818, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1869, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1292, in save_model
+    obj.save()
+    ~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\models\base.py", line 978, in save_base
+    pre_save.send(
+    ~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\python\marketplace_api\usercontrol_api\signals.py", line 45, in set_coupon
+    instance.end_date = instance.created_at + datetime.timedelta(weeks=4)
+                        ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'datetime.timedelta'
+2025-04-27 12:11:52,628 INFO Request: POST /admin/usercontrol_api/coupon/add/ | User: root
+2025-04-27 12:12:09,914 INFO D:\python\marketplace_api\usercontrol_api\signals.py changed, reloading.
+2025-04-27 12:12:10,993 INFO Watching for file changes with StatReloader
+2025-04-27 12:12:13,619 INFO Request: GET /admin/usercontrol_api/coupon/add/ | User: root
+2025-04-27 12:12:14,724 INFO Request: POST /admin/usercontrol_api/coupon/add/ | User: root
+2025-04-27 12:12:14,974 INFO Request: GET /admin/usercontrol_api/coupon/ | User: root
+2025-04-27 12:12:15,047 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-27 12:12:34,504 INFO Request: GET /admin/usercontrol_api/coupon/ | User: root
+2025-04-27 12:12:34,581 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-27 12:12:35,699 INFO Request: GET /admin/usercontrol_api/coupon/add/ | User: root
+2025-04-27 12:12:35,877 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-27 12:12:37,855 INFO Request: POST /admin/usercontrol_api/coupon/add/ | User: root
+2025-04-27 12:12:37,911 INFO Request: GET /admin/usercontrol_api/coupon/ | User: root
+2025-04-27 12:12:38,077 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-27 12:13:07,413 INFO D:\python\marketplace_api\usercontrol_api\models.py changed, reloading.
+2025-04-27 12:13:09,310 INFO Watching for file changes with StatReloader
+2025-04-27 12:13:11,926 INFO Request: GET /admin/usercontrol_api/coupon/ | User: root
+2025-04-27 12:13:11,990 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-27 12:13:12,833 INFO Request: GET /admin/usercontrol_api/coupon/add/ | User: root
+2025-04-27 12:13:12,999 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-27 12:13:15,123 INFO Request: POST /admin/usercontrol_api/coupon/add/ | User: root
+2025-04-27 12:13:15,190 INFO Request: GET /admin/usercontrol_api/coupon/ | User: root
+2025-04-27 12:13:15,358 INFO Request: GET /admin/jsi18n/ | User: root
+2025-04-27 12:14:23,723 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:15:50,065 INFO D:\python\marketplace_api\usercontrol_api\serializers.py changed, reloading.
+2025-04-27 12:15:51,371 INFO Watching for file changes with StatReloader
+2025-04-27 12:16:40,675 INFO D:\python\marketplace_api\usercontrol_api\serializers.py changed, reloading.
+2025-04-27 12:16:41,553 INFO Watching for file changes with StatReloader
+2025-04-27 12:17:26,551 INFO D:\python\marketplace_api\usercontrol_api\views.py changed, reloading.
+2025-04-27 12:17:27,420 INFO Watching for file changes with StatReloader
+2025-04-27 12:17:29,097 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:17:29,097 WARNING Bad Request: /coupons/
+2025-04-27 12:17:40,983 INFO D:\python\marketplace_api\usercontrol_api\serializers.py changed, reloading.
+2025-04-27 12:17:41,890 INFO Watching for file changes with StatReloader
+2025-04-27 12:17:42,999 ERROR Internal Server Error: /coupons/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 166, in perform_create
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\serializers.py", line 66, in create
+    user = validated_data.pop(['user'])
+KeyError: ['user']
+2025-04-27 12:17:43,002 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:17:50,022 INFO D:\python\marketplace_api\usercontrol_api\serializers.py changed, reloading.
+2025-04-27 12:17:50,875 INFO Watching for file changes with StatReloader
+2025-04-27 12:17:52,784 ERROR Internal Server Error: /coupons/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\views.py", line 166, in perform_create
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\usercontrol_api\serializers.py", line 66, in create
+    user = validated_data.pop['user']
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^
+TypeError: 'builtin_function_or_method' object is not subscriptable
+2025-04-27 12:17:52,787 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:18:48,053 INFO D:\python\marketplace_api\usercontrol_api\serializers.py changed, reloading.
+2025-04-27 12:18:48,970 INFO Watching for file changes with StatReloader
+2025-04-27 12:19:19,836 INFO D:\python\marketplace_api\usercontrol_api\serializers.py changed, reloading.
+2025-04-27 12:19:20,712 INFO Watching for file changes with StatReloader
+2025-04-27 12:19:23,604 INFO D:\python\marketplace_api\usercontrol_api\serializers.py changed, reloading.
+2025-04-27 12:19:24,424 INFO Watching for file changes with StatReloader
+2025-04-27 12:19:26,329 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:19:30,659 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:19:31,785 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:19:32,742 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:19:33,624 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:19:34,435 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:19:35,284 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:19:36,227 INFO Request: POST /coupons/ | User: root
+2025-04-27 12:19:37,019 INFO Request: POST /coupons/ | User: root

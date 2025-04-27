@@ -1,3 +1,4 @@
+import random
 from rest_framework import serializers
 from .models import *
 
@@ -44,7 +45,7 @@ class NotificationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Notification
-        fields = ('id', 'title', 'created_at')
+        fields = ('id', 'title', 'is_read', 'created_at')
 
 
 class RetrieveNotificationSerializer(serializers.ModelSerializer):
@@ -58,4 +59,11 @@ class CouponSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Coupon
-        fields = ("id", 'code', 'discount', 'end_date')
+        fields = ("id", 'user', 'code', 'discount', 'end_date')
+        read_only_fields = ('user', )
+
+    def create(self, validated_data):
+        random_user = random.choice(User.objects.all())
+        validated_data['user'] = random_user
+        return Coupon.objects.create(**validated_data)
+

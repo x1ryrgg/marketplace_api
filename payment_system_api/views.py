@@ -152,8 +152,11 @@ class WishListView(ModelViewSet):
 
             for item in wishlist_items:
                 product = item.product
+
                 if product.quantity < item.quantity:
-                    raise ValidationError(_(f"Недостаточно товара {product.name} на складе."))
+                    raise ValidationError(_(f"Недостаточно товара {product.product.name} на складе."
+                                            f" Не хватает {item.quantity - product.quantity} шт для оформления"
+                                            f" Поменяйте количество в списке желаемого. "))
 
                 product.quantity -= item.quantity
                 product.save()
@@ -161,6 +164,7 @@ class WishListView(ModelViewSet):
 
                 send_email_task.delay(self.request.user.username, discount_price.quantize(Decimal('0.01')))
                 Delivery.objects.create(user=user, product=product, user_price=sum_price, quantity=item.quantity)
+
             wishlist_items.delete()
 
             user_data = PrivateUserSerializer(user).data
@@ -297,7 +301,8 @@ class DeliveryView(ModelViewSet):
             if status == 'denied':
                 product.quantity += delivery.quantity
                 product.save(update_fields=['quantity'])
-            History.objects.create(user=user, product=delivery.product, user_price=delivery.user_price, quantity=delivery.quantity, status=status)
+            History.objects.create(user=user, product=delivery.product, user_price=delivery.user_price,
+                                   quantity=delivery.quantity, status=status)
             delivery.delete()
         return Response(message)
 

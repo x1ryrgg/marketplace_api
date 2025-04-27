@@ -39,11 +39,23 @@ def beat_check_coupon():
 
 
 @shared_task
+def beat_check_is_read_notification():
+    data = date.today() + timedelta(days=7)
+
+    expired_notifications = Notification.objects.filter(
+        created_at__gte=data,
+        is_read=True
+    ).delete()
+
+    return f"notifications deleted: {expired_notifications[0]}"
+
+
+@shared_task
 def beat_check_notification():
     data = date.today() + timedelta(days=30)
 
     expired_notifications = Notification.objects.filter(
-        created_at__gte=data
+        created_at__gte=data,
     ).delete()
 
     return f"notifications deleted: {expired_notifications[0]}"

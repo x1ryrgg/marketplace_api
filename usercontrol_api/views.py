@@ -77,6 +77,7 @@ class ProfileView(ModelViewSet):
         user = request.user
         coupons = Coupon.objects.filter(user=user)
         data = {
+            'непрочитанные уведомления': Notification.objects.filter(user=self.request.user, is_read=False).count(),
             'профиль': self.get_serializer(profile).data,
             'ваш аккаунт': PrivateUserSerializer(user, many=False).data,
             'ваши купоны': CouponSerializer(coupons, many=True).data
@@ -100,7 +101,19 @@ class NotificationView(ModelViewSet):
     http_method_names = ['get', 'delete', 'post']
 
     def get_queryset(self):
-        return Notification.objects.filter(user=self.request.user).order_by('-created_at')
+        return Notification.objects.filter(user=self.request.user).select_related('user').order_by("is_read", '-created_at')
+
+    def list(self, request, *args, **kwargs) -> Response:
+        queryset = self.filter_queryset(self.get_queryset())
+
+        unread_count = Notification.objects.filter(user=self.request.user, is_read=False).count()
+
+        serializer = self.get_serializer(queryset, many=True)
+
+        return Response({
+            "Непрочитанные уведомления": unread_count,
+            'Уведомления': serializer.data,
+        })
 
     def retrieve(self, request, *args, **kwargs) -> Response:
         notification = self.get_object()
@@ -112,7 +125,7 @@ class NotificationView(ModelViewSet):
     def destroy(self, request, *args, **kwargs):
         notification = self.get_object()
         self.perform_destroy(notification)
-        return Response(_(f"{notification.id} уведомление удалено."))
+        return Response(_(f"Уведомление удалено."))
 
 
 class AdminNotificationView(APIView):
@@ -150,8 +163,7 @@ class CouponView(ModelViewSet):
     http_method_names = ['get', 'post']
 
     def perform_create(self, serializer) -> Response:
-        serializer.is_valid(raise_exception=True)
-        serializer.save(user=self.request.user)
+        serializer.save()
         return Response(serializer.data)
 
 
@@ -161,12 +173,3 @@ def _create_coupon_with_chance(user: User) -> Coupon | None:
         coupon = Coupon.objects.create(user=user)
         return coupon
     return None
-
-
-def _create_notification(user, title, **kwargs):
-    Notification.objects.create(
-        user=user,
-        title=title,
-        message=kwargs.get('message'),
-        is_read=False
-    )

@@ -19,7 +19,7 @@ from usercontrol_api.models import *
 from payment_system_api.models import *
 from usercontrol_api.serializers import PrivateUserSerializer
 from payment_system_api.views import _apply_discount_to_order
-from usercontrol_api.views import _create_coupon_with_chance, _create_notification
+from usercontrol_api.views import _create_coupon_with_chance
 from payment_system_api.tasks import send_email_task
 
 
@@ -67,8 +67,7 @@ class SellerRegisterView(ModelViewSet):
                     user.balance -= cost
                     user.is_seller = True
                     user.save(update_fields=['is_seller', 'balance'])
-                    _create_notification(user=user, title='seller', message='Поздравляю, вам открыта возможноть выставлять свои магазины, а также товары на площадке.')
-                    return Response(_("Успешно."))
+                    return Response(self.serializer(user).data)
             return Response(_(f"Вам не хватает {cost - user.balance}"))
         else:
             return Response(_(text))
