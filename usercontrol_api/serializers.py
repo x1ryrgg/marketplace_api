@@ -20,10 +20,15 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 class OpenUserSerializer(serializers.ModelSerializer):
+    class YesNoField(serializers.BooleanField):
+        def to_representation(self, instance):
+            return "Yes" if instance else "No"
+
+    is_seller = YesNoField()
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'email')
+        fields = ('id', 'username', 'email', 'is_seller')
 
 
 class PrivateUserSerializer(serializers.ModelSerializer):
@@ -42,6 +47,11 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class NotificationSerializer(serializers.ModelSerializer):
+    class YesNoField(serializers.BooleanField):
+        def to_representation(self, instance):
+            return "Yes" if instance else "No"
+
+    is_read = YesNoField()
 
     class Meta:
         model = Notification

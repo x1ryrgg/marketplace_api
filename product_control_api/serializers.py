@@ -10,6 +10,20 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ('id', 'name')
 
 
+class SimpleCategorySerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    name = serializers.CharField(max_length=100)
+
+    def create(self, validated_data):
+        return Category.objects.create(**validated_data)
+
+    def validate_name(self, value):
+        if 'category' not in value:
+            raise serializers.ValidationError("Must be 'category' in name")
+        return value
+
+
+
 class SubCategorySerializer(serializers.ModelSerializer):
     category = serializers.SlugRelatedField(
         slug_field='name',

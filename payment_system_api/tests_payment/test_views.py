@@ -36,7 +36,7 @@ class PaymentViewTest(TestCase):
         cls.payment_response = reverse('buy_product', kwargs={'id': cls.product_variant1.id})
 
     def setUp(self):
-        self.client = APIClient()  # Используем APIClient из DRF
+        self.client = APIClient()
         self.token = self.generate_token_for_user(self.user)
 
     def generate_token_for_user(self, user):

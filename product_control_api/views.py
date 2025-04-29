@@ -6,7 +6,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError
 from rest_framework.generics import ListAPIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.pagination import PageNumberPagination
 from django.core.cache import cache
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
@@ -38,8 +39,8 @@ class CategoriesView(ModelViewSet):
         return Category.objects.all()
 
     def destroy(self, request, *args, **kwargs) -> Response:
-        category_id = self.kwargs.get('id')
-        category = get_object_or_404(Category, id=category_id)
+        category_pk = self.kwargs.get('pk')
+        category = get_object_or_404(Category, pk=category_pk)
         self.perform_destroy(category)
         return Response(_(f"Категория с названием: {category.name} успешно удалена"))
 
@@ -58,8 +59,8 @@ class SubcategoriesView(ModelViewSet):
         return SubCategory.objects.all()
 
     def destroy(self, request, *args, **kwargs) -> Response:
-        category_id = self.kwargs.get('id')
-        category = get_object_or_404(SubCategory, id=category_id)
+        subcategory_pk = self.kwargs.get('pk')
+        category = get_object_or_404(SubCategory, pk=subcategory_pk)
         self.perform_destroy(category)
         return Response(_(f"Подкатегория с названием: {category.name} успешно удалена"))
 
@@ -94,9 +95,15 @@ class ProductsView(ModelViewSet):
     url: /products/?filter - возможность фильтровать продукты по стоимости (price__gt (больше), price__lt (меньше),
                              по названию (product), по опциям (options (Например цвет или размер) и по категориям (category)
     """
-    permission_classes = [IsAuthenticated]
+    class StandardResultsSetPagination(PageNumberPagination):
+        page_size = 3 # Количество записей на странице
+        page_size_query_param = 'page_size'
+        max_page_size = 100
+
+    authentication_classes = []
     serializer_class = ProductVariantSerializer
     http_method_names = ['get', 'post', 'patch', 'delete', 'options']
+    pagination_class = StandardResultsSetPagination
 
     filter_backends = [DjangoFilterBackend]
     filterset_class = ProductVariantFilter

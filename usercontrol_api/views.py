@@ -3,6 +3,8 @@ from typing import Any
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models.sql import Query
 from django.shortcuts import render
+from rest_framework_extensions.cache.mixins import CacheResponseMixin
+from django.core.cache import cache
 from rest_framework import generics, status, permissions
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
@@ -41,10 +43,6 @@ class UserView(ModelViewSet):
     queryset = User.objects.all()
     http_method_names = ['get']
 
-    def list(self, request, *args, **kwargs) -> Response:
-        serializer = self.get_serializer(self.get_queryset(), many=True)
-        return Response(serializer.data)
-
     def retrieve(self, request, *args, **kwargs) -> Response:
         user = self.get_object()
         profile = Profile.objects.get(user=user)
@@ -55,13 +53,14 @@ class UserView(ModelViewSet):
         return Response(data)
 
 
-class ProfileView(ModelViewSet):
+class ProfileView(ModelViewSet, CacheResponseMixin):
     """ Endpoint для просмотра профиля, а также купонов.
     url: /profile/
     """
     permission_classes = [IsAuthenticated]
     serializer_class = ProfileSerializer
     http_method_names = ['get', 'patch']
+    list_cache_timeout = 120
 
     def get_queryset(self):
         return Profile.objects.filter(user=self.request.user.id)
@@ -95,25 +94,25 @@ class ProfileView(ModelViewSet):
         return Response(serializer.data)
 
 
-class NotificationView(ModelViewSet):
+class NotificationView(CacheResponseMixin, ModelViewSet):
     permission_classes = [IsAuthenticated]
     serializer_class = NotificationSerializer
     http_method_names = ['get', 'delete', 'post']
+    list_cache_timeout = 100
 
     def get_queryset(self):
         return Notification.objects.filter(user=self.request.user).select_related('user').order_by("is_read", '-created_at')
 
-    def list(self, request, *args, **kwargs) -> Response:
+    def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
-
         unread_count = Notification.objects.filter(user=self.request.user, is_read=False).count()
-
         serializer = self.get_serializer(queryset, many=True)
 
         return Response({
             "Непрочитанные уведомления": unread_count,
             'Уведомления': serializer.data,
         })
+
 
     def retrieve(self, request, *args, **kwargs) -> Response:
         notification = self.get_object()
@@ -130,7 +129,7 @@ class NotificationView(ModelViewSet):
 
 class AdminNotificationView(APIView):
     """ Endpoint для создания уведомлений-рассылок (только superuser-ам)
-    url: /admin_notification/
+    url: /notification/admin/
     body: title (str, Optional), message (str, Optional)
     """
     permission_classes = [IsAuthenticated, IsSuperUser]
@@ -151,7 +150,10 @@ class AdminNotificationView(APIView):
             notifications.append(notification)
 
         serializer = self.serializer_class(notifications[-1])
-        return Response(serializer.data)
+        return Response({
+            'count_of_receivers': len(users),
+            'type_of_message': serializer.data
+        })
 
 class CouponView(ModelViewSet):
     """ Endpoint для просмотра всех купонов, а также для тестового создания купонов (доступно superuser-ам)

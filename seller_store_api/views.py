@@ -133,7 +133,6 @@ class WishListAddView(APIView):
         user = request.user
 
         wishlist_item, created = WishlistItem.objects.get_or_create(user=user,product=product, defaults={'quantity': quantity})
-        wishlist_item.added_quantity = quantity
 
         if not created:
             wishlist_item.quantity += quantity

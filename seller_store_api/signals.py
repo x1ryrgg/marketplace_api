@@ -51,11 +51,11 @@ def store_create_notification(sender, instance, created, **kwargs):
 """ notification create при добавлении товара в список желаемого """
 @receiver(post_save, sender=WishlistItem)
 def wishlist_notification(sender, instance, created, **kwargs):
-    added_quantity = getattr(instance, 'added_quantity')
+    # added_quantity = getattr(instance, 'added_quantity')
 
     Notification.objects.create(
         user=instance.user,
         title=Notification.TitleChoice.OTHER,
-        message=_(f"{instance.product.product.name} ({added_quantity} шт) добавлен в список желаемого.")
+        message=_(f"{instance.product.product.name} товар добавлен в список желаемого.")
     )
 

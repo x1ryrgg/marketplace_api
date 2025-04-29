@@ -66,8 +66,8 @@ class Notification(models.Model):
         OTHER = ('other', 'другое')
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(choices=TitleChoice, default=TitleChoice.OTHER, max_length=8, blank=True)
-    message = models.TextField(blank=True, default='Empty notification')
+    title = models.CharField(choices=TitleChoice, default=TitleChoice.OTHER, max_length=50, blank=True)
+    message = models.TextField(max_length=1000, blank=True, default='Empty notification')
     is_read = models.BooleanField(default=False)
     created_at = models.DateField(auto_now_add=True)
 

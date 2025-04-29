@@ -162,7 +162,7 @@ class WishListView(ModelViewSet):
                 product.save()
                 sum_price = _apply_discount_to_order(user, product.price) * item.quantity
 
-                send_email_task.delay(self.request.user.username, discount_price.quantize(Decimal('0.01')))
+                send_email_task.delay_on_commit(self.request.user.username, discount_price.quantize(Decimal('0.01')))
                 Delivery.objects.create(user=user, product=product, user_price=sum_price, quantity=item.quantity)
 
             wishlist_items.delete()
@@ -220,7 +220,7 @@ class PayProductView(APIView):
 
             user.save()
             product.save()
-            send_email_task.delay(self.request.user.username, discount_price.quantize(Decimal('0.01')))
+            send_email_task.delay_on_commit(self.request.user.username, discount_price.quantize(Decimal('0.01')))
 
             coupon_discount = Decimal(coupon.discount) if coupon else Decimal('0')
             base_discount = Decimal(History.objects.calculate_discount(user=user) * 100)

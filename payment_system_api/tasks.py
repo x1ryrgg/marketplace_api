@@ -10,14 +10,14 @@ from django.core.mail import send_mail
 
 @shared_task
 def send_email_task(username, price):
-    send_mail(
+    message = send_mail(
         subject='Сообщение с marketplace-а',
         message=f'Заказ от пользователя {username} на сумму {price} руб. | {date.today()}',
         from_email=settings.EMAIL_HOST_USER,
         recipient_list=[settings.EMAIL_HOST_USER],
         fail_silently=False
     )
-
+    return message
 
 @shared_task
 def beat_check_delivery():
