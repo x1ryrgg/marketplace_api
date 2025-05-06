@@ -1,6 +1,6 @@
 import logging
 import uuid
-
+import hashlib
 import requests
 from typing import Optional
 
@@ -12,7 +12,7 @@ from django.http import HttpResponse, JsonResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status
-from rest_framework.decorators import action
+from rest_framework.decorators import action, csrf_exempt
 from rest_framework.exceptions import ValidationError
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
@@ -319,80 +319,78 @@ def _apply_discount_to_order(user: User, total_price: Decimal, coupon: Optional[
 
 
 """ TEST PAYMENT SYSTEM """
+
+
 class CreatePaymentView(APIView):
-    """ Endpoint для пополнения баланса на аккаунт
-    url: /create-payment/
-    body: amount (float), currency (str)
-    """
     def post(self, request):
         serializer = PaymentSerializer(data=request.data)
         if serializer.is_valid():
-            amount = serializer.validated_data['amount']
-            currency = serializer.validated_data.get('currency', 'RUB')
+            payment = serializer.save()
 
-            # Создаем запрос к API ЮKassa
-            headers = {
-                'Content-Type': 'application/json',
-                'Idempotence-Key': str(uuid.uuid4()),  # Уникальный ключ для идемпотентности
-            }
-            auth = (settings.YOOKASSA_SHOP_ID, settings.YOOKASSA_SECRET_KEY)
-            payload = {
-                "amount": {
-                    "value": f"{amount:.2f}",
-                    "currency": currency,
-                },
-                "confirmation": {
-                    "type": "redirect",
-                    "return_url": "http://your-site.com/payment-success/",  # URL для редиректа после оплаты
-                },
-                "capture": True,
-                "description": "Оплата заказа",
+            # Генерация уникального order_id, если не указан
+            if not payment.order_id:
+                payment.order_id = str(uuid.uuid4())
+                payment.save()
+
+            # Параметры для PayBox
+            params = {
+                "pg_merchant_id": settings.PAYBOX_MERCHANT_ID,
+                "pg_amount": str(payment.amount),
+                "pg_order_id": payment.order_id,
+                "pg_currency": payment.currency,
+                "pg_description": payment.description,
+                "pg_salt": str(uuid.uuid4()),  # Соль для подписи
+                "pg_testing_mode": "1",  # 1 - тестовый режим, 0 - боевой
+                "pg_result_url": f"{settings.SITE_URL}/api/paybox/result/",  # URL для уведомлений
+                "pg_success_url": f"{settings.SITE_URL}/success/",  # URL после успешной оплаты
+                "pg_failure_url": f"{settings.SITE_URL}/failed/",  # URL при ошибке
             }
 
-            response = requests.post(settings.YOOKASSA_API_URL, json=payload, headers=headers, auth=auth)
+            # Генерация подписи
+            params_for_sig = [f"{key}={value}" for key, value in sorted(params.items())]
+            params_for_sig.insert(0, "payment.php")
+            params_for_sig.append(settings.PAYBOX_SECRET_KEY)
+            signature_str = ";".join(params_for_sig)
+            pg_sig = hashlib.md5(signature_str.encode()).hexdigest()
+
+            params["pg_sig"] = pg_sig
+
+            # Отправка запроса в PayBox
+            paybox_url = "https://api.paybox.money/payment.php"
+            response = requests.post(paybox_url, data=params)
 
             if response.status_code == 200:
-                payment_data = response.json()
-                payment = Payment.objects.create(
-                    amount=amount,
-                    currency=currency,
-                    status=payment_data['status'],
-                    payment_id=payment_data['id'],
-                )
-                user = self.request.user
-                user.balance += amount
-                user.save(update_fields=['balance'])
-                return Response({
-                    'confirmation_url': payment_data['confirmation']['confirmation_url'],
-                    'payment_id': payment.id,
-                    'balance': _(f"На счет {user.username} было перечислено {amount} {currency}. ")
-                }, status=status.HTTP_201_CREATED)
+                payment.paybox_payment_id = response.json().get("pg_payment_id", "")
+                payment.save()
+                return Response({"redirect_url": response.json().get("pg_redirect_url")})
             else:
-                return Response({'error': 'Ошибка при создании платежа'}, status=status.HTTP_400_BAD_REQUEST)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                return Response({"error": "PayBox error"}, status=400)
+        return Response(serializer.errors, status=400)
 
 
-class CheckPaymentStatusView(APIView):
-    """ Endpoint для проверки статуса платежа
-    url: /check-payment/<str:payment_id>/
-    """
-    def get(self, request, payment_id):
-        try:
-            payment = Payment.objects.get(payment_id=payment_id)
-        except Payment.DoesNotExist:
-            return Response({'error': 'Платеж не найден'}, status=status.HTTP_404_NOT_FOUND)
+@csrf_exempt
+def paybox_callback(request):
+    if request.method == "POST":
+        data = request.POST
+        pg_sig = data.get("pg_sig")
 
-        # Запрос к API ЮKassa для получения статуса
-        headers = {
-            'Content-Type': 'application/json',
-        }
-        auth = (settings.YOOKASSA_SHOP_ID, settings.YOOKASSA_SECRET_KEY)
-        response = requests.get(f"{settings.YOOKASSA_API_URL}/{payment_id}", headers=headers, auth=auth)
+        # Проверка подписи
+        params_for_sig = [f"{key}={value}" for key, value in sorted(data.items()) if key != "pg_sig"]
+        params_for_sig.append(settings.PAYBOX_SECRET_KEY)
+        signature_str = ";".join(params_for_sig)
+        calculated_sig = hashlib.md5(signature_str.encode()).hexdigest()
 
-        if response.status_code == 200:
-            payment_data = response.json()
-            payment.status = payment_data['status']
+        if calculated_sig == pg_sig:
+            order_id = data.get("pg_order_id")
+            payment = Payment.objects.get(order_id=order_id)
+
+            if data.get("pg_result") == "1":
+                payment.status = "completed"
+            else:
+                payment.status = "failed"
+
             payment.save()
-            return Response({'status': payment.status}, status=status.HTTP_200_OK)
+            return HttpResponse("OK", status=200)
         else:
-            return Response({'error': 'Ошибка при проверке статуса платежа'}, status=status.HTTP_400_BAD_REQUEST)
+            return HttpResponse("Invalid signature", status=400)
+    return HttpResponse("Method not allowed", status=405)

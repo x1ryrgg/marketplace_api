@@ -4650,3 +4650,247 @@ AssertionError: Expected a `Response`, `HttpResponse` or `StreamingHttpResponse`
 2025-04-29 19:00:21,290 INFO Request: GET /products/ | User: 
 2025-04-29 19:00:21,290 WARNING Not Found: /products/
 2025-04-29 19:00:22,850 INFO Request: GET /products/ | User: 
+2025-05-02 00:07:15,381 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:07:15,401 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:07:15,810 INFO Request: POST /products/3/add/ | User: testuser
+2025-05-02 00:07:36,910 INFO Request: POST /products/1/add/ | User: testuser
+2025-05-02 00:11:19,258 INFO Request: POST /products/1/add/ | User: testuser
+2025-05-02 00:13:52,346 INFO Request: POST /products/1/add/ | User: testuser
+2025-05-02 00:18:04,292 INFO Request: POST /products/1/add/ | User: testuser
+2025-05-02 00:18:28,388 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:18:28,407 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:18:50,734 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:19:07,225 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:19:38,923 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:19:38,934 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:19:38,935 WARNING Bad Request: /wishlist/buy/
+2025-05-02 00:20:03,875 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:20:03,895 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:20:15,856 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:20:15,878 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:20:35,457 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:20:35,468 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:20:35,468 WARNING Bad Request: /wishlist/buy/
+2025-05-02 00:20:59,156 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:20:59,176 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:26:01,320 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:26:01,337 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:26:09,785 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:26:09,802 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:28:16,914 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:28:16,932 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:32:57,676 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:32:57,697 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:32:57,710 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:33:15,110 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:33:15,130 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:33:15,142 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:33:39,223 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:33:39,242 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:33:39,253 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:33:45,577 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:33:45,600 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:33:45,614 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:34:09,085 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:34:09,104 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:34:09,115 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:34:49,837 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:34:49,852 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:34:49,865 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:34:57,967 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:34:57,986 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:34:57,999 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:35:29,776 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:35:29,798 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:35:29,809 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:35:51,224 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:35:51,244 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:35:51,254 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:35:58,424 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:35:58,443 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:35:58,454 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:36:04,709 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:36:04,727 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:36:04,739 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:36:05,137 INFO Request: POST /products/3/add/ | User: testuser
+2025-05-02 00:36:57,470 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:36:57,494 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:36:57,508 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:36:57,916 INFO Request: POST /products/3/add/ | User: testuser
+2025-05-02 00:38:21,676 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:38:21,700 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:38:21,715 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:38:34,622 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:38:34,640 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:38:34,652 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:39:22,878 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:39:22,897 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:39:22,909 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:39:36,368 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:39:36,387 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:39:36,397 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:39:51,390 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:39:51,411 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:39:51,421 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:39:58,530 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:39:58,549 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:39:58,561 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:40:05,651 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:40:05,670 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:40:05,682 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:40:09,523 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:40:09,546 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-02 00:40:09,561 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-02 00:40:22,646 INFO Watching for file changes with StatReloader
+2025-05-02 00:40:31,297 INFO Watching for file changes with StatReloader
+2025-05-02 00:40:33,995 INFO Request: GET / | User: root
+2025-05-02 00:40:33,995 WARNING Not Found: /
+2025-05-02 00:40:34,196 INFO Request: GET /favicon.ico | User: root
+2025-05-02 00:40:34,197 WARNING Not Found: /favicon.ico
+2025-05-02 00:40:35,426 INFO Request: GET /admin/ | User: root
+2025-05-02 00:40:38,196 INFO Request: GET /admin/payment_system_api/delivery/ | User: root
+2025-05-02 00:40:38,348 INFO Request: GET /admin/jsi18n/ | User: root
+2025-05-02 00:40:45,997 INFO Request: GET /admin/payment_system_api/history/ | User: root
+2025-05-02 00:40:46,058 INFO Request: GET /admin/jsi18n/ | User: root
+2025-05-02 00:40:48,535 INFO Request: GET /admin/product_control_api/category/ | User: root
+2025-05-02 00:40:48,605 INFO Request: GET /admin/jsi18n/ | User: root
+2025-05-02 00:40:53,951 INFO Request: GET /admin/product_control_api/productvariant/ | User: root
+2025-05-02 00:40:54,012 INFO Request: GET /admin/jsi18n/ | User: root
+2025-05-02 00:40:57,252 INFO Request: GET /admin/seller_store_api/review/ | User: root
+2025-05-02 00:40:57,423 INFO Request: GET /admin/jsi18n/ | User: root
+2025-05-02 22:00:21,986 INFO Watching for file changes with StatReloader
+2025-05-02 22:04:17,182 INFO Watching for file changes with StatReloader
+2025-05-02 22:06:55,803 INFO D:\python\marketplace_api\marketplace_api\settings.py changed, reloading.
+2025-05-02 22:06:56,627 INFO Watching for file changes with StatReloader
+2025-05-02 22:07:18,992 INFO D:\python\marketplace_api\marketplace_api\settings.py changed, reloading.
+2025-05-02 22:07:19,840 INFO Watching for file changes with StatReloader
+2025-05-02 22:08:40,792 INFO Watching for file changes with StatReloader
+2025-05-02 22:11:48,293 INFO Watching for file changes with StatReloader
+2025-05-02 22:16:37,551 INFO Watching for file changes with StatReloader
+2025-05-02 22:16:58,400 INFO Request: POST /api/token/ | User: 
+2025-05-02 22:17:24,175 INFO Request: POST /products/5/buy/ | User: root
+2025-05-02 22:20:50,963 INFO Watching for file changes with StatReloader
+2025-05-02 22:21:00,200 INFO Request: GET /profile/ | User: root
+2025-05-02 22:21:05,859 INFO Request: GET /profile/ | User: root
+2025-05-02 22:25:43,293 INFO Watching for file changes with StatReloader
+2025-05-02 22:25:52,617 INFO Request: GET / | User: root
+2025-05-02 22:25:52,618 WARNING Not Found: /
+2025-05-02 22:25:52,803 INFO Request: GET /favicon.ico | User: root
+2025-05-02 22:25:52,803 WARNING Not Found: /favicon.ico
+2025-05-02 22:25:54,008 INFO Request: GET /admin/ | User: root
+2025-05-02 22:26:00,656 INFO Request: GET /admin/ | User: root
+2025-05-02 22:26:56,672 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-02 22:26:57,494 INFO Watching for file changes with StatReloader
+2025-05-02 22:28:04,843 INFO Watching for file changes with StatReloader
+2025-05-02 22:39:47,587 INFO Watching for file changes with StatReloader
+2025-05-02 22:40:11,185 INFO Watching for file changes with StatReloader
+2025-05-02 22:40:23,233 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-02 22:40:24,070 INFO Watching for file changes with StatReloader
+2025-05-02 22:40:34,175 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-02 22:40:34,964 INFO Watching for file changes with StatReloader
+2025-05-02 22:40:42,170 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-02 22:40:43,026 INFO Watching for file changes with StatReloader
+2025-05-02 22:44:13,869 INFO Request: GET /profile/ | User: root
+2025-05-02 22:44:16,820 INFO Request: GET /profile/ | User: root
+2025-05-02 22:48:19,724 INFO Request: GET /profile/ | User: root
+2025-05-02 22:52:32,550 INFO Watching for file changes with StatReloader
+2025-05-02 22:54:58,428 INFO Watching for file changes with StatReloader
+2025-05-02 22:57:31,853 INFO Watching for file changes with StatReloader
+2025-05-02 23:00:13,424 INFO Watching for file changes with StatReloader
+2025-05-02 23:12:48,518 INFO D:\python\marketplace_api\marketplace_api\celery.py changed, reloading.
+2025-05-02 23:12:49,664 INFO Watching for file changes with StatReloader
+2025-05-02 23:12:54,339 INFO Watching for file changes with StatReloader
+2025-05-02 23:19:05,587 INFO Watching for file changes with StatReloader
+2025-05-02 23:19:18,806 INFO Watching for file changes with StatReloader
+2025-05-02 23:22:50,330 INFO Watching for file changes with StatReloader
+2025-05-02 23:24:22,216 INFO Watching for file changes with StatReloader
+2025-05-02 23:25:51,904 INFO Request: POST /products/5/buy/ | User: 
+2025-05-02 23:25:51,904 WARNING Unauthorized: /products/5/buy/
+2025-05-02 23:25:55,597 INFO Request: POST /api/token/ | User: 
+2025-05-02 23:26:06,394 INFO Request: POST /products/5/buy/ | User: root
+2025-05-02 23:27:50,460 INFO D:\python\marketplace_api\marketplace_api\settings.py changed, reloading.
+2025-05-02 23:27:51,253 INFO Watching for file changes with StatReloader
+2025-05-02 23:28:04,995 INFO Watching for file changes with StatReloader
+2025-05-02 23:28:47,851 INFO D:\python\marketplace_api\marketplace_api\celery.py changed, reloading.
+2025-05-02 23:28:48,569 INFO Watching for file changes with StatReloader
+2025-05-02 23:29:45,341 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-02 23:29:46,042 INFO Watching for file changes with StatReloader
+2025-05-02 23:32:10,304 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-02 23:32:11,086 INFO Watching for file changes with StatReloader
+2025-05-02 23:34:27,779 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-02 23:34:28,601 INFO Watching for file changes with StatReloader
+2025-05-02 23:36:02,704 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-02 23:36:03,534 INFO Watching for file changes with StatReloader
+2025-05-02 23:38:57,496 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-02 23:38:58,253 INFO Watching for file changes with StatReloader
+2025-05-02 23:39:19,205 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-02 23:39:19,991 INFO Watching for file changes with StatReloader
+2025-05-02 23:43:04,669 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-02 23:43:05,542 INFO Watching for file changes with StatReloader
+2025-05-02 23:45:25,850 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-02 23:45:26,638 INFO Watching for file changes with StatReloader
+2025-05-02 23:45:42,519 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-02 23:45:43,207 INFO Watching for file changes with StatReloader
+2025-05-02 23:46:08,219 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-02 23:46:08,939 INFO Watching for file changes with StatReloader
+2025-05-04 10:02:03,991 INFO Watching for file changes with StatReloader
+2025-05-04 10:05:44,813 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-04 10:05:46,309 INFO Watching for file changes with StatReloader
+2025-05-04 10:07:47,007 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-04 10:07:48,534 INFO Watching for file changes with StatReloader
+2025-05-04 10:11:42,671 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-04 10:11:44,318 INFO Watching for file changes with StatReloader
+2025-05-04 10:12:03,422 INFO Watching for file changes with StatReloader
+2025-05-04 10:13:23,522 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-04 10:13:25,230 INFO Watching for file changes with StatReloader
+2025-05-04 10:21:52,477 INFO Watching for file changes with StatReloader
+2025-05-04 10:24:11,545 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-04 10:24:13,140 INFO Watching for file changes with StatReloader
+2025-05-04 10:27:38,313 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-04 10:27:39,748 INFO Watching for file changes with StatReloader
+2025-05-04 10:29:47,739 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-04 10:29:49,216 INFO Watching for file changes with StatReloader
+2025-05-04 10:31:27,978 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-04 10:31:29,422 INFO Watching for file changes with StatReloader
+2025-05-04 10:32:44,238 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-04 10:32:45,521 INFO Watching for file changes with StatReloader
+2025-05-04 10:34:31,829 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-04 10:34:33,181 INFO Watching for file changes with StatReloader
+2025-05-04 10:35:14,505 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-04 10:35:15,667 INFO Watching for file changes with StatReloader
+2025-05-04 10:36:54,261 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-04 10:36:55,664 INFO Watching for file changes with StatReloader
+2025-05-04 10:39:34,431 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-04 10:39:36,084 INFO Watching for file changes with StatReloader
+2025-05-04 11:42:13,194 INFO Watching for file changes with StatReloader
+2025-05-04 11:43:12,079 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-05-04 11:43:13,545 INFO Watching for file changes with StatReloader
+2025-05-04 11:43:28,205 INFO Request: POST /api/token/ | User: 
+2025-05-04 11:43:40,559 INFO Request: POST /delivery/ | User: root
+2025-05-04 11:43:40,560 WARNING Bad Request: /delivery/
+2025-05-04 11:43:45,236 INFO Request: GET /delivery/ | User: root
+2025-05-04 11:44:02,380 INFO Request: POST /delivery/28/take/ | User: root
+2025-05-04 11:44:02,380 WARNING Bad Request: /delivery/28/take/
+2025-05-04 11:44:15,053 INFO Request: POST /delivery/28/take/ | User: root
+2025-05-04 11:44:22,279 INFO Request: GET /delivery/29/ | User: root
+2025-05-04 11:44:30,834 INFO Request: POST /delivery/29/take/ | User: root
+2025-05-06 10:41:43,722 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-06 10:41:43,754 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-06 10:41:43,824 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-06 10:41:44,341 INFO Request: POST /products/3/add/ | User: testuser
+2025-05-06 10:42:48,438 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-06 10:42:48,472 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-06 10:42:48,531 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-06 10:42:48,933 INFO Request: POST /products/3/add/ | User: testuser
+2025-05-06 10:52:20,236 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-06 10:52:20,301 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-06 10:52:20,324 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-06 10:52:20,856 INFO Request: POST /products/3/add/ | User: testuser
+2025-05-06 10:53:10,476 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-06 10:53:10,498 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-06 10:53:10,513 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-06 10:53:10,915 INFO Request: POST /products/3/add/ | User: testuser
+2025-05-06 10:53:27,626 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-06 10:53:27,659 INFO Request: POST /wishlist/buy/ | User: testuser
+2025-05-06 10:53:27,717 INFO Request: POST /products/1/buy/ | User: testuser
+2025-05-06 10:53:28,119 INFO Request: POST /products/3/add/ | User: testuser

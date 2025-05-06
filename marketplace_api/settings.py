@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from datetime import timedelta
 from pathlib import Path
-
-from celery.schedules import crontab
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,10 +32,7 @@ INTERNAL_IPS = ['localhost', "127.0.0.1"]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # React/Vue по умолчанию
     "http://127.0.0.1:3000",  # Альтернативный адрес
-    "http://localhost:8080",  # Vue по умолчанию
-    "http://127.0.0.1:8080",   # Альтернативный адрес
 ]
-
 # разрешает использование cookies и заголовков
 CORS_ALLOW_CREDENTIALS = True
 # Application definition
@@ -257,8 +252,8 @@ SWAGGER_SETTINGS = {
 }
 
 
-CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://localhost:6379/1') # для docker меняем на redis
-CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND', 'redis://localhost:6379/1') # too
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://127.0.0.1:6379/0') # для docker меняем на redis
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND', 'redis://127.0.0.1:6379/0') # too
 CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
@@ -272,11 +267,10 @@ CELERY_RESULT_SERIALIZER = 'json'
 
 # redis-cli flushall - очистка кеша
 
-
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://localhost:6379/1", # для docker меняю на redis
+        "LOCATION": "redis://127.0.0.1:6379/0", # для docker меняю на redis
         "KEY_PREFIX": "imdb",
         "TIMEOUT": 60 * 15,  # in seconds: 60 * 15 (15 minutes)
     }

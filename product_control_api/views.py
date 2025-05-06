@@ -109,13 +109,6 @@ class ProductsView(ModelViewSet):
     filterset_class = ProductVariantFilter
 
     def get_queryset(self):
-        # cache_key = f"filtered_data_{self.request.user.username}"
-        # queryset = cache.get(cache_key)
-        # if not queryset:
-        #     queryset = ProductVariant.objects.all().select_related('product', 'product__category').prefetch_related('options').order_by("-views")
-        #     queryset = self.filter_queryset(queryset)
-        #     cache.set(cache_key, queryset, timeout=60)  # 60 сек
-        # return queryset
         return ProductVariant.objects.all().select_related('product', 'product__category').prefetch_related('options').order_by("-views")
 
     def retrieve(self, request, *args, **kwargs) -> Response:

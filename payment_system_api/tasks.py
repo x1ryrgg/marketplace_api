@@ -22,11 +22,25 @@ def send_email_task(username, price):
 @shared_task
 def beat_check_delivery():
     today = date.today()
-    updated_count = Delivery.objects.filter(
+
+    deliveries = Delivery.objects.filter(
         status='on the way',
         delivery_date__lte=today
-    ).update(status='delivered')
-    return f"Updated {updated_count} deliveries to 'delivered'."
+    ).select_related('user', 'product', 'product__product')  # Оптимизация запросов
+
+    delivery_ids = list(deliveries.values_list('id', flat=True))
+
+    updated_count = Delivery.objects.filter(id__in=delivery_ids).update(status='delivered')
+
+    for delivery in Delivery.objects.filter(id__in=delivery_ids).select_related('user', 'product', 'product__product'):
+
+        Notification.objects.create(
+            user=delivery.user,
+            title=Notification.TitleChoice.DELIVERY,
+            message=f"Товар {getattr(delivery.product.product, 'name', '№' + str(delivery.id))} доставлен"
+        )
+
+    return f"Обновлено: {updated_count} доставок. "
 
 
 @shared_task

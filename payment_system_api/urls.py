@@ -17,6 +17,6 @@ urlpatterns = [
     path('delivery/', include(delivery_router.urls)),
     path('products/<int:id>/buy/', PayProductView.as_view(), name='buy_product'),
 
-    path('create-payment/', CreatePaymentView.as_view(), name='create_payment'),
-    path('check-payment/<str:payment_id>/', CheckPaymentStatusView.as_view(), name='check_payment_status'),
+    path('api/paybox/create/', CreatePaymentView.as_view(), name='create_payment'),
+    path('api/paybox/result/', paybox_callback, name='paybox_callback'),
 ]

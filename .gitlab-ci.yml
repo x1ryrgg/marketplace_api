@@ -1,0 +1,45 @@
+stages:
+  - test
+  - build
+  - deploy
+
+variables:
+  DOCKER_TLS_CERTDIR: ""
+  POSTGRES_DB: test_db
+  POSTGRES_USER: runner
+  POSTGRES_PASSWORD: ""
+  DATABASE_URL: "postgres://runner@postgres/test_db"
+
+# Тестирование Django
+test:
+  stage: test
+  image: python:3.13-slim
+  services:
+    - postgres:14
+    - redis:alpine
+  before_script:
+    - apt-get update -y && apt-get install -y libpq-dev gcc
+    - pip install -r requirements.txt
+  script:
+    - python manage.py test
+
+# Сборка Docker-образов
+build:
+  stage: build
+  tags:
+    - docker
+  script:
+    - docker-compose build
+  only:
+    - main
+
+# Деплой (запуск контейнеров)
+deploy:
+  stage: deploy
+  tags:
+    - docker
+  script:
+    - docker-compose down
+    - docker-compose up -d
+  only:
+    - main
