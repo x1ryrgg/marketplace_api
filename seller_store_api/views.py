@@ -96,7 +96,6 @@ class StoreView(ModelViewSet):
             serializer.save(author=user)
 
 
-
 class StoresAllView(ModelViewSet):
     """ Endpoint показывающий все магазины, зарегестрированные на площадке.
     url: /stores/
@@ -132,7 +131,7 @@ class WishListAddView(APIView):
         product = get_object_or_404(ProductVariant, id=id)
         user = request.user
 
-        wishlist_item, created = WishlistItem.objects.get_or_create(user=user,product=product, defaults={'quantity': quantity})
+        wishlist_item, created = WishlistItem.objects.get_or_create(user=user, product=product, defaults={'quantity': quantity})
 
         if not created:
             wishlist_item.quantity += quantity
