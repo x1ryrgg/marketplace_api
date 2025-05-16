@@ -5294,3 +5294,280 @@ ValueError: Cannot query "Бомбер Классический - L (50) - Размер верхней одежды |
 2025-05-13 13:43:03,751 INFO Request: GET /products/2/ | User: 
 2025-05-13 13:43:12,709 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
 2025-05-13 13:43:13,983 INFO Watching for file changes with StatReloader
+2025-05-15 13:53:28,543 INFO Watching for file changes with StatReloader
+2025-05-15 13:55:15,730 INFO Watching for file changes with StatReloader
+2025-05-15 13:55:22,427 INFO Request: GET / | User: 
+2025-05-15 13:55:22,428 WARNING Not Found: /
+2025-05-15 13:55:22,820 INFO Request: GET /favicon.ico | User: 
+2025-05-15 13:55:22,821 WARNING Not Found: /favicon.ico
+2025-05-15 13:56:16,623 INFO D:\python\marketplace_api\marketplace_api\settings.py changed, reloading.
+2025-05-15 13:56:18,373 INFO Watching for file changes with StatReloader
+2025-05-15 13:57:09,837 INFO D:\python\marketplace_api\marketplace_api\settings.py changed, reloading.
+2025-05-15 13:57:11,104 INFO Watching for file changes with StatReloader
+2025-05-15 13:57:28,059 INFO Request: GET /products/ | User: 
+2025-05-15 13:57:35,300 INFO Request: GET /profile. | User: 
+2025-05-15 13:57:35,301 WARNING Not Found: /profile.
+2025-05-15 13:57:36,838 INFO Request: GET /profile/ | User: 
+2025-05-15 13:57:36,839 WARNING Unauthorized: /profile/
+2025-05-15 13:57:45,550 INFO Request: POST /api/token/ | User: 
+2025-05-15 13:57:57,927 INFO Request: GET /profile/ | User: root
+2025-05-15 13:58:36,245 INFO Request: GET /profile/ | User: root
+2025-05-15 13:58:59,457 INFO Request: GET /wishlist/ | User: root
+2025-05-15 13:59:06,086 INFO Request: GET /wishlist/buy/ | User: root
+2025-05-15 13:59:06,087 WARNING Method Not Allowed: /wishlist/buy/
+2025-05-15 13:59:10,290 INFO Request: POST /wishlist/buy/ | User: root
+2025-05-15 13:59:10,291 WARNING Bad Request: /wishlist/buy/
+2025-05-15 13:59:17,015 INFO Request: GET /wishlist/ | User: root
+2025-05-15 13:59:36,790 INFO Request: POST /wishlist/buy/ | User: root
+2025-05-15 13:59:36,791 WARNING Bad Request: /wishlist/buy/
+2025-05-15 13:59:46,897 ERROR Connection to Redis lost: Retry (0/20) now.
+2025-05-15 13:59:49,636 ERROR Connection to Redis lost: Retry (1/20) in 1.00 second.
+2025-05-15 13:59:53,327 ERROR Connection to Redis lost: Retry (2/20) in 1.00 second.
+2025-05-15 13:59:57,041 ERROR Connection to Redis lost: Retry (3/20) in 1.00 second.
+2025-05-15 13:59:58,075 INFO Request: POST /wishlist/buy/ | User: root
+2025-05-15 13:59:58,081 WARNING Bad Request: /wishlist/buy/
+2025-05-15 14:00:00,749 ERROR Connection to Redis lost: Retry (4/20) in 1.00 second.
+2025-05-15 14:00:04,435 ERROR Connection to Redis lost: Retry (5/20) in 1.00 second.
+2025-05-15 14:00:08,124 ERROR Connection to Redis lost: Retry (6/20) in 1.00 second.
+2025-05-15 14:00:11,816 ERROR Connection to Redis lost: Retry (7/20) in 1.00 second.
+2025-05-15 14:00:15,536 ERROR Connection to Redis lost: Retry (8/20) in 1.00 second.
+2025-05-15 14:00:19,227 ERROR Connection to Redis lost: Retry (9/20) in 1.00 second.
+2025-05-15 14:00:22,930 ERROR Connection to Redis lost: Retry (10/20) in 1.00 second.
+2025-05-15 14:00:26,625 ERROR Connection to Redis lost: Retry (11/20) in 1.00 second.
+2025-05-15 14:00:30,349 ERROR Connection to Redis lost: Retry (12/20) in 1.00 second.
+2025-05-15 14:00:34,051 ERROR Connection to Redis lost: Retry (13/20) in 1.00 second.
+2025-05-15 14:00:37,748 ERROR Connection to Redis lost: Retry (14/20) in 1.00 second.
+2025-05-15 14:00:41,455 ERROR Connection to Redis lost: Retry (15/20) in 1.00 second.
+2025-05-15 14:00:45,159 ERROR Connection to Redis lost: Retry (16/20) in 1.00 second.
+2025-05-15 14:00:48,853 ERROR Connection to Redis lost: Retry (17/20) in 1.00 second.
+2025-05-15 14:00:52,578 ERROR Connection to Redis lost: Retry (18/20) in 1.00 second.
+2025-05-15 14:00:56,295 ERROR Connection to Redis lost: Retry (19/20) in 1.00 second.
+2025-05-15 14:01:00,013 CRITICAL 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+2025-05-15 14:01:00,982 ERROR Internal Server Error: /wishlist/buy/
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\redis\connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\redis\retry.py", line 62, in call_with_retry
+    return do()
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\redis\connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\redis\connection.py", line 698, in _connect
+    for res in socket.getaddrinfo(
+               ~~~~~~~~~~~~~~~~~~^
+        self.host, self.port, self.socket_type, socket.SOCK_STREAM
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Program Files\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\celery\backends\redis.py", line 127, in reconnect_on_error
+    yield
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\celery\backends\redis.py", line 177, in _consume_from
+    self._pubsub.subscribe(key)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\redis\client.py", line 957, in subscribe
+    ret_val = self.execute_command("SUBSCRIBE", *new_channels.keys())
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\redis\client.py", line 786, in execute_command
+    self.connection = self.connection_pool.get_connection(
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        "pubsub", self.shard_hint
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\redis\connection.py", line 1422, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\redis\connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 11001 connecting to redis:6379. getaddrinfo failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\redis\connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\redis\retry.py", line 62, in call_with_retry
+    return do()
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\redis\connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\redis\connection.py", line 698, in _connect
+    for res in socket.getaddrinfo(
+               ~~~~~~~~~~~~~~~~~~^
+        self.host, self.port, self.socket_type, socket.SOCK_STREAM
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Program Files\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\kombu\connection.py", line 472, in _reraise_as_library_errors
+    yield
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\celery\app\base.py", line 921, in send_task
+    self.backend.on_task_call(P, task_id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\celery\backends\redis.py", line 378, in on_task_call
+    self.result_consumer.consume_from(task_id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\celery\backends\redis.py", line 169, in consume_from
+    return self.start(task_id)
+           ~~~~~~~~~~^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\celery\backends\redis.py", line 147, in start
+    self._consume_from(initial_task_id)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\celery\backends\redis.py", line 176, in _consume_from
+    with self.reconnect_on_error():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\celery\backends\redis.py", line 130, in reconnect_on_error
+    self._ensure(self._reconnect_pubsub, ())
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\celery\backends\redis.py", line 389, in ensure
+    return retry_over_time(
+        fun, self.connection_errors, args, {},
+        partial(self.on_connection_error, max_retries),
+        **retry_policy)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\kombu\utils\functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\celery\backends\redis.py", line 106, in _reconnect_pubsub
+    metas = self.backend.client.mget(self.subscribed_to)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\redis\commands\core.py", line 2009, in mget
+    return self.execute_command("MGET", *args, **options)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\redis\client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\redis\client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\redis\connection.py", line 1422, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\redis\connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 11001 connecting to redis:6379. getaddrinfo failed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\payment_system_api\views.py", line 151, in payment_products
+    with transaction.atomic():
+         ~~~~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\transaction.py", line 307, in __exit__
+    connection.set_autocommit(True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\base\base.py", line 491, in set_autocommit
+    self.run_and_clear_commit_hooks()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\django\db\backends\base\base.py", line 769, in run_and_clear_commit_hooks
+    func()
+    ~~~~^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\celery\app\task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\celery\app\task.py", line 601, in apply_async
+    return app.send_task(
+           ~~~~~~~~~~~~~^
+        self.name, args, kwargs, task_id=task_id, producer=producer,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **options
+        ^^^^^^^^^
+    )
+    ^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\celery\app\base.py", line 919, in send_task
+    with P.connection._reraise_as_library_errors():
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "D:\python\marketplace_api\.venv\Lib\site-packages\kombu\connection.py", line 476, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: Error 11001 connecting to redis:6379. getaddrinfo failed.
+2025-05-15 14:01:01,015 INFO Request: POST /wishlist/buy/ | User: root
+2025-05-15 14:01:40,056 INFO Request: GET /products/ | User: 
+2025-05-15 14:01:46,952 INFO Request: GET /products/5/ | User: 
+2025-05-15 14:02:19,567 ERROR Connection to Redis lost: Retry (0/20) now.
+2025-05-15 14:02:22,244 ERROR Connection to Redis lost: Retry (1/20) in 1.00 second.
+2025-05-15 14:02:25,946 ERROR Connection to Redis lost: Retry (2/20) in 1.00 second.
+2025-05-15 14:02:29,655 ERROR Connection to Redis lost: Retry (3/20) in 1.00 second.
+2025-05-15 14:02:33,368 ERROR Connection to Redis lost: Retry (4/20) in 1.00 second.
+2025-05-15 14:02:37,057 ERROR Connection to Redis lost: Retry (5/20) in 1.00 second.
+2025-05-15 14:02:40,755 ERROR Connection to Redis lost: Retry (6/20) in 1.00 second.
+2025-05-15 14:02:44,462 ERROR Connection to Redis lost: Retry (7/20) in 1.00 second.
+2025-05-15 14:02:48,182 ERROR Connection to Redis lost: Retry (8/20) in 1.00 second.
+2025-05-15 14:02:51,890 ERROR Connection to Redis lost: Retry (9/20) in 1.00 second.
+2025-05-15 14:02:55,604 ERROR Connection to Redis lost: Retry (10/20) in 1.00 second.
+2025-05-15 14:02:59,314 ERROR Connection to Redis lost: Retry (11/20) in 1.00 second.
+2025-05-15 14:03:03,009 ERROR Connection to Redis lost: Retry (12/20) in 1.00 second.
+2025-05-15 14:03:06,698 ERROR Connection to Redis lost: Retry (13/20) in 1.00 second.
+2025-05-15 14:03:10,392 ERROR Connection to Redis lost: Retry (14/20) in 1.00 second.
+2025-05-15 14:03:14,092 ERROR Connection to Redis lost: Retry (15/20) in 1.00 second.
+2025-05-15 14:03:17,780 ERROR Connection to Redis lost: Retry (16/20) in 1.00 second.
+2025-05-15 14:03:21,476 ERROR Connection to Redis lost: Retry (17/20) in 1.00 second.
+2025-05-15 14:03:21,940 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-05-15 14:03:23,507 INFO Watching for file changes with StatReloader
+2025-05-15 14:04:04,143 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-05-15 14:04:06,349 INFO Watching for file changes with StatReloader
+2025-05-15 14:04:19,994 INFO Watching for file changes with StatReloader
+2025-05-15 14:04:26,195 INFO Request: POST /products/5/buy/ | User: root
+2025-05-15 14:05:02,719 INFO Request: POST /products/5/take/ | User: 
+2025-05-15 14:05:02,720 WARNING Not Found: /products/5/take/
+2025-05-15 14:06:04,694 INFO Request: POST /products/5/add/ | User: root
+2025-05-15 14:06:17,218 INFO Request: GET /wishlist/ | User: root
+2025-05-15 14:06:25,807 INFO Request: POST /wishlist/buy/ | User: root
+2025-05-15 14:06:46,105 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-05-15 14:06:48,606 INFO Watching for file changes with StatReloader
+2025-05-15 14:07:03,553 INFO Watching for file changes with StatReloader
+2025-05-15 14:07:53,023 INFO Request: POST /products/5/buy/ | User: root
+2025-05-15 14:08:24,003 INFO Request: GET /profile/ | User: root
+2025-05-15 14:08:34,135 INFO Request: GET /notifications/ | User: root
+2025-05-15 14:08:38,374 INFO Request: GET /notifications/82/ | User: root
+2025-05-15 14:08:42,786 INFO Request: GET /notifications/ | User: root
+2025-05-15 21:23:56,167 INFO Watching for file changes with StatReloader
+2025-05-15 21:24:12,376 INFO Request: POST /api/token/ | User: 
+2025-05-15 21:24:33,417 INFO Request: GET /profile/ | User: root
+2025-05-15 21:27:27,210 INFO Watching for file changes with StatReloader
+2025-05-15 21:27:34,676 INFO D:\python\marketplace_api\payment_system_api\views.py changed, reloading.
+2025-05-15 21:27:40,080 INFO Watching for file changes with StatReloader
+2025-05-16 09:58:05,393 INFO Watching for file changes with StatReloader
+2025-05-16 09:58:11,526 INFO Request: GET / | User: 
+2025-05-16 09:58:11,526 WARNING Not Found: /

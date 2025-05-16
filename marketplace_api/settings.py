@@ -252,8 +252,8 @@ SWAGGER_SETTINGS = {
 }
 
 
-CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://redis:6379/0') # для docker меняем на redis, develop = 127.0.0.1
-CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND', 'redis://redis:6379/0') # too
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL') # для docker меняем на redis, develop = 127.0.0.1
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
 CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
@@ -270,7 +270,7 @@ CELERY_RESULT_SERIALIZER = 'json'
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://redis:6379/0", # для docker меняю на redis, develop = 127.0.0.1
+        "LOCATION": "redis://127.0.0.1:6379/0", # для docker меняю на redis, develop = 127.0.0.1
         "KEY_PREFIX": "imdb",
         "TIMEOUT": 60 * 15,  # in seconds: 60 * 15 (15 minutes)
     }
