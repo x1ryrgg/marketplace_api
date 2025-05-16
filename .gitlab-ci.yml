@@ -4,39 +4,48 @@ stages:
   - deploy
 
 variables:
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_DRIVER: overlay2
   DOCKER_TLS_CERTDIR: ""
-  POSTGRES_DB: test_db
-  POSTGRES_USER: runner
-  POSTGRES_PASSWORD: ""
-  DATABASE_URL: "postgres://runner@postgres/test_db"
+  COMPOSE_PROJECT_NAME: myproject
+
+# Используем Docker-in-Docker (dind) сервис
+services:
+  - docker:dind
+
+before_script:
+  - docker info
+  - docker-compose --version
 
 test:
   stage: test
-  image: python:3.13-slim
-  services:
-    - postgres:14
-    - redis:alpine
-  before_script:
-    - apt-get update -y && apt-get install -y libpq-dev gcc
-    - pip install -r requirements.txt
   script:
-    - python manage.py test
+    - docker-compose up -d db redis
+    - docker-compose run --rm api python manage.py test
+  after_script:
+    - docker-compose down
 
 build:
   stage: build
-  tags:
-    - docker
   script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker-compose build
+    - docker push $CI_REGISTRY_IMAGE/api:latest
+    - docker push $CI_REGISTRY_IMAGE/celery:latest
+    - docker push $CI_REGISTRY_IMAGE/celery-beat:latest
   only:
-    - main
+    - master
 
 deploy:
   stage: deploy
-  tags:
-    - docker
   script:
-    - docker-compose down
-    - docker-compose up -d
+    - apt-get update -qq && apt-get install -y -qq sshpass
+    - sshpass -p $SSH_PASSWORD ssh -o StrictHostKeyChecking=no $SSH_USER@$SERVER_IP "
+      docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY &&
+      docker pull $CI_REGISTRY_IMAGE/api:latest &&
+      docker pull $CI_REGISTRY_IMAGE/celery:latest &&
+      docker pull $CI_REGISTRY_IMAGE/celery-beat:latest &&
+      docker-compose -f docker-compose.prod.yml up -d
+    "
   only:
-    - main
+    - master

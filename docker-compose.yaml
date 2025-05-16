@@ -1,5 +1,5 @@
 services:
-  web:
+  api:
     build: .
     command: >
       sh -c "python manage.py migrate &&
@@ -35,7 +35,7 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
-      - web
+      - api
 
   redis:
     image: redis:alpine
