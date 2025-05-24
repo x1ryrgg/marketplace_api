@@ -20,6 +20,7 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
 
     path('users/', include(user_router.urls)),
+    path('user/link_telegram/', LinkTelegramId.as_view(), name='link_telegram'),
     path('profile/', ProfileView.as_view({"get": "list", "patch": "partial_update"}), name='profile'),
 
     path('notifications/', include(notification_router.urls)),

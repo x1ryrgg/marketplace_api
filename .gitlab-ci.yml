@@ -46,6 +46,5 @@ deploy:
       docker pull $CI_REGISTRY_IMAGE/celery:latest &&
       docker pull $CI_REGISTRY_IMAGE/celery-beat:latest &&
       docker-compose -f docker-compose.prod.yml up -d
-    "
   only:
     - master

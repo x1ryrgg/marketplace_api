@@ -7,9 +7,10 @@ from rest_framework_extensions.cache.mixins import CacheResponseMixin
 from django.core.cache import cache
 from rest_framework import generics, status, permissions
 from rest_framework.permissions import IsAuthenticated
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
-
+from .filters import UserFiler
 from rest_framework.exceptions import ValidationError, PermissionDenied
 from django.utils.translation import gettext_lazy as _
 from .models import *
@@ -35,12 +36,14 @@ class RegisterView(generics.CreateAPIView):
 
 
 class UserView(ModelViewSet):
-    """ Endpoint для просмотра всех пользователей (доступно только superuser-ам)
+    """ Endpoint для просмотра всех пользователей
     url: /users/
     """
-    permission_classes = [IsAuthenticated, IsSuperUser]
+    permission_classes = [IsAuthenticated]
     serializer_class = OpenUserSerializer
     queryset = User.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = UserFiler
     http_method_names = ['get']
 
     def retrieve(self, request, *args, **kwargs) -> Response:
@@ -51,6 +54,13 @@ class UserView(ModelViewSet):
             "user_profile": ProfileSerializer(profile).data
         }
         return Response(data)
+
+class LinkTelegramId(APIView):
+    def patch(self, request):
+        user = request.user
+        user.tg_id = request.data.get('tg_id')
+        user.save()
+        return Response({'status': 'success'})
 
 
 class ProfileView(ModelViewSet, CacheResponseMixin):

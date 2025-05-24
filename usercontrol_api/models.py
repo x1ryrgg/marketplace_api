@@ -8,6 +8,7 @@ from django.db import models
 
 
 class User(AbstractUser):
+    tg_id = models.BigIntegerField(blank=True, null=True)
     is_seller = models.BooleanField(default=False)
     balance = models.DecimalField(max_digits=10, decimal_places=2, default=0, blank=True)
     wishlist = models.ManyToManyField('product_control_api.ProductVariant', through='usercontrol_api.WishlistItem', blank=True)

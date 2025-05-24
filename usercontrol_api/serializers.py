@@ -28,7 +28,7 @@ class OpenUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'is_seller')
+        fields = ('id', 'username', 'email', 'is_seller', 'tg_id')
 
 
 class PrivateUserSerializer(serializers.ModelSerializer):
