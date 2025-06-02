@@ -8684,3 +8684,114 @@ DETAIL:  Ключ "(tg_id)=(1352441813)" уже существует.
 2025-05-24 11:11:23,608 INFO Request: GET /delivery/ | User: root
 2025-05-24 11:17:29,378 INFO Request: GET /delivery/ | User: root
 2025-05-24 11:22:41,102 INFO Request: GET /delivery/ | User: root
+2025-05-24 11:52:10,500 INFO Watching for file changes with StatReloader
+2025-05-24 11:52:31,283 INFO Request: POST /api/token/ | User: 
+2025-05-24 11:52:41,629 INFO Request: GET /profile/ | User: root
+2025-05-24 11:56:34,135 INFO Watching for file changes with StatReloader
+2025-05-24 12:06:10,252 INFO Request: GET /delivery/ | User: root
+2025-05-24 15:36:12,265 INFO Watching for file changes with StatReloader
+2025-05-24 15:36:25,090 INFO Request: POST /api/token/ | User: 
+2025-05-24 15:36:38,318 INFO Request: GET /history/ | User: root
+2025-05-24 15:47:00,286 INFO Request: POST /api/token/ | User: 
+2025-05-24 15:47:00,538 INFO Request: PATCH /user/link_telegram/ | User: root
+2025-05-24 15:47:05,375 INFO Request: GET /history/ | User: root
+2025-05-24 15:59:22,211 INFO Request: GET /history/ | User: root
+2025-05-24 17:06:42,284 INFO Watching for file changes with StatReloader
+2025-05-24 17:07:31,480 INFO Request: POST /api/token/ | User: 
+2025-05-24 17:07:31,637 INFO Request: PATCH /user/link_telegram/ | User: x1ryrg
+2025-05-24 17:07:36,501 INFO Request: GET /history/ | User: x1ryrg
+2025-05-24 17:07:41,508 INFO Request: GET /delivery/ | User: x1ryrg
+2025-05-24 17:09:34,651 INFO Request: GET /history/ | User: x1ryrg
+2025-05-24 17:10:12,774 INFO Request: POST /api/token/ | User: 
+2025-05-24 17:10:18,640 INFO Request: GET /delivery/ | User: x1ryrg
+2025-05-24 17:10:31,309 INFO Request: GET /delivery/ | User: x1ryrg
+2025-05-24 17:11:01,213 INFO Request: GET /profile/ | User: root
+2025-05-24 17:14:02,049 INFO Request: POST /api/token/ | User: 
+2025-05-24 17:14:02,161 INFO Request: PATCH /user/link_telegram/ | User: root
+2025-05-24 17:21:33,595 INFO Request: POST /api/token/ | User: 
+2025-05-24 17:21:33,853 INFO Request: PATCH /user/link_telegram/ | User: root
+2025-05-24 17:23:56,713 INFO Request: GET /delivery/ | User: root
+2025-05-24 17:24:00,456 INFO Request: GET /delivery/ | User: root
+2025-05-24 17:24:02,371 INFO Request: GET /history/ | User: root
+2025-05-24 17:24:07,991 INFO Request: GET /history/ | User: root
+2025-05-24 17:24:28,027 INFO Request: POST /api/token/ | User: 
+2025-05-24 17:24:28,164 INFO Request: PATCH /user/link_telegram/ | User: root
+2025-05-24 17:24:29,654 INFO Request: GET /delivery/ | User: root
+2025-05-24 17:24:31,315 INFO Request: GET /history/ | User: root
+2025-05-26 18:06:09,891 INFO Watching for file changes with StatReloader
+2025-05-26 18:08:03,961 INFO Request: POST /api/token/ | User: 
+2025-05-26 18:08:04,279 INFO Request: PATCH /user/link_telegram/ | User: root
+2025-05-26 18:08:17,978 INFO Request: GET /delivery/ | User: root
+2025-05-26 18:08:20,216 INFO Request: GET /history/ | User: root
+2025-05-26 18:13:30,410 INFO Request: GET /history/ | User: root
+2025-05-26 18:14:10,744 INFO Request: GET /delivery/ | User: root
+2025-05-26 18:14:20,071 INFO Request: GET /delivery/ | User: root
+2025-05-26 18:16:04,165 INFO Request: POST /api/token/ | User: 
+2025-05-26 18:16:04,300 INFO Request: PATCH /user/link_telegram/ | User: root
+2025-05-26 18:16:46,409 INFO Request: POST /api/token/ | User: 
+2025-05-26 18:16:46,673 INFO Request: PATCH /user/link_telegram/ | User: root
+2025-05-26 18:16:50,127 INFO Request: GET /history/ | User: root
+2025-05-26 18:22:52,543 INFO Request: POST /api/token/ | User: 
+2025-05-26 18:22:52,684 INFO Request: PATCH /user/link_telegram/ | User: root
+2025-05-26 18:25:03,584 INFO Request: GET /history/ | User: root
+2025-05-26 18:25:13,260 INFO Request: POST /api/token/ | User: 
+2025-05-26 18:25:13,372 INFO Request: PATCH /user/link_telegram/ | User: root
+2025-05-26 18:25:14,967 INFO Request: GET /delivery/ | User: root
+2025-05-26 19:23:21,428 INFO Watching for file changes with StatReloader
+2025-05-26 19:27:09,552 INFO Request: POST /api/token/ | User: 
+2025-05-26 19:27:09,704 INFO Request: PATCH /user/link_telegram/ | User: root
+2025-05-26 19:27:11,967 INFO Request: GET /history/ | User: root
+2025-05-26 19:35:55,206 INFO Request: GET /delivery/ | User: root
+2025-05-26 19:35:55,670 INFO Request: POST /api/token/refresh/ | User: 
+2025-05-26 19:35:55,874 INFO Request: GET /delivery/ | User: root
+2025-05-26 19:35:59,220 INFO Request: GET /delivery/ | User: root
+2025-05-26 19:36:03,387 INFO Request: GET /history/ | User: root
+2025-05-26 19:36:15,219 INFO Request: POST /api/token/ | User: 
+2025-05-26 19:36:15,358 INFO Request: PATCH /user/link_telegram/ | User: root
+2025-05-26 19:36:25,723 INFO Request: POST /api/token/ | User: 
+2025-05-26 19:36:25,995 INFO Request: PATCH /user/link_telegram/ | User: x1ryrg
+2025-05-26 19:36:27,423 INFO Request: GET /delivery/ | User: x1ryrg
+2025-05-26 19:36:27,828 INFO Request: POST /api/token/refresh/ | User: 
+2025-05-26 19:36:27,980 INFO Request: GET /delivery/ | User: x1ryrg
+2025-05-26 19:36:28,945 INFO Request: GET /history/ | User: x1ryrg
+2025-05-26 19:36:32,519 INFO Request: GET /delivery/ | User: x1ryrg
+2025-05-26 19:36:42,195 INFO Request: GET /history/ | User: x1ryrg
+2025-05-26 19:57:48,640 INFO Request: GET /delivery/ | User: x1ryrg
+2025-05-26 20:06:41,027 INFO Request: GET /history/ | User: x1ryrg
+2025-05-26 20:06:49,580 INFO Request: POST /api/token/ | User: 
+2025-05-26 20:06:49,676 INFO Request: PATCH /user/link_telegram/ | User: root
+2025-05-26 20:06:51,533 INFO Request: GET /history/ | User: root
+2025-05-26 20:06:51,727 INFO Request: POST /api/token/refresh/ | User: 
+2025-05-26 20:06:51,888 INFO Request: GET /history/ | User: root
+2025-05-26 20:08:14,037 INFO Request: GET /history/ | User: root
+2025-05-26 20:08:35,795 INFO Request: GET /history/ | User: root
+2025-05-26 20:08:51,362 INFO Request: GET /delivery/ | User: root
+2025-05-26 20:18:27,167 INFO Request: GET /delivery/ | User: root
+2025-05-26 20:18:34,183 INFO Request: GET /history/ | User: root
+2025-05-26 20:43:02,625 INFO Request: GET /history/ | User: root
+2025-05-26 20:43:08,772 INFO Request: GET /delivery/ | User: root
+2025-05-26 20:49:41,538 INFO Request: GET /delivery/ | User: root
+2025-05-26 20:53:00,849 INFO Request: POST /api/token/ | User: 
+2025-05-26 20:53:00,973 INFO Request: PATCH /user/link_telegram/ | User: root
+2025-05-26 20:54:30,255 INFO Request: POST /api/token/ | User: 
+2025-05-26 20:54:30,396 INFO Request: PATCH /user/link_telegram/ | User: root
+2025-05-26 20:54:40,200 INFO Request: POST /api/token/ | User: 
+2025-05-26 20:54:40,330 INFO Request: PATCH /user/link_telegram/ | User: root
+2025-05-26 20:54:42,570 INFO Request: GET /delivery/ | User: root
+2025-05-26 20:54:42,784 INFO Request: POST /api/token/refresh/ | User: 
+2025-05-26 20:54:42,994 INFO Request: GET /delivery/ | User: root
+2025-05-26 20:54:43,420 INFO Request: GET /history/ | User: root
+2025-06-02 17:26:08,646 INFO Watching for file changes with StatReloader
+2025-06-02 17:34:26,045 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-06-02 17:34:26,973 INFO Watching for file changes with StatReloader
+2025-06-02 17:35:15,243 INFO D:\python\marketplace_api\marketplace_api\celery.py changed, reloading.
+2025-06-02 17:35:16,386 INFO Watching for file changes with StatReloader
+2025-06-02 17:41:15,280 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-06-02 17:41:16,242 INFO Watching for file changes with StatReloader
+2025-06-02 17:41:22,546 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-06-02 17:41:23,366 INFO Watching for file changes with StatReloader
+2025-06-02 17:41:43,044 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-06-02 17:41:44,380 INFO Watching for file changes with StatReloader
+2025-06-02 17:46:01,520 INFO Watching for file changes with StatReloader
+2025-06-02 17:48:06,136 INFO D:\python\marketplace_api\payment_system_api\tasks.py changed, reloading.
+2025-06-02 17:48:07,019 INFO Watching for file changes with StatReloader

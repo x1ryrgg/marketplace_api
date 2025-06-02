@@ -217,7 +217,7 @@ LOGGING = {
     'loggers': {
         '': {
             'handlers': ['info_file'],
-            'level': 'INFO',
+            'level': 'DEBUG',
             'propagate': False
         }
     },
@@ -270,7 +270,7 @@ CELERY_RESULT_SERIALIZER = 'json'
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/0", # для docker меняю на redis, develop = 127.0.0.1
+        "LOCATION": os.getenv("CACHES"), # для docker меняю на redis, develop = 127.0.0.1
         "KEY_PREFIX": "imdb",
         "TIMEOUT": 60 * 15,  # in seconds: 60 * 15 (15 minutes)
     }

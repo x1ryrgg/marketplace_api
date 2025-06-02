@@ -49,27 +49,28 @@ def beat_check_coupon():
     expired_coupon = Coupon.objects.filter(
         end_date__lte=today
     ).delete()
-    return f"{expired_coupon} expired coupons removed"
+    return f"{expired_coupon[0]} купонов удаленно. "
 
 
 @shared_task
-def beat_check_is_read_notification():
-    data = date.today() + timedelta(days=7)
+def beat_check_read_notification():
+    data = date.today() - timedelta(days=7)
 
     expired_notifications = Notification.objects.filter(
-        created_at__gte=data,
+        created_at__lte=data,
         is_read=True
     ).delete()
 
-    return f"notifications deleted: {expired_notifications[0]}"
+    return f"Прочитанных уведомлений удаленно: {expired_notifications[0]}"
 
 
 @shared_task
 def beat_check_notification():
-    data = date.today() + timedelta(days=30)
+    data = date.today() - timedelta(days=30)
 
     expired_notifications = Notification.objects.filter(
-        created_at__gte=data,
+        created_at__lte=data,
+        is_read=False
     ).delete()
 
-    return f"notifications deleted: {expired_notifications[0]}"
+    return f"Уведомлений удаленно: {expired_notifications[0]}"
