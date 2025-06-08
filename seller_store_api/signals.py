@@ -44,7 +44,7 @@ def store_create_notification(sender, instance, created, **kwargs):
     if created:
         Notification.objects.create(
             user=instance.author,
-            title=Notification.TitleChoice.CELLER,
+            title=Notification.TitleChoice.SELLER,
             message=_(f"{instance.name} зарегестирован на вас ({instance.author.username})")
         )
 

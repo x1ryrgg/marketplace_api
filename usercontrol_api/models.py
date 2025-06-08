@@ -63,7 +63,7 @@ class Notification(models.Model):
         PURCHASE = ("purchase", "покупка")
         DELIVERY = ('delivery', 'доставка')
         COUPON = ("coupon", 'купон')
-        CELLER = ('celler', 'продавец')
+        SELLER = ('seller', 'продавец')
         OTHER = ('other', 'другое')
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -1,4 +1,7 @@
 from datetime import date, timedelta
+
+from django.core.management import BaseCommand
+
 from .models import Delivery
 from usercontrol_api.models import Coupon, Notification
 

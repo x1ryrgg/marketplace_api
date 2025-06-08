@@ -24,7 +24,8 @@ class History(models.Model):
     objects = HistoryManager()
 
     def __str__(self):
-        return "User %s | Name %s | Price %s | Quantity %s" % (self.user.username, self.product.product.name, self.user_price, self.quantity)
+        return "User %s | Name %s | Price %s | Quantity %s" % (self.user.username, self.product.product.name,
+                                                               self.user_price, self.quantity)
 
     @staticmethod
     def get_status(queryset):
@@ -48,7 +49,8 @@ class Delivery(models.Model):
         super().save(update_fields=['delivery_date'])
 
     def __str__(self):
-        return "User %s | Name %s | Delivery_date %s" % (self.user.username, self.product.product.name, self.delivery_date)
+        return "User %s | Name %s | Delivery_date %s" % (self.user.username, self.product.product.name,
+                                                         self.delivery_date)
 
 
 class Payment(models.Model):

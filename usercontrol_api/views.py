@@ -1,29 +1,24 @@
-from typing import Any
-
-from django.core.exceptions import ObjectDoesNotExist
-from django.db.models.sql import Query
-from django.shortcuts import render
-from rest_framework_extensions.cache.mixins import CacheResponseMixin
-from django.core.cache import cache
-from rest_framework import generics, status, permissions
-from rest_framework.permissions import IsAuthenticated
+from django.utils.translation import gettext_lazy as _
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import generics, status, permissions
+from rest_framework.exceptions import ValidationError, PermissionDenied
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
+from rest_framework_extensions.cache.mixins import CacheResponseMixin
+
 from .filters import UserFiler
-from rest_framework.exceptions import ValidationError, PermissionDenied
-from django.utils.translation import gettext_lazy as _
-from .models import *
 from .permissions import *
 from .serializers import *
-from rest_framework.response import Response
 
 
 class RegisterView(generics.CreateAPIView):
-    """ Endpoint для регистрации пользователей
+    """Endpoint для регистрации пользователей
     url: /register/
     body: username (str), password (str), email (str)
     """
+
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
 
@@ -36,44 +31,45 @@ class RegisterView(generics.CreateAPIView):
 
 
 class UserView(ModelViewSet):
-    """ Endpoint для просмотра всех пользователей
+    """Endpoint для просмотра всех пользователей
     url: /users/
     """
+
     permission_classes = [IsAuthenticated]
     serializer_class = OpenUserSerializer
     queryset = User.objects.all()
     filter_backends = [DjangoFilterBackend]
     filterset_class = UserFiler
-    http_method_names = ['get']
+    http_method_names = ["get"]
 
     def retrieve(self, request, *args, **kwargs) -> Response:
         user = self.get_object()
         profile = Profile.objects.get(user=user)
         data = {
-            'user': self.get_serializer(user).data,
-            "user_profile": ProfileSerializer(profile).data
+            "user": self.get_serializer(user).data,
+            "user_profile": ProfileSerializer(profile).data,
         }
         return Response(data)
+
 
 class LinkTelegramId(APIView):
     def patch(self, request):
         user = request.user
-        user.tg_id = request.data.get('tg_id')
+        user.tg_id = request.data.get("tg_id")
         user.save()
-        return Response({'status': 'success'})
+        return Response({"status": "success"})
 
 
 class ProfileView(ModelViewSet, CacheResponseMixin):
-    """ Endpoint для просмотра профиля, а также купонов.
+    """Endpoint для просмотра профиля, а также купонов.
     url: /profile/
     """
+
+    queryset = Profile.objects.all()
     permission_classes = [IsAuthenticated]
     serializer_class = ProfileSerializer
-    http_method_names = ['get', 'patch']
+    http_method_names = ["get", "patch"]
     list_cache_timeout = 120
-
-    def get_queryset(self):
-        return Profile.objects.filter(user=self.request.user.id)
 
     def get_object(self):
         try:
@@ -86,15 +82,17 @@ class ProfileView(ModelViewSet, CacheResponseMixin):
         user = request.user
         coupons = Coupon.objects.filter(user=user)
         data = {
-            'непрочитанные уведомления': Notification.objects.filter(user=self.request.user, is_read=False).count(),
-            'профиль': self.get_serializer(profile).data,
-            'ваш аккаунт': PrivateUserSerializer(user, many=False).data,
-            'ваши купоны': CouponSerializer(coupons, many=True).data
+            "непрочитанные уведомления": Notification.objects.filter(
+                user=self.request.user, is_read=False
+            ).count(),
+            "профиль": self.get_serializer(profile).data,
+            "ваш аккаунт": PrivateUserSerializer(user, many=False).data,
+            "ваши купоны": CouponSerializer(coupons, many=True).data,
         }
         return Response(data)
 
     def partial_update(self, request, *args, **kwargs):
-        """ Изменение профиля """
+        """Изменение профиля"""
         profile = self.get_queryset().get()
 
         serializer = self.get_serializer(profile, data=request.data, partial=True)
@@ -107,27 +105,34 @@ class ProfileView(ModelViewSet, CacheResponseMixin):
 class NotificationView(CacheResponseMixin, ModelViewSet):
     permission_classes = [IsAuthenticated]
     serializer_class = NotificationSerializer
-    http_method_names = ['get', 'delete', 'post']
+    http_method_names = ["get", "delete", "post"]
     list_cache_timeout = 100
 
     def get_queryset(self):
-        return Notification.objects.filter(user=self.request.user).select_related('user').order_by("is_read", '-created_at')
+        return (
+            Notification.objects.filter(user=self.request.user)
+            .select_related("user")
+            .order_by("is_read", "-created_at")
+        )
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
-        unread_count = Notification.objects.filter(user=self.request.user, is_read=False).count()
+        unread_count = Notification.objects.filter(
+            user=self.request.user, is_read=False
+        ).count()
         serializer = self.get_serializer(queryset, many=True)
 
-        return Response({
-            "Непрочитанные уведомления": unread_count,
-            'Уведомления': serializer.data,
-        })
-
+        return Response(
+            {
+                "Непрочитанные уведомления": unread_count,
+                "Уведомления": serializer.data,
+            }
+        )
 
     def retrieve(self, request, *args, **kwargs) -> Response:
         notification = self.get_object()
         notification.is_read = True
-        notification.save(update_fields=['is_read'])
+        notification.save(update_fields=["is_read"])
         serializer = RetrieveNotificationSerializer(notification)
         return Response(serializer.data)
 
@@ -138,41 +143,41 @@ class NotificationView(CacheResponseMixin, ModelViewSet):
 
 
 class AdminNotificationView(APIView):
-    """ Endpoint для создания уведомлений-рассылок (только superuser-ам)
+    """Endpoint для создания уведомлений-рассылок (только superuser-ам)
     url: /notification/admin/
     body: title (str, Optional), message (str, Optional)
     """
+
     permission_classes = [IsAuthenticated, IsSuperUser]
     serializer_class = NotificationSerializer
 
     def post(self, request, *args, **kwargs) -> Response:
         users = [user for user in User.objects.filter(is_superuser=False)]
-        title = request.data.get('title', Notification.TitleChoice.OTHER)
-        message = request.data.get('message', None)
+        title = request.data.get("title", Notification.TitleChoice.OTHER)
+        message = request.data.get("message", None)
 
         notifications = []
         for user in users:
             notification = Notification.objects.create(
-                user=user,
-                title=title,
-                message=message
+                user=user, title=title, message=message
             )
             notifications.append(notification)
 
         serializer = self.serializer_class(notifications[-1])
-        return Response({
-            'count_of_receivers': len(users),
-            'type_of_message': serializer.data
-        })
+        return Response(
+            {"count_of_receivers": len(users), "type_of_message": serializer.data}
+        )
+
 
 class CouponView(ModelViewSet):
-    """ Endpoint для просмотра всех купонов, а также для тестового создания купонов (доступно superuser-ам)
+    """Endpoint для просмотра всех купонов, а также для тестового создания купонов (доступно superuser-ам)
     url: /coupons/
     """
+
     permission_classes = [IsAuthenticated, IsSuperUser]
     serializer_class = CouponSerializer
     queryset = Coupon.objects.all()
-    http_method_names = ['get', 'post']
+    http_method_names = ["get", "post"]
 
     def perform_create(self, serializer) -> Response:
         serializer.save()
@@ -180,7 +185,7 @@ class CouponView(ModelViewSet):
 
 
 def _create_coupon_with_chance(user: User) -> Coupon | None:
-    """ Создает купон с вероятностью 30% """
+    """Создает купон с вероятностью 30%"""
     if random.random() < 0.3:  # 30% шанс
         coupon = Coupon.objects.create(user=user)
         return coupon
