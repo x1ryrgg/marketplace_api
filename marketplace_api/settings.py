@@ -102,9 +102,9 @@ DATABASES = {
     'default': {
            'ENGINE': 'django.db.backends.postgresql_psycopg2',
            'NAME': os.getenv('DB_NAME', 'market_db'),
-           'USER': os.getenv('DB_USER', 'postgres'),
-           'PASSWORD': os.getenv('DB_PASSWORD', '1234'),
-           'HOST': os.getenv('DB_HOST', 'localhost'), # db for docker
+           'USER': os.getenv('DB_USER'),
+           'PASSWORD': os.getenv('DB_PASSWORD'),
+           'HOST': os.getenv('DB_HOST'), # db for docker
            'PORT': os.getenv('DB_PORT', '5432'),
        }
     }
@@ -252,8 +252,8 @@ SWAGGER_SETTINGS = {
 }
 
 
-CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL') # для docker меняем на redis, develop = 127.0.0.1
-CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL') # для docker меняем на redis, develop = 127.0.0.1 redis - redis://127.0.0.1:6379/0
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND') # redis - redis://127.0.0.1:6379/0
 CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
@@ -285,9 +285,3 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 # EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 # EMAIL_USE_TLS = True
 # DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-
-""" YOOKASSA """
-YOOKASSA_SHOP_ID = os.getenv('YOOKASSA_SHOP_ID')
-YOOKASSA_SECRET_KEY = os.getenv('YOOKASSA_SECRET_KEY')
-YOOKASSA_API_URL = os.getenv('YOOKASSA_API_URL')

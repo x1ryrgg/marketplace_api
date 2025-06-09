@@ -32,4 +32,14 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = ("id", 'user', 'product', 'stars', 'body', 'image', 'created_at')
+        read_only_fields = ("id", 'user', 'product', 'created_at')
+        extra_kwargs = {
+            'stars': {'min_value': 1, 'max_value': 5}
+        }
 
+        def validate(self, data):
+            if not data.get('body') or data.get('image'):
+                raise serializers.ValidationError(
+                    'В отзыве вы должны оставить комментарий или прикрепить фото.'
+                )
+            return data

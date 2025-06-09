@@ -9066,3 +9066,1605 @@ AttributeError: 'ProductVariant' object has no attribute 'model'
 2025-06-08 13:59:17,327 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
 2025-06-08 13:59:19,376 INFO Watching for file changes with StatReloader
 2025-06-08 13:59:22,685 INFO Request: GET /products/ | User: 
+2025-06-08 15:37:01,036 INFO Watching for file changes with StatReloader
+2025-06-08 15:37:08,605 INFO Request: GET /products/5/ | User: 
+2025-06-08 15:38:03,585 INFO Request: GET /products/5/post_review/ | User: 
+2025-06-08 15:38:03,585 WARNING Method Not Allowed: /products/5/post_review/
+2025-06-08 15:38:08,190 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\__init__.py", line 2123, in get_prep_value
+    return int(value)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\models.py", line 438, in __int__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: Cannot cast AnonymousUser to int. Are you trying to use it in place of User?
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 141, in write_review
+    user_history = History.objects.filter(product=product, user=user)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1555, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1385, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\lookups.py", line 30, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\related_lookups.py", line 156, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\__init__.py", line 2125, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+TypeError: Field 'id' expected a number but got <django.contrib.auth.models.AnonymousUser object at 0x000001F98135AC10>.
+2025-06-08 15:38:08,201 INFO Request: POST /products/5/post_review/ | User: 
+2025-06-08 15:38:25,792 INFO Request: POST /api/token/ | User: 
+2025-06-08 15:38:50,136 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\__init__.py", line 2123, in get_prep_value
+    return int(value)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\models.py", line 438, in __int__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: Cannot cast AnonymousUser to int. Are you trying to use it in place of User?
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 141, in write_review
+    user_history = History.objects.filter(product=product, user=user)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1555, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1385, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\lookups.py", line 30, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\related_lookups.py", line 156, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\__init__.py", line 2125, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+TypeError: Field 'id' expected a number but got <django.contrib.auth.models.AnonymousUser object at 0x000001F9816B7E10>.
+2025-06-08 15:38:50,143 INFO Request: POST /products/5/post_review/ | User: 
+2025-06-08 15:38:53,258 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\__init__.py", line 2123, in get_prep_value
+    return int(value)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\models.py", line 438, in __int__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: Cannot cast AnonymousUser to int. Are you trying to use it in place of User?
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 141, in write_review
+    user_history = History.objects.filter(product=product, user=user)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1555, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1385, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\lookups.py", line 30, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\related_lookups.py", line 156, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\__init__.py", line 2125, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+TypeError: Field 'id' expected a number but got <django.contrib.auth.models.AnonymousUser object at 0x000001F981387530>.
+2025-06-08 15:38:53,270 INFO Request: POST /products/5/post_review/ | User: 
+2025-06-08 15:40:00,091 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 15:40:01,735 INFO Watching for file changes with StatReloader
+2025-06-08 15:40:04,312 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\__init__.py", line 2123, in get_prep_value
+    return int(value)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\models.py", line 438, in __int__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: Cannot cast AnonymousUser to int. Are you trying to use it in place of User?
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 141, in write_review
+    user_history = History.objects.filter(product=product, user=user)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1555, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1385, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\lookups.py", line 30, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\related_lookups.py", line 156, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\__init__.py", line 2125, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+TypeError: Field 'id' expected a number but got <django.contrib.auth.models.AnonymousUser object at 0x000001DB0A0656A0>.
+2025-06-08 15:40:04,324 INFO Request: POST /products/5/post_review/ | User: 
+2025-06-08 15:40:46,706 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 15:40:48,892 INFO Watching for file changes with StatReloader
+2025-06-08 15:40:51,794 INFO Request: POST /products/5/post_review/ | User: 
+2025-06-08 15:40:51,795 WARNING Not Found: /products/5/post_review/
+2025-06-08 15:40:56,593 INFO Request: POST /products/5/post_review/ | User: 
+2025-06-08 15:40:56,594 WARNING Not Found: /products/5/post_review/
+2025-06-08 15:41:19,559 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 15:41:21,157 INFO Watching for file changes with StatReloader
+2025-06-08 15:41:24,402 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\__init__.py", line 2123, in get_prep_value
+    return int(value)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\models.py", line 438, in __int__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: Cannot cast AnonymousUser to int. Are you trying to use it in place of User?
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 141, in write_review
+    user_history = History.objects.filter(product=product, user=user)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1555, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 1385, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\lookups.py", line 30, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\related_lookups.py", line 156, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\__init__.py", line 2125, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+TypeError: Field 'id' expected a number but got <django.contrib.auth.models.AnonymousUser object at 0x00000246489C0830>.
+2025-06-08 15:41:24,414 INFO Request: POST /products/5/post_review/ | User: 
+2025-06-08 15:44:26,763 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 15:44:31,493 INFO Watching for file changes with StatReloader
+2025-06-08 15:45:01,084 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 15:45:02,672 INFO Watching for file changes with StatReloader
+2025-06-08 15:45:15,895 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 15:45:17,621 INFO Watching for file changes with StatReloader
+2025-06-08 15:45:22,135 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 149, in write_review
+    review = Review.objects.create(user=user, product=product, body=body, photo=photo, stars=stars)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 677, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: Review() got unexpected keyword arguments: 'photo'
+2025-06-08 15:45:22,145 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 15:46:06,112 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 149, in write_review
+    review = Review.objects.create(user=user, product=product, body=body, photo=photo, stars=stars)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 677, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: Review() got unexpected keyword arguments: 'photo'
+2025-06-08 15:46:06,116 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 15:46:45,898 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 149, in write_review
+    review = Review.objects.create(user=user, product=product, body=body, photo=photo, stars=stars)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 677, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: Review() got unexpected keyword arguments: 'photo'
+2025-06-08 15:46:45,904 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 15:46:47,827 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 149, in write_review
+    review = Review.objects.create(user=user, product=product, body=body, photo=photo, stars=stars)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 677, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: Review() got unexpected keyword arguments: 'photo'
+2025-06-08 15:46:47,834 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 15:47:10,218 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 15:47:11,750 INFO Watching for file changes with StatReloader
+2025-06-08 15:47:16,308 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 149, in write_review
+    review = Review.objects.create(user=user, product=product, body=body, photo=image, stars=stars)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 677, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: Review() got unexpected keyword arguments: 'photo'
+2025-06-08 15:47:16,323 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 15:47:18,403 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 149, in write_review
+    review = Review.objects.create(user=user, product=product, body=body, photo=image, stars=stars)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 677, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: Review() got unexpected keyword arguments: 'photo'
+2025-06-08 15:47:18,409 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 15:47:27,369 INFO Watching for file changes with StatReloader
+2025-06-08 15:47:33,661 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 15:47:35,063 INFO Watching for file changes with StatReloader
+2025-06-08 15:47:39,375 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.CheckViolation: ОШИБКА:  новая строка в отношении "seller_store_api_review" нарушает ограничение-проверку "star_rating_valid"
+DETAIL:  Ошибочная строка содержит (17, , 6, test_review1, 2025-06-08 12:47:39.060032+00, 2025-06-08 12:47:39.060049+00, 5, 1).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 149, in write_review
+    review = Review.objects.create(user=user, product=product, body=body, image=image, stars=stars)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: ОШИБКА:  новая строка в отношении "seller_store_api_review" нарушает ограничение-проверку "star_rating_valid"
+DETAIL:  Ошибочная строка содержит (17, , 6, test_review1, 2025-06-08 12:47:39.060032+00, 2025-06-08 12:47:39.060049+00, 5, 1).
+
+2025-06-08 15:47:39,396 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 15:47:51,908 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 15:49:24,985 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 15:49:26,393 INFO Watching for file changes with StatReloader
+2025-06-08 15:49:57,579 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 15:49:59,183 INFO Watching for file changes with StatReloader
+2025-06-08 15:50:16,069 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 15:50:17,976 INFO Watching for file changes with StatReloader
+2025-06-08 15:51:31,165 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 15:51:32,578 INFO Watching for file changes with StatReloader
+2025-06-08 15:54:28,507 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 15:54:30,241 INFO Watching for file changes with StatReloader
+2025-06-08 15:54:33,416 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 15:54:34,860 INFO Watching for file changes with StatReloader
+2025-06-08 15:54:36,646 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 15:55:14,686 INFO Request: PATCH /products/5/post_review/19/ | User: 
+2025-06-08 15:55:14,687 WARNING Not Found: /products/5/post_review/19/
+2025-06-08 15:55:27,623 ERROR Internal Server Error: /products/5/patch_review/19/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 171, in edit_review
+    photo = request.data.get('photo', review.photo)
+                                      ^^^^^^^^^^^^
+AttributeError: 'Review' object has no attribute 'photo'
+2025-06-08 15:55:27,626 INFO Request: PATCH /products/5/patch_review/19/ | User: root
+2025-06-08 15:57:05,686 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 15:57:07,496 INFO Watching for file changes with StatReloader
+2025-06-08 15:57:12,285 INFO Request: PATCH /products/5/patch_review/19/ | User: root
+2025-06-08 15:57:17,994 INFO Request: PATCH /products/5/ | User: root
+2025-06-08 15:57:39,887 INFO Request: GET /products/5/ | User: root
+2025-06-08 16:02:17,635 INFO Watching for file changes with StatReloader
+2025-06-08 16:02:29,227 INFO Request: GET /products/ | User: root
+2025-06-08 16:02:38,942 INFO Request: GET /products/7 | User: 
+2025-06-08 16:02:39,138 INFO Request: GET /products/7/ | User: root
+2025-06-08 16:02:55,762 INFO Request: POST /products/7/post_review/ | User: root
+2025-06-08 16:03:01,929 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.CheckViolation: ОШИБКА:  новая строка в отношении "seller_store_api_review" нарушает ограничение-проверку "star_rating_valid"
+DETAIL:  Ошибочная строка содержит (20, , 10, test_review1cd, 2025-06-08 13:03:01.583404+00, 2025-06-08 13:03:01.583451+00, 5, 1).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 149, in write_review
+    review = Review.objects.create(user=user, product=product, body=body, image=image, stars=stars)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: ОШИБКА:  новая строка в отношении "seller_store_api_review" нарушает ограничение-проверку "star_rating_valid"
+DETAIL:  Ошибочная строка содержит (20, , 10, test_review1cd, 2025-06-08 13:03:01.583404+00, 2025-06-08 13:03:01.583451+00, 5, 1).
+
+2025-06-08 16:03:01,967 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:03:13,762 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:05:06,266 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 16:05:07,954 INFO Watching for file changes with StatReloader
+2025-06-08 16:05:17,483 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 16:05:18,943 INFO Watching for file changes with StatReloader
+2025-06-08 16:05:25,773 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 16:05:27,165 INFO Watching for file changes with StatReloader
+2025-06-08 16:05:34,914 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 16:05:36,421 INFO Watching for file changes with StatReloader
+2025-06-08 16:05:40,032 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 16:05:41,569 INFO Watching for file changes with StatReloader
+2025-06-08 16:06:05,759 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 16:06:07,025 INFO Watching for file changes with StatReloader
+2025-06-08 16:06:14,783 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 16:06:16,389 INFO Watching for file changes with StatReloader
+2025-06-08 16:06:24,937 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 16:06:26,236 INFO Watching for file changes with StatReloader
+2025-06-08 16:06:35,806 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 16:06:37,208 INFO Watching for file changes with StatReloader
+2025-06-08 16:06:40,264 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 16:06:41,808 INFO Watching for file changes with StatReloader
+2025-06-08 16:06:51,216 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 16:06:53,295 INFO Watching for file changes with StatReloader
+2025-06-08 16:06:59,792 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 16:07:01,105 INFO Watching for file changes with StatReloader
+2025-06-08 16:07:15,764 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.CheckViolation: ОШИБКА:  новая строка в отношении "seller_store_api_review" нарушает ограничение-проверку "star_rating_valid"
+DETAIL:  Ошибочная строка содержит (22, , 20, test_review1cd, 2025-06-08 13:07:15.58782+00, 2025-06-08 13:07:15.587835+00, 5, 1).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 149, in write_review
+    review = Review.objects.create(user=user, product=product, body=body, image=image, stars=stars)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: ОШИБКА:  новая строка в отношении "seller_store_api_review" нарушает ограничение-проверку "star_rating_valid"
+DETAIL:  Ошибочная строка содержит (22, , 20, test_review1cd, 2025-06-08 13:07:15.58782+00, 2025-06-08 13:07:15.587835+00, 5, 1).
+
+2025-06-08 16:07:15,782 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:08:29,160 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:10:18,190 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 16:10:19,946 INFO Watching for file changes with StatReloader
+2025-06-08 16:10:36,519 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 16:10:39,333 INFO Watching for file changes with StatReloader
+2025-06-08 16:11:15,181 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 16:11:16,737 INFO Watching for file changes with StatReloader
+2025-06-08 16:11:22,205 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 16:11:25,221 INFO Watching for file changes with StatReloader
+2025-06-08 16:11:29,331 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 16:11:31,012 INFO Watching for file changes with StatReloader
+2025-06-08 16:11:32,712 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:11:32,713 WARNING Forbidden: /products/5/post_review/
+2025-06-08 16:12:03,358 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 16:12:06,711 INFO Watching for file changes with StatReloader
+2025-06-08 16:12:08,881 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:12:08,881 WARNING Bad Request: /products/5/post_review/
+2025-06-08 16:14:30,833 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 16:14:32,425 INFO Watching for file changes with StatReloader
+2025-06-08 16:14:35,088 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:14:35,089 WARNING Bad Request: /products/5/post_review/
+2025-06-08 16:14:36,955 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:14:36,955 WARNING Bad Request: /products/5/post_review/
+2025-06-08 16:14:45,903 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 16:14:47,763 INFO Watching for file changes with StatReloader
+2025-06-08 16:14:52,193 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:14:52,194 WARNING Bad Request: /products/5/post_review/
+2025-06-08 16:16:49,545 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 16:16:51,283 INFO Watching for file changes with StatReloader
+2025-06-08 16:16:54,279 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:16:54,279 WARNING Bad Request: /products/5/post_review/
+2025-06-08 16:17:00,244 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: ОШИБКА:  значение NULL в столбце "product_id" отношения "seller_store_api_review" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (23, , 5, null, 2025-06-08 13:16:59.788461+00, 2025-06-08 13:16:59.788569+00, null, 1).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 152, in write_review
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: ОШИБКА:  значение NULL в столбце "product_id" отношения "seller_store_api_review" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (23, , 5, null, 2025-06-08 13:16:59.788461+00, 2025-06-08 13:16:59.788569+00, null, 1).
+
+2025-06-08 16:17:00,279 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:17:23,257 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: ОШИБКА:  значение NULL в столбце "product_id" отношения "seller_store_api_review" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (24, , 5, sklj, 2025-06-08 13:17:22.913091+00, 2025-06-08 13:17:22.913121+00, null, 1).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 152, in write_review
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: ОШИБКА:  значение NULL в столбце "product_id" отношения "seller_store_api_review" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (24, , 5, sklj, 2025-06-08 13:17:22.913091+00, 2025-06-08 13:17:22.913121+00, null, 1).
+
+2025-06-08 16:17:23,284 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:17:32,390 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: ОШИБКА:  значение NULL в столбце "product_id" отношения "seller_store_api_review" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (25, , 5, sklj, 2025-06-08 13:17:32.074835+00, 2025-06-08 13:17:32.074872+00, null, 1).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 152, in write_review
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: ОШИБКА:  значение NULL в столбце "product_id" отношения "seller_store_api_review" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (25, , 5, sklj, 2025-06-08 13:17:32.074835+00, 2025-06-08 13:17:32.074872+00, null, 1).
+
+2025-06-08 16:17:32,418 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:18:43,426 INFO D:\python\marketplace_api\seller_store_api\serializers.py changed, reloading.
+2025-06-08 16:18:44,799 INFO Watching for file changes with StatReloader
+2025-06-08 16:19:58,098 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 16:19:59,734 INFO Watching for file changes with StatReloader
+2025-06-08 16:20:04,746 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:20:04,747 WARNING Bad Request: /products/5/post_review/
+2025-06-08 16:20:48,874 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 16:20:50,263 INFO Watching for file changes with StatReloader
+2025-06-08 16:21:26,114 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 16:21:28,445 INFO Watching for file changes with StatReloader
+2025-06-08 16:21:35,051 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 16:21:37,789 INFO Watching for file changes with StatReloader
+2025-06-08 16:21:56,030 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 16:21:58,338 INFO Watching for file changes with StatReloader
+2025-06-08 16:22:12,916 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 16:22:14,310 INFO Watching for file changes with StatReloader
+2025-06-08 16:22:18,063 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:22:35,216 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:23:42,242 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 16:23:45,217 INFO Watching for file changes with StatReloader
+2025-06-08 16:26:23,966 INFO Watching for file changes with StatReloader
+2025-06-08 16:26:27,995 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:27:02,574 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 16:27:04,865 INFO Watching for file changes with StatReloader
+2025-06-08 16:27:08,973 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:27:08,973 WARNING Forbidden: /products/5/post_review/
+2025-06-08 16:27:32,510 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 16:27:34,113 INFO Watching for file changes with StatReloader
+2025-06-08 16:27:38,263 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:27:38,263 WARNING Forbidden: /products/5/post_review/
+2025-06-08 16:27:58,156 ERROR Internal Server Error: /products/5/post_review/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.CheckViolation: ОШИБКА:  новая строка в отношении "seller_store_api_review" нарушает ограничение-проверку "star_rating_valid"
+DETAIL:  Ошибочная строка содержит (29, kjfdhdjkf, 10, null, 2025-06-08 13:27:57.748539+00, 2025-06-08 13:27:57.748578+00, 5, 1).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 155, in write_review
+    review = Review.objects.create(user=user, product=product, body=body, image=image, stars=stars)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: ОШИБКА:  новая строка в отношении "seller_store_api_review" нарушает ограничение-проверку "star_rating_valid"
+DETAIL:  Ошибочная строка содержит (29, kjfdhdjkf, 10, null, 2025-06-08 13:27:57.748539+00, 2025-06-08 13:27:57.748578+00, 5, 1).
+
+2025-06-08 16:27:58,192 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 16:28:17,050 INFO Request: POST /products/5/post_review/ | User: root
+2025-06-08 20:29:12,581 INFO Watching for file changes with StatReloader
+2025-06-08 20:31:13,906 INFO Request: PATCH /products/5/patch_review/6/ | User: 
+2025-06-08 20:31:13,907 WARNING Unauthorized: /products/5/patch_review/6/
+2025-06-08 20:31:20,959 INFO Request: POST /api/token/ | User: 
+2025-06-08 20:31:50,326 INFO Request: PATCH /products/5/patch_review/6/ | User: root
+2025-06-08 20:31:50,326 WARNING Not Found: /products/5/patch_review/6/
+2025-06-08 20:32:05,368 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:32:13,979 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:32:21,246 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:32:44,465 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:33:09,917 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:33:11,644 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:33:34,085 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:33:38,177 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:33:39,655 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:33:41,434 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:35:13,400 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 20:35:15,093 INFO Watching for file changes with StatReloader
+2025-06-08 20:38:25,750 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 20:38:27,555 INFO Watching for file changes with StatReloader
+2025-06-08 20:38:31,680 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:38:39,788 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:38:58,368 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 20:39:01,045 INFO Watching for file changes with StatReloader
+2025-06-08 20:39:14,888 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:39:20,029 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:39:52,304 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:40:12,373 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 20:40:14,264 INFO Watching for file changes with StatReloader
+2025-06-08 20:41:18,797 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 20:41:20,833 INFO Watching for file changes with StatReloader
+2025-06-08 20:41:23,698 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:41:29,371 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:41:50,785 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:41:57,686 INFO Watching for file changes with StatReloader
+2025-06-08 20:42:03,799 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:42:14,635 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:42:35,706 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:42:37,924 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:42:46,668 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:46:47,247 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 20:46:50,731 INFO Watching for file changes with StatReloader
+2025-06-08 20:46:54,255 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:47:10,217 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:47:44,803 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 20:47:46,143 INFO Watching for file changes with StatReloader
+2025-06-08 20:47:49,026 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:47:57,893 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:48:07,476 ERROR Internal Server Error: /products/5/patch_review/18/
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\__init__.py", line 2123, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'sf'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\python\marketplace_api\product_control_api\views.py", line 186, in edit_review
+    review.save(update_fields=['stars', 'body', 'image'])
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1130, in _save_table
+    updated = self._do_update(
+        base_qs, using, pk_val, values, update_fields, forced_update
+    )
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1195, in _do_update
+    return filtered._update(values) > 0
+           ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1278, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 2003, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1561, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1966, in as_sql
+    val = field.get_db_prep_save(val, connection=self.connection)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\__init__.py", line 1008, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\__init__.py", line 2130, in get_db_prep_value
+    value = super().get_db_prep_value(value, connection, prepared)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\__init__.py", line 1001, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\Данил\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\__init__.py", line 2125, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+ValueError: Field 'stars' expected a number but got 'sf'.
+2025-06-08 20:48:07,506 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:48:18,434 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:48:52,853 INFO Request: PATCH /products/5/patch_review/18/ | User: root
+2025-06-08 20:49:13,817 INFO Request: DELETE /products/5/patch_review/18/ | User: root
+2025-06-08 20:49:13,817 WARNING Method Not Allowed: /products/5/patch_review/18/
+2025-06-08 20:49:22,433 INFO Request: DELETE /products/5/del_review/18/ | User: root
+2025-06-08 20:49:58,436 INFO D:\python\marketplace_api\product_control_api\views.py changed, reloading.
+2025-06-08 20:49:59,807 INFO Watching for file changes with StatReloader
+2025-06-08 20:50:09,774 INFO Request: GET /products/5/ | User: root
+2025-06-09 19:52:49,959 INFO Watching for file changes with StatReloader
+2025-06-09 19:53:04,359 INFO Request: POST /api/token/ | User: 
+2025-06-09 19:53:14,137 INFO Request: GET /products/5/ | User: root
+2025-06-09 19:53:15,831 INFO Request: GET /products/ | User: root
+2025-06-09 19:53:21,015 INFO Request: GET /profile/ | User: root
+2025-06-09 19:53:22,348 INFO Request: GET /profile/ | User: root
+2025-06-09 19:53:23,402 INFO Request: GET /profile/ | User: root
+2025-06-09 19:53:24,713 INFO Request: GET /profile/ | User: root
+2025-06-09 19:53:29,039 INFO Request: GET /profile/ | User: root
+2025-06-09 19:53:32,601 INFO Request: GET /profile/ | User: root
+2025-06-09 19:53:39,586 INFO Request: GET /coupons/ | User: root
+2025-06-09 19:53:45,230 INFO Request: GET /profile/ | User: root
+2025-06-09 19:53:58,138 INFO Watching for file changes with StatReloader

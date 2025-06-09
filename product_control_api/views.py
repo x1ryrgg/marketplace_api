@@ -1,4 +1,6 @@
 from datetime import date, timedelta
+
+from django.core.exceptions import PermissionDenied
 from django.db import transaction
 from django.db.models import Count, Sum
 from django.shortcuts import get_object_or_404
@@ -100,7 +102,7 @@ class ProductsView(ModelViewSet):
         page_size_query_param = 'page_size'
         max_page_size = 100
 
-    authentication_classes = []
+    permission_classes = [IsAuthenticated]
     serializer_class = ProductVariantSerializer
     http_method_names = ['get', 'post', 'patch', 'delete', 'options']
     pagination_class = StandardResultsSetPagination
@@ -138,25 +140,29 @@ class ProductsView(ModelViewSet):
         product_id = self.kwargs.get('pk')
         product = get_object_or_404(ProductVariant, id=product_id)
         user = request.user
-        user_history = History.objects.filter(product=product, user=user)
 
-        body = request.data.get('body', None)
-        stars = request.data.get('stars', None)
-        photo = request.data.get('photo', None)
+        if not History.objects.filter(product=product, user=user).exists():
+            return Response({"error": _("Вы не можете оставлять отзыв под продуктами, которые не заказывали.")},
+                status=403,
+            )
 
-        if user_history:
-            if stars is not None and (body or photo) is not None:
-                review = Review.objects.create(user=user, product=product, body=body, photo=photo, stars=stars)
-                review.save()
+        body = request.data.get("body", None)
+        stars = request.data.get("stars", None)
+        image = request.data.get("image", None)
 
-                return Response(ReviewSerializer(review, many=False).data)
-            return Response(_("В отзыве вы должны оставить коментарий или прикрепить фото. Также укажите количество звезд."))
-        return Response(_("Вы не можете оставлять отзыв под продуктами, которые не заказывали."))
+        if body is None and image is None:
+            return Response({"error": _("В отзыве вы должны оставить коментарий или прикрепить фото.")},
+                            status=403,
+                            )
+        review = Review.objects.create(user=user, product=product, body=body, image=image, stars=stars)
+        review.save()
 
-    @action(methods=['patch'], detail=True, url_path=r'patch_review/(?P<review_id>\d+)') # сырые строки r'' - чтобы \ воспринимался как символ
+        return Response(ReviewSerializer(review, many=False).data)
+
+    @action(methods=['patch'], detail=True, url_path=r'patch_review/(?P<review_id>\d+)')
     def edit_review(self, request, *args, **kwargs) -> Response:
         """ Изменение своего отзыва
-        url: /products/<int: product_id>/put_review/<int: review_id>/
+        url: /products/<int: product_id>/patch_review/<int: review_id>/
         """
         product_id = self.kwargs.get('pk')
         review_id = self.kwargs.get('review_id')
@@ -164,20 +170,20 @@ class ProductsView(ModelViewSet):
         review = get_object_or_404(Review, id=review_id, product=product)
 
         if date.today() > review.created_at.date() + timedelta(days=3):
-            return Response(_("Изменить коментарий можно только в первые 3 дня после его публикации "))
-
-        body = request.data.get('body', review.body)
-        stars = request.data.get('stars', review.stars)
-        photo = request.data.get('photo', review.photo)
+            return Response(_("Изменить комментарий можно только в первые 3 дня после его публикации."))
 
         if review.user != request.user:
             return Response(_("Вы не можете изменить чужой отзыв. "))
 
-        if stars is not None and (body or photo) is not None:
+        body = request.data.get('body', review.body)
+        stars = request.data.get('stars', review.stars)
+        image = request.data.get('photo', review.image)
+
+        if stars is not None and (body or image) is not None:
             review.stars = stars
             review.body = body
-            review.photo = photo
-            review.save(update_fields=['stars', 'body', 'photo'])
+            review.image = image
+            review.save(update_fields=['stars', 'body', 'image'])
             return Response(ReviewSerializer(review).data)
         return Response(_("В отзыве вы должны оставить комментарий или прикрепить фото. Также укажите количество звезд."))
 
@@ -193,5 +199,5 @@ class ProductsView(ModelViewSet):
 
         if review.user == request.user:
             review.delete()
-            return Response(_(f"Отзыв с id: {review_id} успешно удален."))
+            return Response(_(f"Отзыв #{review_id} успешно удален."))
         return Response(_("Вы не можете удалять чужие отзывы."))
