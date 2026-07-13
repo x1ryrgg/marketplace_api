@@ -83,20 +83,20 @@ class WishListView(ModelViewSet):
             raise ValidationError(_("Список товаров не может быть пустым."))
 
         # Вызываем сервис, передавая чистые данные
-        purchace_service: PurchaseService = UserBalanceService(user=request.user, products_ids=products_ids)
+        purchase_service: PurchaseService = UserBalanceService(
+            user=request.user, products_ids=products_ids
+        )
 
-        result = purchace_service.buy_products()
+        result = purchase_service.buy_products()
 
         user_data = PrivateUserSerializer(request.user).data
         return Response(
             {
-                "message": _(
-                    "Товар успешно оплачен. Проследить за ним вы сможете в доставках."
-                ),
+                "message": "success",
                 "total_price": result["full_price"],
-                "discount": f"Ваша скидка составляет {result['discount_percent']} %",
+                "discount": result['discount_percent'],
                 "to_pay": result["discount_price"],
-                "balance": f"Ваш баланс {user_data.get('balance')}",
+                "balance": user_data.get('balance'),
             },
             status=status.HTTP_200_OK,
         )
@@ -112,12 +112,11 @@ class PayProductView(APIView):
     serializer_class = PrivateUserSerializer
 
     def post(self, request, *args, **kwargs) -> Response:
-
         id = self.kwargs.get("id")
         product = get_object_or_404(ProductVariant, id=id)
         user = request.user
 
-        coupon = 0
+        coupon = None
         coupon_code = int(request.data.get("coupon", 0))
         if coupon_code:
             try:
@@ -129,64 +128,23 @@ class PayProductView(APIView):
                     )
                 )
 
-        if product.quantity == 0:
-            return Response(_("Продутка нет на складе."))
+        # Вызываем сервис, передавая чистые данные
+        purchase_service: PurchaseService = UserBalanceService(
+            user=request.user, products_ids=[product.id], coupon=coupon
+        )
 
-        price = product.price
-        discount_price = _apply_discount_to_order(user, price, coupon)
+        result = purchase_service.buy_products()
 
-        if discount_price > user.balance:
-            return Response(
-                _(
-                    f"Недостаточно средств для произведения оплаты. Вам не хватает {product.price - user.balance}"
-                )
-            )
-
-        with transaction.atomic():
-            user.balance -= discount_price
-            product.quantity -= 1
-
-            Delivery.objects.create(
-                user=user, product=product, user_price=discount_price, quantity=1
-            )
-            new_coupon = _create_coupon_with_chance(user)
-
-            if coupon:
-                coupon.delete()
-
-            user.save()
-            product.save()
-            send_email_task.delay_on_commit(
-                self.request.user.username, discount_price.quantize(Decimal("0.01"))
-            )
-
-            coupon_discount = Decimal(coupon.discount) if coupon else Decimal("0")
-            base_discount = Decimal(History.objects.calculate_discount(user=user) * 100)
-            total_discount = coupon_discount + base_discount
-
-            user_data = self.serializer_class(user).data
-            return Response(
-                {
-                    "сообщение": _(
-                        "Товар успешно оплачен. Проследить за ним вы сможете в доставках."
-                    ),
-                    "цена товара": price,
-                    "скидка": _(
-                        f"Ваша персональная скидка составляет {History.objects.calculate_discount(user) * 100} %"
-                    ),
-                    "скидка купона": _(
-                        f"{coupon.discount}%" if coupon else "Купон не применен."
-                    ),
-                    "суммарная скидка": _(f"{total_discount}%"),
-                    "к оплате": discount_price,
-                    "баланс": _(f"Ваш баланс {user_data.get("balance")}"),
-                    "купон": _(
-                        f"Поздравляю, вы получилики купон на скидку в {new_coupon.discount}%"
-                        if new_coupon
-                        else ""
-                    ),
-                }
-            )
+        return Response(
+            {
+                "message": "success",
+                "total_price": result["full_price"],
+                "discount": result["discount_percent"],
+                "to_pay": result["discount_price"],
+                "coupon_added": result["coupon_added"],
+            },
+            status=status.HTTP_200_OK,
+        )
 
 
 class HistoryView(ListAPIView):
