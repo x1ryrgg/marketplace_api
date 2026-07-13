@@ -1,0 +1,52 @@
+# Python
+__pycache__/           # Кэш байт-кода
+*.py[cod]              # Скомпилированные файлы
+*$py.class
+*.so                   # Расширения C
+
+# Виртуальное окружение
+venv/
+env/
+ENV/
+.venv
+
+# Переменные окружения и секреты
+.env
+.env.local
+.env.*.local
+
+# Базы данных
+*.db
+*.sqlite3
+*.sqlite
+
+# Логи
+*.log
+logs/
+
+# IDE и редакторы
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store             # macOS
+Thumbs.db             # Windows
+
+# Отчеты о тестах и покрытии
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Временные файлы
+*.tmp
+*.temp
+*.orig
+
+# Сборка и дистрибутивы
+build/
+dist/
+*.egg-info/
+.eggs
+
+scripts.py
