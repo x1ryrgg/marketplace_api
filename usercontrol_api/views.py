@@ -73,7 +73,7 @@ class ProfileView(ModelViewSet, CacheResponseMixin):
 
     def get_object(self):
         try:
-            return Profile.objects.get(user=self.request.user.id)
+            return Profile.objects.get(user_id=self.request.user.id)
         except Exception:
             return None
 
@@ -81,13 +81,15 @@ class ProfileView(ModelViewSet, CacheResponseMixin):
         profile = self.get_object()
         user = request.user
         coupons = Coupon.objects.filter(user=user)
-        data = {
-            "непрочитанные уведомления": Notification.objects.filter(
+        notifications = Notification.objects.filter(
                 user=self.request.user, is_read=False
-            ).count(),
-            "профиль": self.get_serializer(profile).data,
-            "ваш аккаунт": PrivateUserSerializer(user, many=False).data,
-            "ваши купоны": CouponSerializer(coupons, many=True).data,
+            ).count()
+
+        data = {
+            "notifications": notifications,
+            "profile": self.get_serializer(profile).data,
+            "user credentials": PrivateUserSerializer(user, many=False).data,
+            "coupons": CouponSerializer(coupons, many=True).data,
         }
         return Response(data)
 

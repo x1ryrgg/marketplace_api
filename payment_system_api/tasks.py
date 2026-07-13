@@ -11,7 +11,7 @@ from marketplace_api.celery import app
 from django.core.mail import send_mail
 
 
-@shared_task
+@shared_task(time_limit=60)
 def send_email_task(username, price):
     message = send_mail(
         subject='Сообщение с marketplace-а',
@@ -22,25 +22,30 @@ def send_email_task(username, price):
     )
     return message
 
+
 @shared_task
 def beat_check_delivery():
     today = date.today()
 
     deliveries = Delivery.objects.filter(
-        status='on the way',
-        delivery_date__lte=today
-    ).select_related('user', 'product', 'product__product')  # Оптимизация запросов
+        status="on the way", delivery_date__lte=today
+    ).select_related(
+        "user", "product", "product__product"
+    )  # Оптимизация запросов
 
-    delivery_ids = list(deliveries.values_list('id', flat=True))
+    delivery_ids = list(deliveries.values_list("id", flat=True))
+    updated_count = Delivery.objects.filter(id__in=delivery_ids).update(
+        status="delivered"
+    )
 
-    updated_count = Delivery.objects.filter(id__in=delivery_ids).update(status='delivered')
-
-    for delivery in Delivery.objects.filter(id__in=delivery_ids).select_related('user', 'product', 'product__product'):
+    for delivery in Delivery.objects.filter(id__in=delivery_ids).select_related(
+        "user", "product", "product__product"
+    ):
 
         Notification.objects.create(
             user=delivery.user,
             title=Notification.TitleChoice.DELIVERY,
-            message=f"Товар {getattr(delivery.product.product, 'name', '№' + str(delivery.id))} доставлен"
+            message=f"Товар {getattr(delivery.product.product, 'name', '№' + str(delivery.id))} доставлен",
         )
 
     return f"Обновлено: {updated_count} доставок. "

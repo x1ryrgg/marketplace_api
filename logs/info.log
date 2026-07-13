@@ -10668,3 +10668,28 @@ ValueError: Field 'stars' expected a number but got 'sf'.
 2025-06-09 19:53:39,586 INFO Request: GET /coupons/ | User: root
 2025-06-09 19:53:45,230 INFO Request: GET /profile/ | User: root
 2025-06-09 19:53:58,138 INFO Watching for file changes with StatReloader
+2025-08-04 18:04:52,340 INFO Watching for file changes with StatReloader
+2025-08-04 18:05:08,811 INFO Watching for file changes with StatReloader
+2025-08-04 18:05:49,555 INFO D:\python\marketplace_api\.venv\Lib\site-packages\psycopg2\_ipaddress.py changed, reloading.
+2025-08-04 18:05:50,284 INFO Watching for file changes with StatReloader
+2025-08-04 18:05:54,832 INFO Watching for file changes with StatReloader
+2025-08-04 18:13:21,260 INFO Watching for file changes with StatReloader
+2025-08-04 18:13:23,503 INFO Request: GET / | User: 
+2025-08-04 18:13:23,505 WARNING Not Found: /
+2025-08-04 18:13:23,608 INFO Request: GET /favicon.ico | User: 
+2025-08-04 18:13:23,608 WARNING Not Found: /favicon.ico
+2025-08-04 18:13:31,457 INFO Request: POST /api/token/ | User: 
+2025-08-04 18:13:31,458 WARNING Unauthorized: /api/token/
+2025-08-04 18:14:48,493 INFO Request: POST /api/token/ | User: 
+2025-08-04 18:14:57,073 INFO Request: GET /profile/ | User: root
+2025-08-04 18:15:04,979 INFO Request: GET /products/ | User: root
+2025-08-04 18:22:08,517 INFO Watching for file changes with StatReloader
+2025-08-04 18:22:16,095 INFO Request: GET /products/ | User: root
+2025-08-04 18:22:22,834 INFO Request: GET /profile/ | User: root
+2025-08-04 18:22:26,269 INFO Request: GET /coupon/ | User: 
+2025-08-04 18:22:26,271 WARNING Not Found: /coupon/
+2025-08-04 18:22:33,651 INFO Request: GET /coupons/ | User: root
+2025-08-04 18:22:36,623 INFO Request: POST /coupons/ | User: root
+2025-08-04 18:22:37,695 INFO Request: POST /coupons/ | User: root
+2025-08-04 18:22:41,918 INFO Request: GET /coupons/ | User: root
+2025-08-04 18:22:48,958 INFO Request: GET /profile/ | User: root

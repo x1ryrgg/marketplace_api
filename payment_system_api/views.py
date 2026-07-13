@@ -24,6 +24,7 @@ from yookassa.domain.notification import WebhookNotification
 from usercontrol_api.serializers import PrivateUserSerializer
 from usercontrol_api.views import _create_coupon_with_chance
 from .serializers import *
+from .services import UserBalanceService, PurchaseService
 from .tasks import *
 
 
@@ -31,7 +32,6 @@ class WishListView(ModelViewSet):
     """Endpoint для просмотра своего списка желаемого и покупки товаров из этого списка
     url: /wishlist/
     """
-
     permission_classes = [IsAuthenticated]
     serializer_class = WishListSerializer
     http_method_names = ["get", "post", "patch", "delete"]
@@ -45,25 +45,10 @@ class WishListView(ModelViewSet):
 
     def list(self, request, *args, **kwargs) -> Response:
         """Информация о списке желаемого пользователя"""
-        products_count = (
-            self.get_queryset().aggregate(Sum("quantity"))["quantity__sum"] or 0
-        )
-        unique_products_count = self.get_queryset().count()
-        products_total_count = 0
+        queryset = self.get_queryset()
+        serializer = WishListSummarySerializer(queryset, context={"request": request})
 
-        for wishlist_item in self.get_queryset():
-            product = wishlist_item.product
-            quantity = wishlist_item.quantity
-            sum_cost_product = quantity * product.price
-            products_total_count += sum_cost_product
-        products = self.get_queryset()
-        data = {
-            "Количество продуктов": products_count,
-            "Количество уникальных продуктов": unique_products_count,
-            "Общая стоимость": products_total_count,
-            "Товары": self.get_serializer(products, many=True).data,
-        }
-        return Response(data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def partial_update(self, request, *args, **kwargs):
         """
@@ -75,53 +60,17 @@ class WishListView(ModelViewSet):
         """
         wishlist_item = self.get_object()
 
-        try:
-            quantity = int(request.data.get("quantity", 1))  # По умолчанию 1
-            symbol = request.data.get("symbol")
-        except ValueError:
-            raise ValidationError(_("Количество должно быть целым числом."))
+        serializer = WishListItemUpdateSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
 
-        if symbol not in ["+", "-"]:
-            raise ValidationError(
-                _("Укажите знак: '+' для сложения; '-' для вычитания.")
+        updated_wishlist_item = serializer.update(wishlist_item, serializer.validated_data)
+
+        if updated_wishlist_item is None:
+            return Response(
+                {"detail": _("Товар удален из корзины.")}, status=status.HTTP_200_OK
             )
 
-        if quantity <= 0:
-            raise ValidationError(_("Количество должно быть больше 0."))
-
-        if symbol == "+":
-            wishlist_item.quantity += quantity
-        elif symbol == "-":
-            if wishlist_item.quantity <= quantity:
-                wishlist_item.delete()
-                return Response(_("Товар удален из корзины."))
-            wishlist_item.quantity -= quantity
-
-        wishlist_item.save(update_fields=["quantity"])
-
-        return Response(self.get_serializer(wishlist_item, many=False).data)
-
-    @staticmethod
-    def calculate_total_price_and_validate(
-        user: User, wishlist_items: QuerySet[WishlistItem]
-    ) -> Decimal:
-        """Подсчет полной стоимости выбранных товаров с учетом их колличества"""
-        total_price = 0
-
-        for wishlist_item in wishlist_items:
-            product = wishlist_item.product
-            quantity = wishlist_item.quantity
-            sum_cost_product = quantity * product.price
-            total_price += sum_cost_product
-
-        if user.balance < total_price:
-            raise ValidationError(
-                _(
-                    f"Недостаточно средств. Вам не хватает {total_price - user.balance} руб."
-                )
-            )
-
-        return total_price
+        return Response(self.get_serializer(updated_wishlist_item).data)
 
     @action(methods=["post"], detail=False, url_path="buy")
     def payment_products(self, request, *args, **kwargs) -> Response:
@@ -129,86 +78,28 @@ class WishListView(ModelViewSet):
         url: /wishlist/buy/
         body: products (list, [] - по id товара, а не по id в списке желаемого)
         """
-        user = request.user
         products_ids = request.data.get("products", [])
-
         if not products_ids:
             raise ValidationError(_("Список товаров не может быть пустым."))
 
-        products = (
-            ProductVariant.objects.filter(id__in=products_ids)
-            .select_related("product", "product__category")
-            .prefetch_related("options")
+        # Вызываем сервис, передавая чистые данные
+        purchace_service: PurchaseService = UserBalanceService(user=request.user, products_ids=products_ids)
+
+        result = purchace_service.buy_products()
+
+        user_data = PrivateUserSerializer(request.user).data
+        return Response(
+            {
+                "message": _(
+                    "Товар успешно оплачен. Проследить за ним вы сможете в доставках."
+                ),
+                "total_price": result["full_price"],
+                "discount": f"Ваша скидка составляет {result['discount_percent']} %",
+                "to_pay": result["discount_price"],
+                "balance": f"Ваш баланс {user_data.get('balance')}",
+            },
+            status=status.HTTP_200_OK,
         )
-        if len(products) != len(products_ids):
-            invalid_ids = set(products_ids) - {p.id for p in products}
-            raise ValidationError(_(f"Товары с ID {invalid_ids} не найдены."))
-
-        wishlist_items = WishlistItem.objects.filter(user=user, product__in=products)
-        wishlist_ids = set(item.product_id for item in wishlist_items)
-        invalid_products = set(p.id for p in products if p.id not in wishlist_ids)
-        if invalid_products:
-            raise ValidationError(_(f"{invalid_products} - этого нет в вашей корзине"))
-
-        full_price = self.calculate_total_price_and_validate(user, wishlist_items)
-
-        discount_price = _apply_discount_to_order(user, full_price)
-
-        if discount_price > user.balance:
-            return Response(
-                _(
-                    f"Недостаточно средств для произведения оплаты. Вам не хватает {discount_price - user.balance}"
-                )
-            )
-
-        with transaction.atomic():
-            user.balance -= discount_price
-            user.save()
-
-            for item in wishlist_items:
-                product = item.product
-
-                if product.quantity < item.quantity:
-                    raise ValidationError(
-                        _(
-                            f"Недостаточно товара {product.product.name} на складе."
-                            f" Не хватает {item.quantity - product.quantity} шт для оформления"
-                            f" Поменяйте количество в списке желаемого. "
-                        )
-                    )
-
-                product.quantity -= item.quantity
-                product.save()
-                sum_price = (
-                    _apply_discount_to_order(user, product.price) * item.quantity
-                )
-
-                send_email_task.delay_on_commit(
-                    self.request.user.username, discount_price.quantize(Decimal("0.01"))
-                )
-                Delivery.objects.create(
-                    user=user,
-                    product=product,
-                    user_price=sum_price,
-                    quantity=item.quantity,
-                )
-
-            wishlist_items.delete()
-
-            user_data = PrivateUserSerializer(user).data
-            return Response(
-                {
-                    "сообщение": _(
-                        "Товар успешно оплачен. Проследить за ним вы сможете в доставках."
-                    ),
-                    "цена товара": full_price,
-                    "скидка": _(
-                        f"Ваша скидка составляет {History.objects.calculate_discount(user) * 100} %"
-                    ),
-                    "к оплате": discount_price,
-                    "баланс": _(f"Ваш баланс {user_data.get('balance')}"),
-                }
-            )
 
 
 class PayProductView(APIView):
