@@ -20,11 +20,11 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from yookassa.domain.notification import WebhookNotification
-
+from payment_system_api.dependencies import _apply_discount_to_order
+from payment_system_api.services import PurchaseService, UserBalanceService
 from usercontrol_api.serializers import PrivateUserSerializer
 from usercontrol_api.views import _create_coupon_with_chance
 from .serializers import *
-from .services import UserBalanceService, PurchaseService
 from .tasks import *
 
 
@@ -282,19 +282,6 @@ class DeliveryView(ModelViewSet):
             )
             delivery.delete()
         return Response(message)
-
-
-def _apply_discount_to_order(
-    user: User, total_price: Decimal, coupon: Optional[Coupon] = None
-) -> Decimal:
-    """Применяет скидку пользователя к общей стоимости заказа"""
-    discount = History.objects.calculate_discount(user)
-
-    if coupon:
-        discount += Decimal(coupon.discount / 100)
-
-    discounted_price = total_price * Decimal(1 - discount)
-    return discounted_price
 
 
 """ TEST PAYMENT SYSTEM """
