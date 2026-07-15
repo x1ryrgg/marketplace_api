@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 from product_control_api.models import ProductVariant
 from usercontrol_api.views import _create_coupon_with_chance
-from .models import Delivery, History
+from payment_system_api.models import Delivery, History
 from usercontrol_api.models import WishlistItem, User, Coupon
 from payment_system_api.dependencies import _apply_discount_to_order
 from payment_system_api.tasks import send_email_task

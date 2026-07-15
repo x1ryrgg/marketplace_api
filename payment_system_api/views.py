@@ -1,16 +1,13 @@
 import hashlib
 import uuid
-from typing import Optional
 
 import requests
 from django.conf import settings
 from django.db import transaction
-from django.db.models import QuerySet
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
-from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError
@@ -19,12 +16,10 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
-from yookassa.domain.notification import WebhookNotification
-from payment_system_api.dependencies import _apply_discount_to_order
-from payment_system_api.services import PurchaseService, UserBalanceService
+from payment_system_api.services.payment_service import PurchaseService, UserBalanceService
 from usercontrol_api.serializers import PrivateUserSerializer
-from usercontrol_api.views import _create_coupon_with_chance
 from .serializers import *
+from .services.delivery_service import DeliveryService, DefaultDeliveryService
 from .tasks import *
 
 
@@ -123,9 +118,7 @@ class PayProductView(APIView):
                 coupon = Coupon.objects.get(user=user, code=coupon_code)
             except Coupon.DoesNotExist:
                 raise ValidationError(
-                    _(
-                        "Купон с таким кодом не существует или принадлежит другому пользователю."
-                    )
+                    _("Купон с таким кодом не существует или принадлежит другому пользователю.")
                 )
 
         # Вызываем сервис, передавая чистые данные
@@ -181,64 +174,16 @@ class DeliveryView(ModelViewSet):
         POST-запрос, позволяющий выбирать, что делать с доставкой,
         когда товар уже пришел или еще в пути.
         url: /delivery/<int:delivery_id>/take/
-        body: option (int, 1 -> (Принятие заказа) or 2 -> (Отказ))
+        body: option: str = "accept" (Принятие заказа), "cancel" (Отказ товара)
         """
         delivery = self.get_object()
         user = request.user
         option = request.data.get("option")
-        product = get_object_or_404(ProductVariant, id=delivery.product.id)
 
-        if option not in (1, 2):
-            raise ValidationError(
-                _("Недопустимая опция. '1' - принять товар; '2' - отменить.")
-            )
+        delivery_service: DeliveryService = DefaultDeliveryService(delivery=delivery, user=user)
 
-        # обработка если товар если он еще не пришел
-        if delivery.status == "on the way" and option == 2:
-            with transaction.atomic():
-                user.balance += delivery.user_price
-                user.save()
-                product.quantity += delivery.quantity
-                product.save(update_fields=["quantity"])
-                History.objects.create(
-                    user=user,
-                    product=delivery.product,
-                    user_price=delivery.product.price,
-                    quantity=delivery.quantity,
-                    status="denied",
-                )
-                delivery.delete()
-                return Response(
-                    _("Вы отменили заказ, сумма заказа перечисляется к вам обратно.")
-                )
+        message = delivery_service.process_option(option)
 
-        if delivery.status == "on the way":
-            raise ValidationError(_("Товар еще не доставлен."))
-
-        # Обработка принятия или отмены товара
-        status = "delivered" if option == 1 else "denied"
-        message = (
-            _(
-                f"Товар {delivery.product.product.name} успешно принят! Заказывайте только у нас!"
-            )
-            if option == 1
-            else _(
-                f"Товар {delivery.product.product.name} отменен. Из-за политики нашего магазина вы не получите обратно сумму за товар, так как он уже доставлен."
-            )
-        )
-
-        with transaction.atomic():
-            if status == "denied":
-                product.quantity += delivery.quantity
-                product.save(update_fields=["quantity"])
-            History.objects.create(
-                user=user,
-                product=delivery.product,
-                user_price=delivery.user_price,
-                quantity=delivery.quantity,
-                status=status,
-            )
-            delivery.delete()
         return Response(message)
 
 
