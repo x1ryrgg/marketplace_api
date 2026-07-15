@@ -53,13 +53,12 @@ class UserBalanceService(PurchaseService):
         if self.coupon and len(self.products_ids) > 1:
             raise ValidationError(_("Купон можно применить только при покупке одного товара."))
 
-        products = (
-            ProductVariant.objects.filter(id__in=self.products_ids)
-            .select_related("product", "product__category")
-            .prefetch_related("options")
+        # Проверка существования продуктов
+        existing_products_ids = set(
+            ProductVariant.objects.filter(id__in=self.products_ids).values_list("id", flat=True)
         )
-        if len(products) != len(self.products_ids):
-            invalid_ids = set(self.products_ids) - {p.id for p in products}
+        if len(existing_products_ids) != len(self.products_ids):
+            invalid_ids = set(self.products_ids) - existing_products_ids
             raise ValidationError(_(f"Товары с ID {invalid_ids} не найдены."))
 
         # 2. Считаем общую базовую цену
@@ -68,33 +67,49 @@ class UserBalanceService(PurchaseService):
         ).select_related("product")
 
         wishlist_dict = {item.product_id: item.quantity for item in wishlist_items}
+
+        base_products = ProductVariant.objects.filter(id__in=self.products_ids)
+
         if wishlist_dict:
-            full_price = sum(quantity * product.price for product, quantity in ((p, wishlist_dict[p.id]) for p in products))
+            full_price = sum(quantity * product.price for product, quantity in ((p, wishlist_dict[p.id]) for p in base_products))
         else:
             # Если быстрая покупка (в корзине пусто), берем цену 1 штуки товара
-            full_price = sum(product.price for product in products)
+            full_price = sum(product.price for product in base_products)
 
         self.discount_price = _apply_discount_to_order(self.user, full_price, self.coupon)
 
-        if self.user.balance < self.discount_price:
-            raise ValidationError(
-                _(f"Недостаточно средств. Не хватает {self.discount_price - self.user.balance} руб.")
-            )
-
-        # 3. Валидация склада с учетом источника покупки
-        for product in products:
-            needed_quantity = wishlist_dict.get(product.id, 1)
-            if product.quantity < needed_quantity:
-                raise ValidationError(
-                    _(f"Недостаточно товара {product.product.name} на складе.")
-                )
-
-        discount_coefficient = self.discount_price / full_price if full_price > 0 else Decimal("1.0")
-
         # 4. Проведение транзакции
         with transaction.atomic():
-            self.user.balance -= self.discount_price
-            self.user.save(update_fields=["balance"])
+            locked_user = User.objects.select_for_update().get(id=self.user.id)
+
+            if locked_user.balance < self.discount_price:
+                raise ValidationError(
+                    _(f"Недостаточно средств. Не хватает {self.discount_price - self.user.balance} руб.")
+                )
+
+            # Блокируем товары на складе от параллельных покупок
+            products = (
+                ProductVariant.objects.select_for_update()
+                .filter(id__in=self.products_ids)
+                .select_related("product", "product__category")
+                .prefetch_related("options")
+            )
+
+            # Валидация склада с учетом источника покупки
+            for product in products:
+                needed_quantity = wishlist_dict.get(product.id, 1)
+                if product.quantity < needed_quantity:
+                    raise ValidationError(
+                        _(f"Недостаточно товара {product.product.name} на складе.")
+                    )
+
+            discount_coefficient = self.discount_price / full_price if full_price > 0 else Decimal("1.0")
+
+            locked_user.balance -= self.discount_price
+            locked_user.save(update_fields=["balance"])
+
+            # Обновляем инстанс в self, чтобы во View вернулись актуальные данные
+            self.user = locked_user
 
             if self.coupon:
                 self.coupon.delete()
