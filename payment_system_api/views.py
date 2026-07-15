@@ -188,8 +188,6 @@ class DeliveryView(ModelViewSet):
 
 
 """ TEST PAYMENT SYSTEM """
-
-
 class CreatePaymentView(APIView):
     def post(self, request):
         serializer = PaymentSerializer(data=request.data)

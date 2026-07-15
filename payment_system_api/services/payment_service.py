@@ -6,10 +6,9 @@ from rest_framework.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 from product_control_api.models import ProductVariant
-from usercontrol_api.views import _create_coupon_with_chance
 from payment_system_api.models import Delivery, History
 from usercontrol_api.models import WishlistItem, User, Coupon
-from payment_system_api.dependencies import _apply_discount_to_order
+from payment_system_api.dependencies import apply_discount_to_order, create_coupon_with_chance
 from payment_system_api.tasks import send_email_task
 from abc import abstractmethod, ABC
 
@@ -76,7 +75,7 @@ class UserBalanceService(PurchaseService):
             # Если быстрая покупка (в корзине пусто), берем цену 1 штуки товара
             full_price = sum(product.price for product in base_products)
 
-        self.discount_price = _apply_discount_to_order(self.user, full_price, self.coupon)
+        self.discount_price = apply_discount_to_order(self.user, full_price, self.coupon)
 
         # 4. Проведение транзакции
         with transaction.atomic():
@@ -130,7 +129,7 @@ class UserBalanceService(PurchaseService):
                 )
 
             # Шанс на создание купона пользователю
-            new_coupon = _create_coupon_with_chance(self.user)
+            new_coupon = create_coupon_with_chance(self.user)
 
             # Celery таска отправится только ПОСЛЕ успешного коммита транзакции
             self.send_email_check()

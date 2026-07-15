@@ -1,6 +1,7 @@
 import enum
 from abc import ABC, abstractmethod
 from decimal import Decimal
+from typing import Dict
 
 from django.db import transaction
 from django.shortcuts import get_object_or_404
@@ -26,10 +27,9 @@ class DeliveryService(ABC):
         self.user = user
 
     @abstractmethod
-    def process_option(self, option: str) -> str:
+    def process_option(self, option: DeliveryOption) -> Dict:
         """
         Обработка выбора пользователя ("accept" - принять, "cancel" - отменить).
-        Возвращает текстовое сообщение для пользователя.
         """
         pass
 
@@ -41,7 +41,7 @@ class DefaultDeliveryService(DeliveryService):
     - При отмене "уже доставлено" деньги СГОРАЮТ (политика невозврата), товар едет на склад.
     """
 
-    def process_option(self, option: DeliveryOption) -> str:
+    def process_option(self, option: DeliveryOption) -> Dict:
         if option not in [DeliveryOption.ACCEPT, DeliveryOption.CANCEL]:
             raise ValidationError(_("Недопустимое действие. Доступно: 'accept' или 'cancel'."))
 
@@ -60,6 +60,9 @@ class DefaultDeliveryService(DeliveryService):
                 return self._cancel_after_arrival(product)
 
     def _accept_delivery(self):
+        """
+        Принятие товара | option = accept
+        """
         History.objects.create(
             user=self.user,
             product=self.delivery.product,
@@ -75,6 +78,9 @@ class DefaultDeliveryService(DeliveryService):
         }
 
     def _cancel_after_arrival(self, product: ProductVariant):
+        """
+        Отказ от товара после прибытия в пункт выдачи | option = cancel
+        """
         product.quantity += self.delivery.quantity
         product.save(update_fields=["quantity"])
 
@@ -93,7 +99,9 @@ class DefaultDeliveryService(DeliveryService):
         }
 
     def _cancel_on_the_way(self, product: ProductVariant):
-
+        """
+        Отказ от товара ДО прибытия в пункт выдачи | option = cancel
+        """
         locked_user = User.objects.select_for_update().get(pk=self.user.id)
         locked_user.balance += self.delivery.user_price
         locked_user.save(update_fields=["balance"])
